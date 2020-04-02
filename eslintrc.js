@@ -13,6 +13,7 @@ module.exports = {
       'error',
       { devDependencies: ['.storybook/**', 'stories/**'] }
     ],
+    'react/jsx-filename-extension': [1, { extensions: ['.js'] }],
     'react/jsx-props-no-spreading': 'off', // We use HOC, etc. & this will wreck havoc
     'react/jsx-curly-newline': 'off', // Clashes with prettier => prettier wins
     'react/jsx-wrap-multilines': [
@@ -32,4 +33,3 @@ module.exports = {
     'no-unused-vars': 'error'
   }
 };
-
