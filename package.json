@@ -9,7 +9,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-a11y": "5.3.18",
+    "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-console": "^1.1.0",
     "@storybook/addon-docs": "5.3.18",
@@ -19,7 +19,8 @@
     "@storybook/addon-viewport": "5.3.18",
     "@storybook/addons": "^5.1.9",
     "@storybook/react": "^5.1.9",
-    "@storybook/source-loader": "*",
+    "@storybook/source-loader": "^5.3.18",
+    "@storybook/storybook-deployer": "^2.8.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-module-resolver": "^4.0.0",
@@ -35,16 +36,16 @@
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.3",
-    "jest": "*",
+    "jest": "^25.2.7",
     "lerna": "^3.20.2",
     "lint-staged": "^10.1.1",
     "prettier": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-is": "^16.8.0",
-    "regenerator-runtime": "*",
+    "regenerator-runtime": "^0.13.5",
     "typescript": "^3.5.2",
-    "webpack": ">=4"
+    "webpack": "^4.42.1"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -56,7 +57,8 @@
     "build:storybook": "build-storybook -o docs/",
     "build": "lerna exec --parallel -- babel --root-mode upward src -d build --copy-files --ignore **/*.story.js,**/*.spec.js",
     "copy-svg-to-lib": "cpx \"./src/**/*.svg\" ./dist",
-    "copy-png-to-lib": "cpx \"./src/**/*.png\" ./dist"
+    "copy-png-to-lib": "cpx \"./src/**/*.png\" ./dist",
+    "deploy": "storybook-to-ghpages"
   },
   "dependencies": {
     "@material-ui/core": "^4.1.3",
