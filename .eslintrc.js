@@ -31,5 +31,18 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     'no-unused-vars': 'error'
+  },
+  settings: {
+    'import/resolver': {
+      'babel-module': {
+        alias: {
+          '@commons-ui/showcase': './packages/showcase/src',
+          '@commons-ui/core': './packages/core/src'
+        }
+      },
+      'eslint-import-resolver-lerna': {
+        packages: path.resolve(__dirname, 'packages')
+      }
+    }
   }
 };
