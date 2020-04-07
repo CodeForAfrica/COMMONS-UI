@@ -36,7 +36,6 @@ module.exports = {
     'import/resolver': {
       'babel-module': {
         alias: {
-          '@commons-ui/showcase': './packages/showcase/src',
           '@commons-ui/core': './packages/core/src'
         }
       },

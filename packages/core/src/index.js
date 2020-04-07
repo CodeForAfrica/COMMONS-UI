@@ -1,3 +1,1 @@
-import Core from "./components/Core";
-
-export default Core;
+export { default as Showcase } from "./components/Showcase";

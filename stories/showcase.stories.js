@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { storiesOf } from "@storybook/react";
 
-import Showcase from "@commons-ui/showcase";
+import { Showcase } from "@commons-ui/core";
 
+
+function timeStamp(timestamp) {
+  return new Date(timestamp).toLocaleString("en-GB", {
+    year: "numeric",
+    day: "2-digit",
+    month: "short",
+  });
+}
 
 function useStories(url) {
   const urlJson = `https://corsio.devops.codeforafrica.org/?${url}?format=json`;
@@ -34,10 +42,17 @@ function useStories(url) {
 
 function show() {
   const [posts] = useStories('https://pesacheck.org/tagged/public-finance');
+  posts.forEach(function fixTimestamp(post) {
+    post.createdAt = timeStamp(post.createdAt);
+  });
   return <Showcase
     stories={posts}
     title="Showcase"
     description="View and explore how we visualise Kenya’s budget data to show how much money each county has received from the national government, and how the money is allocated and utilized based on each county’spriorities"
+    xs={12}
+    cellHeight={320}
+    height={370}
+    minHeight={20}
   />
 }
 

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { makeStyles, Container, Grid, Typography } from "@material-ui/core";
 
-import StoryList from "./components/StoryList";
+import StoryList from "./StoryList";
 
 const useStyles = makeStyles((theme) => ({
   showCaseContainer: {
@@ -36,7 +36,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Showcase({ stories, title, description }) {
+function Showcase({
+                    stories,
+                    title,
+                    description,
+                    xs,
+                    cellHeight,
+                    height,
+                    minHeight,
+                    }) {
   const classes = useStyles();
 
   return (
@@ -49,27 +57,32 @@ function Showcase({ stories, title, description }) {
       >
         <Grid
           item
-          xs={12}
+          xs={xs}
           container
           direction="row"
           className={classes.headline}
           justify="flex-start"
           alignItems="center"
         >
-          <Grid item xs={12}>
+          <Grid item xs={xs}>
             <Typography variant="h2" className={classes.headlineTitle}>
               {title}
             </Typography>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={xs}>
             <Typography variant="body2" className={classes.headlineDescription}>
               {description}
             </Typography>
           </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <StoryList stories={stories} />
+        <Grid item xs={xs}>
+          <StoryList
+            stories={stories}
+            cellHeight={cellHeight}
+            height={height}
+            minHeight={minHeight}
+          />
         </Grid>
       </Grid>
     </Container>
@@ -78,6 +91,12 @@ function Showcase({ stories, title, description }) {
 
 Showcase.propTypes = {
   stories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  xs: PropTypes.number.isRequired,
+  cellHeight: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  minHeight: PropTypes.number.isRequired,
 };
 
 export default Showcase;

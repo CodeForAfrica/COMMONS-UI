@@ -13,7 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   root: {
-    minHeight: "20rem",
+    minHeight: props => `${props.minHeight}rem`,
     height: "100%",
     backgroundColor: "#fafafa",
     border: "1px solid #eeeeee",
@@ -38,7 +38,7 @@ const styles = (theme) => ({
     background: "linear-gradient(to top, black, transparent)",
   },
   cardMedia: {
-    minHeight: "20rem",
+    minHeight: `${theme.minHeight}rem`,
     height: "100%",
     width: "100%",
   },
@@ -60,9 +60,15 @@ const styles = (theme) => ({
   media: {
     filter: "sepia(100%) hue-rotate(159deg) brightness(40%) saturate(350%)",
   },
+  cardActionArea: {
+    display: "flex",
+    alignItems: "flex-end",
+    flexFlow: "column",
+    height: "100%",
+  }
 });
 
-function StoryCard({ story, classes }) {
+function StoryCard({ story, classes, minHeight }) {
   const {
     virtuals: {
       previewImage: { imageId: mediaSrc },
@@ -75,25 +81,20 @@ function StoryCard({ story, classes }) {
   } = story;
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} minHeight={minHeight}>
       <a
-        href={`https://pesacheck.org/${link}`}
+        href={`${link}`}
         target="_blank"
         rel="noopener noreferrer"
         className={classes.cardLink}
       >
         <CardActionArea
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            flexFlow: "column",
-            height: "100%",
-          }}
+          className={classes.cardActionArea}
         >
           <CardMedia
             component={media}
             className={classes.cardMedia}
-            image={`https://cdn-images-1.medium.com/max/480/${mediaSrc}`}
+            image={`${mediaSrc}`}
             classes={{ media: classes.media }}
             title="Story"
           />
@@ -107,11 +108,7 @@ function StoryCard({ story, classes }) {
               style={{ height: "100%" }}
             >
               <Typography variant="subtitle2" className={classes.overline}>
-                {new Date(timestamp).toLocaleString("en-GB", {
-                  year: "numeric",
-                  day: "2-digit",
-                  month: "short",
-                })}
+                {timestamp}
               </Typography>
               <Typography variant="h5" className={classes.bodyTitle}>
                 {title}

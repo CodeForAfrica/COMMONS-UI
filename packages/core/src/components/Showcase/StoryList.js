@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
      * causing height issues resulting in overflow.
      * Stick to px for this component to function correctly.
      */
-    height: "370px", // 23.125rem
+    height: props => `${props.height}px`, // 23.125rem
   },
   simpleBar: {
     width: "100%",
-    height: "370px", // 23.125rem
+    height: props => `${props.height}px`, // 23.125rem
     "& .simplebar-track": {
       backgroundColor: "#f1f1ed", // off-white
       height: "4px",
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function StoryList({ stories, ...props }) {
+function StoryList({ stories, cellHeight, minHeight, height, ...props }) {
   const classes = useStyles(props);
   const theme = useTheme();
   let cols = 4;
@@ -69,12 +69,12 @@ function StoryList({ stories, ...props }) {
   }
 
   return (
-    <div className={classes.root}>
-      <SimpleBarReact autoHide={false} className={classes.simpleBar}>
-        <GridList cellHeight={320} className={classes.gridList} cols={cols}>
+    <div className={classes.root} height={height}>
+      <SimpleBarReact autoHide={false} className={classes.simpleBar} height={height}>
+        <GridList cellHeight={cellHeight} className={classes.gridList} cols={cols}>
           {stories.map((story) => (
             <GridListTile key={story.id}>
-              <StoryCard story={story} />
+              <StoryCard story={story} minHeight={minHeight} />
             </GridListTile>
           ))}
         </GridList>
