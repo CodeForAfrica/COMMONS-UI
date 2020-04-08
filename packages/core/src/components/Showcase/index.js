@@ -44,8 +44,9 @@ function Showcase({
                     cellHeight,
                     height,
                     minHeight,
+                    ...props
                     }) {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <Container className={classes.showCaseContainer}>
