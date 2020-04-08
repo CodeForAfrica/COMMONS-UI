@@ -48,7 +48,7 @@ function Showcase({
   const classes = useStyles();
 
   return (
-    <Container className={classes.showCaseContainer} id="showcase">
+    <Container className={classes.showCaseContainer}>
       <Grid
         container
         direction="column"
