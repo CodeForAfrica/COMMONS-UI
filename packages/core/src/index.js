@@ -1,3 +1,2 @@
-import Core from "./components/Core";
-
-export default Core;
+/* eslint-disable import/prefer-default-export */
+export { default as ProfileCarousel } from "./ProfileCarousel";
