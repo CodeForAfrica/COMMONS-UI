@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
-import { ProfileCarousel } from "../packages/core/src";
+import { ProfileCarousel } from "@commons-ui/core";
 
-storiesOf("COMMONS UI|Content", module).add("Default", () => {
+storiesOf("COMMONS UI|Content|Profile Carousel", module).add("Default", () => {
   const profiles = [
     {
       name: "William Ruto",
