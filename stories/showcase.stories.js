@@ -44,7 +44,9 @@ function show() {
   const [posts] = useStories('https://pesacheck.org/tagged/public-finance');
   posts.forEach(function fixTimestamp(post) {
     post.createdAt = timeStamp(post.createdAt);
+    post.virtuals.previewImage.imageId = `https://cdn-images-1.medium.com/max/480/${post.virtuals.previewImage.imageId}`
   });
+  console.log(posts[0]);
   return <Showcase
     stories={posts}
     title="Showcase"
