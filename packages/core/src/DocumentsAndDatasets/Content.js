@@ -3,30 +3,17 @@ import PropTypes from 'prop-types';
 
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 
-import Link from 'components/Link';
+import Link from '../Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    textAlign: 'left',
-    [theme.breakpoints.up('md')]: {
-      width: '11rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '21.45rem'
-    }
+    textAlign: 'left'
   },
-  title: {
-    color: theme.palette.primary.dark,
-    opacity: '0.6',
+  title: {},
+  description: {
     [theme.breakpoints.up('md')]: {
       paddingTop: '1rem'
-    }
-  },
-  button: {
-    border: '1px solid black',
-    '&:hover': {
-      backgroundColor: 'white'
     }
   },
   subtitleGrid: {
@@ -41,15 +28,14 @@ const useStyles = makeStyles(theme => ({
   },
   contentText: {
     paddingTop: '1rem',
-    width: '80%',
     [theme.breakpoints.up('md')]: {
-      height: '4.76rem',
-      width: 'auto'
+      height: '4.76rem'
     }
   },
-  link: { textDecoration: 'none' },
+  link: { textDecoration: 'underline' },
   linkText: {
     fontWeight: 'bold',
+    textTransform: 'uppercase',
     paddingTop: '1rem',
     [theme.breakpoints.up('md')]: {
       paddingTop: '2.7rem'
@@ -77,6 +63,7 @@ function Content({
           {children}
         </Grid>
       }
+      <>
       { title && 
         <Grid item xs={12} className={classes.subtitleGrid}>
             <Typography variant="body2" className={classes.title}>
@@ -84,7 +71,7 @@ function Content({
             </Typography>
         </Grid>
       }
-
+      </>
       <Grid item xs={12}>
         { contentCount && <Typography variant="h1" className={classes.contentCount}>
           {contentCount}
@@ -124,7 +111,7 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
-  children: null,
+  children: undefined,
   title: undefined,
   contentCount: undefined,
   description: undefined,

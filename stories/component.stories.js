@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { storiesOf } from "@storybook/react";
+import { withKnobs, text, object } from '@storybook/addon-knobs';
+import { CenterDecorator } from './common';
 
-import { Showcase } from "@commons-ui/core";
+import { Showcase, DocumentsAndDatasets } from "@commons-ui/core";
 
 
 function timeStamp(timestamp) {
@@ -58,11 +60,38 @@ function show() {
   />
 }
 
-storiesOf("COMMONS UI|Component", module)
+storiesOf("COMMONS UI|Component/ShowCase", module)
   .add('ShowCase', () => (
       show()
-  ))
-  .add('Featured Research', () => (
+  ));
+
+  storiesOf('COMMONS UI|Component/DocumentsAndDatasets', module)
+  .addDecorator(CenterDecorator)
+  .addDecorator(withKnobs)
+  .add('Default', () => (
     <div>
+      <DocumentsAndDatasets
+        title={text('title', 'Featured Research')}
+        description={text(
+          'description', 
+          'Get access to the best original scientific and medical research by African experts who understand local context.')}
+        documentContent={object(
+          'documentContent', 
+          { 
+            contentType: 'Document',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            linkTitle: 'LEARN MORE'
+          }
+        )}
+        datasetContent={object(
+          'datasetContent', 
+          { 
+            contentType: 'Dataset',
+            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+            linkTitle: 'LEARN MORE'
+          }
+        )}
+      />
     </div>
   ))
+
