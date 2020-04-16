@@ -58,7 +58,11 @@ function show() {
   />
 }
 
-storiesOf("COMMONS UI|ShowCase", module)
-  .add("ShowCase List", () => (
+storiesOf("COMMONS UI|Component", module)
+  .add('ShowCase', () => (
       show()
-  ));
+  ))
+  .add('Featured Research', () => (
+    <div>
+    </div>
+  ))
