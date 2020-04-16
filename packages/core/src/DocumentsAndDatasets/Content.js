@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   contentText: {
     paddingTop: '1rem',
-    paddingBottom: '2rem'
+    paddingBottom: '3rem'
   },
   link: { textDecoration: 'underline' },
   linkText: {
