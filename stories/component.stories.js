@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text, object } from '@storybook/addon-knobs';
 import { CenterDecorator } from './common';
+import { makeStyles } from '@material-ui/core';
+import plugIcon from './assets/images/icons/group-6.png';
+import menuIcon from './assets/images/icons/group-7.png';
+import imgHighlight from './assets/images/covid-highlight.png';
 
 import { Showcase, DocumentsAndDatasets } from "@commons-ui/core";
 
@@ -68,30 +72,49 @@ storiesOf("COMMONS UI|Component/ShowCase", module)
   storiesOf('COMMONS UI|Component/DocumentsAndDatasets', module)
   .addDecorator(CenterDecorator)
   .addDecorator(withKnobs)
-  .add('Default', () => (
-    <div>
+  .add('Default', () => 
+  React.createElement(() => {
+    const classes = makeStyles(() => ({
+      dataWrapper: {
+        backgroundColor: '#ccdcff'
+      },
+      datasetData: {
+        backgroundColor: '#b7ceff'
+      }
+    }))();
+    return (
+      <div>
       <DocumentsAndDatasets
         title={text('title', 'Featured Research')}
+        highlightChildren={<div style={{ width: '100%',
+        backgroundImage: `url(${imgHighlight})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',}} />}
         description={text(
           'description', 
           'Get access to the best original scientific and medical research by African experts who understand local context.')}
-        documentContent={object(
-          'documentContent', 
+        documentContent={
           { 
             contentType: 'Document',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            linkTitle: 'LEARN MORE'
+            linkTitle: 'LEARN MORE',
+            children: <img src={menuIcon} alt="Menu Icon" />
           }
-        )}
-        datasetContent={object(
-          'datasetContent', 
-          { 
+        }
+        datasetContent={{
             contentType: 'Dataset',
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            linkTitle: 'LEARN MORE'
-          }
-        )}
+            linkTitle: 'LEARN MORE',
+            children: <img src={plugIcon} alt="Plug Icon" />
+        }}
+        classes={{
+          datasetData: classes.datasetData,
+          dataWrapper: classes.dataWrapper,
+          imageHighlight: classes.imageHighlight
+        }}
       />
-    </div>
+      </div>
+    );
+  }
   ))
 

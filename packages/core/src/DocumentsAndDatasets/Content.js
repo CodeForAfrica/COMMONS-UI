@@ -8,9 +8,12 @@ import Link from '../Link';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    textAlign: 'left'
+    textAlign: 'left',
+    marginTop: '1rem'
   },
-  title: {},
+  title: {
+    paddingTop: '1rem'
+  },
   description: {
     [theme.breakpoints.up('md')]: {
       paddingTop: '1rem'
@@ -28,9 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   contentText: {
     paddingTop: '1rem',
-    [theme.breakpoints.up('md')]: {
-      height: '4.76rem'
-    }
+    paddingBottom: '2rem'
   },
   link: { textDecoration: 'underline' },
   linkText: {
@@ -79,13 +80,12 @@ function Content({
         }
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.contentText} >
         <Typography variant="h5">{contentType}</Typography>
-        <div className={classes.contentText}>
-          <Typography variant="body2" className={classes.title}>
-            {description}
-          </Typography>
-        </div>
+
+        <Typography variant="body2" className={classes.description}>
+          {description}
+        </Typography>
 
         <Link href={link} className={classes.link}>
           <Typography variant="subtitle2" className={classes.linkText}>

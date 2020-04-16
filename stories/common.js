@@ -8,8 +8,7 @@ export const CenterDecorator = storyFn => (
   <Grid
     container
     justify="center"
-    alignItems="flex-start"
-    style={{ padding: 20, width: '100%', height: 'auto', overflow: 'hidden' }}
+    style={{ width: '100%', height: 'auto', overflow: 'hidden' }}
   >
     <ThemeProvider>{storyFn()}</ThemeProvider>
   </Grid>

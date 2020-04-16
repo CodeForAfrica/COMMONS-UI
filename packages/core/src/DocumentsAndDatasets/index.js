@@ -9,10 +9,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    // backgroundImage: `url(${dataBackground})`,
-    // backgroundRepeat: 'no-repeat',
-    // backgroundPosition: 'top left',
-    // backgroundSize: '65% 75%',
     [theme.breakpoints.up('md')]: {
       backgroundSize: '69% 100%',
       paddingLeft: 0, // 30px / 16
@@ -36,28 +32,30 @@ const useStyles = makeStyles(theme => ({
   },
   wrapper: {},
   dataWrapper: {
-    paddingTop: '4.2rem',
-    height: '35.713rem', // 500px / 16
+    paddingTop: '5rem',
     paddingLeft: '2.143rem',
     paddingRight: '2.143rem',
     [theme.breakpoints.up('md')]: {
-      //width: '35.7143rem',
       paddingLeft: 0,
       paddingRight: 0
     }
   },
   documentData: {
     [theme.breakpoints.up('md')]: {
-      paddingTop: '9rem',
+      paddingTop: '11rem',
       paddingRight: '0.5rem',
     }
   },
   datasetData: {
     [theme.breakpoints.up('md')]: {
-      paddingTop: '13.1rem',
+      paddingTop: '15.9rem',
       paddingLeft: '0.5rem',
       marginTop: 0
     }
+  },
+  imageHighlight: {
+    width: '100%',
+    marginTop: '-5rem'
   }
 }));
 
@@ -80,7 +78,6 @@ function DocumentsAndDatasets({
                   item
                   md={8}
                   container
-                  direction="column"
                   className={classes.imageHighlight}
               >
                   {highlightChildren}
