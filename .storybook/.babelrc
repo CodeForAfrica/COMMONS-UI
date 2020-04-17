@@ -1,12 +1,14 @@
- {
-    "presets": ["@babel/preset-react", "@babel/preset-env"],
-    "plugins": ["inline-react-svg",  [
-        "module-resolver",
-        {
-          "alias": {
-            "@commons-ui/core": "./packages/core"
-          }
+{
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
+  "plugins": [
+    "inline-react-svg",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@commons-ui/core": "./packages/core/src"
         }
-      ]]
-  }
-  
+      }
+    ]
+  ]
+}
