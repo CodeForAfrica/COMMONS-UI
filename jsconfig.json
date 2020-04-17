@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@commons-ui/*": ["./*", "./packages/*/src"]
+    }
+  },
+  "exclude": ["build", "node_modules"]
+}
