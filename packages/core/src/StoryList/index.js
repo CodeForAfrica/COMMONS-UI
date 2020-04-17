@@ -73,7 +73,7 @@ function StoryList({
           height={height}
           lg={lg}
           md={md}
-          minHeight={minHeight || cellHeight}
+          minHeight={minHeight}
           sm={sm}
           spacing={spacing}
           stories={stories}

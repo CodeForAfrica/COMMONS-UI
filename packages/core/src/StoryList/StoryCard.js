@@ -9,9 +9,9 @@ import {
   CardContent,
   Grid,
 } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: (props) => `${props.minHeight}rem`,
     height: "100%",
@@ -66,9 +66,10 @@ const styles = (theme) => ({
     flexFlow: "column",
     height: "100%",
   },
-});
+}));
 
-function StoryCard({ story, classes, minHeight }) {
+function StoryCard({ story, minHeight, ...props }) {
+  const classes = useStyles(props);
   const {
     image,
     createdAt,
@@ -121,8 +122,23 @@ function StoryCard({ story, classes, minHeight }) {
 }
 
 StoryCard.propTypes = {
-  classes: PropTypes.shape().isRequired,
-  story: PropTypes.shape().isRequired,
+  minHeight: PropTypes.number,
+  story: PropTypes.shape({
+    image: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+    content: PropTypes.shape({
+      subtitle: PropTypes.string,
+    }),
+    createdAt: PropTypes.string,
+    title: PropTypes.string,
+    uniqueSlug: PropTypes.string,
+    media: PropTypes.string,
+  }).isRequired,
 };
 
-export default withStyles(styles)(StoryCard);
+StoryCard.defaultProps = {
+  minHeight: undefined,
+};
+
+export default StoryCard;
