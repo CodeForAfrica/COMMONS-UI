@@ -301,3 +301,11 @@ $RECYCLE.BIN/
 docs/
 
 # End of https://www.gitignore.io/api/vim,node,linux,macos,windows,webstorm+all,visualstudiocode
+
+# Custom
+#
+
+### Storybook ###
+
+# Build folders
+build/
