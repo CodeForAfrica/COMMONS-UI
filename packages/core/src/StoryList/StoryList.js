@@ -19,6 +19,7 @@ function StoryList({
   md,
   minHeight,
   sm,
+  spacing,
   stories,
   xs,
   ...props
@@ -33,10 +34,11 @@ function StoryList({
         scrollBar: classes.simpleBar,
       }}
       cellHeight={cellHeight}
-      height={height}
+      height={height || cellHeight}
       lg={lg}
       md={md}
       sm={sm}
+      spacing={spacing}
       xs={xs}
     >
       {stories.map((story) => (
@@ -49,24 +51,24 @@ function StoryList({
 }
 
 StoryList.propTypes = {
-  cellHeight: PropTypes.number,
+  cellHeight: PropTypes.number.isRequired,
   height: PropTypes.oneOfType(PropTypes.number, PropTypes.string), // in px
   lg: PropTypes.number,
   md: PropTypes.number,
   minHeight: PropTypes.number,
   sm: PropTypes.number,
+  spacing: PropTypes.number,
   stories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  xs: PropTypes.number,
+  xs: PropTypes.number.isRequired,
 };
 
 StoryList.defaultProps = {
-  cellHeight: 320,
-  height: 370, // 23.125rem
-  lg: 4,
-  md: 2,
-  minHeight: 20,
+  height: undefined,
+  lg: undefined,
+  md: undefined,
+  minHeight: undefined,
   sm: undefined,
-  xs: 1,
+  spacing: undefined,
 };
 
 export default StoryList;
