@@ -7,12 +7,13 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#f6f6f6",
+    boxShadow: "0 2px 6px 4px rgba(0, 0, 0, 0.2)",
     cursor: "pointer",
     position: "relative",
     zIndex: 1,
     "&:before": {
       // shadow
-      content: '""',
+      // content: '""',
       position: "absolute",
       height: "100%",
       width: "100%",
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
     },
     "&:after": {
       // shadow
-      content: '""',
+      // content: '""',
       position: "absolute",
       top: "5%",
       height: "90%",
