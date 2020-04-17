@@ -1,42 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { Link } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Link } from "@material-ui/core";
 
-const styles = () => ({});
-
-function A({ ref, children, className, href, variant, ...props }) {
+/**
+ * anchor element that has `target="_blank" rel: "noopener noreferrer"`
+ * see: https://material-ui.com/components/links/#security
+ */
+function A({ children, href, ...props }) {
   return (
     <Link
-      ref={ref}
       href={href}
+      {...props}
       target="_blank"
       rel="noopener noreferrer"
-      className={className}
-      variant={variant}
       underline="always"
-      {...props}
     >
       {children}
     </Link>
   );
 }
 A.propTypes = {
-  ref: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  variant: PropTypes.string
 };
 
-A.defaultProps = {
-  ref: undefined,
-  className: null,
-  variant: 'inherit'
-};
-
-export default withStyles(styles)(A);
+export default A;
