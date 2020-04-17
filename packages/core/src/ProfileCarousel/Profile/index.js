@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 
 import clsx from "clsx";
 
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 import useStyles from "./useStyles";
 
@@ -17,44 +17,45 @@ function Profile({
   title,
   ...props
 }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ ...props, image });
 
   return (
-    <div
+    <Grid
+      container
+      direction="column"
+      justify="flex-end"
       role="button"
       tabIndex={0}
-      className={classes.profile}
+      className={classes.root}
       onClick={onClick}
       onKeyUp={undefined}
-      {...props}
     >
       <img
         alt={image.description || name || title}
         src={image.url}
-        className={clsx(classes.profilePicture, {
-          [classes.profilePictureSelected]: selected,
+        className={clsx(classes.picture, {
+          [classes.pictureSelected]: selected,
         })}
       />
       {name && name.length > 0 && (
         <Typography
-          className={clsx(classes.profileName, {
-            [classes.profileNameSelected]: selected,
+          variant="body2"
+          className={clsx(classes.name, {
+            [classes.nameSelected]: selected,
           })}
         >
           {name}
         </Typography>
       )}
-      <Typography className={classes.profileTitle}>{title}</Typography>
+      <Typography variant="body2" className={classes.title}>
+        {title}
+      </Typography>
       {description && description.length > 0 && (
-        <Typography
-          className={clsx(classes.description, {
-            [classes.descriptionSelected]: selected,
-          })}
-        >
+        <Typography variant="caption" className={classes.description}>
           {description}
         </Typography>
       )}
-    </div>
+    </Grid>
   );
 }
 
@@ -66,7 +67,7 @@ Profile.propTypes = {
   }).isRequired,
   name: PropTypes.string,
   onClick: PropTypes.func,
-  selected: PropTypes.string,
+  selected: PropTypes.bool,
   title: PropTypes.string.isRequired,
 };
 Profile.defaultProps = {
