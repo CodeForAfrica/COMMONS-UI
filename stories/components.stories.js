@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 
 import { Grid } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
-import { ProfileCarousel, Showcase } from "@commons-ui/core";
+import { ProfileList, StoryList } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationButton from "./NavigationButton";
@@ -11,10 +11,10 @@ import { getProfiles, fromTimestamp, useStories } from "./utils";
 
 import "simplebar/dist/simplebar.min.css";
 
-storiesOf("Components|Profile Carousel", module)
+storiesOf("Components|Profile List", module)
   .add("Default", () => {
     const profiles = getProfiles();
-    return <ProfileCarousel profiles={profiles} />;
+    return <ProfileList profiles={profiles} />;
   })
   .add("Navigation", () => {
     const classes = makeStyles((theme) => ({
@@ -36,12 +36,16 @@ storiesOf("Components|Profile Carousel", module)
         "&::after": {
           content: "none",
         },
+        textAlign: "center",
       },
       profilePicture: {
         border: "6px solid transparent",
         boxSizing: "border-box",
-        display: "initial",
         borderRadius: "50%",
+        display: "block",
+        margin: "0 auto",
+        width: "8rem",
+        height: "8rem",
       },
       profilePictureSelected: {
         border: `6px solid ${theme.palette.primary.main}`,
@@ -54,7 +58,9 @@ storiesOf("Components|Profile Carousel", module)
     return (
       <Grid container justify="flex-end" className={classes.root}>
         <Grid item xs={12}>
-          <ProfileCarousel
+          <ProfileList
+            cellHeight={400}
+            height={425}
             classes={{
               profile: classes.profile,
               profilePicture: classes.profilePicture,
@@ -87,7 +93,7 @@ storiesOf("Components|Profile Carousel", module)
     );
   });
 
-storiesOf("Components|Showcase", module).add("Default", () => {
+storiesOf("Components|Story List", module).add("Default", () => {
   const foundStories = useStories(
     "https://pesacheck.org/tagged/public-finance"
   );
@@ -100,10 +106,13 @@ storiesOf("Components|Showcase", module).add("Default", () => {
   }));
 
   return (
-    <Showcase
+    <StoryList
+      description="View and explore how we visualise Kenya’s budget data to show how much money each county has received from the national government, and how the money is allocated and utilized based on each county’spriorities"
+      md={3.3}
+      spacing={0}
       stories={stories}
       title="Showcase"
-      description="View and explore how we visualise Kenya’s budget data to show how much money each county has received from the national government, and how the money is allocated and utilized based on each county’spriorities"
+      xs={1.3}
     />
   );
 });

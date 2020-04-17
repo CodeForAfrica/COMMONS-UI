@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+import personImage from "./assets/person_3.png";
 
 export function getProfiles() {
   return [
@@ -7,66 +9,60 @@ export function getProfiles() {
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname1 Lastname1",
+      title: "Credible Institute",
     },
     {
       id: 2,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname2 Lastname2",
+      title: "Credible Institute",
     },
     {
       id: 3,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname3 Lastname3",
+      title: "Credible Institute",
     },
     {
       id: 4,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname4 Lastname4",
+      title: "Credible Institute",
     },
     {
       id: 5,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname5 Lastname5",
+      title: "Credible Institute",
     },
     {
       id: 6,
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: {
-        url:
-          "https://dashboard.takwimu.africa/wp-content/uploads/2020/01/will_ruto.jpg",
+        url: personImage,
       },
-      name: "William Ruto",
-      title: "Deputy President",
+      name: "Firstname6 Lastname6",
+      title: "Credible Institute",
     },
   ];
 }
