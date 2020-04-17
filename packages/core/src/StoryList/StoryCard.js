@@ -107,10 +107,10 @@ function StoryCard({ story, minHeight, ...props }) {
               <Typography variant="subtitle2" className={classes.overline}>
                 {createdAt}
               </Typography>
-              <Typography variant="h5" className={classes.bodyTitle}>
+              <Typography variant="body2" className={classes.bodyTitle}>
                 {title}
               </Typography>
-              <Typography variant="body2" className={classes.bodyText}>
+              <Typography variant="caption" className={classes.bodyText}>
                 {brief}{" "}
               </Typography>
             </Grid>
