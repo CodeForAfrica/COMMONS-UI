@@ -2,7 +2,6 @@
   "name": "@commons-ui/core",
   "version": "0.0.0",
   "dependencies": {
-    "next": "^9.3.5",
     "clsx": "^1.1.0",
     "prop-types": "^15.7.2",
     "simplebar": "^5.1.0",
