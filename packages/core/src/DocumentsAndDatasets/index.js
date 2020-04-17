@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles, Grid, Hidden, Typography } from '@material-ui/core';
+import { makeStyles, Grid, Typography } from '@material-ui/core';
 
 import Content from './Content';
 
@@ -73,16 +73,14 @@ function DocumentsAndDatasets({
     <div className={classes.root}>
       <Grid container className={classes.wrapper}>
         <Grid item md={9} container className={classes.dataWrapper}>
-          <Hidden smDown>
-              <Grid
-                  item
-                  md={8}
-                  container
-                  className={classes.imageHighlight}
-              >
-                  {highlightChildren}
-              </Grid>
-          </Hidden>
+          <Grid
+              item
+              md={8}
+              container
+              className={classes.imageHighlight}
+          >
+              {highlightChildren}
+          </Grid>
           <Grid item md={4} lg={4}>
             { (title || description) && 
               <div className={classes.featuredDiv}>
