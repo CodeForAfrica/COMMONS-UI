@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 import { Grid } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
@@ -8,6 +9,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationButton from "./NavigationButton";
 import { getProfiles, fromTimestamp, useStories } from "./utils";
+
+import plugIcon from './assets/images/icons/group-6.png';
+import menuIcon from './assets/images/icons/group-7.png';
+import imgHighlight from './assets/images/covid-highlight.png';
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -118,6 +123,7 @@ storiesOf("Components|Story List", module).add("Default", () => {
 });
 
 storiesOf('Components|DocumentsAndDatasets', module)
+  .addDecorator(withKnobs)
   .add('Default', () => 
   React.createElement(() => {
     const classes = makeStyles(() => ({
@@ -130,35 +136,35 @@ storiesOf('Components|DocumentsAndDatasets', module)
     }))();
     return (
       <div>
-      <DocumentsAndDatasets
-        title={text('title', 'Featured Research')}
-        highlightChildren={<div style={{ width: '100%',
-        backgroundImage: `url(${imgHighlight})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',}} />}
-        description={text(
-          'description', 
-          'Get access to the best original scientific and medical research by African experts who understand local context.')}
-        documentContent={
-          { 
-            contentType: 'Document',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            linkTitle: 'LEARN MORE',
-            children: <img src={menuIcon} alt="Menu Icon" />
+        <DocumentsAndDatasets
+          title={text('title', 'Featured Research')}
+          highlightChildren={<div style={{ width: '100%',
+          backgroundImage: `url(${imgHighlight})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',}} />}
+          description={text(
+            'description', 
+            'Get access to the best original scientific and medical research by African experts who understand local context.')}
+          documentContent={
+            { 
+              contentType: 'Document',
+              description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+              linkTitle: 'LEARN MORE',
+              children: <img src={menuIcon} alt="Menu Icon" />
+            }
           }
-        }
-        datasetContent={{
-            contentType: 'Dataset',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            linkTitle: 'LEARN MORE',
-            children: <img src={plugIcon} alt="Plug Icon" />
-        }}
-        classes={{
-          datasetData: classes.datasetData,
-          dataWrapper: classes.dataWrapper,
-          imageHighlight: classes.imageHighlight
-        }}
-      />
+          datasetContent={{
+              contentType: 'Dataset',
+              description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+              linkTitle: 'LEARN MORE',
+              children: <img src={plugIcon} alt="Plug Icon" />
+          }}
+          classes={{
+            datasetData: classes.datasetData,
+            dataWrapper: classes.dataWrapper,
+            imageHighlight: classes.imageHighlight
+          }}
+        />
       </div>
     );
   }
