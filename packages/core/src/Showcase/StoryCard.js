@@ -13,7 +13,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   root: {
-    minHeight: props => `${props.minHeight}rem`,
+    minHeight: (props) => `${props.minHeight}rem`,
     height: "100%",
     backgroundColor: "#fafafa",
     border: "1px solid #eeeeee",
@@ -65,15 +65,13 @@ const styles = (theme) => ({
     alignItems: "flex-end",
     flexFlow: "column",
     height: "100%",
-  }
+  },
 });
 
 function StoryCard({ story, classes, minHeight }) {
   const {
-    virtuals: {
-      previewImage: { imageId: mediaSrc },
-    },
-    createdAt: timestamp,
+    image,
+    createdAt,
     title,
     content: { subtitle: brief },
     uniqueSlug: link,
@@ -88,13 +86,11 @@ function StoryCard({ story, classes, minHeight }) {
         rel="noopener noreferrer"
         className={classes.cardLink}
       >
-        <CardActionArea
-          className={classes.cardActionArea}
-        >
+        <CardActionArea className={classes.cardActionArea}>
           <CardMedia
             component={media}
             className={classes.cardMedia}
-            image={`${mediaSrc}`}
+            image={`${image.url}`}
             classes={{ media: classes.media }}
             title="Story"
           />
@@ -108,7 +104,7 @@ function StoryCard({ story, classes, minHeight }) {
               style={{ height: "100%" }}
             >
               <Typography variant="subtitle2" className={classes.overline}>
-                {timestamp}
+                {createdAt}
               </Typography>
               <Typography variant="h5" className={classes.bodyTitle}>
                 {title}
