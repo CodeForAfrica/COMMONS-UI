@@ -8,7 +8,7 @@ import GridList from "../ScrollableGridList";
 import Profile from "./Profile";
 import useStyles from "./useStyles";
 
-function ProfileCarousel({
+function ProfileList({
   cellHeight,
   height,
   selectedIndex: selectedIndexProp,
@@ -87,7 +87,7 @@ function ProfileCarousel({
   );
 }
 
-ProfileCarousel.propTypes = {
+ProfileList.propTypes = {
   cellHeight: PropTypes.number,
   height: PropTypes.number,
   selectedIndex: PropTypes.number,
@@ -109,7 +109,7 @@ ProfileCarousel.propTypes = {
   xs: PropTypes.number,
 };
 
-ProfileCarousel.defaultProps = {
+ProfileList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
   selectedIndex: 0,
@@ -120,4 +120,4 @@ ProfileCarousel.defaultProps = {
   xs: 1,
 };
 
-export default ProfileCarousel;
+export default ProfileList;
