@@ -12,7 +12,7 @@ import { getProfiles, fromTimestamp, useStories } from "./utils";
 
 import plugIcon from './assets/images/icons/group-6.png';
 import menuIcon from './assets/images/icons/group-7.png';
-import imgHighlight from './assets/images/covid-highlight.png';
+import imgHighlight from './assets/images/illo-02.png';
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -126,22 +126,32 @@ storiesOf('Components|DocumentsAndDatasets', module)
   .addDecorator(withKnobs)
   .add('Default', () => 
   React.createElement(() => {
-    const classes = makeStyles(() => ({
+    const classes = makeStyles(({breakpoints}) => ({
       dataWrapper: {
-        backgroundColor: '#ccdcff'
+        background: '#0050FF 0% 0% no-repeat padding-box'
       },
       datasetData: {
-        backgroundColor: '#b7ceff'
+        backgroundColor: '#4933ff',
+      },
+      img: {
+        width: '100%',
+        background: `transparent url(${imgHighlight}) 0% 0% no-repeat`,
+        backgroundSize: 'cover',
+        height: '20rem',
+        [breakpoints.up('md')]: {
+          width: '27.7143rem',
+          height: '38rem'
+        },
+        [breakpoints.up('lg')]: {
+          width: '37.7143rem'
+        }
       }
     }))();
     return (
       <div>
         <DocumentsAndDatasets
           title={text('title', 'Featured Research')}
-          highlightChildren={<div style={{ width: '100%',
-          backgroundImage: `url(${imgHighlight})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',}} />}
+          highlightChildren={<div className={classes.img} />}
           description={text(
             'description', 
             'Get access to the best original scientific and medical research by African experts who understand local context.')}

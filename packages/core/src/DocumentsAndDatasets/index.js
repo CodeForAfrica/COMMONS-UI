@@ -8,10 +8,10 @@ import Content from './Content';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#fff',
     [theme.breakpoints.up('md')]: {
       backgroundSize: '69% 100%',
-      paddingLeft: 0, // 30px / 16
+      paddingLeft: 0,
+      paddingRight: 0,
       marginBottom: '9.143rem'
     },
     [theme.breakpoints.up('lg')]: {
@@ -21,32 +21,35 @@ const useStyles = makeStyles(theme => ({
     }
   },
   featuredDiv: {
-    position: 'absolute',
-    width: '28%'
+    display: 'block',
+    [theme.breakpoints.up('md')]: {
+      position: 'absolute',
+      top: '10%',
+      width: '28%'
+    }
   },
   featuredTitle: {
+    width: '100%',
     fontSize: '2rem'
   },
   featuredDescription: {
+    width: '100%',
     marginTop: '1rem'
   },
   wrapper: {},
-  dataWrapper: {
-    paddingTop: '5rem',
-    paddingLeft: '2.143rem',
-    paddingRight: '2.143rem',
-    [theme.breakpoints.up('md')]: {
-      paddingLeft: 0,
-      paddingRight: 0
-    }
-  },
   documentData: {
+    backgroundColor: '#0050FF',
+    paddingLeft: '1.25rem',
+    paddingRight: '1.25rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: '11rem',
-      paddingRight: '0.5rem',
+      paddingTop: '15.9rem',
+      paddingLeft: '0.5rem',
+      marginTop: 0
     }
   },
   datasetData: {
+    paddingLeft: '1.25rem',
+    paddingRight: '1.25rem',
     [theme.breakpoints.up('md')]: {
       paddingTop: '15.9rem',
       paddingLeft: '0.5rem',
@@ -55,7 +58,13 @@ const useStyles = makeStyles(theme => ({
   },
   imageHighlight: {
     width: '100%',
-    marginTop: '-5rem'
+    paddingLeft: '1.25rem',
+    paddingRight: '1.25rem',
+    [theme.breakpoints.up('md')]: {
+    width: '60%',
+    display: 'flex',
+    alignItems: 'flex-end',
+    }
   }
 }));
 
@@ -72,40 +81,37 @@ function DocumentsAndDatasets({
   return (
     <div className={classes.root}>
       <Grid container className={classes.wrapper}>
-        <Grid item md={9} container className={classes.dataWrapper}>
-          <Grid
-              item
-              md={8}
-              container
-              className={classes.imageHighlight}
-          >
-              {highlightChildren}
-          </Grid>
-          <Grid item md={4} lg={4}>
-            { (title || description) && 
-              <div className={classes.featuredDiv}>
-                  <Typography className={classes.featuredTitle}>
-                      {title}
-                  </Typography>
-                  <Typography variant="body2" className={classes.featuredDescription}>
-                      {description}
-                  </Typography>
-              </div>
-            }
-              <div className={classes.documentData}>
-              <Content
-                  children={documentContent.children}
-                  title={documentContent.title}
-                  contentCount={documentContent.contentCount}
-                  contentType={documentContent.contentType}
-                  description={documentContent.description}
-                  linkTitle={documentContent.linkTitle}
-                  link={documentContent.link}
-                  />
-              </div>
-          </Grid>
+        <Grid
+            item
+            md={5}
+            sm={12}
+            container
+            className={classes.imageHighlight}
+        >
+            {highlightChildren}
         </Grid>
-        <Grid item md={3} container className={classes.datasetData}>
+        <Grid item sm={12} md={3} lg={3} className={classes.documentData}>
+          { (title || description) && 
+            <div className={classes.featuredDiv}>
+                <Typography className={classes.featuredTitle}>
+                    {title}
+                </Typography>
+                <Typography variant="body2" className={classes.featuredDescription}>
+                    {description}
+                </Typography>
+            </div>
+          }
+            <Content
+                children={documentContent.children}
+                title={documentContent.title}
+                contentCount={documentContent.contentCount}
+                contentType={documentContent.contentType}
+                description={documentContent.description}
+                linkTitle={documentContent.linkTitle}
+                link={documentContent.link}
+                />
+        </Grid>
+        <Grid item sm={12} md={4} container className={classes.datasetData}>
             <Content 
                 children={datasetContent.children}
                 title={datasetContent.title}
