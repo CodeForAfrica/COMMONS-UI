@@ -19,9 +19,14 @@ const useStyles = makeStyles(theme => ({
       paddingTop: '1rem'
     }
   },
+  iconGrid: {
+    paddingTop: '1rem'
+  },
   subtitleGrid: {
-    paddingTop: '0.5rem',
-    paddingBottom: '0.5rem'
+    display: 'none'
+  },
+  countGrid: {
+    display: 'none'
   },
   contentCount: {
     fontSize: '3.125rem',
@@ -33,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '1rem',
     paddingBottom: '3rem'
   },
-  link: { textDecoration: 'underline' },
+  link: { textDecoration: 'underline', color: '#F9FF71' },
   linkText: {
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -58,29 +63,29 @@ function Content({
   const classes = useStyles(props);
 
   return (
-    <Grid className={classes.root}>
+    <Grid container className={classes.root}>
       { children && 
-        <Grid item xs={12}>
+        <Grid item xs={3} md={12} className={classes.iconGrid}>
           {children}
         </Grid>
       }
       <>
       { title && 
-        <Grid item xs={12} className={classes.subtitleGrid}>
+        <Grid item md={12} className={classes.subtitleGrid}>
             <Typography variant="body2" className={classes.title}>
               {title}
             </Typography>
         </Grid>
       }
       </>
-      <Grid item xs={12}>
+      <Grid item md={12} className={classes.countGrid}>
         { contentCount && <Typography variant="h1" className={classes.contentCount}>
           {contentCount}
           </Typography> 
         }
       </Grid>
 
-      <Grid item xs={12} className={classes.contentText} >
+      <Grid item xs={9} md={12} className={classes.contentText} >
         <Typography variant="h5">{contentType}</Typography>
 
         <Typography variant="body2" className={classes.description}>

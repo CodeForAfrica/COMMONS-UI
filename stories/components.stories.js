@@ -135,15 +135,16 @@ storiesOf('Components|DocumentsAndDatasets', module)
       },
       img: {
         width: '100%',
-        background: `transparent url(${imgHighlight}) 0% 0% no-repeat`,
+        background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
         backgroundSize: 'cover',
         height: '20rem',
         [breakpoints.up('md')]: {
           width: '27.7143rem',
-          height: '38rem'
+          height: '28rem'
         },
         [breakpoints.up('lg')]: {
-          width: '37.7143rem'
+          width: '37.7143rem',
+          height: '38rem'
         }
       }
     }))();

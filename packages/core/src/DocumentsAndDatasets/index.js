@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '1.25rem',
     paddingRight: '1.25rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: '15.9rem',
+      paddingTop: '14.9rem',
       paddingLeft: '0.5rem',
       marginTop: 0
     }
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '1.25rem',
     paddingRight: '1.25rem',
     [theme.breakpoints.up('md')]: {
-      paddingTop: '15.9rem',
+      paddingTop: '14.9rem',
       paddingLeft: '0.5rem',
       marginTop: 0
     }
@@ -61,9 +61,11 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '1.25rem',
     paddingRight: '1.25rem',
     [theme.breakpoints.up('md')]: {
-    width: '60%',
-    display: 'flex',
-    alignItems: 'flex-end',
+      width: '60%',
+      display: 'flex',
+      alignItems: 'flex-end',
+      paddingLeft: 0,
+      paddingRight: 0
     }
   }
 }));
@@ -86,6 +88,7 @@ function DocumentsAndDatasets({
             md={5}
             sm={12}
             container
+            justify="center"
             className={classes.imageHighlight}
         >
             {highlightChildren}
