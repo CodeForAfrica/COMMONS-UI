@@ -8,17 +8,6 @@ import Content from './Content';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      backgroundSize: '69% 100%',
-      paddingLeft: 0,
-      paddingRight: 0,
-      marginBottom: '9.143rem'
-    },
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 0, // 30px / 16
-      backgroundSize: '65% 100%',
-      marginBottom: '9.143rem'
-    }
   },
   featuredDiv: {
     display: 'block',
@@ -36,7 +25,6 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginTop: '1rem'
   },
-  wrapper: {},
   documentData: {
     backgroundColor: '#0050FF',
     paddingLeft: '1.25rem',
@@ -60,10 +48,9 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     paddingLeft: '1.25rem',
     paddingRight: '1.25rem',
+    backgroundColor: '#0050FF',
     [theme.breakpoints.up('md')]: {
       width: '60%',
-      display: 'flex',
-      alignItems: 'flex-end',
       paddingLeft: 0,
       paddingRight: 0
     }
@@ -81,8 +68,7 @@ function DocumentsAndDatasets({
   const classes = useStyles(props);
 
   return (
-    <div className={classes.root}>
-      <Grid container className={classes.wrapper}>
+      <Grid container className={classes.root}>
         <Grid
             item
             md={5}
@@ -126,7 +112,6 @@ function DocumentsAndDatasets({
             />
         </Grid>
       </Grid>
-    </div>
   );
 }
 

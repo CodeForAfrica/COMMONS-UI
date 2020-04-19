@@ -127,9 +127,6 @@ storiesOf('Components|DocumentsAndDatasets', module)
   .add('Default', () => 
   React.createElement(() => {
     const classes = makeStyles(({breakpoints}) => ({
-      dataWrapper: {
-        background: '#0050FF 0% 0% no-repeat padding-box'
-      },
       datasetData: {
         backgroundColor: '#4933ff',
       },
@@ -171,9 +168,7 @@ storiesOf('Components|DocumentsAndDatasets', module)
               children: <img src={plugIcon} alt="Plug Icon" />
           }}
           classes={{
-            datasetData: classes.datasetData,
-            dataWrapper: classes.dataWrapper,
-            imageHighlight: classes.imageHighlight
+            datasetData: classes.datasetData
           }}
         />
       </div>
