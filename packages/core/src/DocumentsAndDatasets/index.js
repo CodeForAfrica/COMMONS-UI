@@ -61,7 +61,7 @@ function DocumentsAndDatasets({
                 }}
                 />
         </Grid>
-        <Grid item sm={12} md={4} container className={classes.datasetData}>
+        <Grid item sm={12} md={4} className={classes.datasetData}>
             <Content 
                 children={datasetContent.children}
                 title={datasetContent.title}
