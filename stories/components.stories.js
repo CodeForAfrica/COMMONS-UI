@@ -10,9 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationButton from "./NavigationButton";
 import { getProfiles, fromTimestamp, useStories } from "./utils";
 
-import plugIcon from './assets/images/icons/group-6.png';
-import menuIcon from './assets/images/icons/group-7.png';
 import imgHighlight from './assets/images/illo-02.png';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -158,14 +157,14 @@ storiesOf('Components|DocumentsAndDatasets', module)
               contentType: 'Document',
               description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               linkTitle: 'LEARN MORE',
-              children: <img src={menuIcon} alt="Menu Icon" />
+              children: <DescriptionOutlinedIcon fontSize="large" />
             }
           }
           datasetContent={{
               contentType: 'Dataset',
               description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
               linkTitle: 'LEARN MORE',
-              children: <img src={plugIcon} alt="Plug Icon" />
+              children: <DescriptionOutlinedIcon fontSize="large" />
           }}
           classes={{
             datasetData: classes.datasetData
