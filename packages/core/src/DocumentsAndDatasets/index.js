@@ -54,7 +54,27 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: 0,
       paddingRight: 0
     }
-  }
+  },
+  documentContentRoot: {},
+  documentContentTitle: {},
+  documentDescription: {},
+  documentIconGrid : {},
+  documentSubtitleGrid : {},
+  documentCountGrid : {},
+  documentContentCount : {},
+  documentContentText : {},
+  documentLink : {},
+  documentLinkText: {},
+  datasetContentRoot: {},
+  datasetContentTitle: {},
+  datasetDescription: {},
+  datasetIconGrid : {},
+  datasetSubtitleGrid : {},
+  datasetCountGrid : {},
+  datasetContentCount : {},
+  datasetContentText : {},
+  datasetLink : {},
+  datasetLinkText: {},
 }));
 
 function DocumentsAndDatasets({
@@ -98,6 +118,18 @@ function DocumentsAndDatasets({
                 description={documentContent.description}
                 linkTitle={documentContent.linkTitle}
                 link={documentContent.link}
+                classes={{
+                  root: classes.documentContentRoot,
+                  title: classes.documentContentTitle,
+                  description: classes.documentDescription,
+                  iconGrid: classes.documentIconGrid,
+                  subtitleGrid: classes.documentSubtitleGrid,
+                  countGrid: classes.documentCountGrid,
+                  contentCount: classes.documentContentCount,
+                  contentText: classes.documentContentText,
+                  link: classes.documentLink,
+                  linkText: classes.documentLinkText
+                }}
                 />
         </Grid>
         <Grid item sm={12} md={4} container className={classes.datasetData}>
@@ -109,6 +141,18 @@ function DocumentsAndDatasets({
                 description={datasetContent.description}
                 linkTitle={datasetContent.linkTitle}
                 link={datasetContent.link}
+                classes={{
+                  root: classes.datasetContentRoot,
+                  title: classes.datasetContentTitle,
+                  description: classes.datasetDescription,
+                  iconGrid: classes.datasetIconGrid,
+                  subtitleGrid: classes.datasetSubtitleGrid,
+                  countGrid: classes.datasetCountGrid,
+                  contentCount: classes.datasetContentCount,
+                  contentText: classes.datasetContentText,
+                  link: classes.datasetLink,
+                  linkText: classes.datasetLinkText
+                }}
             />
         </Grid>
       </Grid>
