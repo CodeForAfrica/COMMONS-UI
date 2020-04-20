@@ -120,7 +120,7 @@ Content.defaultProps = {
   title: undefined,
   contentCount: undefined,
   description: undefined,
-  link: undefined,
+  link: "#",
   linkTitle: "View More"
 
 };
