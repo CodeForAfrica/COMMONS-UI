@@ -1,56 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { makeStyles, Grid, Typography } from '@material-ui/core';
+import { makeStyles, Grid, Typography } from "@material-ui/core";
 
-import A from '../A';
+import A from "../A";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    textAlign: 'left',
-    marginTop: '1rem'
+    textAlign: "left",
+    marginTop: "1rem",
   },
   title: {
-    paddingTop: '1rem'
+    paddingTop: "1rem",
   },
   description: {
-    [theme.breakpoints.up('md')]: {
-      paddingTop: '1rem'
-    }
+    [theme.breakpoints.up("md")]: {
+      paddingTop: "1rem",
+    },
   },
   iconGrid: {
-    paddingTop: '1rem'
+    paddingTop: "1rem",
   },
   subtitleGrid: {
-    display: 'none'
+    display: "none",
   },
   countGrid: {
-    display: 'none'
+    display: "none",
   },
   contentCount: {
-    fontSize: '3.125rem',
-    [theme.breakpoints.up('md')]: {
-      fontSize: theme.typography.h1.fontSize
-    }
+    fontSize: "3.125rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: theme.typography.h1.fontSize,
+    },
   },
   contentText: {
-    paddingTop: '1rem',
-    paddingBottom: '3rem'
+    paddingTop: "1rem",
+    paddingBottom: "3rem",
   },
-  link: { textDecoration: 'underline', color: '#F9FF71' },
+  link: { textDecoration: "underline", color: "#F9FF71" },
   linkText: {
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    paddingTop: '1rem',
-    [theme.breakpoints.up('md')]: {
-      paddingTop: '2.7rem'
-    }
-  }
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    paddingTop: "1rem",
+    [theme.breakpoints.up("md")]: {
+      paddingTop: "2.7rem",
+    },
+  },
 }));
 
 function Content({
-  children,
+  imageChildren,
   title,
   contentCount,
   contentType,
@@ -64,28 +64,29 @@ function Content({
 
   return (
     <Grid container className={classes.root}>
-      { children && 
+      {imageChildren && (
         <Grid item xs={3} md={12} className={classes.iconGrid}>
-          {children}
+          {imageChildren}
         </Grid>
-      }
+      )}
       <>
-      { title && 
-        <Grid item md={12} className={classes.subtitleGrid}>
-            <Typography variant="body2" className={classes.title}>
+        { title && 
+          <Grid item md={12} className={classes.subtitleGrid}>
+          <Typography variant="body2" className={classes.title}>
               {title}
             </Typography>
-        </Grid>
-      }
+          </Grid>
+        }
       </>
       <Grid item md={12} className={classes.countGrid}>
-        { contentCount && <Typography variant="h1" className={classes.contentCount}>
-          {contentCount}
-          </Typography> 
-        }
+        {contentCount && (
+          <Typography variant="h1" className={classes.contentCount}>
+            {contentCount}
+                          </Typography>
+        )}
       </Grid>
 
-      <Grid item xs={9} md={12} className={classes.contentText} >
+      <Grid item xs={9} md={12} className={classes.contentText}>
         <Typography variant="h5">{contentType}</Typography>
 
         <Typography variant="body2" className={classes.description}>
@@ -103,9 +104,9 @@ function Content({
 }
 
 Content.propTypes = {
-  children: PropTypes.oneOfType([
+  imageChildren: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
+    PropTypes.node,
   ]),
   title: PropTypes.string,
   contentCount: PropTypes.string,
@@ -116,14 +117,12 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
-  children: undefined,
+  imageChildren: undefined,
   title: undefined,
   contentCount: undefined,
   description: undefined,
   link: "#",
-  linkTitle: "View More"
-
+  linkTitle: "View More",
 };
-
 
 export default Content;

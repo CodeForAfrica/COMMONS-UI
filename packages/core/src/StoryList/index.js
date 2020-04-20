@@ -40,7 +40,7 @@ function StoryList({
     return null;
   }
   return (
-    <Grid container className={classes.root} {...props}>
+    <Grid container className={classes.root}>
       <Grid
         item
         xs={12}
@@ -57,7 +57,7 @@ function StoryList({
         </Grid>
 
         <Grid item>
-          <Typography variant="body2" className={classes.description}>
+          <Typography variant="body1" className={classes.description}>
             {description}
           </Typography>
         </Grid>

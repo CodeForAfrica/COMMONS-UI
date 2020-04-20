@@ -13,7 +13,9 @@ const useStyles = makeStyles(() => ({
   profilePicture: {},
   profilePictureSelected: {},
   profileTitle: {},
-  profiles: {},
+  profiles: {
+    width: "calc(((100vw - 100%) / 2) + 100%)",
+  },
   profilesGridList: {},
   profilesScrollBar: {},
 }));

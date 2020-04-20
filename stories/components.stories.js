@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text } from "@storybook/addon-knobs";
 
 import { Grid } from "@material-ui/core";
 import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import { DocumentsAndDatasets, ProfileList, StoryList } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
 import NavigationButton from "./NavigationButton";
 import { getProfiles, fromTimestamp, useStories } from "./utils";
 
-import imgHighlight from './assets/images/illo-02.png';
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import imgHighlight from "./assets/images/illo-02.png";
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -121,56 +121,57 @@ storiesOf("Components|Story List", module).add("Default", () => {
   );
 });
 
-storiesOf('Components|DocumentsAndDatasets', module)
+storiesOf("Components|DocumentsAndDatasets", module)
   .addDecorator(withKnobs)
-  .add('Default', () => 
-  React.createElement(() => {
-    const classes = makeStyles(({breakpoints}) => ({
-      datasetData: {
-        backgroundColor: '#4933ff',
-      },
-      img: {
-        width: '100%',
-        background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
-        backgroundSize: 'cover',
-        height: '20rem',
-        [breakpoints.up('md')]: {
-          width: '27.7143rem',
-          height: '28rem'
+  .add("Default", () =>
+    React.createElement(() => {
+      const classes = makeStyles(({ breakpoints }) => ({
+        datasetData: {
+          backgroundColor: "#4933ff",
         },
-        [breakpoints.up('lg')]: {
-          width: '37.7143rem',
-          height: '38rem'
-        }
-      }
-    }))();
-    return (
-      <div>
-        <DocumentsAndDatasets
-          title={text('title', 'Featured Research')}
-          highlightChildren={<div className={classes.img} />}
-          description={text(
-            'description', 
-            'Get access to the best original scientific and medical research by African experts who understand local context.')}
-          documentContent={
-            { 
-              contentType: 'Document',
-              description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-              linkTitle: 'LEARN MORE',
-              children: <DescriptionOutlinedIcon fontSize="large" />
-            }
-          }
-          datasetContent={{
-              contentType: 'Dataset',
-              description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-              linkTitle: 'LEARN MORE',
-              children: <DescriptionOutlinedIcon fontSize="large" />
-          }}
-          classes={{
-            datasetData: classes.datasetData
-          }}
-        />
-      </div>
-    );
-  }
-  ))
+        img: {
+          width: "100%",
+          background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
+          backgroundSize: "cover",
+          height: "20rem",
+          [breakpoints.up("md")]: {
+            width: "27.7143rem",
+            height: "28rem",
+          },
+          [breakpoints.up("lg")]: {
+            width: "37.7143rem",
+            height: "38rem",
+          },
+        },
+      }))();
+      return (
+        <div>
+          <DocumentsAndDatasets
+            title={text("title", "Featured Research")}
+            highlightChildren={<div className={classes.img} />}
+            description={text(
+              "description",
+              "Get access to the best original scientific and medical research by African experts who understand local context."
+            )}
+            documentContent={{
+              contentType: "Document",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              linkTitle: "LEARN MORE",
+              imageChildren: <DescriptionOutlinedIcon fontSize="large" />,
+            }}
+            datasetContent={{
+              contentType: "Dataset",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              linkTitle: "LEARN MORE",
+              imageChildren: <DescriptionOutlinedIcon fontSize="large" />,
+            }}
+            classes={{
+              datasetData: classes.datasetData,
+            }}
+          />
+        </div>
+      );
+    })
+  );
