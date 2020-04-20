@@ -3,3 +3,4 @@ export { default as A } from "./A";
 export { default as ProfileList } from "./ProfileList";
 export { default as ScrollableGridList } from "./ScrollableGridList";
 export { default as StoryList } from "./StoryList";
+export { default as Footer } from "./Footer";
