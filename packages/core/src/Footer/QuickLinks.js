@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    color: '#000',
+    color: "#000",
   },
   list: {
     listStyle: "none",
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9375rem",
     textDecoration: "none",
   },
-  titleText: {}
+  titleText: {},
 }));
 
 function QuickLinks({ links, ...props }) {
@@ -38,8 +38,7 @@ function QuickLinks({ links, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Title 
-        classes={{ text: classes.titleText }}>{links.title}</Title>
+      <Title classes={{ text: classes.titleText }}>{links.title}</Title>
       <Typography
         variant="subtitle2"
         className={classNames([classes.text, classes.list])}
@@ -76,7 +75,7 @@ QuickLinks.propTypes = {
   links: PropTypes.shape({
     title: PropTypes.string.isRequired,
     links: PropTypes.object.isRequired,
-  }).isRequired
+  }).isRequired,
 };
 
 export default QuickLinks;

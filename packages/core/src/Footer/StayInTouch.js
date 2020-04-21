@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     marginRight: "0.9375rem",
   },
   iconContainer: {},
-  links: {}
+  links: {},
 });
 
 function StayInTouch({ settings: { support, socialMedia }, ...props }) {

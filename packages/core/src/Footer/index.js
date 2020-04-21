@@ -192,10 +192,10 @@ function Footer({
           <Grid container justify="flex-start" alignItems="flex-start">
             <div className={classes.about}>
               <About
-                classes={{ 
+                classes={{
                   root: classes.about,
                   text: classes.aboutText,
-                  subTitle: classes.aboutSubTitle
+                  subTitle: classes.aboutSubTitle,
                 }}
                 about={aboutSection}
               />
@@ -223,12 +223,12 @@ function Footer({
             <div className={classes.takwimu}>
               <StayInTouch
                 settings={settings}
-                classes={{ 
+                classes={{
                   root: classes.stayInTouch,
                   icon: classes.stayInTouchIcon,
                   iconContainer: classes.stayInTouchIconContainer,
-                  links: classes.stayInTouchLinks
-                 }}
+                  links: classes.stayInTouchLinks,
+                }}
               />
             </div>
             <div className={classes.copyright}>
@@ -256,7 +256,7 @@ Footer.propTypes = {
   CFA: PropTypes.shape({
     image: PropTypes.string,
     alt: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };
 
 export default Footer;

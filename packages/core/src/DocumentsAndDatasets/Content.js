@@ -50,39 +50,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Content({
-  imageChildren,
-  title,
+  children,
   contentCount,
   contentType,
   description,
   link,
   linkTitle,
-  target,
+  title,
   ...props
 }) {
   const classes = useStyles(props);
 
   return (
     <Grid container className={classes.root}>
-      {imageChildren && (
+      {children && (
         <Grid item xs={3} md={12} className={classes.iconGrid}>
-          {imageChildren}
+          {children}
         </Grid>
       )}
       <>
-        { title && 
+        {title && (
           <Grid item md={12} className={classes.subtitleGrid}>
-          <Typography variant="body2" className={classes.title}>
+            <Typography variant="body2" className={classes.title}>
               {title}
             </Typography>
           </Grid>
-        }
+        )}
       </>
       <Grid item md={12} className={classes.countGrid}>
         {contentCount && (
           <Typography variant="h1" className={classes.contentCount}>
             {contentCount}
-                          </Typography>
+          </Typography>
         )}
       </Grid>
 
@@ -104,10 +103,7 @@ function Content({
 }
 
 Content.propTypes = {
-  imageChildren: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
   title: PropTypes.string,
   contentCount: PropTypes.string,
   contentType: PropTypes.string.isRequired,
@@ -117,7 +113,7 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
-  imageChildren: undefined,
+  children: undefined,
   title: undefined,
   contentCount: undefined,
   description: undefined,

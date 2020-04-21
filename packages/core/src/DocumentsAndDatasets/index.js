@@ -38,7 +38,6 @@ function DocumentsAndDatasets({
           </div>
         )}
         <Content
-          imageChildren={documentContent.imageChildren}
           title={documentContent.title}
           contentCount={documentContent.contentCount}
           contentType={documentContent.contentType}
@@ -57,11 +56,12 @@ function DocumentsAndDatasets({
             link: classes.documentLink,
             linkText: classes.documentLinkText,
           }}
-        />
+        >
+          {documentContent.children}
+        </Content>
       </Grid>
       <Grid item sm={12} md={4} className={classes.datasetData}>
         <Content
-          imageChildren={datasetContent.imageChildren}
           title={datasetContent.title}
           contentCount={datasetContent.contentCount}
           contentType={datasetContent.contentType}
@@ -80,7 +80,9 @@ function DocumentsAndDatasets({
             link: classes.datasetLink,
             linkText: classes.datasetLinkText,
           }}
-        />
+        >
+          {datasetContent.children}
+        </Content>
       </Grid>
     </Grid>
   );

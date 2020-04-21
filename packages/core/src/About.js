@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   subTitle: {
     marginTop: "2.3125rem",
     fontSize: "0.9375rem",
-    color: "#000"
+    color: "#000",
   },
 });
 

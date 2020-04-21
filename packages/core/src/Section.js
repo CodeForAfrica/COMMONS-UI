@@ -35,7 +35,7 @@ function Section({ classes, children, title, variant, ...props }) {
 Section.propTypes = {
   classes: PropTypes.shape({
     root: PropTypes.shape({}),
-    title: PropTypes.shape({})
+    title: PropTypes.shape({}),
   }).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
