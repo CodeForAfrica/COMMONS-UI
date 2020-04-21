@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     flexGrow: 1,
-    color: (props) => props.topFooter.color,
-    backgroundColor: (props) => props.topFooter.backgroundColor,
+    color: "#000",
+    backgroundColor: "#fff",
     paddingTop: "4.5625rem",
     paddingBottom: "5.3125rem",
     marginTop: "1.875rem",
@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     flexGrow: 1,
-    color: (props) => props.topFooter.color,
-    backgroundColor: (props) => props.topFooter.backgroundColor,
+    color: "000",
+    backgroundColor: "#fff",
     paddingTop: "4.5625rem",
     marginTop: "1.875rem",
   },
@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     flexGrow: 1,
-    color: (props) => props.bottomFooter.color,
-    backgroundColor: (props) => props.bottomFooter.backgroundColor,
+    color: "#fff",
+    backgroundColor: "#170F49",
     paddingTop: "4.5625rem",
     paddingBottom: "5.3125rem",
     marginTop: "1.875rem",
@@ -57,6 +57,8 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "5.4375rem",
     },
   },
+  aboutSubTitle: {},
+  aboutText: {},
   stayInTouch: {
     marginTop: "3.125rem",
     color: "white",
@@ -137,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "25.5625rem",
   },
   hr: {
-    backgroundColor: (props) => props.bottomFooter.backgroundColor,
+    backgroundColor: "#170F49",
     height: ".09rem",
   },
 }));
@@ -147,7 +149,6 @@ function Footer({
   firstLinks,
   aboutSection,
   initiativeLogo,
-  topFooter,
   CFA,
   ...props
 }) {
@@ -191,16 +192,19 @@ function Footer({
           <Grid container justify="flex-start" alignItems="flex-start">
             <div className={classes.about}>
               <About
-                classes={{ root: classes.about }}
+                classes={{ 
+                  root: classes.about,
+                  text: classes.aboutText,
+                  subTitle: classes.aboutSubTitle
+                }}
                 about={aboutSection}
-                topFooter={...topFooter}
               />
             </div>
             <div className={classes.links}>
-              <QuickLinks links={firstLinks} topFooter={...topFooter} />
+              <QuickLinks links={firstLinks} />
             </div>
             <div className={classes.links}>
-              <QuickLinks links={firstLinks} topFooter={...topFooter} />
+              <QuickLinks links={firstLinks} />
             </div>
             <div className={classes.project}>
               <Initiative logo={initiativeLogo} />
@@ -219,8 +223,12 @@ function Footer({
             <div className={classes.takwimu}>
               <StayInTouch
                 settings={settings}
-                classes={{ root: classes.stayInTouch }}
-                bottomFooter={props.bottomFooter}
+                classes={{ 
+                  root: classes.stayInTouch,
+                  icon: classes.stayInTouchIcon,
+                  iconContainer: classes.stayInTouchIconContainer,
+                  links: classes.stayInTouchLinks
+                 }}
               />
             </div>
             <div className={classes.copyright}>
@@ -248,15 +256,7 @@ Footer.propTypes = {
   CFA: PropTypes.shape({
     image: PropTypes.string,
     alt: PropTypes.string,
-  }).isRequired,
-  bottomFooter: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-  }).isRequired,
-  topFooter: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-  }).isRequired,
+  }).isRequired
 };
 
 export default Footer;

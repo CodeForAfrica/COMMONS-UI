@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    color: (props) => props.topFooter.color,
+    color: '#000',
   },
   list: {
     listStyle: "none",
@@ -30,14 +30,16 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9375rem",
     textDecoration: "none",
   },
+  titleText: {}
 }));
 
-function QuickLinks({ links, topFooter, ...props }) {
+function QuickLinks({ links, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <Title topFooter={topFooter}>{links.title}</Title>
+      <Title 
+        classes={{ text: classes.titleText }}>{links.title}</Title>
       <Typography
         variant="subtitle2"
         className={classNames([classes.text, classes.list])}
@@ -74,8 +76,7 @@ QuickLinks.propTypes = {
   links: PropTypes.shape({
     title: PropTypes.string.isRequired,
     links: PropTypes.object.isRequired,
-  }).isRequired,
-  topFooter: PropTypes.shape({}).isRequired,
+  }).isRequired
 };
 
 export default QuickLinks;

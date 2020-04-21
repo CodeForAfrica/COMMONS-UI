@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   text: {
     fontSize: "1.125rem",
     lineHeight: "1.44",
-    color: (props) => props.topFooter.color,
+    color: "#000",
   },
 });
 

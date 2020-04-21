@@ -14,17 +14,12 @@ const useStyles = makeStyles({
     objectFit: "contain",
     marginRight: "0.9375rem",
   },
-  title: {
-    fontSize: "inherit",
-    fontWeight: "inherit",
-    lineHeight: "inherit",
-    color: (props) => props.bottomFooter.color,
-  },
+  iconContainer: {},
+  links: {}
 });
 
 function StayInTouch({ settings: { support, socialMedia }, ...props }) {
   const classes = useStyles(props);
-  // console.log(props);
   return (
     <div>
       <Grid container justify="flex-start" alignItems="center">

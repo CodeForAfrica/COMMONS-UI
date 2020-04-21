@@ -69,9 +69,6 @@ const SOCIAL_MEDIA = {
   },
 };
 
-const TOP_FOOTER = { color: "#000", backgroundColor: "#fff" };
-const BOTTOM_FOOTER = { color: "#fff", backgroundColor: "#170F49" };
-
 storiesOf("Components|Footer", module).add("Footer", () => (
   <Footer
     about={SOCIAL_MEDIA}
@@ -80,7 +77,5 @@ storiesOf("Components|Footer", module).add("Footer", () => (
     aboutSection={ABOUT}
     initiativeLogo={INITIATIVE_LOGO}
     CFA={CFA}
-    topFooter={TOP_FOOTER}
-    bottomFooter={BOTTOM_FOOTER}
   />
 ));
