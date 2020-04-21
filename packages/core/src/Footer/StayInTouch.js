@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import A from "../A";
 
 const useStyles = makeStyles({
+  root: {},
   icon: {
     width: "1.5625rem",
     height: "1.5625rem",
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 function StayInTouch({ settings: { support, socialMedia }, ...props }) {
   const classes = useStyles(props);
   return (
-    <div>
+    <div className={classes.root}>
       <Grid container justify="flex-start" alignItems="center">
         <Typography>Stay in touch with us @&nbsp;</Typography>
         <div className={classes.iconContainer}>

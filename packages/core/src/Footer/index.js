@@ -59,10 +59,10 @@ const useStyles = makeStyles((theme) => ({
   },
   aboutSubTitle: {},
   aboutText: {},
-  stayInTouch: {
-    marginTop: "3.125rem",
-    color: "white",
-  },
+  stayInTouch: {},
+  stayInTouchIcon: {},
+  stayInTouchIconContainer: {},
+  stayInTouchLinks: {},
   links: {
     paddingTop: "2.25rem",
     [theme.breakpoints.up("md")]: {
