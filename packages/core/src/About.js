@@ -10,12 +10,12 @@ const useStyles = makeStyles({
   },
   text: {
     fontSize: "0.9375rem",
-    color: (props) => props.topFooter.color,
+    color: "#000",
   },
   subTitle: {
     marginTop: "2.3125rem",
     fontSize: "0.9375rem",
-    color: (props) => props.topFooter.color,
+    color: "#000"
   },
 });
 
