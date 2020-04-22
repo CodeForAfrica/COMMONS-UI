@@ -2,12 +2,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 import Layout from "./Layout";
 import RichTypography from "./RichTypography";
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0 auto",
   },
@@ -17,37 +17,36 @@ const styles = (theme) => ({
       width: "51.125rem",
     },
   },
-});
+}));
 
-function Section({ classes, children, title, variant, ...props }) {
+const Section = React.forwardRef(function Section(
+  { children, title, titleProps, ...props },
+  ref
+) {
+  const classes = useStyles(props);
+
   return (
-    <Layout classes={{ root: classes.root }} {...props}>
-      {title && (
-        <RichTypography variant={variant} className={classes.title}>
-          {title}
-        </RichTypography>
-      )}
+    <Layout classes={{ root: classes.root }} {...props} ref={ref}>
+      <RichTypography variant="h2" {...titleProps} className={classes.title}>
+        {title}
+      </RichTypography>
       {children}
     </Layout>
   );
-}
+});
 
 Section.propTypes = {
-  classes: PropTypes.shape({
-    root: PropTypes.shape({}),
-    title: PropTypes.shape({}),
-  }).isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
   title: PropTypes.string,
-  variant: PropTypes.string,
+  titleProps: PropTypes.shape({}),
 };
 
 Section.defaultProps = {
-  title: null,
-  variant: "h2",
+  title: undefined,
+  titleProps: undefined,
 };
 
-export default withStyles(styles)(Section);
+export default Section;
