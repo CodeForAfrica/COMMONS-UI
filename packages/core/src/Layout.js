@@ -2,41 +2,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
-const styles = (theme) => ({
+const useStyles = makeStyles({
   root: {
     width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "58.265625rem", // .75 of lg
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "77.6875rem",
-    },
-  },
-  title: {
-    [theme.breakpoints.up("md")]: {
-      width: "51.125rem",
-    },
   },
 });
 
-function Layout({ classes, children, ...props }) {
+const Layout = React.forwardRef(function Layout({ children, ...props }, ref) {
+  const classes = useStyles(props);
   return (
-    <div className={classes.root} {...props}>
+    <div className={classes.root} {...props} ref={ref}>
       {children}
     </div>
   );
-}
+});
 
 Layout.propTypes = {
   classes: PropTypes.shape({
     root: PropTypes.shape({}),
   }).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-export default withStyles(styles)(Layout);
+export default Layout;
