@@ -145,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Footer({
-  about: { settings },
+  about: { support, socialMedia },
   firstLinks,
   aboutSection,
   initiativeLogo,
@@ -222,7 +222,8 @@ function Footer({
           <Grid container justify="flex-start" alignItems="flex-start">
             <div className={classes.takwimu}>
               <StayInTouch
-                settings={settings}
+                support={support}
+                socialMedia={socialMedia}
                 classes={{
                   root: classes.stayInTouch,
                   icon: classes.stayInTouchIcon,
@@ -248,7 +249,8 @@ function Footer({
 
 Footer.propTypes = {
   about: PropTypes.shape({
-    settings: PropTypes.shape({}).isRequired,
+    support: PropTypes.shape({}).isRequired,
+    socialMedia: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   }).isRequired,
   firstLinks: PropTypes.shape({}).isRequired,
   aboutSection: PropTypes.shape({}).isRequired,
