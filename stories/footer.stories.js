@@ -5,11 +5,11 @@ import { Footer } from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
-import { ReactComponent as Email } from "./assets/email.svg";
-import { ReactComponent as Facebook } from "./assets/facebook.svg";
-import { ReactComponent as Medium } from "./assets/group-3.svg";
-import { ReactComponent as LinkedIn } from "./assets/group-3-copy.svg";
-import { ReactComponent as Twitter } from "./assets/twitter.svg";
+import Email from "./assets/email.svg";
+import Facebook from "./assets/facebook.svg";
+import Medium from "./assets/group-3.svg";
+import LinkedIn from "./assets/group-3-copy.svg";
+import Twitter from "./assets/twitter.svg";
 
 const FIRST_LINKS = {
   title: "MORE",
@@ -43,39 +43,56 @@ const CFA = {
 };
 
 const SOCIAL_MEDIA = {
-  settings: {
-    support: {
-      hello: "hello@contact.com",
-      component: Email,
-    },
-    socialMedia: {
-      facebook: {
-        link: "https://facebook.com",
-        component: Facebook,
-      },
-      linkedin: {
-        link: "https://linkedin.com",
-        component: LinkedIn,
-      },
-      medium: {
-        link: "https://medium.com",
-        component: Medium,
-      },
-      twitter: {
-        link: "https://twitter.com",
-        component: Twitter,
-      },
+  support: {
+    email: "hello@contact.com",
+    image: {
+      url: Email,
+      alt: "Email",
     },
   },
+  socialMedia: [
+    {
+      url: "https://twitter.com",
+      image: {
+        url: Twitter,
+        alt: "Twitter",
+      },
+    },
+    {
+      url: "https://facebook.com",
+      image: {
+        url: Facebook,
+        alt: "Facebook",
+      },
+    },
+    {
+      url: "https://medium.com",
+      image: {
+        url: Medium,
+        alt: "Medium",
+      },
+    },
+    {
+      url: "https://linkedin.com",
+      image: {
+        url: LinkedIn,
+        alt: "LinkedIn",
+      },
+    },
+  ],
 };
 
-storiesOf("Components|Footer", module).add("Footer", () => (
-  <Footer
-    about={SOCIAL_MEDIA}
-    firstLinks={FIRST_LINKS}
-    secondLinks={FIRST_LINKS}
-    aboutSection={ABOUT}
-    initiativeLogo={INITIATIVE_LOGO}
-    CFA={CFA}
-  />
-));
+storiesOf("Components|Footer", module).add(
+  "Footer",
+  () =>
+    console.log("BOOM", { SOCIAL_MEDIA }) || (
+      <Footer
+        about={SOCIAL_MEDIA}
+        firstLinks={FIRST_LINKS}
+        secondLinks={FIRST_LINKS}
+        aboutSection={ABOUT}
+        initiativeLogo={INITIATIVE_LOGO}
+        CFA={CFA}
+      />
+    )
+);
