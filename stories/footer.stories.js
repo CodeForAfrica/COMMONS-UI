@@ -82,17 +82,13 @@ const SOCIAL_MEDIA = {
   ],
 };
 
-storiesOf("Components|Footer", module).add(
-  "Footer",
-  () =>
-    console.log("BOOM", { SOCIAL_MEDIA }) || (
-      <Footer
-        about={SOCIAL_MEDIA}
-        firstLinks={FIRST_LINKS}
-        secondLinks={FIRST_LINKS}
-        aboutSection={ABOUT}
-        initiativeLogo={INITIATIVE_LOGO}
-        CFA={CFA}
-      />
-    )
-);
+storiesOf("Components|Footer", module).add("Footer", () => (
+  <Footer
+    about={SOCIAL_MEDIA}
+    firstLinks={FIRST_LINKS}
+    secondLinks={FIRST_LINKS}
+    aboutSection={ABOUT}
+    initiativeLogo={INITIATIVE_LOGO}
+    CFA={CFA}
+  />
+));

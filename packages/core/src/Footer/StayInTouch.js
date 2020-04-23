@@ -41,35 +41,17 @@ function StayInTouch({ support, socialMedia, ...props }) {
             />
           </A>
         </div>
-        {socialMedia.map(
-          (media) =>
-            console.log("BOOMM", { media }) || (
-              <div className={classes.iconContainer}>
-                <A href={media.url} className={classes.links}>
-                  <img
-                    src={media.image.url}
-                    alt={media.image.alt}
-                    className={classes.icon}
-                  />
-                </A>
-              </div>
-            )
-        )}
-        {/* <div className={classes.iconContainer}>
-          <A href={socialMedia.facebook.link} className={classes.links}>
-            <socialMedia.facebook.component alt="" className={classes.icon} />
-          </A>
-        </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.medium.link} className={classes.links}>
-            <socialMedia.medium.component alt="" className={classes.icon} />
-          </A>
-        </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.linkedin.link} className={classes.links}>
-            <socialMedia.linkedin.component alt="" className={classes.icon} />
-          </A>
-        </div> */}
+        {socialMedia.map((media) => (
+          <div className={classes.iconContainer}>
+            <A href={media.url} className={classes.links}>
+              <img
+                src={media.image.url}
+                alt={media.image.alt}
+                className={classes.icon}
+              />
+            </A>
+          </div>
+        ))}
       </Grid>
     </div>
   );
