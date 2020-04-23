@@ -19,73 +19,61 @@ const useStyles = makeStyles({
   links: {},
 });
 
-function StayInTouch({ settings: { support, socialMedia }, ...props }) {
+function StayInTouch({ support, socialMedia, ...props }) {
   const classes = useStyles(props);
+
   return (
     <div className={classes.root}>
       <Grid container justify="flex-start" alignItems="center">
         <Typography>Stay in touch with us @&nbsp;</Typography>
         <div className={classes.iconContainer}>
           <A
-            href={`mailto:${support.hello}`}
+            href={`mailto:${support.email}`}
             className={classes.links}
             target="_blank"
             rel="noopener noreferrer"
           >
             {" "}
-            <support.component alt="" className={classes.icon} />
+            <img
+              src={support.image.url}
+              alt={support.image.alt}
+              className={classes.icon}
+            />
           </A>
         </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.twitter.link} className={classes.links}>
-            <socialMedia.twitter.component alt="" className={classes.icon} />
-          </A>
-        </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.facebook.link} className={classes.links}>
-            <socialMedia.facebook.component alt="" className={classes.icon} />
-          </A>
-        </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.medium.link} className={classes.links}>
-            <socialMedia.medium.component alt="" className={classes.icon} />
-          </A>
-        </div>
-        <div className={classes.iconContainer}>
-          <A href={socialMedia.linkedin.link} className={classes.links}>
-            <socialMedia.linkedin.component alt="" className={classes.icon} />
-          </A>
-        </div>
+        {socialMedia.map((media) => (
+          <div className={classes.iconContainer}>
+            <A href={media.url} className={classes.links}>
+              <img
+                src={media.image.url}
+                alt={media.image.alt}
+                className={classes.icon}
+              />
+            </A>
+          </div>
+        ))}
       </Grid>
     </div>
   );
 }
 
 StayInTouch.propTypes = {
-  settings: PropTypes.shape({
-    support: PropTypes.shape({
-      hello: PropTypes.string.isRequired,
-      component: PropTypes.func.isRequired,
-    }).isRequired,
-    socialMedia: PropTypes.shape({
-      facebook: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-        component: PropTypes.func.isRequired,
-      }).isRequired,
-      linkedin: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-        component: PropTypes.func.isRequired,
-      }).isRequired,
-      medium: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-        component: PropTypes.func.isRequired,
-      }).isRequired,
-      twitter: PropTypes.shape({
-        link: PropTypes.string.isRequired,
-        component: PropTypes.func.isRequired,
-      }).isRequired,
+  support: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  socialMedia: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      image: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired
+  ).isRequired,
 };
 
 export default StayInTouch;
