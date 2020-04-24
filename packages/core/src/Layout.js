@@ -2,6 +2,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import clsx from "clsx";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -10,10 +12,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Layout = React.forwardRef(function Layout({ children, ...props }, ref) {
-  const classes = useStyles(props);
+const Layout = React.forwardRef(function Layout(
+  { children, classes: classesProp, className, ...props },
+  ref
+) {
+  const classes = useStyles({ classes: classesProp });
   return (
-    <div className={classes.root} {...props} ref={ref}>
+    <div className={clsx(classes.root, className)} {...props} ref={ref}>
       {children}
     </div>
   );
@@ -23,7 +28,12 @@ Layout.propTypes = {
   classes: PropTypes.shape({
     root: PropTypes.shape({}),
   }).isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired,
+};
+
+Layout.defaultProps = {
+  className: undefined,
 };
 
 export default Layout;
