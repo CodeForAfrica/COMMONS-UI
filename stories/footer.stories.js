@@ -11,14 +11,29 @@ import Medium from "./assets/group-3.svg";
 import LinkedIn from "./assets/group-3-copy.svg";
 import Twitter from "./assets/twitter.svg";
 
-const FIRST_LINKS = {
-  title: "MORE",
-  links: [
-    { href: "/about", label: "About About" },
-    { href: "/faqs", label: "FAQs" },
-    { href: "/contact", label: "Contact Us" },
-  ],
-};
+const QUICK_LINKS = [
+  {
+    title: "MORE",
+    links: [
+      { href: "/about", label: "About About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+  {
+    title: "CONTACTS",
+    links: [
+      { href: "/about", label: "About About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
+
+const LEGAL_LINKS = [
+  { href: "/privacy", label: "PRIVACY POLICY" },
+  { href: "/terms", label: "TERMS OF SERVICES" },
+];
 
 const ABOUT = {
   about:
@@ -85,10 +100,10 @@ const SOCIAL_MEDIA = {
 storiesOf("Components|Footer", module).add("Footer", () => (
   <Footer
     about={SOCIAL_MEDIA}
-    firstLinks={FIRST_LINKS}
-    secondLinks={FIRST_LINKS}
     aboutSection={ABOUT}
     initiativeLogo={INITIATIVE_LOGO}
-    CFA={CFA}
+    legalLinks={LEGAL_LINKS}
+    quickLinks={QUICK_LINKS}
+    organizationLogo={CFA}
   />
 ));
