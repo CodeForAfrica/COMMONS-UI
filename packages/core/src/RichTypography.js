@@ -22,29 +22,36 @@ const RichTypography = React.forwardRef(function RichTypography(
   if (!children) {
     return null;
   }
+  if (typeof children === "string") {
+    return (
+      <Typography
+        // We default to `div` to allow other block elements like <p> to be used inside
+        // `children`
+        component={component || "div"}
+        dangerouslySetInnerHTML={{
+          __html: children,
+        }}
+        {...props}
+        ref={ref}
+        classes={classes}
+      />
+    );
+  }
   return (
-    <Typography
-      component={component}
-      dangerouslySetInnerHTML={{
-        __html: children,
-      }}
-      {...props}
-      ref={ref}
-      className={classes.root}
-    />
+    <Typography component={component} {...props} ref={ref}>
+      {children}
+    </Typography>
   );
 });
 
 RichTypography.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   component: PropTypes.elementType,
 };
 
 RichTypography.defaultProps = {
   children: null,
-  // We default to `div` to allow other block elements like <p> to be used inside
-  // `children`
-  component: "div",
+  component: undefined,
 };
 
 export default RichTypography;
