@@ -1,226 +1,187 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid, Typography } from "@material-ui/core";
+import clsx from "clsx";
+
+import { Grid, Hidden, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Section from "../Section";
-
-import About from "../About";
-import QuickLinks from "./QuickLinks";
-import StayInTouch from "./StayInTouch";
-import Initiative from "./Initiative";
 import A from "../A";
+import About from "./About";
+import Initiative from "./Initiative";
+import LegalLinks from "./LegalLinks";
+import QuickLinks from "./QuickLinks";
+import Section from "../Section";
+import StayInTouch from "./StayInTouch";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "relative",
-    zIndex: 1,
-    flexGrow: 1,
-    color: "#000",
-    backgroundColor: "#fff",
-    paddingTop: "4.5625rem",
-    paddingBottom: "5.3125rem",
-    marginTop: "1.875rem",
+  root: {},
+  divider: {
+    backgroundColor: theme.palette.secondary.main,
+    height: 2,
   },
-  footer1: {
-    position: "relative",
-    zIndex: 1,
-    flexGrow: 1,
-    color: "000",
-    backgroundColor: "#fff",
-    paddingTop: "4.5625rem",
-    marginTop: "1.875rem",
-  },
-  footer2: {
-    position: "relative",
-    zIndex: 1,
-    flexGrow: 1,
-    color: "#fff",
-    backgroundColor: "#170F49",
-    paddingTop: "4.5625rem",
-    paddingBottom: "5.3125rem",
-    marginTop: "1.875rem",
-  },
-  license: {
-    marginTop: "2.3125rem",
-  },
-  about: {
-    width: "100%",
+  dividerDesktop: {
+    display: "none",
     [theme.breakpoints.up("md")]: {
-      width: "16.375rem", // match thinnest component
-      // Should be marginRight: '2.578125rem' but won't fit
-      marginRight: "2rem",
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "25.5625rem",
-      marginRight: "5.4375rem",
+      display: "flex",
+      marginLeft: theme.spacing(2),
     },
   },
-  aboutSubTitle: {},
-  aboutText: {},
-  stayInTouch: {},
-  stayInTouchIcon: {},
-  stayInTouchIconContainer: {},
-  stayInTouchLinks: {},
-  links: {
-    paddingTop: "2.25rem",
+  dividerMobile: {
+    order: 3,
+  },
+  section: {
+    paddingBottom: "2.381875rem",
+    paddingTop: "4.194375rem",
     [theme.breakpoints.up("md")]: {
-      paddingTop: 0,
-      paddingLeft: "2.6875rem",
-      paddingRight: "2.9375rem",
+      paddingBottom: "4.194375rem",
+      paddingTop: "5.375rem",
     },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: "1.25rem",
-      paddingRight: "1.25rem",
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  organization: {
+    marginBottom: "2.243125rem",
+    [theme.breakpoints.up("md")]: {
+      marginBottom: "4.305625rem",
     },
+  },
+  organizationLogo: {
+    width: "13.875rem",
+    height: "auto",
+    [theme.breakpoints.up("md")]: {
+      width: "18.3175rem",
+    },
+  },
+  supporterLogo: {
+    width: "9.6275rem",
+    height: "auto",
+    [theme.breakpoints.up("md")]: {
+      width: "13.7375rem",
+    },
+  },
+  quickLinksMore: {
+    marginTop: "2.881875rem",
+    order: 4,
+    [theme.breakpoints.up("md")]: {
+      marginTop: 0,
+      order: 3,
+    },
+  },
+  quickLinksContact: {
+    marginTop: "2.881875rem",
+    order: 5,
+    [theme.breakpoints.up("md")]: {
+      marginTop: 0,
+      order: 4,
+    },
+  },
+  initiative: {
+    order: 2,
+    [theme.breakpoints.up("md")]: {
+      order: 5,
+    },
+  },
+  secondary: {
+    backgroundColor: theme.palette.secondary.main,
+    border: "1px solid #707070",
+    color: theme.palette.text.secondary.main,
   },
   copyright: {
-    paddingTop: "2.25rem",
+    marginTop: "1.618125rem",
+    order: 3,
+    textAlign: "center",
     [theme.breakpoints.up("md")]: {
-      paddingTop: 0,
-      paddingLeft: "2.6875rem",
-      paddingRight: "2.9375rem",
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: "3.25rem",
-      paddingRight: "5.25rem",
+      marginTop: 0,
+      order: 2,
     },
   },
-  project: {
-    width: "100%",
-    paddingTop: "2.25rem",
-    [theme.breakpoints.up("md")]: {
-      width: "1.53125rem", // .75 of lg
-      // Should be marginLeft: '5.109375rem' but won't fit
-      marginLeft: "2rem",
-      padding: 0,
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "1.375rem",
-      marginLeft: ".8125rem",
-    },
+  copyrightLogo: {
+    marginLeft: "0.80375rem",
+    verticalAlign: "middle",
   },
-  terms: {
-    width: "100%",
-    paddingTop: "2.25rem",
+  legal: {
+    order: 2,
     [theme.breakpoints.up("md")]: {
-      width: "15.53125rem", // .75 of lg
-      // Should be marginLeft: '5.109375rem' but won't fit
-      marginLeft: "2rem",
-      padding: 0,
+      order: 3,
     },
-    [theme.breakpoints.up("lg")]: {
-      width: "19.375rem",
-      marginLeft: "6.8125rem",
-    },
-  },
-  support: {
-    marginTop: "4.0625rem",
   },
   text: {
-    fontSize: "0.9375rem",
-    color: "white",
-  },
-  cfaLogo: {
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "16.375rem", // match thinnest component
-      // Should be marginRight: '2.578125rem' but won't fit
-      marginRight: "2rem",
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "25.5625rem",
-      marginRight: "5.4375rem",
-    },
-  },
-  underline: {
-    width: "80%",
-    marginLeft: "25.5625rem",
-  },
-  hr: {
-    backgroundColor: "#170F49",
-    height: ".09rem",
+    fontWeight: "bold",
   },
 }));
 
 function Footer({
   about: { support, socialMedia },
-  firstLinks,
   aboutSection,
+  copyrightLogo,
   initiativeLogo,
-  CFA,
+  legalLinks,
+  quickLinks,
+  organizationLogo,
   ...props
 }) {
   const classes = useStyles(props);
   return (
-    <div>
-      <Grid
-        id="footer"
-        container
-        justify="center"
-        alignItems="flex-start"
-        className={classes.footer1}
-      >
-        <Section>
-          <Grid container justify="flex-start" alignItems="flex-start">
-            <div className={classes.cfaLogo}>
-              <div className={classes.img}>
-                <A href="#">
-                  <img
-                    src={CFA.image}
-                    alt={CFA.alt}
-                    className={classes.imgCfa}
-                  />
-                </A>
-              </div>
-            </div>
-            <div className={classes.underline}>
-              <hr className={classes.hr} />
+    <div className={classes.root}>
+      <Section classes={{ root: classes.section }}>
+        <Grid container alignItems="baseline" className={classes.organization}>
+          <Grid item>
+            <Typography variant="h1">
+              <A href="#">
+                <img
+                  src={organizationLogo.image}
+                  alt={organizationLogo.alt}
+                  className={classes.organizationLogo}
+                />
+              </A>
+            </Typography>
+          </Grid>
+          <div
+            className={clsx(
+              classes.grow,
+              classes.divider,
+              classes.dividerDesktop
+            )}
+          />
+        </Grid>
+        <Grid container>
+          <Grid item xs={12} md={4}>
+            <About about={aboutSection} />
+          </Grid>
+          <Grid item md={2} implementation="css" smDown component={Hidden} />
+          <Grid item xs={6} md={2} className={classes.quickLinksMore}>
+            <div className={classes.links}>
+              <QuickLinks {...quickLinks[0]} />
             </div>
           </Grid>
-        </Section>
-      </Grid>
-      <Grid
-        id="footer"
-        container
-        justify="center"
-        alignItems="flex-start"
-        className={classes.root}
-      >
-        <Section>
-          <Grid container justify="flex-start" alignItems="flex-start">
-            <div className={classes.about}>
-              <About
-                classes={{
-                  root: classes.about,
-                  text: classes.aboutText,
-                  subTitle: classes.aboutSubTitle,
-                }}
-                about={aboutSection}
-              />
-            </div>
+          <Grid item xs={6} md={2} className={classes.quickLinksContact}>
             <div className={classes.links}>
-              <QuickLinks links={firstLinks} />
+              <QuickLinks {...quickLinks[1]} />
             </div>
-            <div className={classes.links}>
-              <QuickLinks links={firstLinks} />
-            </div>
+          </Grid>
+          <Grid item xs={12} md={2} className={classes.initiative}>
             <div className={classes.project}>
-              <Initiative logo={initiativeLogo} />
+              <Initiative logo={initiativeLogo} about={aboutSection} />
             </div>
           </Grid>
-        </Section>
-      </Grid>
-      <Grid
-        container
-        justify="center"
-        alignItems="flex-start"
-        className={classes.footer2}
-      >
-        <Section>
-          <Grid container justify="flex-start" alignItems="flex-start">
-            <div className={classes.takwimu}>
+          <Grid
+            item
+            xs={12}
+            implementation="css"
+            mdUp
+            component={Hidden}
+            className={classes.dividerMobile}
+          >
+            <div className={clsx(classes.grow, classes.divider)} />
+          </Grid>
+        </Grid>
+      </Section>
+      <div className={classes.secondary}>
+        <Section classes={{ root: classes.section }}>
+          <Grid container justify="space-between" alignItems="center">
+            <Grid item xs={12} md={5}>
               <StayInTouch
                 support={support}
                 socialMedia={socialMedia}
@@ -231,18 +192,41 @@ function Footer({
                   links: classes.stayInTouchLinks,
                 }}
               />
-            </div>
-            <div className={classes.copyright}>
-              <Typography>2020 Outbreak Africa</Typography>
-            </div>
-            <div className={classes.terms}>
-              <Typography variant="subtitle2" className={classes.text}>
-                PRIVACY POLICY&nbsp; {" | "} &nbsp;TERMS OF SERVICE
-              </Typography>
-            </div>
+            </Grid>
+            <Grid item xs={12} md={2} className={classes.copyright}>
+              <div className={classes.copyright}>
+                <Typography
+                  variant="caption"
+                  color="textSecondary"
+                  className={classes.text}
+                >
+                  Outbreak.Africa
+                  {copyrightLogo && (
+                    <A href={copyrightLogo.link}>
+                      <img
+                        src={copyrightLogo.image}
+                        alt={copyrightLogo.alt}
+                        className={classes.copyrightLogo}
+                      />
+                    </A>
+                  )}
+                </Typography>
+              </div>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={5}
+              container
+              justify="flex-end"
+              alignItems="center"
+              className={classes.legal}
+            >
+              <LegalLinks links={legalLinks} />
+            </Grid>
           </Grid>
         </Section>
-      </Grid>
+      </div>
     </div>
   );
 }
@@ -252,12 +236,19 @@ Footer.propTypes = {
     support: PropTypes.shape({}).isRequired,
     socialMedia: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   }).isRequired,
-  firstLinks: PropTypes.shape({}).isRequired,
   aboutSection: PropTypes.shape({}).isRequired,
-  initiativeLogo: PropTypes.shape({}).isRequired,
-  CFA: PropTypes.shape({
-    image: PropTypes.string,
+  copyrightLogo: PropTypes.shape({
     alt: PropTypes.string,
+    image: PropTypes.string,
+    link: PropTypes.string,
+  }).isRequired,
+  initiativeLogo: PropTypes.shape({}).isRequired,
+  legalLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  quickLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  organizationLogo: PropTypes.shape({
+    alt: PropTypes.string,
+    image: PropTypes.string,
+    link: PropTypes.string,
   }).isRequired,
 };
 

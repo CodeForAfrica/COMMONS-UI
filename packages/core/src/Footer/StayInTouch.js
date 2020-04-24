@@ -1,59 +1,92 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 
 import A from "../A";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {},
+  content: {
+    textAlign: "center",
+    [theme.breakpoints.up("md")]: {
+      textAlign: "left",
+    },
+  },
+  text: {
+    fontWeight: "bold",
+    lineHeight: 4.3125,
+    "& > a": {
+      display: "inline-block",
+      padding: "0 1rem",
+      borderRight: "1px solid white",
+    },
+    "& > a:last-of-type": {
+      border: "none",
+    },
+  },
   icon: {
-    width: "1.5625rem",
-    height: "1.5625rem",
+    width: "2rem",
+    height: "2rem",
     objectFit: "contain",
-    marginRight: "0.9375rem",
+    verticalAlign: "middle",
   },
   iconContainer: {},
   links: {},
-});
+}));
 
 function StayInTouch({ support, socialMedia, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <div className={classes.root}>
-      <Grid container justify="flex-start" alignItems="center">
-        <Typography>Stay in touch with us @&nbsp;</Typography>
-        <div className={classes.iconContainer}>
-          <A
-            href={`mailto:${support.email}`}
-            className={classes.links}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {" "}
-            <img
-              src={support.image.url}
-              alt={support.image.alt}
-              className={classes.icon}
-            />
-          </A>
-        </div>
-        {socialMedia.map((media) => (
-          <div className={classes.iconContainer}>
-            <A href={media.url} className={classes.links}>
+    <Grid
+      container
+      justify="flex-start"
+      alignItems="center"
+      className={classes.root}
+    >
+      <Grid item xs={12} md="auto" className={classes.content}>
+        <Typography
+          variant="caption"
+          color="textSecondary"
+          className={classes.text}
+        >
+          Stay in touch with us &nbsp;
+        </Typography>
+      </Grid>
+      <Grid item xs={12} md="auto" className={classes.content}>
+        <Typography variant="caption" className={classes.text}>
+          {support && (
+            <A
+              href={`mailto:${support.email}`}
+              color="textSecondary"
+              className={classes.links}
+            >
+              <img
+                src={support.image.url}
+                alt={support.image.alt}
+                className={classes.icon}
+              />
+            </A>
+          )}
+          {socialMedia.map((media) => (
+            <A
+              key={media.url}
+              href={media.url}
+              textColor="textSecondary"
+              className={classes.links}
+            >
               <img
                 src={media.image.url}
                 alt={media.image.alt}
                 className={classes.icon}
               />
             </A>
-          </div>
-        ))}
+          ))}
+        </Typography>
       </Grid>
-    </div>
+    </Grid>
   );
 }
 

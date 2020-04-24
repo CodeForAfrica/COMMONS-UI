@@ -8,44 +8,43 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: "3.666666667rem",
+    textAlign: "center",
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      paddingBottom: "0.5rem",
+      marginTop: 0,
+      width: "auto",
+      textAlign: "right",
     },
   },
   list: {
     listStyle: "none",
     padding: 0,
-    paddingTop: "1rem",
     "& > li": {
-      marginTop: "2.3125rem",
+      borderRight: `1px solid ${theme.palette.text.secondary}`,
+      display: "inline",
+      padding: "0 2rem",
     },
-    [theme.breakpoints.up("md")]: {
-      "& > li": {
-        marginTop: "1.5rem",
-      },
+    "& > li:last-of-type": {
+      border: "none",
+      paddingRight: 0,
     },
   },
   link: {
-    ...theme.typography.caption,
+    fontWeight: "bold",
     textDecoration: "none",
-  },
-  title: {
-    lineHeight: "inherit",
   },
 }));
 
-function QuickLinks({ linkComponent, title, links, ...props }) {
+function LegalLinks({ linkComponent, links, ...props }) {
   const classes = useStyles(props);
   const LinkComponent = linkComponent || Link;
 
   return (
     <div className={classes.root}>
-      <Typography variant="button" className={classes.title}>
-        {title}
-      </Typography>
       <Typography
         variant="caption"
+        color="textSecondary"
         className={clsx([classes.text, classes.list])}
         component="ul"
       >
@@ -54,7 +53,7 @@ function QuickLinks({ linkComponent, title, links, ...props }) {
             {onClick ? (
               <Link
                 href={href}
-                color="secondary"
+                color="textSecondary"
                 variant="caption"
                 underline="none"
                 className={classes.link}
@@ -65,8 +64,8 @@ function QuickLinks({ linkComponent, title, links, ...props }) {
             ) : (
               <LinkComponent
                 {...others}
+                color="textSecondary"
                 href={href}
-                color="secondary"
                 variant="caption"
                 underline="none"
                 className={classes.link}
@@ -81,13 +80,12 @@ function QuickLinks({ linkComponent, title, links, ...props }) {
   );
 }
 
-QuickLinks.propTypes = {
+LegalLinks.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   linkComponent: PropTypes.elementType,
-  title: PropTypes.string.isRequired,
 };
-QuickLinks.defaultProps = {
+LegalLinks.defaultProps = {
   linkComponent: undefined,
 };
 
-export default QuickLinks;
+export default LegalLinks;

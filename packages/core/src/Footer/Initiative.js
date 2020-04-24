@@ -1,44 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import A from "../A";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "19.375rem",
+    width: "100%",
   },
-  imgCfa: {
-    maxWidth: "100%",
-    height: "250px",
-    marginLeft: "1rem",
-    marginRight: "1rem",
+  supporterLogo: {
+    width: "9.6275rem",
+    height: "auto",
     [theme.breakpoints.up("md")]: {
-      marginLeft: "2.15625rem",
-      marginRight: "2.25rem",
+      width: "13.7375rem",
     },
-    [theme.breakpoints.up("lg")]: {
-      marginLeft: "2.875rem",
-      marginRight: "3rem",
+  },
+  support: {
+    display: "block",
+    marginBottom: "1.618125rem",
+    marginTop: "1.708rem",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
     },
   },
 }));
 
-function Initiative({ logo }) {
+function Initiative({ logo, about }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div className={classes.img}>
-        <A href={logo.url}>
-          <img src={logo.image} alt={logo.alt} className={classes.imgCfa} />
-        </A>
-      </div>
+      <A href={logo.url}>
+        <img
+          src={logo.image}
+          alt={logo.alt}
+          className={classes.supporterLogo}
+        />
+      </A>
+      <Typography variant="caption" className={classes.support}>
+        {about.initiative}
+      </Typography>
     </div>
   );
 }
 
 Initiative.propTypes = {
+  about: PropTypes.shape({
+    initiative: PropTypes.node,
+  }).isRequired,
   logo: PropTypes.shape({
     url: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
