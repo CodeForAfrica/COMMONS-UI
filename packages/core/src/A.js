@@ -9,12 +9,7 @@ import { Link } from "@material-ui/core";
  */
 function A({ children, href, ...props }) {
   return (
-    <Link
-      href={href}
-      {...props}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <Link href={href} {...props} target="_blank" rel="noopener noreferrer">
       {children}
     </Link>
   );

@@ -109,4 +109,8 @@ StayInTouch.propTypes = {
   ).isRequired,
 };
 
+StayInTouch.defaultProps = {
+  support: undefined,
+};
+
 export default StayInTouch;
