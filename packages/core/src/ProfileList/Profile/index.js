@@ -39,7 +39,7 @@ function Profile({
       />
       {name && name.length > 0 && (
         <Typography
-          variant="body2"
+          variant="h3"
           className={clsx(classes.name, {
             [classes.nameSelected]: selected,
           })}
@@ -47,7 +47,7 @@ function Profile({
           {name}
         </Typography>
       )}
-      <Typography variant="body2" className={classes.title}>
+      <Typography variant="subtitle2" className={classes.title}>
         {title}
       </Typography>
       {description && description.length > 0 && (

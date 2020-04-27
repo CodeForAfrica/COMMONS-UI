@@ -8,6 +8,7 @@ const useStyles = makeStyles(() => ({
   },
   profile: {},
   profileDescription: {},
+  profileLink: {},
   profileName: {},
   profileNameSelected: {},
   profilePicture: {},
