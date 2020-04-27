@@ -18,7 +18,11 @@ import "simplebar/dist/simplebar.min.css";
 storiesOf("Components|Profile List", module)
   .add("Default", () => {
     const profiles = getProfiles();
-    return <ProfileList profiles={profiles} />;
+    return (
+      <div style={{ margin: "0 auto", width: "80%", overflow: "visible" }}>
+        <ProfileList profiles={profiles} />
+      </div>
+    );
   })
   .add("Navigation", () => {
     const classes = makeStyles((theme) => ({
