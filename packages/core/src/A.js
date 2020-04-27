@@ -14,7 +14,6 @@ function A({ children, href, ...props }) {
       {...props}
       target="_blank"
       rel="noopener noreferrer"
-      underline="always"
     >
       {children}
     </Link>
