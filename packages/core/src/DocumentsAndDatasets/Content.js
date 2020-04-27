@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { makeStyles, Grid, Typography } from "@material-ui/core";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 
-import A from "../A";
+import RichTypography from "../RichTypography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,15 +38,6 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "1rem",
     paddingBottom: "3rem",
   },
-  link: { textDecoration: "underline", color: "#F9FF71" },
-  linkText: {
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    paddingTop: "1rem",
-    [theme.breakpoints.up("md")]: {
-      paddingTop: "2.7rem",
-    },
-  },
 }));
 
 function Content({
@@ -62,41 +53,31 @@ function Content({
   const classes = useStyles(props);
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container direction="column" className={classes.root}>
       {children && (
-        <Grid item xs={3} md={12} className={classes.iconGrid}>
+        <Grid item xs={12} className={classes.iconGrid}>
           {children}
         </Grid>
       )}
-      <>
-        {title && (
-          <Grid item md={12} className={classes.subtitleGrid}>
-            <Typography variant="body2" className={classes.title}>
-              {title}
-            </Typography>
-          </Grid>
-        )}
-      </>
-      <Grid item md={12} className={classes.countGrid}>
-        {contentCount && (
-          <Typography variant="h1" className={classes.contentCount}>
-            {contentCount}
-          </Typography>
-        )}
+
+      <Grid item xs={12}>
+        <RichTypography variant="subtitle2" color="textSecondary">
+          {contentType}
+        </RichTypography>
       </Grid>
-
-      <Grid item xs={9} md={12} className={classes.contentText}>
-        <Typography variant="h5">{contentType}</Typography>
-
-        <Typography variant="body2" className={classes.description}>
+      <Grid item xs={12}>
+        <RichTypography
+          variant="body2"
+          color="textSecondary"
+          className={classes.description}
+        >
           {description}
-        </Typography>
-
-        <A href={link} className={classes.link}>
-          <Typography variant="subtitle2" className={classes.linkText}>
-            {linkTitle}
-          </Typography>
-        </A>
+        </RichTypography>
+      </Grid>
+      <Grid item xs={12} container alignItems="space-between">
+        <Button href={link} variant="outlined" color="primary">
+          {linkTitle}
+        </Button>
       </Grid>
     </Grid>
   );
