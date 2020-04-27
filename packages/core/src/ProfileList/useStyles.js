@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(() => ({
   root: {
     zIndex: 1,
-    width: "100%",
+    width: "calc(((100vw - 100%) / 2) + 100%)",
   },
   profile: {},
   profileDescription: {},
@@ -13,9 +13,7 @@ const useStyles = makeStyles(() => ({
   profilePicture: {},
   profilePictureSelected: {},
   profileTitle: {},
-  profiles: {
-    width: "calc(((100vw - 100%) / 2) + 100%)",
-  },
+  profiles: {},
   profilesGridList: {},
   profilesScrollBar: {},
 }));
