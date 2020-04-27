@@ -4,20 +4,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  featuredDiv: {
-    display: "block",
-    [theme.breakpoints.up("md")]: {
-      position: "absolute",
-      top: "10%",
-      width: "28%",
-    },
+  heading: {
+    marginTop: "5rem",
   },
-  featuredTitle: {
-    width: "100%",
-    fontSize: "2rem",
-  },
-  featuredDescription: {
-    width: "100%",
+  description: {
     marginTop: "1rem",
   },
   documentData: {
