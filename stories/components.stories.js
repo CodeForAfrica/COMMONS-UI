@@ -158,14 +158,14 @@ storiesOf("Components|DocumentsAndDatasets", module)
               description:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
               linkTitle: "LEARN MORE",
-              imageChildren: <DescriptionOutlinedIcon fontSize="large" />,
+              children: <DescriptionOutlinedIcon fontSize="large" />,
             }}
             datasetContent={{
               contentType: "Dataset",
               description:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
               linkTitle: "LEARN MORE",
-              imageChildren: <DescriptionOutlinedIcon fontSize="large" />,
+              children: <DescriptionOutlinedIcon fontSize="large" />,
             }}
             classes={{
               datasetData: classes.datasetData,
