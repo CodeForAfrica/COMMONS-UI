@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
 import NavigationButton from "./NavigationButton";
-import { getProfiles, fromTimestamp, useStories } from "./utils";
+import { getProfiles, useStories } from "./utils";
 
 import imgHighlight from "./assets/images/illo-02.png";
 
@@ -107,21 +107,17 @@ storiesOf("Components|Story List", module).add("Default", () => {
   );
   const stories = foundStories.map((story) => ({
     ...story,
-    createdAt: fromTimestamp(story.createdAt),
+    description: story.subtitle,
+    link: { url: story.uniqueSlug, title: "Learn More" },
     image: {
       url: `https://cdn-images-1.medium.com/max/480/${story.virtuals.previewImage.imageId}`,
     },
   }));
 
   return (
-    <StoryList
-      description="View and explore how we visualise Kenya’s budget data to show how much money each county has received from the national government, and how the money is allocated and utilized based on each county’spriorities"
-      md={3.3}
-      spacing={0}
-      stories={stories}
-      title="Showcase"
-      xs={1.3}
-    />
+    <div style={{ margin: "0 auto", width: "80%", overflow: "visible" }}>
+      <StoryList md={3.3} spacing={0} stories={stories} xs={1.3} />
+    </div>
   );
 });
 

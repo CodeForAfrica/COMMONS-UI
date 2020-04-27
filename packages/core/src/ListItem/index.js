@@ -4,13 +4,14 @@ import { PropTypes } from "prop-types";
 
 import clsx from "clsx";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 
 import useStyles from "./useStyles";
 
-function Profile({
+function ListItem({
   description,
   image,
+  link,
   name,
   onClick,
   selected,
@@ -55,26 +56,41 @@ function Profile({
           {description}
         </Typography>
       )}
+      {link && link.url && (
+        <Button
+          href={link.url}
+          variant="outline"
+          size="small"
+          className={classes.link}
+        >
+          {link.title || link.url}
+        </Button>
+      )}
     </Grid>
   );
 }
 
-Profile.propTypes = {
+ListItem.propTypes = {
   description: PropTypes.string,
   image: PropTypes.shape({
     description: PropTypes.string,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string,
+  }),
   name: PropTypes.string,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
   title: PropTypes.string.isRequired,
 };
-Profile.defaultProps = {
+ListItem.defaultProps = {
   description: undefined,
+  link: undefined,
   name: undefined,
   onClick: undefined,
   selected: false,
 };
 
-export default Profile;
+export default ListItem;

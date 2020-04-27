@@ -2,10 +2,12 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { PropTypes } from "prop-types";
 
+import clsx from "clsx";
+
 import { GridListTile } from "@material-ui/core";
 
 import GridList from "../ScrollableGridList";
-import Profile from "./Profile";
+import Profile from "../ListItem";
 import useStyles from "./useStyles";
 
 function ProfileList({
@@ -15,6 +17,8 @@ function ProfileList({
   onSelectedIndexChanged,
   lg,
   md,
+  profileClassCount,
+  profileClassPrefix,
   profiles,
   sm,
   xs,
@@ -64,8 +68,13 @@ function ProfileList({
             <Profile
               key={profile.title}
               classes={{
-                root: classes.profile,
+                root: clsx(classes.profile, {
+                  [`${profileClassPrefix}${
+                    index % profileClassCount
+                  }`]: profileClassCount,
+                }),
                 description: classes.profileDescription,
+                link: classes.profileLink,
                 name: classes.profileName,
                 nameSelected: classes.profileNameSelected,
                 picture: classes.profilePicture,
@@ -76,6 +85,7 @@ function ProfileList({
               onClick={onSelectedIndexChanged && (() => handleClick(index))}
               description={profile.description}
               image={profile.image}
+              link={profile.link}
               name={profile.name}
               title={profile.title}
               selected={selectedIndexProp === index}
@@ -94,11 +104,17 @@ ProfileList.propTypes = {
   lg: PropTypes.number,
   md: PropTypes.number,
   onSelectedIndexChanged: PropTypes.func,
+  profileClassCount: PropTypes.number,
+  profileClassPrefix: PropTypes.string,
   profiles: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
       image: PropTypes.shape({
         description: PropTypes.string,
+        url: PropTypes.string.isRequired,
+      }),
+      link: PropTypes.shape({
+        title: PropTypes.string,
         url: PropTypes.string.isRequired,
       }),
       name: PropTypes.string,
@@ -112,10 +128,12 @@ ProfileList.propTypes = {
 ProfileList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
-  selectedIndex: 0,
   lg: undefined,
   md: 4.3,
   onSelectedIndexChanged: undefined,
+  profileClassCount: 3,
+  profileClassPrefix: "profile-",
+  selectedIndex: 0,
   sm: undefined,
   xs: 1,
 };
