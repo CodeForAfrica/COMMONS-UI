@@ -74,7 +74,7 @@ function StayInTouch({ support, socialMedia, ...props }) {
             <A
               key={media.url}
               href={media.url}
-              textColor="textSecondary"
+              color="textSecondary"
               className={classes.links}
             >
               <img
@@ -97,7 +97,7 @@ StayInTouch.propTypes = {
       url: PropTypes.string.isRequired,
       alt: PropTypes.string.isRequired,
     }).isRequired,
-  }).isRequired,
+  }),
   socialMedia: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
