@@ -59,7 +59,7 @@ function ListItem({
       {link && link.url && (
         <Button
           href={link.url}
-          variant="outline"
+          variant="outlined"
           size="small"
           className={classes.link}
         >
