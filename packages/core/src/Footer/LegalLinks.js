@@ -21,13 +21,21 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: 0,
     "& > li": {
-      borderRight: `1px solid ${theme.palette.text.secondary}`,
-      display: "inline",
-      padding: "0 2rem",
+      paddingTop: "1rem",
     },
-    "& > li:last-of-type": {
-      border: "none",
-      paddingRight: 0,
+    "& > li:first-of-type": {
+      paddingTop: 0,
+    },
+    [theme.breakpoints.up("md")]: {
+      "& > li": {
+        borderRight: `1px solid ${theme.palette.text.secondary}`,
+        display: "inline",
+        padding: "0 2rem",
+      },
+      "& > li:last-of-type": {
+        border: "none",
+        paddingRight: 0,
+      },
     },
   },
   link: {},
