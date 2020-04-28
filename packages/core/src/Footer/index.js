@@ -109,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
   legalLinks: {},
   legalLinksLink: {},
+  legalLinksList: {},
   stayInTouch: {},
   stayInTouchIcon: {},
   stayInTouchLink: {},
@@ -233,6 +234,7 @@ function Footer({
                 classes={{
                   root: classes.legalLinks,
                   link: classes.legalLinksLink,
+                  list: classes.legalLinksList,
                 }}
               />
             </Grid>
