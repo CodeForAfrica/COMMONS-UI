@@ -30,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: 0,
     },
   },
-  link: {
-    fontWeight: "bold",
-    textDecoration: "none",
-  },
+  link: {},
 }));
 
 function LegalLinks({ linkComponent, links, ...props }) {
@@ -49,7 +46,7 @@ function LegalLinks({ linkComponent, links, ...props }) {
         component="ul"
       >
         {links.map(({ onClick, href, label, ...others }) => (
-          <li key={label}>
+          <li key={href}>
             {onClick ? (
               <Link
                 href={href}
