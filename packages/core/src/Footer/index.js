@@ -107,9 +107,14 @@ const useStyles = makeStyles((theme) => ({
       order: 3,
     },
   },
-  text: {
-    fontWeight: "bold",
-  },
+  legalLinks: {},
+  legalLinksLink: {},
+  stayInTouch: {},
+  stayInTouchIcon: {},
+  stayInTouchLink: {},
+  stayInTouchText: {},
+  stayInTouchLinks: {},
+  text: {},
 }));
 
 function Footer({
@@ -188,8 +193,9 @@ function Footer({
                 classes={{
                   root: classes.stayInTouch,
                   icon: classes.stayInTouchIcon,
-                  iconContainer: classes.stayInTouchIconContainer,
+                  link: classes.stayInTouchLink,
                   links: classes.stayInTouchLinks,
+                  text: classes.stayInTouchText,
                 }}
               />
             </Grid>
@@ -222,7 +228,13 @@ function Footer({
               alignItems="center"
               className={classes.legal}
             >
-              <LegalLinks links={legalLinks} />
+              <LegalLinks
+                links={legalLinks}
+                classes={{
+                  root: classes.legalLinks,
+                  link: classes.legalLinksLink,
+                }}
+              />
             </Grid>
           </Grid>
         </Section>
