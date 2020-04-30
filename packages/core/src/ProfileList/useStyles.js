@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   root: {
-    zIndex: 1,
     width: "calc(((100vw - 100%) / 2) + 100%)",
   },
   profile: {},

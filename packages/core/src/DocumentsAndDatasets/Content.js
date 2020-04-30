@@ -74,7 +74,7 @@ function Content({
           {description}
         </RichTypography>
       </Grid>
-      <Grid item xs={12} container alignItems="space-between">
+      <Grid item xs={12} container justify="space-between">
         <Button href={link} variant="outlined" color="primary">
           {linkTitle}
         </Button>
