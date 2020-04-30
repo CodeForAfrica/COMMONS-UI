@@ -118,7 +118,7 @@ ScrollableGridList.propTypes = {
   cellHeight: PropTypes.number,
   children: PropTypes.node,
   height: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired, // in px
-  list: PropTypes.arrayOf(PropTypes.shape({})),
+  list: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   lg: PropTypes.number,
   md: PropTypes.number,
   sm: PropTypes.number,
@@ -133,7 +133,7 @@ ScrollableGridList.defaultProps = {
   lg: undefined,
   md: undefined,
   sm: undefined,
-  spacing: 16
+  spacing: 16,
 };
 
 export default ScrollableGridList;

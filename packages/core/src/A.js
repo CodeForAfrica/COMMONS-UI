@@ -19,8 +19,4 @@ A.propTypes = {
   href: PropTypes.string.isRequired,
 };
 
-A.defaultProps = {
-  href: ''
-};
-
 export default A;
