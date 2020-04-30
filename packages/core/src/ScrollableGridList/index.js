@@ -133,7 +133,7 @@ ScrollableGridList.defaultProps = {
   lg: undefined,
   md: undefined,
   sm: undefined,
-  spacing: 16,
+  spacing: 16
 };
 
 export default ScrollableGridList;
