@@ -255,7 +255,7 @@ Footer.propTypes = {
     alt: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
-  }).isRequired,
+  }),
   initiativeLogo: PropTypes.shape({}).isRequired,
   legalLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   quickLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
