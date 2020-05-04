@@ -3,32 +3,16 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import { GridListTile, makeStyles } from "@material-ui/core";
+import { GridListTile } from "@material-ui/core";
 
 import GridList from "../ScrollableGridList";
 import Story from "../ListItem";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    zIndex: 1,
-    width: "calc(((100vw - 100%) / 2) + 100%)",
-  },
-  title: {},
-  description: {},
-  story: {},
-  storyDescription: {},
-  storyLink: {},
-  storyName: {},
-  storyPicture: {},
-  storyTitle: {},
-  stories: {},
-  storiesGridList: {},
-  storiesScrollBar: {},
-}));
+import useStyles from "./useStyles";
 
 function StoryList({
   cellHeight,
   height,
+  linkComponent,
   lg,
   md,
   onClick,
@@ -49,9 +33,9 @@ function StoryList({
     <div className={classes.root} ref={rootRef}>
       <GridList
         classes={{
-          root: classes.profiles,
-          gridList: classes.profilesGridList,
-          scrollBar: classes.profilesScrollBar,
+          root: classes.stories,
+          gridList: classes.storiesGridList,
+          scrollBar: classes.storiesScrollBar,
         }}
         cellHeight={cellHeight}
         height={height}
@@ -80,6 +64,7 @@ function StoryList({
               onClick={() => onClick && onClick(index)}
               description={story.description}
               image={story.image}
+              linkComponent={linkComponent}
               link={story.link}
               name={story.name}
               title={story.title}
@@ -94,6 +79,7 @@ function StoryList({
 StoryList.propTypes = {
   cellHeight: PropTypes.number,
   height: PropTypes.number,
+  linkComponent: PropTypes.elementType,
   lg: PropTypes.number,
   md: PropTypes.number,
   onClick: PropTypes.func,
@@ -121,6 +107,7 @@ StoryList.propTypes = {
 StoryList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
+  linkComponent: undefined,
   lg: undefined,
   md: 3.3,
   onClick: undefined,
