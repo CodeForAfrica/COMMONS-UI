@@ -76,6 +76,7 @@ storiesOf("Components|Profile List", module)
             }}
             onSelectedIndexChanged={handleSelectedIndexChanged}
             profiles={profiles}
+            scrollOnSelectedIndexChange
             selectedIndex={selectedIndex}
           />
         </Grid>
