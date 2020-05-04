@@ -47,7 +47,6 @@ function StoryList({
         {stories.map((story, index) => (
           <GridListTile key={story.id}>
             <Story
-              key={story.title}
               classes={{
                 root: clsx(classes.story, {
                   [`${storyClassPrefix}${
