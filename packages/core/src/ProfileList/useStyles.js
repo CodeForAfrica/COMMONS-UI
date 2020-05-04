@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({

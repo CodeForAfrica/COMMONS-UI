@@ -13,13 +13,14 @@ import useStyles from "./useStyles";
 function ProfileList({
   cellHeight,
   height,
-  selectedIndex: selectedIndexProp,
   onSelectedIndexChanged,
+  linkComponent,
   lg,
   md,
   profileClassCount,
   profileClassPrefix,
   profiles,
+  selectedIndex: selectedIndexProp,
   sm,
   xs,
   ...props
@@ -86,6 +87,7 @@ function ProfileList({
               description={profile.description}
               image={profile.image}
               link={profile.link}
+              linkComponent={linkComponent}
               name={profile.name}
               title={profile.title}
               selected={selectedIndexProp === index}
@@ -100,7 +102,7 @@ function ProfileList({
 ProfileList.propTypes = {
   cellHeight: PropTypes.number,
   height: PropTypes.number,
-  selectedIndex: PropTypes.number,
+  linkComponent: PropTypes.elementType,
   lg: PropTypes.number,
   md: PropTypes.number,
   onSelectedIndexChanged: PropTypes.func,
@@ -121,6 +123,7 @@ ProfileList.propTypes = {
       title: PropTypes.string,
     })
   ).isRequired,
+  selectedIndex: PropTypes.number,
   sm: PropTypes.number,
   xs: PropTypes.number,
 };
@@ -128,6 +131,7 @@ ProfileList.propTypes = {
 ProfileList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
+  linkComponent: undefined,
   lg: undefined,
   md: 4.3,
   onSelectedIndexChanged: undefined,
