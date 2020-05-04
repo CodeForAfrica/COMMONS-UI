@@ -61,7 +61,7 @@ storiesOf("Components|Profile List", module)
     }))();
     const [selectedIndex, setSelectedIndex] = useState(0);
     const profiles = getProfiles();
-    const handleSelectedIndexChanged = (index) => setSelectedIndex(index);
+    const handleSelectedIndexChanged = (e, index) => setSelectedIndex(index);
 
     return (
       <Grid container justify="flex-end" className={classes.root}>
