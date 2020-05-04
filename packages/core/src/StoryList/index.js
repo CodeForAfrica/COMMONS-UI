@@ -3,28 +3,11 @@ import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
-import { GridListTile, makeStyles } from "@material-ui/core";
+import { GridListTile } from "@material-ui/core";
 
 import GridList from "../ScrollableGridList";
 import Story from "../ListItem";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    zIndex: 1,
-    width: "calc(((100vw - 100%) / 2) + 100%)",
-  },
-  title: {},
-  description: {},
-  story: {},
-  storyDescription: {},
-  storyLink: {},
-  storyName: {},
-  storyPicture: {},
-  storyTitle: {},
-  stories: {},
-  storiesGridList: {},
-  storiesScrollBar: {},
-}));
+import useStyles from "./useStyles";
 
 function StoryList({
   cellHeight,
