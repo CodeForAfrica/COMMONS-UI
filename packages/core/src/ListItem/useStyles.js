@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    cursor: "pointer",
+    cursor: (props) => (props.onClick ? "pointer" : "inherit"),
     position: "relative",
     height: (props) => props.height,
     padding: 16,

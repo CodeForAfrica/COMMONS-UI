@@ -5,31 +5,33 @@ import { PropTypes } from "prop-types";
 import clsx from "clsx";
 
 import { Button, Grid, Typography } from "@material-ui/core";
-
 import useStyles from "./useStyles";
 
 function ListItem({
   description,
   image,
   link,
+  linkComponent,
   name,
   onClick,
   selected,
   title,
   ...props
 }) {
-  const classes = useStyles({ ...props, image });
+  const classes = useStyles({ ...props, image, onClick });
+  const buttonProps = onClick
+    ? { role: "button", tabIndex: 0, onClick, onKeyUp: undefined }
+    : {};
+  const LinkComponent = linkComponent || Button;
 
   return (
     <Grid
       container
       direction="column"
       justify="flex-end"
-      role="button"
-      tabIndex={0}
+      alignItems="flex-start"
+      {...buttonProps}
       className={classes.root}
-      onClick={onClick}
-      onKeyUp={undefined}
     >
       <img
         alt={image.description || name || title}
@@ -57,14 +59,14 @@ function ListItem({
         </Typography>
       )}
       {link && link.url && (
-        <Button
+        <LinkComponent
           href={link.url}
           variant="outlined"
           size="small"
           className={classes.link}
         >
           {link.title || link.url}
-        </Button>
+        </LinkComponent>
       )}
     </Grid>
   );
@@ -76,10 +78,12 @@ ListItem.propTypes = {
     description: PropTypes.string,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  href: PropTypes.string,
   link: PropTypes.shape({
     url: PropTypes.string.isRequired,
     title: PropTypes.string,
   }),
+  linkComponent: PropTypes.elementType,
   name: PropTypes.string,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
@@ -87,7 +91,9 @@ ListItem.propTypes = {
 };
 ListItem.defaultProps = {
   description: undefined,
+  href: undefined,
   link: undefined,
+  linkComponent: undefined,
   name: undefined,
   onClick: undefined,
   selected: false,
