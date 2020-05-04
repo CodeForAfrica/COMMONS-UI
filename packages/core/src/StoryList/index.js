@@ -29,6 +29,7 @@ const useStyles = makeStyles(() => ({
 function StoryList({
   cellHeight,
   height,
+  linkComponent,
   lg,
   md,
   onClick,
@@ -49,9 +50,9 @@ function StoryList({
     <div className={classes.root} ref={rootRef}>
       <GridList
         classes={{
-          root: classes.profiles,
-          gridList: classes.profilesGridList,
-          scrollBar: classes.profilesScrollBar,
+          root: classes.stories,
+          gridList: classes.storiesGridList,
+          scrollBar: classes.storiesScrollBar,
         }}
         cellHeight={cellHeight}
         height={height}
@@ -77,9 +78,10 @@ function StoryList({
                 title: classes.storyTitle,
               }}
               height={cellHeight}
-              onClick={() => onClick && onClick(index)}
+              onClick={(e) => onClick && onClick(e, index)}
               description={story.description}
               image={story.image}
+              linkComponent={linkComponent}
               link={story.link}
               name={story.name}
               title={story.title}
@@ -94,6 +96,7 @@ function StoryList({
 StoryList.propTypes = {
   cellHeight: PropTypes.number,
   height: PropTypes.number,
+  linkComponent: PropTypes.elementType,
   lg: PropTypes.number,
   md: PropTypes.number,
   onClick: PropTypes.func,
@@ -121,6 +124,7 @@ StoryList.propTypes = {
 StoryList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
+  linkComponent: undefined,
   lg: undefined,
   md: 3.3,
   onClick: undefined,
