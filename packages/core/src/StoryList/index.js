@@ -61,7 +61,7 @@ function StoryList({
                 title: classes.storyTitle,
               }}
               height={cellHeight}
-              onClick={(e) => onClick && onClick(e, index)}
+              onClick={() => onClick && onClick(index)}
               description={story.description}
               image={story.image}
               linkComponent={linkComponent}
