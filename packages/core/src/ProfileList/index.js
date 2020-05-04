@@ -20,6 +20,7 @@ function ProfileList({
   profileClassCount,
   profileClassPrefix,
   profiles,
+  scrollOnSelectedIndexChange: scrollOnSelectedIndexChangeProp,
   selectedIndex: selectedIndexProp,
   sm,
   xs,
@@ -28,12 +29,12 @@ function ProfileList({
   const classes = useStyles(props);
   const rootRef = useRef(null);
   const handleClick = useCallback(
-    (selectedIndex) => {
+    (selectedIndex, scrollOnSelectedIndexChange) => {
       const profileEls = rootRef.current.getElementsByClassName(
         classes.profile
       );
       const profileEl = profileEls[selectedIndex];
-      if (profileEl) {
+      if (profileEl && scrollOnSelectedIndexChange) {
         profileEl.scrollIntoView({ behavior: "smooth" });
       }
       if (onSelectedIndexChanged) {
@@ -43,8 +44,8 @@ function ProfileList({
     [classes.profile, onSelectedIndexChanged]
   );
   useEffect(() => {
-    handleClick(selectedIndexProp);
-  }, [handleClick, selectedIndexProp]);
+    handleClick(selectedIndexProp, scrollOnSelectedIndexChangeProp);
+  }, [handleClick, scrollOnSelectedIndexChangeProp, selectedIndexProp]);
 
   if (!profiles.length) {
     return null;
@@ -67,7 +68,6 @@ function ProfileList({
         {profiles.map((profile, index) => (
           <GridListTile key={profile.id}>
             <Profile
-              key={profile.title}
               classes={{
                 root: clsx(classes.profile, {
                   [`${profileClassPrefix}${
@@ -83,7 +83,9 @@ function ProfileList({
                 title: classes.profileTitle,
               }}
               height={cellHeight}
-              onClick={onSelectedIndexChanged && (() => handleClick(index))}
+              onClick={
+                onSelectedIndexChanged && (() => handleClick(index, true))
+              }
               description={profile.description}
               image={profile.image}
               link={profile.link}
@@ -123,6 +125,7 @@ ProfileList.propTypes = {
       title: PropTypes.string,
     })
   ).isRequired,
+  scrollOnSelectedIndexChange: PropTypes.bool,
   selectedIndex: PropTypes.number,
   sm: PropTypes.number,
   xs: PropTypes.number,
@@ -137,6 +140,7 @@ ProfileList.defaultProps = {
   onSelectedIndexChanged: undefined,
   profileClassCount: 3,
   profileClassPrefix: "profile-",
+  scrollOnSelectedIndexChange: false,
   selectedIndex: 0,
   sm: undefined,
   xs: 1,
