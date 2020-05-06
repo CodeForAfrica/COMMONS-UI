@@ -33,8 +33,8 @@ function Initiative({ logo, about }) {
     <div className={classes.root}>
       <A href={logo.url}>
         <img
-          src={logo.image}
-          alt={logo.alt}
+          src={logo.image.url}
+          alt={logo.image.alt}
           className={classes.supporterLogo}
         />
       </A>
@@ -50,9 +50,11 @@ Initiative.propTypes = {
     initiative: PropTypes.node,
   }).isRequired,
   logo: PropTypes.shape({
+    image: PropTypes.shape({
+      alt: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+    }).isRequired,
     url: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
   }).isRequired,
 };
 
