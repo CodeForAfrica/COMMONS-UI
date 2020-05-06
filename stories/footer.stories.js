@@ -1,6 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
+import { makeStyles } from "@material-ui/core/styles";
+
 import { Footer } from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
@@ -47,14 +49,19 @@ const ABOUT = {
 };
 
 const INITIATIVE_LOGO = {
-  image: pulitzer,
-  alt: "Plutizer Center",
-  link: "https://link.url",
+  image: {
+    url: pulitzer,
+    alt: "Plutizer Center",
+  },
+  url: "https://link.url",
 };
 
 const CFA = {
-  image: cfaLogo,
-  alt: "CodeForAfrica",
+  image: {
+    url: cfaLogo,
+    alt: "Code for Africa",
+  },
+  url: "https://codeforafrica.org",
 };
 
 const SOCIAL_MEDIA = {
@@ -97,13 +104,25 @@ const SOCIAL_MEDIA = {
   ],
 };
 
-storiesOf("Components|Footer", module).add("Footer", () => (
-  <Footer
-    about={SOCIAL_MEDIA}
-    aboutSection={ABOUT}
-    initiativeLogo={INITIATIVE_LOGO}
-    legalLinks={LEGAL_LINKS}
-    quickLinks={QUICK_LINKS}
-    organizationLogo={CFA}
-  />
-));
+storiesOf("Components|Footer", module).add("Footer", () => {
+  const classes = makeStyles((theme) => ({
+    section: {
+      margin: "0 auto",
+      [theme.breakpoints.up("md")]: {
+        width: "85%",
+      },
+    },
+  }))();
+
+  return (
+    <Footer
+      about={SOCIAL_MEDIA}
+      aboutSection={ABOUT}
+      initiativeLogo={INITIATIVE_LOGO}
+      legalLinks={LEGAL_LINKS}
+      quickLinks={QUICK_LINKS}
+      organizationLogo={CFA}
+      classes={{ section: classes.section }}
+    />
+  );
+});
