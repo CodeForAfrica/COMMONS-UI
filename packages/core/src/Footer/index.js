@@ -31,14 +31,7 @@ const useStyles = makeStyles(
     dividerMobile: {
       order: 3,
     },
-    section: {
-      paddingBottom: "2.381875rem",
-      paddingTop: "4.194375rem",
-      [breakpoints.up("md")]: {
-        paddingBottom: "4.194375rem",
-        paddingTop: "5.375rem",
-      },
-    },
+    section: {},
     grow: {
       flexGrow: 1,
     },
