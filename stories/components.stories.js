@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, text } from "@storybook/addon-knobs";
 
+import {
+  ArrowBack,
+  ArrowForward,
+  DescriptionOutlined as DescriptionIcon,
+  StorageOutlined as StorageIcon,
+} from "@material-ui/icons";
 import { Grid } from "@material-ui/core";
-import { ArrowBack, ArrowForward } from "@material-ui/icons";
 import { DocumentsAndDatasets, ProfileList, StoryList } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
 import NavigationButton from "./NavigationButton";
 import { getProfiles, useStories } from "./utils";
 
-import imgHighlight from "./assets/images/illo-02.png";
+import imgHighlight from "./assets/illo-02.png";
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -127,9 +131,6 @@ storiesOf("Components|DocumentsAndDatasets", module)
   .add("Default", () =>
     React.createElement(() => {
       const classes = makeStyles(({ breakpoints }) => ({
-        datasetData: {
-          backgroundColor: "#4933ff",
-        },
         img: {
           width: "100%",
           background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
@@ -144,34 +145,40 @@ storiesOf("Components|DocumentsAndDatasets", module)
             height: "38rem",
           },
         },
+        datasetsLink: {
+          marginTop: "2rem",
+        },
+        documentsLink: {
+          marginTop: "2rem",
+        },
       }))();
       return (
         <div>
           <DocumentsAndDatasets
             title={text("title", "Featured Research")}
-            highlightChildren={<div className={classes.img} />}
             description={text(
               "description",
               "Get access to the best original scientific and medical research by African experts who understand local context."
             )}
-            documentContent={{
-              contentType: "Document",
+            datasets={{
+              contentType: "Datasets",
               description:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-              linkTitle: "LEARN MORE",
-              children: <DescriptionOutlinedIcon fontSize="large" />,
+              icon: <StorageIcon fontSize="large" />,
             }}
-            datasetContent={{
-              contentType: "Dataset",
+            documents={{
+              contentType: "Documents",
               description:
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-              linkTitle: "LEARN MORE",
-              children: <DescriptionOutlinedIcon fontSize="large" />,
+              icon: <DescriptionIcon fontSize="large" />,
             }}
             classes={{
-              datasetData: classes.datasetData,
+              datasetsLink: classes.datasetsLink,
+              documentsLink: classes.documentsLink,
             }}
-          />
+          >
+            <div className={classes.img} />
+          </DocumentsAndDatasets>
         </div>
       );
     })
