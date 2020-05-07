@@ -1,143 +1,134 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid } from "@material-ui/core";
+import clsx from "clsx";
 
-import RichTypography from "../RichTypography";
+import { Grid, Hidden } from "@material-ui/core";
+
 import Content from "./Content";
+import RichTypography from "../RichTypography";
+import Section from "../Section";
 import useStyles from "./useStyles";
 
 function DocumentsAndDatasets({
-  highlightChildren,
-  title,
+  children,
+  datasets,
   description,
-  datasetContent,
-  documentContent,
+  documents,
+  title,
   ...props
 }) {
   const classes = useStyles(props);
 
   return (
-    <Grid container className={classes.root}>
-      <Grid
-        item
-        xs={12}
-        md={5}
-        container
-        justify="center"
-        className={classes.imageHighlight}
-      >
-        {highlightChildren}
-      </Grid>
-      <Grid item xs={12} md={7} container justify="space-between">
-        <Grid item xs={12} className={classes.heading}>
-          <RichTypography variant="h2" color="textSecondary">
-            {title}
-          </RichTypography>
-          <RichTypography variant="body1" color="textSecondary">
-            {description}
-          </RichTypography>
-        </Grid>
-        <Grid item xs={12} container>
-          <Grid item xs={12} md={6}>
-            <Content
-              title={documentContent.title}
-              contentCount={documentContent.contentCount}
-              contentType={documentContent.contentType}
-              description={documentContent.description}
-              linkTitle={documentContent.linkTitle}
-              link={documentContent.link}
-              classes={{
-                root: classes.documentContentRoot,
-                title: classes.documentContentTitle,
-                description: classes.documentDescription,
-                iconGrid: classes.documentIconGrid,
-                subtitleGrid: classes.documentSubtitleGrid,
-                countGrid: classes.documentCountGrid,
-                contentCount: classes.documentContentCount,
-                contentText: classes.documentContentText,
-                link: classes.documentLink,
-                linkText: classes.documentLinkText,
-              }}
-            >
-              {documentContent.children}
-            </Content>
+    <div className={classes.root}>
+      <Section classes={{ root: classes.section }}>
+        <Grid container className={classes.background}>
+          <Grid item xs={12} md={5} className={classes.highlight}>
+            {children}
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Content
-              title={datasetContent.title}
-              contentCount={datasetContent.contentCount}
-              contentType={datasetContent.contentType}
-              description={datasetContent.description}
-              linkTitle={datasetContent.linkTitle}
-              link={datasetContent.link}
-              classes={{
-                root: classes.datasetContentRoot,
-                title: classes.datasetContentTitle,
-                description: classes.datasetDescription,
-                iconGrid: classes.datasetIconGrid,
-                subtitleGrid: classes.datasetSubtitleGrid,
-                countGrid: classes.datasetCountGrid,
-                contentCount: classes.datasetContentCount,
-                contentText: classes.datasetContentText,
-                link: classes.datasetLink,
-                linkText: classes.datasetLinkText,
-              }}
-            >
-              {datasetContent.children}
-            </Content>
+          <Grid
+            item
+            md={7}
+            container
+            implementation="css"
+            smDown
+            component={Hidden}
+          >
+            <Grid item md={6} className={classes.backgroundDocuments} />
+            <Grid item md={6} className={classes.backgroundDatasets} />
           </Grid>
         </Grid>
-      </Grid>
-    </Grid>
+        <Grid container className={classes.content}>
+          <Grid item md={5} implementation="css" smDown component={Hidden} />
+          <Grid item xs={12} md={7} container justify="space-between">
+            <Grid item xs={12} className={classes.contentHeading}>
+              <RichTypography
+                variant="h2"
+                color="textSecondary"
+                className={classes.title}
+              >
+                {title}
+              </RichTypography>
+              <RichTypography
+                variant="subtitle1"
+                color="textSecondary"
+                className={classes.description}
+              >
+                {description}
+              </RichTypography>
+            </Grid>
+          </Grid>
+          <Grid item md={5} implementation="css" smDown component={Hidden} />
+          <Grid
+            item
+            xs={12}
+            md={3}
+            className={clsx(
+              classes.backgroundDocuments,
+              classes.contentDocuments
+            )}
+          >
+            <Content
+              {...documents}
+              classes={{
+                root: classes.documents,
+                contentType: classes.documentsContentType,
+                description: classes.documentsDescription,
+                icon: classes.documentsIcon,
+                link: classes.documentsLink,
+              }}
+            />
+          </Grid>
+          <Grid item md={1} implementation="css" smDown component={Hidden} />
+          <Grid
+            item
+            xs={12}
+            md={3}
+            className={clsx(
+              classes.backgroundDatasets,
+              classes.contentDatasets
+            )}
+          >
+            <Content
+              {...datasets}
+              classes={{
+                root: classes.datasets,
+                contentType: classes.datasetsContentType,
+                description: classes.datasetsDescription,
+                icon: classes.datasetsIcon,
+                link: classes.datasetsLink,
+              }}
+            />
+          </Grid>
+        </Grid>
+      </Section>
+    </div>
   );
 }
 
 DocumentsAndDatasets.propTypes = {
-  title: PropTypes.string,
+  children: PropTypes.node,
+  datasets: PropTypes.shape({
+    icon: PropTypes.node,
+  }),
   description: PropTypes.string,
-  highlightChildren: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  datasetContent: PropTypes.shape({
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-    title: PropTypes.string,
-    contentCount: PropTypes.string,
-    contentType: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    link: PropTypes.string,
-    linkTitle: PropTypes.string,
+  documents: PropTypes.shape({
+    icon: PropTypes.node,
   }),
-  documentContent: PropTypes.shape({
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ]),
-    title: PropTypes.string,
-    contentCount: PropTypes.string,
-    contentType: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    link: PropTypes.string,
-    linkTitle: PropTypes.string,
-  }),
+  title: PropTypes.string,
 };
 
 DocumentsAndDatasets.defaultProps = {
-  title: undefined,
-  description: undefined,
-  highlightChildren: null,
-  documentContent: {
-    children: null,
-    contentType: "Documents",
-  },
-  datasetContent: {
-    children: null,
+  children: null,
+  datasets: {
     contentType: "Datasets",
   },
+  description: undefined,
+  documents: {
+    contentType: "Documents",
+  },
+  title: undefined,
 };
 
 export default DocumentsAndDatasets;
