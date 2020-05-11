@@ -131,6 +131,10 @@ storiesOf("Components|DocumentsAndDatasets", module)
   .add("Default", () =>
     React.createElement(() => {
       const classes = makeStyles(({ breakpoints }) => ({
+        section: {
+          margin: "0 auto",
+          width: "90%",
+        },
         img: {
           width: "100%",
           background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
@@ -152,12 +156,13 @@ storiesOf("Components|DocumentsAndDatasets", module)
           marginTop: "2rem",
         },
       }))();
+
       return (
         <div>
           <DocumentsAndDatasets
             title={text("title", "Featured Research")}
-            description={text(
-              "description",
+            subtitle={text(
+              "subtitle",
               "Get access to the best original scientific and medical research by African experts who understand local context."
             )}
             datasets={{
@@ -173,6 +178,7 @@ storiesOf("Components|DocumentsAndDatasets", module)
               icon: <DescriptionIcon fontSize="large" />,
             }}
             classes={{
+              section: classes.section,
               datasetsLink: classes.datasetsLink,
               documentsLink: classes.documentsLink,
             }}
