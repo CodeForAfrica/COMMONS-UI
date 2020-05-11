@@ -5,20 +5,20 @@ import { Button, Grid, makeStyles } from "@material-ui/core";
 
 import RichTypography from "../RichTypography";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
-    flexGrow: 1,
-    textAlign: "left",
-    marginTop: "1rem",
+    flexWrap: "nowrap",
+    [breakpoints.up("md")]: {
+      flexWrap: "wrap",
+    },
   },
   contentType: {
-    paddingTop: "1rem",
-    paddingBottom: "3rem",
+    paddingTop: typography.pxToRem(14),
   },
-  description: {},
-  icon: {
-    paddingTop: "1rem",
+  description: {
+    paddingTop: typography.pxToRem(24),
   },
+  icon: {},
   link: {},
 }));
 
@@ -27,12 +27,10 @@ function Content({ children, contentType, description, icon, link, ...props }) {
 
   return (
     <Grid container className={classes.root}>
-      {icon && (
-        <Grid item xs={2} sm={1} md={12} className={classes.icon}>
-          {icon}
-        </Grid>
-      )}
-      <Grid item xs={icon ? 10 : 12} sm={icon ? 11 : 12} md={12} container>
+      <Grid item xs="auto" md={12} className={classes.icon}>
+        {icon}
+      </Grid>
+      <Grid item xs="auto" md={12} container>
         <Grid item xs={12}>
           <RichTypography
             variant="subtitle2"
@@ -72,7 +70,7 @@ Content.propTypes = {
   children: PropTypes.node,
   contentType: PropTypes.string.isRequired,
   description: PropTypes.string,
-  icon: PropTypes.node,
+  icon: PropTypes.node.isRequired,
   link: PropTypes.shape({
     href: PropTypes.string.isRequired,
     label: PropTypes.string,
@@ -82,7 +80,6 @@ Content.propTypes = {
 Content.defaultProps = {
   children: undefined,
   description: undefined,
-  icon: undefined,
   link: { href: "#", label: "View More" },
 };
 
