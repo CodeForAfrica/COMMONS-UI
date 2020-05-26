@@ -9,9 +9,9 @@ import {
   useTheme,
 } from "@material-ui/core";
 
-import SimpleBarReact from "simplebar-react";
+import ScrollBar from "../ScrollBar";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     overflow: "hidden",
     /**
@@ -32,30 +32,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "initial",
     width: "100%",
   },
-  scrollBar: {
-    width: "100%",
-    "& .simplebar-wrapper": {
-      height: (props) => props.height,
-    },
-    "& .simplebar-track": {
-      width: "50%",
-      backgroundColor: "#f1f1ed", // off-white
-      height: "8px",
-    },
-    "& .simplebar-track.simplebar-horizontal": {
-      [theme.breakpoints.up("md")]: {
-        marginLeft: "25%",
-      },
-    },
-    "& .simplebar-track.simplebar-horizontal .simplebar-scrollbar": {
-      backgroundColor: theme.palette.primary.light,
-      height: "8px",
-      top: 0,
-      "&::before": {
-        backgroundColor: theme.palette.primary.light,
-      },
-    },
-  },
+  scrollBar: {},
 }));
 
 function ScrollableGridList({
@@ -95,9 +72,9 @@ function ScrollableGridList({
       justifyContent="space-around"
       className={classes.root}
     >
-      <SimpleBarReact
+      <ScrollBar
         autoHide={autoHide}
-        className={classes.scrollBar}
+        classes={{ root: classes.scrollBar }}
         height={height}
       >
         <GridList
@@ -108,7 +85,7 @@ function ScrollableGridList({
         >
           {children}
         </GridList>
-      </SimpleBarReact>
+      </ScrollBar>
     </Box>
   );
 }
@@ -118,7 +95,6 @@ ScrollableGridList.propTypes = {
   cellHeight: PropTypes.number,
   children: PropTypes.node,
   height: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired, // in px
-  list: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   lg: PropTypes.number,
   md: PropTypes.number,
   sm: PropTypes.number,

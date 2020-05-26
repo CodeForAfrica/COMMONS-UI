@@ -6,6 +6,7 @@ export { default as ListItem } from "./ListItem";
 export { default as Layout } from "./Layout";
 export { default as ProfileList } from "./ProfileList";
 export { default as RichTypography } from "./RichTypography";
+export { default as ScrollBar } from "./ScrollBar";
 export { default as ScrollableGridList } from "./ScrollableGridList";
 export { default as Section } from "./Section";
 export { default as StoryList } from "./StoryList";
