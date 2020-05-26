@@ -10,6 +10,7 @@ import useStyles from "./useStyles";
 function ListItem({
   description,
   image,
+  itemChildren,
   link,
   linkComponent,
   name,
@@ -68,6 +69,7 @@ function ListItem({
           {link.title || link.url}
         </LinkComponent>
       )}
+      {itemChildren && <>{itemChildren}</>}
     </Grid>
   );
 }
@@ -79,6 +81,7 @@ ListItem.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   href: PropTypes.string,
+  itemChildren: PropTypes.node,
   link: PropTypes.shape({
     url: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -93,6 +96,7 @@ ListItem.defaultProps = {
   description: undefined,
   href: undefined,
   link: undefined,
+  itemChildren: undefined,
   linkComponent: undefined,
   name: undefined,
   onClick: undefined,

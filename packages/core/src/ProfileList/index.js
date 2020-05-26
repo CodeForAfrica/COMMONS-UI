@@ -92,6 +92,7 @@ function ProfileList({
               name={profile.name}
               title={profile.title}
               selected={selectedIndexProp === index}
+              {...profile}
             />
           </GridListTile>
         ))}
