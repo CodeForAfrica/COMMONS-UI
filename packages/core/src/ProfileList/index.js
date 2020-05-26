@@ -89,7 +89,6 @@ function ProfileList({
               description={profile.description}
               image={profile.image}
               link={profile.link}
-              itemChildren={profile.itemChildren}
               linkComponent={linkComponent}
               name={profile.name}
               title={profile.title}
