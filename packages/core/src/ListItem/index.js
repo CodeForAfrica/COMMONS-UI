@@ -19,7 +19,7 @@ function ListItem({
   title,
   ...props
 }) {
-  const classes = useStyles({ ...props, image, onClick, itemChildren });
+  const classes = useStyles({ ...props, image, onClick });
   const buttonProps = onClick
     ? { role: "button", tabIndex: 0, onClick, onKeyUp: undefined }
     : {};
