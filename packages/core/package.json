@@ -2,7 +2,6 @@
   "name": "@commons-ui/core",
   "version": "0.0.1-alpha.19",
   "dependencies": {
-    "classnames": "^2.2.6",
     "clsx": "^1.1.0",
     "prop-types": "^15.7.2",
     "simplebar": "^5.1.0",
@@ -34,5 +33,6 @@
   "main": "index.js",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "fbfc704f517b13ae995dca8e1400b6e8c6683af8"
 }
