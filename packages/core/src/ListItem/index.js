@@ -69,11 +69,7 @@ function ListItem({
           {link.title || link.url}
         </LinkComponent>
       )}
-      {itemChildren && (
-        <>
-          {itemChildren}
-        </>
-      )}
+      {itemChildren && <>{itemChildren}</>}
     </Grid>
   );
 }
