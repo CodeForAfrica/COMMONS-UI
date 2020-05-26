@@ -260,7 +260,7 @@ function Footer({
 
 Footer.propTypes = {
   about: PropTypes.shape({
-    support: PropTypes.shape({}).isRequired,
+    support: PropTypes.shape({}),
     socialMedia: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   }).isRequired,
   aboutSection: PropTypes.shape({}).isRequired,

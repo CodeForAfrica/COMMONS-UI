@@ -53,7 +53,6 @@ function DocumentsAndDatasets({
             <Grid
               item
               container
-              direction
               justify="space-between"
               className={classes.contents}
             >

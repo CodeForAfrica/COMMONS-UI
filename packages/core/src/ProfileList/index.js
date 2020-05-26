@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
 import React, { useCallback, useEffect, useRef } from "react";
 import { PropTypes } from "prop-types";
 
