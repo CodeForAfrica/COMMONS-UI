@@ -4,25 +4,23 @@ import { PropTypes } from "prop-types";
 
 import clsx from "clsx";
 
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import useStyles from "./useStyles";
 
 function ListItem({
   description,
   image,
   link,
-  linkComponent,
   name,
   onClick,
   selected,
   title,
   ...props
 }) {
-  const classes = useStyles({ ...props, image, onClick });
+  const classes = useStyles({ ...props, image, onClick, linkChildren });
   const buttonProps = onClick
     ? { role: "button", tabIndex: 0, onClick, onKeyUp: undefined }
     : {};
-  const LinkComponent = linkComponent || Button;
 
   return (
     <Grid
@@ -58,15 +56,10 @@ function ListItem({
           {description}
         </Typography>
       )}
-      {link && link.url && (
-        <LinkComponent
-          href={link.url}
-          variant="outlined"
-          size="small"
-          className={classes.link}
-        >
-          {link.title || link.url}
-        </LinkComponent>
+      {linkChildren && (
+        <>
+          {linkChildren}
+        </>
       )}
     </Grid>
   );
@@ -83,7 +76,7 @@ ListItem.propTypes = {
     url: PropTypes.string.isRequired,
     title: PropTypes.string,
   }),
-  linkComponent: PropTypes.elementType,
+  linkChildren: PropTypes.node,
   name: PropTypes.string,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
@@ -93,7 +86,7 @@ ListItem.defaultProps = {
   description: undefined,
   href: undefined,
   link: undefined,
-  linkComponent: undefined,
+  linkChildren: undefined,
   name: undefined,
   onClick: undefined,
   selected: false,
