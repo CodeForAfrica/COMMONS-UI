@@ -4,23 +4,26 @@ import { PropTypes } from "prop-types";
 
 import clsx from "clsx";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import useStyles from "./useStyles";
 
 function ListItem({
   description,
   image,
+  itemChildren,
   link,
+  linkComponent,
   name,
   onClick,
   selected,
   title,
   ...props
 }) {
-  const classes = useStyles({ ...props, image, onClick, linkChildren });
+  const classes = useStyles({ ...props, image, onClick, itemChildren });
   const buttonProps = onClick
     ? { role: "button", tabIndex: 0, onClick, onKeyUp: undefined }
     : {};
+  const LinkComponent = linkComponent || Button;
 
   return (
     <Grid
@@ -56,9 +59,19 @@ function ListItem({
           {description}
         </Typography>
       )}
-      {linkChildren && (
+      {link && link.url && (
+        <LinkComponent
+          href={link.url}
+          variant="outlined"
+          size="small"
+          className={classes.link}
+        >
+          {link.title || link.url}
+        </LinkComponent>
+      )}
+      {itemChildren && (
         <>
-          {linkChildren}
+          {itemChildren}
         </>
       )}
     </Grid>
@@ -72,11 +85,12 @@ ListItem.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   href: PropTypes.string,
+  itemChildren: PropTypes.node,
   link: PropTypes.shape({
     url: PropTypes.string.isRequired,
     title: PropTypes.string,
   }),
-  linkChildren: PropTypes.node,
+  linkComponent: PropTypes.elementType,
   name: PropTypes.string,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
@@ -86,7 +100,8 @@ ListItem.defaultProps = {
   description: undefined,
   href: undefined,
   link: undefined,
-  linkChildren: undefined,
+  itemChildren: undefined,
+  linkComponent: undefined,
   name: undefined,
   onClick: undefined,
   selected: false,

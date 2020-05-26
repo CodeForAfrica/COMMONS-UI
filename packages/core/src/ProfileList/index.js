@@ -14,6 +14,7 @@ function ProfileList({
   cellHeight,
   height,
   onSelectedIndexChanged,
+  linkComponent,
   lg,
   md,
   profileClassCount,
@@ -87,7 +88,9 @@ function ProfileList({
               }
               description={profile.description}
               image={profile.image}
-              linkChildren={profile.linkChildren}
+              link={profile.link}
+              itemChildren={profile.itemChildren}
+              linkComponent={linkComponent}
               name={profile.name}
               title={profile.title}
               selected={selectedIndexProp === index}
@@ -102,6 +105,7 @@ function ProfileList({
 ProfileList.propTypes = {
   cellHeight: PropTypes.number,
   height: PropTypes.number,
+  linkComponent: PropTypes.elementType,
   lg: PropTypes.number,
   md: PropTypes.number,
   onSelectedIndexChanged: PropTypes.func,
@@ -114,7 +118,11 @@ ProfileList.propTypes = {
         description: PropTypes.string,
         url: PropTypes.string.isRequired,
       }),
-      linkChildren: PropTypes.nodes,
+      link: PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string.isRequired,
+      }),
+      itemChildren: PropTypes.nodes,
       name: PropTypes.string,
       title: PropTypes.string,
     })
@@ -128,6 +136,7 @@ ProfileList.propTypes = {
 ProfileList.defaultProps = {
   cellHeight: 320,
   height: 370, // 23.125rem
+  linkComponent: undefined,
   lg: undefined,
   md: 4.3,
   onSelectedIndexChanged: undefined,
