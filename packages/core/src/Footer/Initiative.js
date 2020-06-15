@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import A from "../A";
+import RichTypography from "../RichTypography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Initiative({ logo, about }) {
-  const classes = useStyles();
+function Initiative({ logo, initiative, ...props }) {
+  const classes = useStyles(props);
+
   return (
     <div className={classes.root}>
       <A href={logo.url}>
@@ -38,17 +39,15 @@ function Initiative({ logo, about }) {
           className={classes.supporterLogo}
         />
       </A>
-      <Typography variant="caption" className={classes.support}>
-        {about.initiative}
-      </Typography>
+      <RichTypography variant="caption" className={classes.support}>
+        {initiative}
+      </RichTypography>
     </div>
   );
 }
 
 Initiative.propTypes = {
-  about: PropTypes.shape({
-    initiative: PropTypes.node,
-  }).isRequired,
+  initiative: PropTypes.node.isRequired,
   logo: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string.isRequired,

@@ -1,6 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
+import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Footer } from "@commons-ui/core";
@@ -32,10 +33,12 @@ const QUICK_LINKS = [
   },
 ];
 
-const LEGAL_LINKS = [
-  { href: "/privacy", label: "PRIVACY POLICY" },
-  { href: "/terms", label: "TERMS OF SERVICES" },
-];
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
 const ABOUT = {
   about:
@@ -104,25 +107,48 @@ const SOCIAL_MEDIA = {
   ],
 };
 
-storiesOf("Components|Footer", module).add("Footer", () => {
-  const classes = makeStyles((theme) => ({
-    section: {
-      margin: "0 auto",
-      [theme.breakpoints.up("md")]: {
-        width: "85%",
+storiesOf("Components|Footer", module)
+  .add("Default", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
       },
-    },
-  }))();
+    }))();
 
-  return (
-    <Footer
-      about={SOCIAL_MEDIA}
-      aboutSection={ABOUT}
-      initiativeLogo={INITIATIVE_LOGO}
-      legalLinks={LEGAL_LINKS}
-      quickLinks={QUICK_LINKS}
-      organizationLogo={CFA}
-      classes={{ section: classes.section }}
-    />
-  );
-});
+    return (
+      <Footer
+        about={SOCIAL_MEDIA}
+        aboutSection={ABOUT}
+        initiativeLogo={INITIATIVE_LOGO}
+        legalLinks={LEGAL_LINKS}
+        quickLinks={QUICK_LINKS}
+        organizationLogo={CFA}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Custom Link", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <Footer
+        about={SOCIAL_MEDIA}
+        aboutSection={ABOUT}
+        initiativeLogo={INITIATIVE_LOGO}
+        legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
+        quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
+        organizationLogo={CFA}
+        classes={{ section: classes.section }}
+      />
+    );
+  });

@@ -53,31 +53,17 @@ function LegalLinks({ linkComponent, links, ...props }) {
         className={clsx([classes.text, classes.list])}
         component="ul"
       >
-        {links.map(({ onClick, href, label, ...others }) => (
-          <li key={href}>
-            {onClick ? (
-              <Link
-                href={href}
-                color="textSecondary"
-                variant="caption"
-                underline="none"
-                className={classes.link}
-                onClick={(e) => onClick(e)}
-              >
-                {label}
-              </Link>
-            ) : (
-              <LinkComponent
-                {...others}
-                color="textSecondary"
-                href={href}
-                variant="caption"
-                underline="none"
-                className={classes.link}
-              >
-                {label}
-              </LinkComponent>
-            )}
+        {links.map(({ label, ...others }) => (
+          <li key={label}>
+            <LinkComponent
+              {...others}
+              color="textSecondary"
+              variant="caption"
+              underline="none"
+              className={classes.link}
+            >
+              {label}
+            </LinkComponent>
           </li>
         ))}
       </Typography>

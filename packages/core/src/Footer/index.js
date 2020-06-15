@@ -17,6 +17,10 @@ import StayInTouch from "./StayInTouch";
 const useStyles = makeStyles(
   ({ breakpoints, palette, spacing, typography }) => ({
     root: {},
+    section: {},
+    about: {},
+    aboutAbout: {},
+    aboutInitiative: {},
     divider: {
       backgroundColor: palette.secondary.main,
       height: 2,
@@ -31,7 +35,6 @@ const useStyles = makeStyles(
     dividerMobile: {
       order: 3,
     },
-    section: {},
     grow: {
       flexGrow: 1,
     },
@@ -166,7 +169,14 @@ function Footer({
           </Grid>
           <Grid container>
             <Grid item xs={12} md={4}>
-              <About about={aboutSection} />
+              <About
+                {...aboutSection}
+                classes={{
+                  root: classes.about,
+                  about: classes.aboutAbout,
+                  initiative: classes.aboutInitiative,
+                }}
+              />
             </Grid>
             <Grid item md={2} implementation="css" smDown component={Hidden} />
             <Grid item xs={6} md={2} className={classes.quickLinksMore}>
@@ -243,7 +253,7 @@ function Footer({
               className={classes.legal}
             >
               <LegalLinks
-                links={legalLinks}
+                {...legalLinks}
                 classes={{
                   root: classes.legalLinks,
                   link: classes.legalLinksLink,
@@ -272,8 +282,17 @@ Footer.propTypes = {
     url: PropTypes.string.isRequired,
   }),
   initiativeLogo: PropTypes.shape({}).isRequired,
-  legalLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  quickLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  legalLinks: PropTypes.shape({
+    linkComponent: PropTypes.node,
+    links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  }).isRequired,
+  quickLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      linkComponent: PropTypes.node,
+      links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   organizationLogo: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string.isRequired,
