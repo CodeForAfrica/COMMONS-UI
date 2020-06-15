@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function QuickLinks({ linkComponent, title, links, ...props }) {
+function QuickLinks({ linkComponent, links, title, ...props }) {
   const classes = useStyles(props);
   const LinkComponent = linkComponent || Link;
 
@@ -49,31 +49,17 @@ function QuickLinks({ linkComponent, title, links, ...props }) {
         className={clsx([classes.text, classes.list])}
         component="ul"
       >
-        {links.map(({ onClick, href, label, ...others }) => (
+        {links.map(({ label, ...others }) => (
           <li key={label}>
-            {onClick ? (
-              <Link
-                href={href}
-                color="secondary"
-                variant="caption"
-                underline="none"
-                className={classes.link}
-                onClick={(e) => onClick(e)}
-              >
-                {label}
-              </Link>
-            ) : (
-              <LinkComponent
-                {...others}
-                href={href}
-                color="secondary"
-                variant="caption"
-                underline="none"
-                className={classes.link}
-              >
-                {label}
-              </LinkComponent>
-            )}
+            <LinkComponent
+              {...others}
+              color="secondary"
+              variant="caption"
+              underline="none"
+              className={classes.link}
+            >
+              {label}
+            </LinkComponent>
           </li>
         ))}
       </Typography>
@@ -82,8 +68,8 @@ function QuickLinks({ linkComponent, title, links, ...props }) {
 }
 
 QuickLinks.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   linkComponent: PropTypes.elementType,
+  links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   title: PropTypes.string.isRequired,
 };
 QuickLinks.defaultProps = {
