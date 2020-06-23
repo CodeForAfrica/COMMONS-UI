@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Section = React.forwardRef(function Section(
-  { children, title, titleProps, ...props },
+  { children, classes: classesProp, title, titleProps, ...props },
   ref
 ) {
-  const classes = useStyles(props);
+  const classes = useStyles({ classes: classesProp });
 
   return (
-    <Layout classes={{ root: classes.root }} {...props} ref={ref}>
+    <Layout {...props} classes={{ root: classes.root }} ref={ref}>
       <RichTypography variant="h2" {...titleProps} className={classes.title}>
         {title}
       </RichTypography>
@@ -40,11 +40,16 @@ Section.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    title: PropTypes.string,
+  }),
   title: PropTypes.string,
   titleProps: PropTypes.shape({}),
 };
 
 Section.defaultProps = {
+  classes: undefined,
   title: undefined,
   titleProps: undefined,
 };
