@@ -94,7 +94,7 @@ ScrollableGridList.propTypes = {
   autoHide: PropTypes.bool,
   cellHeight: PropTypes.number,
   children: PropTypes.node,
-  height: PropTypes.oneOfType(PropTypes.number, PropTypes.string).isRequired, // in px
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, // in px
   lg: PropTypes.number,
   md: PropTypes.number,
   sm: PropTypes.number,
