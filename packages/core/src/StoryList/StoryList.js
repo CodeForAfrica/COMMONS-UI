@@ -52,7 +52,7 @@ function StoryList({
 
 StoryList.propTypes = {
   cellHeight: PropTypes.number.isRequired,
-  height: PropTypes.oneOfType(PropTypes.number, PropTypes.string), // in px
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]), // in px
   lg: PropTypes.number,
   md: PropTypes.number,
   minHeight: PropTypes.number,
