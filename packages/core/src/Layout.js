@@ -17,8 +17,9 @@ const Layout = React.forwardRef(function Layout(
   ref
 ) {
   const classes = useStyles({ classes: classesProp });
+
   return (
-    <div className={clsx(classes.root, className)} {...props} ref={ref}>
+    <div {...props} className={clsx(classes.root, className)} ref={ref}>
       {children}
     </div>
   );
@@ -26,7 +27,7 @@ const Layout = React.forwardRef(function Layout(
 
 Layout.propTypes = {
   classes: PropTypes.shape({
-    root: PropTypes.shape({}),
+    root: PropTypes.string,
   }).isRequired,
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
