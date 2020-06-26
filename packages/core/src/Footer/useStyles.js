@@ -108,8 +108,9 @@ const useStyles = makeStyles(
     stayInTouch: {},
     stayInTouchIcon: {},
     stayInTouchLink: {},
-    stayInTouchText: {},
     stayInTouchLinks: {},
+    stayInTouchText: {},
+    stayInTouchTitle: {},
     text: {},
   })
 );

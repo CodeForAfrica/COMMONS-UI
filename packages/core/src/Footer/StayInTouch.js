@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import A from "../A";
+import RichTypography from "../RichTypography";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  content: {
+  title: {
     textAlign: "center",
     [theme.breakpoints.up("md")]: {
       textAlign: "left",
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   text: {},
 }));
 
-function StayInTouch({ support, socialMedia, ...props }) {
+function StayInTouch({ support, socialMedia, title, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -49,15 +50,17 @@ function StayInTouch({ support, socialMedia, ...props }) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item xs={12} md="auto" className={classes.content}>
-        <Typography
-          variant="caption"
-          color="textSecondary"
-          className={classes.text}
-        >
-          Stay in touch with us @ &nbsp;
-        </Typography>
-      </Grid>
+      {title && (
+        <Grid item xs={12} md="auto" className={classes.title}>
+          <RichTypography
+            variant="caption"
+            color="textSecondary"
+            className={classes.text}
+          >
+            {title}
+          </RichTypography>
+        </Grid>
+      )}
       <Grid
         item
         xs={12}
@@ -99,13 +102,6 @@ function StayInTouch({ support, socialMedia, ...props }) {
 }
 
 StayInTouch.propTypes = {
-  support: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-    image: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired,
-    }).isRequired,
-  }),
   socialMedia: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -115,10 +111,19 @@ StayInTouch.propTypes = {
       }).isRequired,
     }).isRequired
   ).isRequired,
+  support: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    image: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }).isRequired,
+  }),
+  title: PropTypes.string,
 };
 
 StayInTouch.defaultProps = {
   support: undefined,
+  title: "Stay in touch with us @ &nbsp;",
 };
 
 export default StayInTouch;

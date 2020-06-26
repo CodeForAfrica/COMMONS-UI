@@ -1,7 +1,7 @@
 import React from "react";
 
 import { storiesOf } from "@storybook/react";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -69,7 +69,7 @@ const CFA = {
   url: "https://codeforafrica.org",
 };
 
-const SOCIAL_MEDIA = {
+const CONTACTS = {
   support: {
     email: "hello@contact.com",
     image: {
@@ -120,12 +120,14 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
+    const contacts = CONTACTS;
+    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
-        about={SOCIAL_MEDIA}
-        aboutSection={ABOUT}
+        about={ABOUT}
+        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={LEGAL_LINKS}
         quickLinks={QUICK_LINKS}
@@ -144,12 +146,14 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
+    const contacts = CONTACTS;
+    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
-        about={SOCIAL_MEDIA}
-        aboutSection={ABOUT}
+        about={ABOUT}
+        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
         quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}

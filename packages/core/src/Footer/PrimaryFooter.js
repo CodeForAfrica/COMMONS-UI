@@ -14,9 +14,8 @@ import Section from "../Section";
 import useStyles from "./useStyles";
 
 function PrimaryFooter({
-  aboutSection,
+  about,
   initiativeLogo,
-  legalLinks,
   quickLinks,
   organizationLogo,
   ...props
@@ -49,7 +48,7 @@ function PrimaryFooter({
         <Grid container>
           <Grid item xs={12} md={4}>
             <About
-              {...aboutSection}
+              {...about}
               classes={{
                 root: classes.about,
                 about: classes.aboutAbout,
@@ -70,10 +69,7 @@ function PrimaryFooter({
           </Grid>
           <Grid item xs={12} md={2} className={classes.initiative}>
             <div className={classes.project}>
-              <Initiative
-                logo={initiativeLogo}
-                initiative={aboutSection.initiative}
-              />
+              <Initiative logo={initiativeLogo} initiative={about.initiative} />
             </div>
           </Grid>
           <Grid
@@ -94,17 +90,9 @@ function PrimaryFooter({
 
 PrimaryFooter.propTypes = {
   about: PropTypes.shape({
-    support: PropTypes.shape({}),
-    socialMedia: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  }).isRequired,
-  aboutSection: PropTypes.shape({
     initiative: PropTypes.string,
   }).isRequired,
   initiativeLogo: PropTypes.shape({}).isRequired,
-  legalLinks: PropTypes.shape({
-    linkComponent: PropTypes.node,
-    links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  }).isRequired,
   quickLinks: PropTypes.arrayOf(
     PropTypes.shape({
       linkComponent: PropTypes.node,
