@@ -1,5 +1,7 @@
 import React from "react";
+
 import { storiesOf } from "@storybook/react";
+import { withKnobs, select } from "@storybook/addon-knobs";
 
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -107,7 +109,8 @@ const SOCIAL_MEDIA = {
   ],
 };
 
-storiesOf("Components|Footer", module)
+storiesOf("Components/Footer", module)
+  .addDecorator(withKnobs)
   .add("Default", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -117,6 +120,7 @@ storiesOf("Components|Footer", module)
         },
       },
     }))();
+    const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
@@ -126,6 +130,7 @@ storiesOf("Components|Footer", module)
         legalLinks={LEGAL_LINKS}
         quickLinks={QUICK_LINKS}
         organizationLogo={CFA}
+        variant={variant}
         classes={{ section: classes.section }}
       />
     );
@@ -139,6 +144,7 @@ storiesOf("Components|Footer", module)
         },
       },
     }))();
+    const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
@@ -148,6 +154,7 @@ storiesOf("Components|Footer", module)
         legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
         quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
         organizationLogo={CFA}
+        variant={variant}
         classes={{ section: classes.section }}
       />
     );
