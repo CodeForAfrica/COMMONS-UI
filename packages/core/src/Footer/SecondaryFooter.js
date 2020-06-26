@@ -13,7 +13,7 @@ import StayInTouch from "./StayInTouch";
 import useStyles from "./useStyles";
 
 function SecondaryFooter({
-  about: { support, socialMedia },
+  contacts,
   copyright,
   copyrightLogo,
   copyrightYear,
@@ -28,13 +28,13 @@ function SecondaryFooter({
         <Grid container justify="space-between" alignItems="center">
           <Grid item xs={12} md={5}>
             <StayInTouch
-              support={support}
-              socialMedia={socialMedia}
+              {...contacts}
               classes={{
                 root: classes.stayInTouch,
                 icon: classes.stayInTouchIcon,
                 link: classes.stayInTouchLink,
                 links: classes.stayInTouchLinks,
+                title: classes.stayInTouchTitle,
                 text: classes.stayInTouchText,
               }}
             />
@@ -97,9 +97,10 @@ function SecondaryFooter({
 }
 
 SecondaryFooter.propTypes = {
-  about: PropTypes.shape({
-    support: PropTypes.shape({}),
+  contacts: PropTypes.shape({
     socialMedia: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+    support: PropTypes.shape({}),
+    title: PropTypes.string,
   }).isRequired,
   copyright: PropTypes.string,
   copyrightLogo: PropTypes.shape({
