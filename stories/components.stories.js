@@ -19,7 +19,7 @@ import imgHighlight from "./assets/illo-02.png";
 
 import "simplebar/dist/simplebar.min.css";
 
-storiesOf("Components|Profile List", module)
+storiesOf("Components/Profile List", module)
   .add("Default", () => {
     const profiles = getProfiles();
     return (
@@ -106,7 +106,7 @@ storiesOf("Components|Profile List", module)
     );
   });
 
-storiesOf("Components|Story List", module).add("Default", () => {
+storiesOf("Components/Story List", module).add("Default", () => {
   const foundStories = useStories(
     "https://pesacheck.org/tagged/public-finance"
   );
@@ -126,7 +126,7 @@ storiesOf("Components|Story List", module).add("Default", () => {
   );
 });
 
-storiesOf("Components|DocumentsAndDatasets", module)
+storiesOf("Components/DocumentsAndDatasets", module)
   .addDecorator(withKnobs)
   .add("Default", () =>
     React.createElement(() => {

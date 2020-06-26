@@ -53,7 +53,6 @@ ScrollBar.propTypes = {
   autoHide: PropTypes.bool,
   children: PropTypes.node,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, // in px
-  list: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 ScrollBar.defaultProps = {
