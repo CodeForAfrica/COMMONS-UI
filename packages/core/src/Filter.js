@@ -126,9 +126,8 @@ Filter.propTypes = {
 
 Filter.defaultProps = {
   activeTopic: undefined,
-  activeSubButton: undefined,
+  activeSubTopic: undefined,
   onButtonClick: undefined,
   onSubTopicButtonClick: undefined,
-
 };
 export default Filter;
