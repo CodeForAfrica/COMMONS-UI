@@ -252,6 +252,7 @@ storiesOf("Components/Filter", module)
       return (
         <div>
           <Filter
+            activeTopic={text("activeTopic", "all")}
             parentTopics={parentTopics}
             subTopics={subTopics}
             classes={{
