@@ -9,7 +9,12 @@ import {
   StorageOutlined as StorageIcon,
 } from "@material-ui/icons";
 import { Grid } from "@material-ui/core";
-import { DocumentsAndDatasets, Filter, ProfileList, StoryList } from "@commons-ui/core";
+import {
+  DocumentsAndDatasets,
+  Filter,
+  ProfileList,
+  StoryList,
+} from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationButton from "./NavigationButton";
@@ -190,30 +195,30 @@ storiesOf("Components/DocumentsAndDatasets", module)
     })
   );
 
-  storiesOf("Components/Filter", module)
+storiesOf("Components/Filter", module)
   .addDecorator(withKnobs)
   .add("Default", () =>
     React.createElement(() => {
-      const classes = makeStyles(({ breakpoints }) => ({
+      const classes = makeStyles(() => ({
         filterButton: {
-              color: "#818080",
-              background: "#F0EFEF",
-              border: 0,
-              borderRadius: 0,
-              boxShadow: "0.125rem 0.125rem 0.25rem #00000026",
-              letterSpacing: 0,
-              "&:hover": {
-                background: "#DD4C1A",
-              },
+          color: "#818080",
+          background: "#F0EFEF",
+          border: 0,
+          borderRadius: 0,
+          boxShadow: "0.125rem 0.125rem 0.25rem #00000026",
+          letterSpacing: 0,
+          "&:hover": {
+            background: "#DD4C1A",
+          },
         },
         filterActiveButton: {
-            border: "1px solid #DD4C1A",
-            background: "#DD4C1A",
-            color: "white",
+          border: "1px solid #DD4C1A",
+          background: "#DD4C1A",
+          color: "white",
         },
         filterActiveSubButton: {
-            color: "#DD4C1A",
-            borderBottom: "2px solid #DD4C1A",
+          color: "#DD4C1A",
+          borderBottom: "2px solid #DD4C1A",
         },
         filterCaption: {
           color: "#6A6A6A",
@@ -229,23 +234,24 @@ storiesOf("Components/DocumentsAndDatasets", module)
         },
       }))();
 
-      const parentTopics=object("parentTopics",  [ { name: "All", slug: "all" },
-                                  { name: "Technology", slug: "technology" },
-                                  { name: "Policy", slug: "Policy" },
-                                  { name: "Culture", slug: "Culture" },
-                                  { name: "Research", slug: "Research" },
-                                  { name: "Other", slug: "other" }] 
-                                );
+      const parentTopics = object("parentTopics", [
+        { name: "All", slug: "all" },
+        { name: "Technology", slug: "technology" },
+        { name: "Policy", slug: "Policy" },
+        { name: "Culture", slug: "Culture" },
+        { name: "Research", slug: "Research" },
+        { name: "Other", slug: "other" },
+      ]);
       const subTopics = object("subTopics", [
         { name: "Complete", slug: "complete" },
         { name: "Active", slug: "active" },
         { name: "Stalled", slug: "stalled" },
         { name: "Unknown", slug: "unknown" },
-    ]);
+      ]);
 
       return (
         <div>
-          <Filter 
+          <Filter
             parentTopics={parentTopics}
             subTopics={subTopics}
             classes={{

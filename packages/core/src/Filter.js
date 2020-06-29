@@ -1,6 +1,6 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import classNames from "classnames";
+import clsx from "clsx";
 
 import { Grid, Button, ButtonBase } from "@material-ui/core";
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "57px",
     padding: "0.5rem",
     "&:hover": {
-      color: theme.palette.text.secondary
+      color: theme.palette.text.secondary,
     },
     [theme.breakpoints.up("md")]: {
       fontSize: "1rem",
@@ -80,19 +80,20 @@ function Filter({
   return (
     <Grid container className={classes.root}>
       <Grid item container spacing={2} className={classes.filter}>
-        {parentTopics && parentTopics.map((item) => (
-          <Grid item>
-            <Button
-              rounded
-              className={classNames(classes.button, {
-                [classes.activeButton]: item.slug === activeTopic,
-              })}
-              onClick={() => onButtonClick(item.slug)}
-            >
-              {item.name}
-            </Button>
-          </Grid>
-        ))}
+        {parentTopics &&
+          parentTopics.map((item) => (
+            <Grid item>
+              <Button
+                rounded
+                className={clsx(classes.button, {
+                  [classes.activeButton]: item.slug === activeTopic,
+                })}
+                onClick={() => onButtonClick(item.slug)}
+              >
+                {item.name}
+              </Button>
+            </Grid>
+          ))}
       </Grid>
       {subTopics && subTopics.length > 0 && (
         <Grid item xs={12} className={classes.subtopic}>
@@ -101,9 +102,10 @@ function Filter({
               variant="caption"
               href="#"
               onClick={() => onSubTopicButtonClick(item.slug)}
-              className={classNames(classes.caption, {
+              className={clsx(classes.caption, {
                 [classes.activeSubButton]: item.slug === activeSubTopic,
-              })}>
+              })}
+            >
               {item.name}
             </ButtonBase>
           ))}
@@ -119,13 +121,14 @@ Filter.propTypes = {
   parentTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   subTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   activeTopic: PropTypes.string,
-  activeSubTopic: PropTypes.string
+  activeSubTopic: PropTypes.string,
 };
 
 Filter.defaultProps = {
   activeTopic: undefined,
   activeSubButton: undefined,
   onButtonClick: undefined,
-  onSubTopicButtonClick: undefined
-}
+  onSubTopicButtonClick: undefined,
+
+};
 export default Filter;
