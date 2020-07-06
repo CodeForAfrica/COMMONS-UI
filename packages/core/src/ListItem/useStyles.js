@@ -10,13 +10,11 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
     zIndex: 1,
   },
   contentsRoot: {
+    color: palette.text.primary,
     position: "relative",
-    [breakpoints.up("md")]: {
-      alignItems: "flex-end",
-    },
+    alignItems: "flex-end",
   },
   contents: {
-    color: palette.text.primary,
     [breakpoints.up("md")]: {
       bottom: 0,
       color: palette.text.secondary,
