@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 import { GridListTile, makeStyles } from "@material-ui/core";
 
-import GridList from "../ScrollableGridList";
+import { ScrollableGridList as GridList } from "@commons-ui/core";
+
 import StoryCard from "./StoryCard";
 
 const useStyles = makeStyles({
