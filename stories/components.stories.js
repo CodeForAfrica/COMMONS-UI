@@ -21,15 +21,72 @@ import NavigationButton from "./NavigationButton";
 import { getProfiles, useStories } from "./utils";
 
 import imgHighlight from "./assets/illo-02.png";
+import linkedIn from "./assets/Icon awesome-linkedin.png";
+import twitter from "./assets/Icon awesome-twitter.png";
+import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {
+    const classes = makeStyles(({ palette }) => ({
+      root: {
+        position: "relative",
+      },
+      profileContentsRoot: {
+        "&:after": {
+          bottom: 0,
+          content: '""',
+          left: 0,
+          mixBlendMode: "multiply",
+          opacity: 0.3,
+          position: "absolute",
+          right: 0,
+          top: 0,
+        },
+        "&.profile-contents-root-0": {
+          "&:after": {
+            backgroundColor: `${palette.primary.main}`,
+          },
+        },
+        "&.profile-contents-root-1": {
+          "&:after": {
+            backgroundColor: `${palette.secondary.main}`,
+          },
+        },
+        "&.profile-contents-root-2": {
+          "&:after": {
+            backgroundColor: "yellow",
+          },
+        },
+      },
+    }))();
+    const icons = {
+      linkedIn: {
+        image: {
+          url: linkedIn,
+        },
+      },
+      twitter: {
+        image: {
+          url: twitter,
+        },
+      },
+      website: {
+        image: {
+          url: website,
+        },
+      },
+    };
+
     const profiles = getProfiles();
     return (
       <div style={{ margin: "0 auto", width: "80%", overflow: "visible" }}>
-        <ProfileList profiles={profiles} />
+        <ProfileList
+          contactIcons={icons}
+          profiles={profiles}
+          classes={{ profileContentsRoot: classes.profileContentsRoot }}
+        />
       </div>
     );
   })
@@ -112,6 +169,38 @@ storiesOf("Components/Profile List", module)
   });
 
 storiesOf("Components/Story List", module).add("Default", () => {
+  const classes = makeStyles(({ palette }) => ({
+    root: {
+      position: "relative",
+    },
+    storyContentsRoot: {
+      "&:after": {
+        bottom: 0,
+        content: '""',
+        left: 0,
+        mixBlendMode: "multiply",
+        opacity: 0.3,
+        position: "absolute",
+        right: 0,
+        top: 0,
+      },
+      "&.story-contents-root-0": {
+        "&:after": {
+          backgroundColor: `${palette.primary.main}`,
+        },
+      },
+      "&.story-contents-root-1": {
+        "&:after": {
+          backgroundColor: `${palette.secondary.main}`,
+        },
+      },
+      "&.story-contents-root-2": {
+        "&:after": {
+          backgroundColor: "yellow",
+        },
+      },
+    },
+  }))();
   const foundStories = useStories(
     "https://pesacheck.org/tagged/public-finance"
   );
@@ -126,7 +215,13 @@ storiesOf("Components/Story List", module).add("Default", () => {
 
   return (
     <div style={{ margin: "0 auto", width: "80%", overflow: "visible" }}>
-      <StoryList md={3.3} spacing={0} stories={stories} xs={1.3} />
+      <StoryList
+        classes={{ storyContentsRoot: classes.storyContentsRoot }}
+        md={3.3}
+        spacing={0}
+        stories={stories}
+        xs={1.3}
+      />
     </div>
   );
 });
