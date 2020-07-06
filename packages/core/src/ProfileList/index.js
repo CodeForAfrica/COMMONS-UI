@@ -1,23 +1,26 @@
 import React, { useCallback, useEffect, useRef } from "react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 import clsx from "clsx";
 
 import { GridListTile } from "@material-ui/core";
 
-import GridList from "../ScrollableGridList";
+import { ScrollableGridList as GridList } from "@commons-ui/core";
+
+import Contacts from "./Contacts";
 import Profile from "../ListItem";
 import useStyles from "./useStyles";
 
 function ProfileList({
   cellHeight,
+  contactIcons,
   height,
   onSelectedIndexChanged,
   linkComponent,
   lg,
   md,
-  profileClassCount,
-  profileClassPrefix,
+  profileContentsRootClassCount,
+  profileContentsRootClassPrefix,
   profiles,
   scrollOnSelectedIndexChange: scrollOnSelectedIndexChangeProp,
   selectedIndex: selectedIndexProp,
@@ -68,11 +71,14 @@ function ProfileList({
           <GridListTile key={profile.id}>
             <Profile
               classes={{
-                root: clsx(classes.profile, {
-                  [`${profileClassPrefix}${
-                    index % profileClassCount
-                  }`]: profileClassCount,
-                }),
+                root: classes.profile,
+                contentsRoot: clsx(
+                  classes.profileContentsRoot,
+                  `${profileContentsRootClassPrefix}${
+                    index % profileContentsRootClassCount
+                  }`
+                ),
+                contents: classes.profileContents,
                 description: classes.profileDescription,
                 link: classes.profileLink,
                 name: classes.profileName,
@@ -85,15 +91,15 @@ function ProfileList({
               onClick={
                 onSelectedIndexChanged && (() => handleClick(index, true))
               }
-              description={profile.description}
               image={profile.image}
               link={profile.link}
               linkComponent={linkComponent}
               name={profile.name}
-              title={profile.title}
               selected={selectedIndexProp === index}
-              {...profile}
-            />
+              variant="profile"
+            >
+              <Contacts icons={contactIcons} profile={profile} />
+            </Profile>
           </GridListTile>
         ))}
       </GridList>
@@ -103,13 +109,14 @@ function ProfileList({
 
 ProfileList.propTypes = {
   cellHeight: PropTypes.number,
+  contactIcons: PropTypes.shape({}),
   height: PropTypes.number,
   linkComponent: PropTypes.elementType,
   lg: PropTypes.number,
   md: PropTypes.number,
   onSelectedIndexChanged: PropTypes.func,
-  profileClassCount: PropTypes.number,
-  profileClassPrefix: PropTypes.string,
+  profileContentsRootClassCount: PropTypes.number,
+  profileContentsRootClassPrefix: PropTypes.string,
   profiles: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
@@ -133,13 +140,14 @@ ProfileList.propTypes = {
 
 ProfileList.defaultProps = {
   cellHeight: 320,
+  contactIcons: undefined,
   height: 370, // 23.125rem
   linkComponent: undefined,
   lg: undefined,
   md: 4.3,
+  profileContentsRootClassCount: 3,
+  profileContentsRootClassPrefix: "profile-contents-root-",
   onSelectedIndexChanged: undefined,
-  profileClassCount: 3,
-  profileClassPrefix: "profile-",
   scrollOnSelectedIndexChange: false,
   selectedIndex: 0,
   sm: undefined,
