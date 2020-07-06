@@ -25,7 +25,7 @@ function Contents({
   variant,
   ...props
 }) {
-  const classes = useStyles({ ...props });
+  const classes = useStyles(props);
   const LinkComponent = link && (linkComponent || Button);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
