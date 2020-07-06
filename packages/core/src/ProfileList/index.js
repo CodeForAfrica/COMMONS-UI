@@ -154,4 +154,5 @@ ProfileList.defaultProps = {
   xs: 1,
 };
 
+export { Contacts };
 export default ProfileList;
