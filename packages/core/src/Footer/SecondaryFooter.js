@@ -111,10 +111,7 @@ SecondaryFooter.propTypes = {
     url: PropTypes.string.isRequired,
   }),
   copyrightYear: PropTypes.string,
-  legalLinks: PropTypes.shape({
-    linkComponent: PropTypes.node,
-    links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-  }).isRequired,
+  legalLinks: PropTypes.shape({}).isRequired,
 };
 
 SecondaryFooter.defaultProps = {

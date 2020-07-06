@@ -8,6 +8,16 @@ const useStyles = makeStyles(() => ({
   title: {},
   description: {},
   story: {},
+  storyContentsRoot: {},
+  storyContents: {
+    "&:before": {
+      background:
+        "transparent linear-gradient(180deg, #170F49 0%, #000000 60%, #000000 100%) 0% 0% no-repeat padding-box",
+      mixBlendMode: "multiply",
+      opacity: 0.5,
+    },
+  },
+  storyContent: {},
   storyDescription: {},
   storyLink: {},
   storyName: {},

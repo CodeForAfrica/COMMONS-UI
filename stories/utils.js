@@ -13,6 +13,14 @@ export function getProfiles() {
       },
       name: "Firstname1 Lastname1",
       title: "Credible Institute",
+      contacts: {
+        linkedIn: {
+          url: "//twitter.com/twitter1",
+        },
+        twitter: {
+          url: "//twitter.com/twitter1",
+        },
+      },
     },
     {
       id: 2,
@@ -23,6 +31,17 @@ export function getProfiles() {
       },
       name: "Firstname2 Lastname2",
       title: "Credible Institute",
+      contacts: {
+        linkedIn: {
+          url: "//linkedin.com/linkedin2",
+        },
+        twitter: {
+          url: "//twitter.com/twitter2",
+        },
+        website: {
+          url: "//website2.com",
+        },
+      },
     },
     {
       id: 3,
@@ -33,6 +52,11 @@ export function getProfiles() {
       },
       name: "Firstname3 Lastname3",
       title: "Credible Institute",
+      contacts: {
+        website: {
+          url: "//website3.com",
+        },
+      },
     },
     {
       id: 4,

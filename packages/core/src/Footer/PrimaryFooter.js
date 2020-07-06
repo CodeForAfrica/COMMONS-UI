@@ -93,13 +93,7 @@ PrimaryFooter.propTypes = {
     initiative: PropTypes.string,
   }).isRequired,
   initiativeLogo: PropTypes.shape({}).isRequired,
-  quickLinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      linkComponent: PropTypes.node,
-      links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
-      title: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  quickLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   organizationLogo: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string.isRequired,

@@ -5,8 +5,10 @@ import clsx from "clsx";
 
 import { GridListTile } from "@material-ui/core";
 
-import GridList from "../ScrollableGridList";
+import { ScrollableGridList as GridList } from "@commons-ui/core";
+
 import Story from "../ListItem";
+
 import useStyles from "./useStyles";
 
 function StoryList({
@@ -17,8 +19,8 @@ function StoryList({
   md,
   onClick,
   sm,
-  storyClassCount,
-  storyClassPrefix,
+  storyContentsRootClassCount,
+  storyContentsRootClassPrefix,
   stories,
   xs,
   ...props
@@ -48,11 +50,15 @@ function StoryList({
           <GridListTile key={story.id}>
             <Story
               classes={{
-                root: clsx(classes.story, {
-                  [`${storyClassPrefix}${
-                    index % storyClassCount
-                  }`]: storyClassCount,
-                }),
+                root: classes.story,
+                contentsRoot: clsx(
+                  classes.storyContentsRoot,
+                  `${storyContentsRootClassPrefix}${
+                    index % storyContentsRootClassCount
+                  }`
+                ),
+                contents: classes.storyContents,
+                content: classes.storyContent,
                 description: classes.storyDescription,
                 link: classes.storyLink,
                 name: classes.storyName,
@@ -82,8 +88,8 @@ StoryList.propTypes = {
   lg: PropTypes.number,
   md: PropTypes.number,
   onClick: PropTypes.func,
-  storyClassCount: PropTypes.number,
-  storyClassPrefix: PropTypes.string,
+  storyContentsRootClassCount: PropTypes.number,
+  storyContentsRootClassPrefix: PropTypes.string,
   stories: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string,
@@ -111,8 +117,8 @@ StoryList.defaultProps = {
   md: 3.3,
   onClick: undefined,
   sm: undefined,
-  storyClassCount: 3,
-  storyClassPrefix: "story-",
+  storyContentsRootClassCount: 3,
+  storyContentsRootClassPrefix: "story-contents-root-",
   xs: 1.3,
 };
 
