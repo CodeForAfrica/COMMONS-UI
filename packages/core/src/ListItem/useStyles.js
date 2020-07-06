@@ -1,32 +1,46 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ breakpoints, palette }) => ({
   root: {
     cursor: (props) => (props.onClick ? "pointer" : "inherit"),
-    position: "relative",
     height: (props) => props.height,
-    padding: 16,
     width: "100%",
-    "&:after": {
-      backgroundColor: `${theme.palette.primary.main}`,
-      backgroundImage: (props) => `url("${props.image.url}")`,
-      backgroundPosition: "top left",
-      backgroundSize: "100% auto",
-      backgroundRepeat: "no-repeat",
+  },
+  content: {
+    zIndex: 1,
+  },
+  contentsRoot: {
+    position: "relative",
+    [breakpoints.up("md")]: {
+      alignItems: "flex-end",
+    },
+  },
+  contents: {
+    color: palette.text.primary,
+    [breakpoints.up("md")]: {
       bottom: 0,
-      content: '""',
-      left: 0,
-      mixBlendMode: "multiply",
-      opacity: 0.3,
+      color: palette.text.secondary,
+      minHeight: "33%",
+      padding: "1rem",
       position: "absolute",
-      right: 0,
-      top: 0,
+      "&:before": {
+        bottom: 0,
+        background:
+          "transparent linear-gradient(180deg, #FFFFFF 0%, #000000 60%, #000000 100%) 0% 0% no-repeat padding-box",
+        content: '""',
+        left: 0,
+        mixBlendMode: "multiply",
+        opacity: 0.5,
+        position: "absolute",
+        right: 0,
+        top: 0,
+      },
     },
   },
   picture: {
-    display: "none",
-    height: "auto",
-    width: "100%",
+    height: "100%",
+    position: "absolute",
+    width: "auto",
   },
   pictureSelected: {},
   title: {
