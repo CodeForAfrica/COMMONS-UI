@@ -49,6 +49,7 @@ function ListItem({
       <Grid
         item
         xs={isMobile && isProfile ? 6 : 12}
+        container
         className={classes.contentsRoot}
       >
         <img
@@ -58,7 +59,7 @@ function ListItem({
             [classes.pictureSelected]: selected,
           })}
         />
-        {isDesktop && (
+        {(!isProfile || isDesktop) && (
           <Contents
             name={name}
             selected={selected}
