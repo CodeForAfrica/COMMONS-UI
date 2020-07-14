@@ -82,9 +82,8 @@ function Filter({
       <Grid item container spacing={2} className={classes.filter}>
         {parentTopics &&
           parentTopics.map((item) => (
-            <Grid item>
+            <Grid item key={item.slug}>
               <Button
-                rounded
                 className={clsx(classes.button, {
                   [classes.activeButton]: item.slug === activeTopic,
                 })}
@@ -99,8 +98,8 @@ function Filter({
         <Grid item xs={12} className={classes.subtopic}>
           {subTopics.map((item) => (
             <ButtonBase
+              key={item.slug}
               variant="caption"
-              href="#"
               onClick={() => onSubTopicButtonClick(item.slug)}
               className={clsx(classes.caption, {
                 [classes.activeSubButton]: item.slug === activeSubTopic,
