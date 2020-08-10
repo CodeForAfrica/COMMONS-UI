@@ -22,6 +22,7 @@ function ProfileList({
   profileContentsRootClassCount,
   profileContentsRootClassPrefix,
   profiles,
+  profileVariant,
   scrollOnSelectedIndexChange: scrollOnSelectedIndexChangeProp,
   selectedIndex: selectedIndexProp,
   sm,
@@ -96,7 +97,7 @@ function ProfileList({
               linkComponent={linkComponent}
               name={profile.name}
               selected={selectedIndexProp === index}
-              variant="profile"
+              variant={profileVariant}
             >
               <Contacts icons={contactIcons} profile={profile} />
             </Profile>
@@ -132,6 +133,7 @@ ProfileList.propTypes = {
       title: PropTypes.string,
     })
   ).isRequired,
+  profileVariant: PropTypes.oneOf(["profile", "story"]),
   scrollOnSelectedIndexChange: PropTypes.bool,
   selectedIndex: PropTypes.number,
   sm: PropTypes.number,
@@ -147,6 +149,7 @@ ProfileList.defaultProps = {
   md: 4.3,
   profileContentsRootClassCount: 3,
   profileContentsRootClassPrefix: "profile-contents-root-",
+  profileVariant: "profile",
   onSelectedIndexChanged: undefined,
   scrollOnSelectedIndexChange: false,
   selectedIndex: 0,
