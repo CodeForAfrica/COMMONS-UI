@@ -98,6 +98,7 @@ function ProfileList({
               name={profile.name}
               selected={selectedIndexProp === index}
               variant={profileVariant}
+              {...profile}
             >
               <Contacts icons={contactIcons} profile={profile} />
             </Profile>
