@@ -3,33 +3,26 @@ import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import RichTypography from "../RichTypography";
+import RichTypography from "../../RichTypography";
+import AboutOrganization from "./AboutOrganization";
+import AboutInitiative from "./AboutInitiative";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  about: {
-    display: "block",
-  },
-  initiative: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "block",
-      marginTop: "1.5rem",
-    },
-  },
 }));
-
 function About({ about, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
-      <RichTypography variant="caption" className={classes.about}>
-        {about}
-      </RichTypography>
+      <AboutOrganization
+        about={about}
+        classes={{ about: initiativeclasses.about }}
+      />
       <br />
-      <RichTypography variant="caption" className={classes.initiative}>
-        {initiative}
-      </RichTypography>
+      <AboutInitiative
+        initiative={initiative}
+        classes={{ initiative: classes.initiative }}
+      />
     </div>
   );
 }
@@ -40,3 +33,5 @@ About.propTypes = {
 };
 
 export default About;
+export { AboutOrganization };
+export { AboutInitiative };
