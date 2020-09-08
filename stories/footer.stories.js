@@ -6,7 +6,16 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Footer } from "@commons-ui/core";
+import {
+  Footer,
+  AboutOrganization,
+  AboutInitiative,
+  OwnerLogo,
+  LegalLinks,
+  StayInTouch,
+  Initiative,
+  QuickLinks,
+} from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -16,6 +25,7 @@ import Medium from "./assets/group-3.svg";
 import LinkedIn from "./assets/group-3-copy.svg";
 import Twitter from "./assets/twitter.svg";
 
+console.log(Footer);
 const QUICK_LINKS = [
   {
     title: "MORE",
@@ -162,4 +172,121 @@ storiesOf("Components/Footer", module)
         classes={{ section: classes.section }}
       />
     );
+  })
+  .add("About Organization", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <AboutOrganization
+        about={ABOUT.about}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("About Initiative", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <AboutInitiative
+        initiative={ABOUT.initiative}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Owner Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <OwnerLogo
+        organizationLogo={CFA}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Initative Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <Initiative
+        logo={INITIATIVE_LOGO}
+        initiative={ABOUT.initativeb}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <LegalLinks
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Quick Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <QuickLinks
+        linkComponent={Button}
+        {...QUICK_LINKS[0]}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Stay In Touch", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return <StayInTouch {...CONTACTS} classes={{ section: classes.section }} />;
   });
