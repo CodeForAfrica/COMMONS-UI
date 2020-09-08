@@ -14,10 +14,7 @@ function About({ about, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
-      <AboutOrganization
-        about={about}
-        classes={{ about: initiativeclasses.about }}
-      />
+      <AboutOrganization about={about} classes={{ about: classes.about }} />
       <br />
       <AboutInitiative
         initiative={initiative}
