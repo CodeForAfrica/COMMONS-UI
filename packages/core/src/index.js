@@ -2,7 +2,16 @@
 export { default as A } from "./A";
 export { default as DocumentsAndDatasets } from "./DocumentsAndDatasets";
 export { default as Filter } from "./Filter";
-export { default as Footer } from "./Footer";
+export {
+  default as Footer,
+  AboutOrganization,
+  AboutInitiative,
+  Initiative,
+  OwnerLogo,
+  QuickLinks,
+  LegalLinks,
+  StayInTouch,
+} from "./Footer";
 export { default as ListItem } from "./ListItem";
 export { default as Layout } from "./Layout";
 export { default as ProfileList } from "./ProfileList";

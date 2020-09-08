@@ -29,3 +29,11 @@ Footer.defaultProps = {
 };
 
 export default Footer;
+
+//Expose components
+export { AboutInitiative, AboutOrganization } from "./About";
+export { default as OwnerLogo } from "./OwnerLogo";
+export { default as Initiative } from "./Initiative";
+export { default as LegalLinks } from "./LegalLinks";
+export { default as QuickLinks } from "./QuickLinks";
+export { default as StayInTouch } from "./StayInTouch";
