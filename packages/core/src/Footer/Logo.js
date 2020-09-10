@@ -7,7 +7,7 @@ import { Grid, Typography } from "@material-ui/core";
 
 import useStyles from "./useStyles";
 
-function Logo({ organizationLogo, ...props }) {
+function Logo({ variant, organizationLogo, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -23,9 +23,15 @@ function Logo({ organizationLogo, ...props }) {
           </A>
         </Typography>
       </Grid>
-      <div
-        className={clsx(classes.grow, classes.divider, classes.dividerDesktop)}
-      />
+      {variant === "divider" && (
+        <div
+          className={clsx(
+            classes.grow,
+            classes.divider,
+            classes.dividerDesktop
+          )}
+        />
+      )}
     </Grid>
   );
 }
@@ -38,6 +44,10 @@ Logo.propTypes = {
     }).isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  variant: PropTypes.string,
 };
 
+Logo.defaultProps = {
+  variant: "divider",
+};
 export default Logo;
