@@ -2,7 +2,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
   ({ breakpoints, palette, spacing, typography }) => ({
-    root: {},
+    root: {
+      width: "100%",
+    },
     section: {},
     about: {
       display: "block",
@@ -48,8 +50,16 @@ const useStyles = makeStyles(
     supporterLogo: {
       width: "9.6275rem",
       height: "auto",
-      [breakpoints.up("md")]: {
+      [theme.breakpoints.up("md")]: {
         width: "13.7375rem",
+      },
+    },
+    support: {
+      display: "block",
+      marginBottom: "1.618125rem",
+      marginTop: "1.708rem",
+      [theme.breakpoints.up("md")]: {
+        display: "none",
       },
     },
     quickLinksMore: {
