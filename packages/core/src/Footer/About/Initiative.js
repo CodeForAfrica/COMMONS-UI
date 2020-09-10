@@ -5,7 +5,7 @@ import useStyles from "../useStyles";
 
 import RichTypography from "../../RichTypography";
 
-function Initiative({ variant = "caption", children, ...props }) {
+function Initiative({ children, variant, ...props }) {
   const classes = useStyles(props);
   return (
     <RichTypography variant={variant} className={classes.initiative}>
@@ -15,7 +15,12 @@ function Initiative({ variant = "caption", children, ...props }) {
 }
 
 Initiative.propTypes = {
-  initiative: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.string,
+};
+
+Initiative.defaultProps = {
+  variant: "caption",
 };
 
 export default Initiative;
