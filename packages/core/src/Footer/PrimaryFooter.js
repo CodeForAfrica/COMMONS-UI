@@ -52,7 +52,7 @@ function PrimaryFooter({
               classes={{
                 root: classes.about,
                 about: classes.aboutAbout,
-                initiative: classes.aboutInitiative,
+                initiative: classes.Initiative,
               }}
             />
           </Grid>
