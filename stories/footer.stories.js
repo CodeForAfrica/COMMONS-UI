@@ -236,9 +236,10 @@ storiesOf("Components/Footer", module)
     return (
       <FooterInitiativeLogo
         logo={INITIATIVE_LOGO}
-        initiative={ABOUT.initative}
         classes={{ section: classes.section }}
-      />
+      >
+        {ABOUT.initative}
+      </FooterInitiativeLogo>
     );
   })
   .add("Legal Links", () => {

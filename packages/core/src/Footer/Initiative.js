@@ -6,7 +6,7 @@ import RichTypography from "../RichTypography";
 
 import useStyles from "./useStyles";
 
-function Initiative({ logo, initiative, ...props }) {
+function Initiative({ logo, children, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -19,14 +19,14 @@ function Initiative({ logo, initiative, ...props }) {
         />
       </A>
       <RichTypography variant="caption" className={classes.support}>
-        {initiative}
+        {children}
       </RichTypography>
     </div>
   );
 }
 
 Initiative.propTypes = {
-  initiative: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
   logo: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string.isRequired,

@@ -71,7 +71,7 @@ function PrimaryFooter({
           </Grid>
           <Grid item xs={12} md={2} className={classes.initiative}>
             <div className={classes.project}>
-              <Initiative logo={initiativeLogo} initiative={about.initiative} />
+              <Initiative logo={initiativeLogo}>{about.initiative}</Initiative>
             </div>
           </Grid>
           <Grid
