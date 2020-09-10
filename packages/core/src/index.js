@@ -4,13 +4,13 @@ export { default as DocumentsAndDatasets } from "./DocumentsAndDatasets";
 export { default as Filter } from "./Filter";
 export {
   default as Footer,
-  AboutOrganization,
-  AboutInitiative,
-  Initiative,
-  OwnerLogo,
-  QuickLinks,
-  LegalLinks,
-  StayInTouch,
+  FooterAbout,
+  FooterInitiative,
+  FooterInitiativeLogo,
+  FooterLogo,
+  FooterQuickLinks,
+  FooterLegalLinks,
+  FooterStayInTouch,
 } from "./Footer";
 export { default as ListItem } from "./ListItem";
 export { default as Layout } from "./Layout";

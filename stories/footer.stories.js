@@ -8,13 +8,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   Footer,
-  AboutOrganization,
-  AboutInitiative,
-  OwnerLogo,
-  LegalLinks,
-  StayInTouch,
-  Initiative,
-  QuickLinks,
+  FooterAbout,
+  FooterInitiativeLogo,
+  FooterLogo,
+  FooterLegalLinks,
+  FooterStayInTouch,
+  FooterInitiative,
+  FooterQuickLinks,
 } from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
@@ -25,7 +25,6 @@ import Medium from "./assets/group-3.svg";
 import LinkedIn from "./assets/group-3-copy.svg";
 import Twitter from "./assets/twitter.svg";
 
-console.log(Footer);
 const QUICK_LINKS = [
   {
     title: "MORE",
@@ -184,10 +183,9 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <AboutOrganization
-        about={ABOUT.about}
-        classes={{ section: classes.section }}
-      />
+      <FooterAbout classes={{ section: classes.section }}>
+        {ABOUT.about}
+      </FooterAbout>
     );
   })
   .add("About Initiative", () => {
@@ -201,10 +199,9 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <AboutInitiative
-        initiative={ABOUT.initiative}
-        classes={{ section: classes.section }}
-      />
+      <FooterInitiative classes={{ section: classes.section }}>
+        {ABOUT.aboinitiativeut}
+      </FooterInitiative>
     );
   })
   .add("Owner Logo", () => {
@@ -218,7 +215,7 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <OwnerLogo
+      <FooterLogo
         organizationLogo={CFA}
         classes={{ section: classes.section }}
       />
@@ -235,7 +232,7 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <Initiative
+      <FooterInitiativeLogo
         logo={INITIATIVE_LOGO}
         initiative={ABOUT.initativeb}
         classes={{ section: classes.section }}
@@ -253,7 +250,7 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <LegalLinks
+      <FooterLegalLinks
         linkComponent={Button}
         {...LEGAL_LINKS}
         classes={{ section: classes.section }}
@@ -271,7 +268,7 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <QuickLinks
+      <FooterQuickLinks
         linkComponent={Button}
         {...QUICK_LINKS[0]}
         classes={{ section: classes.section }}
@@ -288,5 +285,7 @@ storiesOf("Components/Footer", module)
       },
     }))();
 
-    return <StayInTouch {...CONTACTS} classes={{ section: classes.section }} />;
+    return (
+      <FooterStayInTouch {...CONTACTS} classes={{ section: classes.section }} />
+    );
   });
