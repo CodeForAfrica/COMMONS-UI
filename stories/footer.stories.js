@@ -200,7 +200,7 @@ storiesOf("Components/Footer", module)
 
     return (
       <FooterInitiative classes={{ section: classes.section }}>
-        {ABOUT.aboinitiativeut}
+        {ABOUT.initiative}
       </FooterInitiative>
     );
   })
