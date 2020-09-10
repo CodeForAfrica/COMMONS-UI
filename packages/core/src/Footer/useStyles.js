@@ -4,9 +4,17 @@ const useStyles = makeStyles(
   ({ breakpoints, palette, spacing, typography }) => ({
     root: {},
     section: {},
-    about: {},
+    about: {
+      display: "block",
+    },
     aboutAbout: {},
-    aboutInitiative: {},
+    initiative: {
+      display: "none",
+      [theme.breakpoints.up("md")]: {
+        display: "block",
+        marginTop: "1.5rem",
+      },
+    },
     divider: {
       backgroundColor: palette.secondary.main,
       height: 2,
