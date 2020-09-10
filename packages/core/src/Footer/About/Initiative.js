@@ -15,7 +15,6 @@ function Initiative({ variant = "caption", children, ...props }) {
 }
 
 Initiative.propTypes = {
-  about: PropTypes.string.isRequired,
   initiative: PropTypes.node.isRequired,
 };
 
