@@ -5,7 +5,7 @@ import useStyles from "../useStyles";
 
 import RichTypography from "../../RichTypography";
 
-function About({ variant = "caption", children, ...props }) {
+function About({ children, variant, ...props }) {
   const classes = useStyles(props);
   return (
     <RichTypography variant={variant} className={classes.about}>
@@ -15,7 +15,11 @@ function About({ variant = "caption", children, ...props }) {
 }
 
 About.propTypes = {
-  about: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.string,
 };
 
+About.defaultProps = {
+  variant: "caption",
+};
 export default About;

@@ -48,13 +48,15 @@ function PrimaryFooter({
         <Grid container>
           <Grid item xs={12} md={4}>
             <About
-              {...about}
+              initiative={about.initiative}
               classes={{
                 root: classes.about,
                 about: classes.aboutAbout,
                 initiative: classes.Initiative,
               }}
-            />
+            >
+              {about.about}
+            </About>
           </Grid>
           <Grid item md={2} implementation="css" smDown component={Hidden} />
           <Grid item xs={6} md={2} className={classes.quickLinksMore}>
