@@ -12,7 +12,7 @@ const useStyles = makeStyles(
     aboutAbout: {},
     initiative: {
       display: "none",
-      [theme.breakpoints.up("md")]: {
+      [breakpoints.up("md")]: {
         display: "block",
         marginTop: "1.5rem",
       },
@@ -50,7 +50,7 @@ const useStyles = makeStyles(
     supporterLogo: {
       width: "9.6275rem",
       height: "auto",
-      [theme.breakpoints.up("md")]: {
+      [breakpoints.up("md")]: {
         width: "13.7375rem",
       },
     },
@@ -58,7 +58,7 @@ const useStyles = makeStyles(
       display: "block",
       marginBottom: "1.618125rem",
       marginTop: "1.708rem",
-      [theme.breakpoints.up("md")]: {
+      [breakpoints.up("md")]: {
         display: "none",
       },
     },
