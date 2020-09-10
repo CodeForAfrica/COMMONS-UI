@@ -172,7 +172,7 @@ storiesOf("Components/Footer", module)
       />
     );
   })
-  .add("About Organization", () => {
+  .add("Organization", () => {
     const classes = makeStyles((theme) => ({
       section: {
         margin: "0 auto",
@@ -204,7 +204,7 @@ storiesOf("Components/Footer", module)
       </FooterInitiative>
     );
   })
-  .add("Owner Logo", () => {
+  .add("Logo", () => {
     const classes = makeStyles((theme) => ({
       section: {
         margin: "0 auto",
@@ -213,10 +213,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
+    const variant = select("variant", ["divider", "plain"], "divider");
 
     return (
       <FooterLogo
         organizationLogo={CFA}
+        variant={variant}
         classes={{ section: classes.section }}
       />
     );
@@ -234,7 +236,7 @@ storiesOf("Components/Footer", module)
     return (
       <FooterInitiativeLogo
         logo={INITIATIVE_LOGO}
-        initiative={ABOUT.initativeb}
+        initiative={ABOUT.initative}
         classes={{ section: classes.section }}
       />
     );
