@@ -2,19 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import { makeStyles } from "@material-ui/core/styles";
-
 import A from "../A";
-import RichTypography from "../RichTypography";
-import { Grid, Hidden, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-}));
+import useStyles from "./useStyles";
 
-function OwnerLogo({ organizationLogo, ...props }) {
+function Logo({ organizationLogo, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -37,7 +30,7 @@ function OwnerLogo({ organizationLogo, ...props }) {
   );
 }
 
-OwnerLogo.propTypes = {
+Logo.propTypes = {
   organizationLogo: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string.isRequired,
@@ -47,4 +40,4 @@ OwnerLogo.propTypes = {
   }).isRequired,
 };
 
-export default OwnerLogo;
+export default Logo;

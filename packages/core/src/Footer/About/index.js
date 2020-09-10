@@ -1,34 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { makeStyles } from "@material-ui/core/styles";
+import useStyles from "../useStyles";
 
-import RichTypography from "../../RichTypography";
-import AboutOrganization from "./AboutOrganization";
-import AboutInitiative from "./AboutInitiative";
+import About from "./About";
+import Initiative from "./Initiative";
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-}));
-function About({ about, initiative, ...props }) {
+function Index({ about, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
-      <AboutOrganization about={about} classes={{ about: classes.about }} />
+      <About classes={{ about: classes.about }}>{about}</About>
       <br />
-      <AboutInitiative
-        initiative={initiative}
-        classes={{ initiative: classes.initiative }}
-      />
+      <Initiative classes={{ initiative: classes.initiative }}>
+        {initiative}
+      </Initiative>
     </div>
   );
 }
 
-About.propTypes = {
+Index.propTypes = {
   about: PropTypes.string.isRequired,
   initiative: PropTypes.node.isRequired,
 };
 
-export default About;
-export { AboutOrganization };
-export { AboutInitiative };
+export default Index;
+export { About as FooterAbout };
+export { Initiative as FooterInitiative };
