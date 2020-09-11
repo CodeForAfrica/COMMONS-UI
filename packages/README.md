@@ -7,42 +7,40 @@ This repository uses [lerna] to manage COMMONS-UI modules and publish them as pa
 When creating a new package, you need to provide at least the following:
 
 1. `package.json` based on the template:
-	```json
-	{
-		"name": "@commons-ui/package-name",
-		"version": "1.0.0-beta.0",
-		"description": "Package description.",
-		"author": "CodeForAfrica",
-		"license": "GPL-2.0-or-later",
-		"keywords": [
-			"commons-ui"
-		],
-		"homepage": "https://github.com/CodeForAfrica/COMMONS-UI/tree/master/packages/package-name/README.md",
-		"repository": {
-			"type": "git",
-			"url": "https://github.com/CodeForAfrica/COMMONS-UI.git"
-		},
-		"bugs": {
-			"url": "https://github.com/CodeForAfrica/COMMONS-UI/issues"
-		},
-		"dependencies": {
-			"@babel/runtime": "^7.8.3"
-		},
-		"publishConfig": {
-			"access": "public"
-		}
-	}
-	```
-	This assumes that your code is located in the `src` folder and will be transpiled with `Babel`.
+   ```json
+   {
+     "name": "@commons-ui/package-name",
+     "version": "1.0.0-beta.0",
+     "description": "Package description.",
+     "author": "CodeForAfrica",
+     "license": "GPL-2.0-or-later",
+     "keywords": ["commons-ui"],
+     "homepage": "https://github.com/CodeForAfrica/COMMONS-UI/tree/master/packages/package-name/README.md",
+     "repository": {
+       "type": "git",
+       "url": "https://github.com/CodeForAfrica/COMMONS-UI.git"
+     },
+     "bugs": {
+       "url": "https://github.com/CodeForAfrica/COMMONS-UI/issues"
+     },
+     "dependencies": {
+       "@babel/runtime": "^7.8.3"
+     },
+     "publishConfig": {
+       "access": "public"
+     }
+   }
+   ```
+   This assumes that your code is located in the `src` folder and will be transpiled with `Babel`.
 2. `.npmrc` file which disables creating `package-lock.json` file for the package:
-	```
-	package-lock=false
-	```
+   ```
+   package-lock=false
+   ```
 3. `README.md` file containing at least:
-	- Package name
-	- Package description
-	- Installation details
-	- Usage example
+   - Package name
+   - Package description
+   - Installation details
+   - Usage example
 
 ## Managing Dependencies
 
@@ -53,7 +51,7 @@ There are two types of dependencies that you might want to add to one of the exi
 Production dependencies are stored in the `dependencies` section of the package’s `package.json` file.
 
 #### Adding New Dependencies
- 
+
 The simplest way to add a production dependency to one of the packages is to run a very convenient [lerna add](https://github.com/lerna/lerna/tree/master/commands/add#readme) command from the root of the project.
 
 _Example:_
@@ -87,9 +85,10 @@ Next, you need to run `yarn` in the root of the project to ensure that `yarn.loc
 #### Updating Existing Dependencies
 
 This is the most confusing part of working with [lerna] which causes a lot of hassles for contributors. The most successful strategy so far is to do the following:
- 1. First, remove the existing dependency as described in the previous section.
- 2. Next, add the same dependency back as described in the first section of this chapter. This time it wil get the latest version applied unless you enforce a different version explicitly.
- 
+
+1.  First, remove the existing dependency as described in the previous section.
+2.  Next, add the same dependency back as described in the first section of this chapter. This time it wil get the latest version applied unless you enforce a different version explicitly.
+
 ### Development Dependencies
 
 In contrast to production dependencies, development dependencies shouldn't be stored in the individual packages. Instead they should be installed in the project's `package.json` file using the usual `yarn add` command. In effect, all development tools are configured to work with every package at the same time to ensure they share the same characteristics and integrate correctly with each other.
@@ -144,9 +143,9 @@ If you're publishing a new package, ensure that its `package.json` file contains
 
 ```json
 {
-	"publishConfig": {
-		"access": "public"
-	}
+  "publishConfig": {
+    "access": "public"
+  }
 }
 ```
 
