@@ -64,30 +64,34 @@
     "webpack": "^4.42.1"
   },
   "scripts": {
-    "lint": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
-    "lint-staged": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md'",
-    "start": "yarn storybook",
     "storybook": "start-storybook",
-    "build:lib": "yarn copy-svg-to-lib && yarn copy-png-to-lib",
-    "build:storybook": "build-storybook -o docs/",
-    "build": "lerna exec --parallel -- babel --root-mode upward src -d build --copy-files --ignore **/*.story.js,**/*.spec.js",
+    "start": "yarn storybook",
+    "lint": "yarn eslint --fix --ignore-path './.gitignore' --ext '.js,.json,.md' './'",
+    "lint-staged": "yarn eslint --fix --ext '.js,.json,.md'",
+    "format": "yarn prettier --write --ignore-path './.gitignore' \"**/*.+(json|md|yml)\" './'",
+    "format-staged": "prettier --write",
     "copy-svg-to-lib": "cpx \"./src/**/*.svg\" ./dist",
     "copy-png-to-lib": "cpx \"./src/**/*.png\" ./dist",
+    "prebuild": "yarn lint && yarn format",
+    "build": "lerna exec --parallel -- babel --root-mode upward src -d build --copy-files --ignore **/*.story.js,**/*.spec.js",
+    "postbuild": "yarn copy-svg-to-lib && yarn copy-png-to-lib",
     "deploy": "storybook-to-ghpages",
-    "preversion": "yarn lint && NODE_ENV=production yarn build",
+    "preversion": "NODE_ENV=production yarn build",
     "postversion": "lerna exec --parallel -- cp ./package.json ./README.md ../../LICENSE.md ./build",
     "publish:packages": "yarn lerna publish --contents build",
     "release": "yarn publish:packages"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "src/**/*.{js,json,md}": [
-      "yarn lint-staged",
-      "git add"
+    "*.{js,json,md}": [
+      "yarn lint-staged"
+    ],
+    "*.{json,md,yml}": [
+      "yarn format-staged"
     ]
   },
   "engines": {
