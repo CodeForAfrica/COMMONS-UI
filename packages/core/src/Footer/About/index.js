@@ -6,14 +6,18 @@ import useStyles from "../useStyles";
 import About from "./About";
 import Initiative from "./Initiative";
 
-function Index({ children, initiative, ...props }) {
+function Index({ options, children, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
-      <About classes={{ about: classes.about }}>{children}</About>
-      <br />
+      <About {...options.about} classes={{ about: classes.about }}>
+        {children}
+      </About>
       {initiative && (
-        <Initiative classes={{ initiative: classes.initiative }}>
+        <Initiative
+          {...options.initiative}
+          classes={{ initiative: classes.initiative }}
+        >
           {initiative}
         </Initiative>
       )}
