@@ -43,7 +43,16 @@ const QUICK_LINKS = [
     ],
   },
 ];
-
+const options = {
+  about: {
+    about: {
+      variant: "caption",
+    },
+    initiative: {
+      variant: "caption",
+    },
+  },
+};
 const LEGAL_LINKS = {
   links: [
     { href: "/legal/privacy", label: "PRIVACY POLICY" },
@@ -142,6 +151,7 @@ storiesOf("Components/Footer", module)
         quickLinks={QUICK_LINKS}
         organizationLogo={CFA}
         variant={variant}
+        options={options}
         classes={{ section: classes.section }}
       />
     );
@@ -183,8 +193,11 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <FooterAbout classes={{ section: classes.section }}>
-        {ABOUT.about}
+      <FooterAbout
+        options={options.about.about}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.about)}
       </FooterAbout>
     );
   })
@@ -199,8 +212,11 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <FooterInitiative classes={{ section: classes.section }}>
-        {ABOUT.initiative}
+      <FooterInitiative
+        options={options.about.initiative}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.initiative)}
       </FooterInitiative>
     );
   })
@@ -213,12 +229,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-    const variant = select("variant", ["divider", "plain"], "divider");
+    const hasDivider = select("hasDivider", [true, false], true);
 
     return (
       <FooterLogo
-        organizationLogo={CFA}
-        variant={variant}
+        {...CFA}
+        hasDivider={hasDivider}
         classes={{ section: classes.section }}
       />
     );
@@ -287,8 +303,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-
+    const title = text("contacts.title", "Stay in touch with us @ &nbsp;");
     return (
-      <FooterStayInTouch {...CONTACTS} classes={{ section: classes.section }} />
+      <FooterStayInTouch
+        {...CONTACTS}
+        title={title}
+        classes={{ section: classes.section }}
+      />
     );
   });
