@@ -7,23 +7,23 @@ import { Grid, Typography } from "@material-ui/core";
 
 import useStyles from "./useStyles";
 
-function Logo({ variant, organizationLogo, ...props }) {
+function Logo({ hasDivider, image, url, ...props }) {
   const classes = useStyles(props);
 
   return (
     <Grid container alignItems="baseline" className={classes.organization}>
       <Grid item>
         <Typography variant="h1">
-          <A href={organizationLogo.url}>
+          <A href={url}>
             <img
-              src={organizationLogo.image.url}
-              alt={organizationLogo.image.alt}
+              src={image.url}
+              alt={image.alt}
               className={classes.organizationLogo}
             />
           </A>
         </Typography>
       </Grid>
-      {variant === "divider" && (
+      {hasDivider && (
         <div
           className={clsx(
             classes.grow,
@@ -37,17 +37,15 @@ function Logo({ variant, organizationLogo, ...props }) {
 }
 
 Logo.propTypes = {
-  organizationLogo: PropTypes.shape({
-    image: PropTypes.shape({
-      alt: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
+  image: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  variant: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  hasDivider: PropTypes.boolean,
 };
 
 Logo.defaultProps = {
-  variant: "divider",
+  hasDivider: true,
 };
 export default Logo;
