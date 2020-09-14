@@ -26,7 +26,7 @@ function PrimaryFooter({
   return (
     <div className={classes.primary}>
       <Section classes={{ root: classes.section }}>
-        <Logo {...options.logo} {...organizationLogo} {...options.logo}></Logo>
+        <Logo {...options.logo} {...organizationLogo} {...options.logo} />
         <Grid container>
           <Grid item xs={12} md={4}>
             <About
@@ -78,6 +78,7 @@ function PrimaryFooter({
 PrimaryFooter.propTypes = {
   about: PropTypes.shape({
     initiative: PropTypes.string,
+    about: PropTypes.string,
   }).isRequired,
   initiativeLogo: PropTypes.shape({}).isRequired,
   quickLinks: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
@@ -88,9 +89,14 @@ PrimaryFooter.propTypes = {
     }).isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  options: PropTypes.shape({}),
+  options: PropTypes.shape({
+    logo: PropTypes.shape({}),
+    quickLinks: PropTypes.shape({}),
+    about: PropTypes.shape({}),
+    initiativeLogo: PropTypes.shape({}),
+  }),
 };
-PrimaryFooter.default = {
+PrimaryFooter.defaultProps = {
   options: {},
 };
 

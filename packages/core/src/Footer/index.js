@@ -30,7 +30,7 @@ Footer.defaultProps = {
 
 export default Footer;
 
-//Expose components
+// Expose components
 export { FooterInitiative, FooterAbout } from "./About";
 export { default as FooterLogo } from "./Logo";
 export { default as FooterInitiativeLogo } from "./Initiative";

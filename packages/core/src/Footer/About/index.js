@@ -28,9 +28,14 @@ function Index({ options, children, initiative, ...props }) {
 Index.propTypes = {
   children: PropTypes.string.isRequired,
   initiative: PropTypes.node,
+  options: PropTypes.shape({
+    about: PropTypes.shape({}),
+    initiative: PropTypes.shape({}),
+  }),
 };
 Index.defaultProps = {
   initiative: null,
+  options: {},
 };
 
 export default Index;

@@ -16,6 +16,10 @@ const useStyles = makeStyles(
         display: "block",
         marginTop: "1.5rem",
       },
+      order: 2,
+      [breakpoints.up("md")]: {
+        order: 5,
+      },
     },
     divider: {
       backgroundColor: palette.secondary.main,
@@ -76,12 +80,6 @@ const useStyles = makeStyles(
       [breakpoints.up("md")]: {
         marginTop: 0,
         order: 4,
-      },
-    },
-    initiative: {
-      order: 2,
-      [breakpoints.up("md")]: {
-        order: 5,
       },
     },
     copyright: {
