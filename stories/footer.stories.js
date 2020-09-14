@@ -6,7 +6,16 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Footer } from "@commons-ui/core";
+import {
+  Footer,
+  FooterAbout,
+  FooterInitiativeLogo,
+  FooterLogo,
+  FooterLegalLinks,
+  FooterStayInTouch,
+  FooterInitiative,
+  FooterQuickLinks,
+} from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -34,7 +43,16 @@ const QUICK_LINKS = [
     ],
   },
 ];
-
+const options = {
+  about: {
+    about: {
+      variant: "caption",
+    },
+    initiative: {
+      variant: "caption",
+    },
+  },
+};
 const LEGAL_LINKS = {
   links: [
     { href: "/legal/privacy", label: "PRIVACY POLICY" },
@@ -133,6 +151,7 @@ storiesOf("Components/Footer", module)
         quickLinks={QUICK_LINKS}
         organizationLogo={CFA}
         variant={variant}
+        options={options}
         classes={{ section: classes.section }}
       />
     );
@@ -159,6 +178,136 @@ storiesOf("Components/Footer", module)
         quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
         organizationLogo={CFA}
         variant={variant}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Organization", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <FooterAbout
+        options={options.about.about}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.about)}
+      </FooterAbout>
+    );
+  })
+  .add("About Initiative", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <FooterInitiative
+        options={options.about.initiative}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.initiative)}
+      </FooterInitiative>
+    );
+  })
+  .add("Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const hasDivider = select("hasDivider", [true, false], true);
+
+    return (
+      <FooterLogo
+        {...CFA}
+        hasDivider={hasDivider}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Initative Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <FooterInitiativeLogo
+        logo={INITIATIVE_LOGO}
+        classes={{ section: classes.section }}
+      >
+        {ABOUT.initative}
+      </FooterInitiativeLogo>
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <FooterLegalLinks
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Quick Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <FooterQuickLinks
+        linkComponent={Button}
+        {...QUICK_LINKS[0]}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Stay In Touch", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const title = text("contacts.title", "Stay in touch with us @ &nbsp;");
+    return (
+      <FooterStayInTouch
+        {...CONTACTS}
+        title={title}
         classes={{ section: classes.section }}
       />
     );

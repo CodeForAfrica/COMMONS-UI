@@ -2,11 +2,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(
   ({ breakpoints, palette, spacing, typography }) => ({
-    root: {},
+    root: {
+      width: "100%",
+    },
     section: {},
-    about: {},
+    about: {
+      display: "block",
+    },
     aboutAbout: {},
-    aboutInitiative: {},
+    initiative: {
+      display: "none",
+      [breakpoints.up("md")]: {
+        display: "block",
+        marginTop: "1.5rem",
+      },
+    },
     divider: {
       backgroundColor: palette.secondary.main,
       height: 2,
@@ -42,6 +52,14 @@ const useStyles = makeStyles(
       height: "auto",
       [breakpoints.up("md")]: {
         width: "13.7375rem",
+      },
+    },
+    support: {
+      display: "block",
+      marginBottom: "1.618125rem",
+      marginTop: "1.708rem",
+      [breakpoints.up("md")]: {
+        display: "none",
       },
     },
     quickLinksMore: {
