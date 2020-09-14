@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-import A from "../A";
 import { Grid, Typography } from "@material-ui/core";
+import A from "../A";
 
 import useStyles from "./useStyles";
 
@@ -42,10 +42,12 @@ Logo.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
   url: PropTypes.string.isRequired,
-  hasDivider: PropTypes.boolean,
+  hasDivider: PropTypes.bool,
+  options: PropTypes.shape({}),
 };
 
 Logo.defaultProps = {
   hasDivider: true,
+  options: {},
 };
 export default Logo;
