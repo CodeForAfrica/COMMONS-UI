@@ -10,15 +10,11 @@ const useStyles = makeStyles(
       display: "block",
     },
     aboutAbout: {},
-    initiative: {
+    aboutInitiative: {
       display: "none",
       [breakpoints.up("md")]: {
         display: "block",
         marginTop: "1.5rem",
-      },
-      order: 2,
-      [breakpoints.up("md")]: {
-        order: 5,
       },
     },
     divider: {
@@ -80,6 +76,12 @@ const useStyles = makeStyles(
       [breakpoints.up("md")]: {
         marginTop: 0,
         order: 4,
+      },
+    },
+    initiative: {
+      order: 2,
+      [breakpoints.up("md")]: {
+        order: 5,
       },
     },
     copyright: {

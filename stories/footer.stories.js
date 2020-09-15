@@ -251,7 +251,7 @@ storiesOf("Components/Footer", module)
 
     return (
       <FooterInitiativeLogo
-        logo={INITIATIVE_LOGO}
+        {...INITIATIVE_LOGO}
         classes={{ section: classes.section }}
       >
         {ABOUT.initative}
