@@ -8,7 +8,7 @@ import RichTypography from "../../RichTypography";
 function Initiative({ children, variant, ...props }) {
   const classes = useStyles(props);
   return (
-    <RichTypography variant={variant} className={classes.initiative}>
+    <RichTypography variant={variant} className={classes.aboutInitiative}>
       {children}
     </RichTypography>
   );

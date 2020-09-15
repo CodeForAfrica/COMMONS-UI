@@ -35,7 +35,7 @@ function PrimaryFooter({
               classes={{
                 root: classes.about,
                 about: classes.aboutAbout,
-                initiative: classes.Initiative,
+                initiative: classes.aboutInitiative,
               }}
             >
               {about.about}
@@ -54,7 +54,7 @@ function PrimaryFooter({
           </Grid>
           <Grid item xs={12} md={2} className={classes.initiative}>
             <div className={classes.project}>
-              <Initiative {...options.initiativeLogo} logo={initiativeLogo}>
+              <Initiative {...options.initiativeLogo} {...initiativeLogo}>
                 {about.initiative}
               </Initiative>
             </div>
