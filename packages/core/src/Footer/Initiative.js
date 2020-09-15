@@ -6,15 +6,15 @@ import RichTypography from "../RichTypography";
 
 import useStyles from "./useStyles";
 
-function Initiative({ logo, children, ...props }) {
+function Initiative({ image, url, children, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <A href={logo.url}>
+      <A href={url}>
         <img
-          src={logo.image.url}
-          alt={logo.image.alt}
+          src={image.url}
+          alt={image.alt}
           className={classes.supporterLogo}
         />
       </A>
@@ -27,13 +27,11 @@ function Initiative({ logo, children, ...props }) {
 
 Initiative.propTypes = {
   children: PropTypes.node.isRequired,
-  logo: PropTypes.shape({
-    image: PropTypes.shape({
-      alt: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }).isRequired,
+  image: PropTypes.shape({
+    alt: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default Initiative;
