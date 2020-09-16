@@ -9,11 +9,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   Footer,
   FooterAbout,
+  FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
   FooterLegalLinks,
   FooterStayInTouch,
-  FooterInitiative,
   FooterQuickLinks,
 } from "@commons-ui/core";
 import pulitzer from "./assets/pulitzer.png";
@@ -156,6 +156,26 @@ storiesOf("Components/Footer", module)
       />
     );
   })
+  .add("Copyright", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <FooterCopyright
+        variant={variant}
+        color={color}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
   .add("Custom Link", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -191,35 +211,28 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
+    options.about.about.variant = select(
+      "About variant",
+      ["caption", "body1"],
+      "caption"
+    );
+    options.about.initiative.variant = select(
+      "Initiative variant",
+      ["caption", "body1"],
+      "caption"
+    );
 
     return (
       <FooterAbout
-        options={options.about.about}
+        initiative={text("initiative", ABOUT.initiative)}
+        options={options.about}
         classes={{ section: classes.section }}
       >
         {text("children", ABOUT.about)}
       </FooterAbout>
     );
   })
-  .add("About Initiative", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
 
-    return (
-      <FooterInitiative
-        options={options.about.initiative}
-        classes={{ section: classes.section }}
-      >
-        {text("children", ABOUT.initiative)}
-      </FooterInitiative>
-    );
-  })
   .add("Logo", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -267,12 +280,16 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
 
     return (
       <FooterLegalLinks
+        variant={variant}
+        color={color}
         linkComponent={Button}
         {...LEGAL_LINKS}
-        classes={{ section: classes.section }}
+        classes={classes}
       />
     );
   })
@@ -306,6 +323,18 @@ storiesOf("Components/Footer", module)
     const title = text("contacts.title", "Stay in touch with us @ &nbsp;");
     return (
       <FooterStayInTouch
+        options={{
+          socialMedia: {
+            color: text("SocialMedia.color", "textSecondary"),
+          },
+          support: {
+            color: text("support.color", "textSecondary"),
+          },
+          title: {
+            color: text("title.color", "black"),
+            variant: select("variant", ["caption", "body1"], "caption"),
+          },
+        }}
         {...CONTACTS}
         title={title}
         classes={{ section: classes.section }}
