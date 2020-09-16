@@ -35,17 +35,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function QuickLinks({ linkComponent, links, title, ...props }) {
+function QuickLinks({ options, linkComponent, links, title, ...props }) {
   const classes = useStyles(props);
   const LinkComponent = linkComponent || Link;
 
   return (
     <div className={classes.root}>
-      <Typography variant="button" className={classes.title}>
+      <Typography variant={options.title.variant} className={classes.title}>
         {title}
       </Typography>
       <Typography
-        variant="caption"
+        variant={options.link.variant}
         className={clsx([classes.text, classes.list])}
         component="ul"
       >
@@ -53,8 +53,8 @@ function QuickLinks({ linkComponent, links, title, ...props }) {
           <li key={label}>
             <LinkComponent
               {...others}
-              color="secondary"
-              variant="caption"
+              color={options.link.color}
+              variant={options.link.variant}
               underline="none"
               className={classes.link}
             >
@@ -70,10 +70,30 @@ function QuickLinks({ linkComponent, links, title, ...props }) {
 QuickLinks.propTypes = {
   linkComponent: PropTypes.elementType,
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  options: PropTypes.shape({
+    link: PropTypes.shape({
+      color: PropTypes.string,
+      variant: PropTypes.string,
+    }),
+    title: PropTypes.shape({
+      color: PropTypes.string,
+      variant: PropTypes.string,
+    }),
+  }),
   title: PropTypes.string.isRequired,
 };
 QuickLinks.defaultProps = {
   linkComponent: undefined,
+  options: {
+    link: {
+      color: "textSecondary",
+      variant: "caption",
+    },
+    title: {
+      color: "textSecondary",
+      variant: "caption",
+    },
+  },
 };
 
 export default QuickLinks;
