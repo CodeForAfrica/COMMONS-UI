@@ -39,5 +39,3 @@ Index.defaultProps = {
 };
 
 export default Index;
-export { About as FooterAbout };
-export { Initiative as FooterInitiative };

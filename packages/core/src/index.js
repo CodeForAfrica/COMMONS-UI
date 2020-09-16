@@ -5,7 +5,7 @@ export { default as Filter } from "./Filter";
 export {
   default as Footer,
   FooterAbout,
-  FooterInitiative,
+  FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
   FooterQuickLinks,

@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
+import { Grid } from "@material-ui/core";
 
-import { Grid, Typography } from "@material-ui/core";
-
-import A from "../A";
+import Copyright from "./Copyright";
 import LegalLinks from "./LegalLinks";
 import Section from "../Section";
 import StayInTouch from "./StayInTouch";
@@ -40,37 +38,11 @@ function SecondaryFooter({
             />
           </Grid>
           <Grid item xs={12} md={2} className={classes.copyright}>
-            {(copyright || copyrightLogo || copyrightYear) && (
-              <div className={classes.copyright}>
-                {copyright && (
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    className={clsx(classes.text, "copyrightOrganization")}
-                  >
-                    {copyright}
-                  </Typography>
-                )}
-                {copyrightLogo && (
-                  <A href={copyrightLogo.url} className="copyrightLogo">
-                    <img
-                      src={copyrightLogo.image.url}
-                      alt={copyrightLogo.image.alt || copyright}
-                      className={classes.copyrightLogo}
-                    />
-                  </A>
-                )}
-                {copyrightYear && (
-                  <Typography
-                    variant="caption"
-                    color="textSecondary"
-                    className={clsx(classes.text, "copyrightYear")}
-                  >
-                    {copyrightYear}
-                  </Typography>
-                )}
-              </div>
-            )}
+            <Copyright
+              copyrightLogo={copyrightLogo}
+              copyright={copyright}
+              copyrightYear={copyrightYear}
+            />
           </Grid>
           <Grid
             item

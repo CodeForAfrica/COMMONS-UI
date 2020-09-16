@@ -41,15 +41,15 @@ const useStyles = makeStyles((theme) => ({
   link: {},
 }));
 
-function LegalLinks({ linkComponent, links, ...props }) {
+function LegalLinks({ color, variant, linkComponent, links, ...props }) {
   const classes = useStyles(props);
   const LinkComponent = linkComponent || Link;
 
   return (
     <div className={classes.root}>
       <Typography
-        variant="caption"
-        color="textSecondary"
+        variant={variant}
+        color={color}
         className={clsx([classes.text, classes.list])}
         component="ul"
       >
@@ -57,8 +57,8 @@ function LegalLinks({ linkComponent, links, ...props }) {
           <li key={label}>
             <LinkComponent
               {...others}
-              color="textSecondary"
-              variant="caption"
+              variant={variant}
+              color={color}
               underline="none"
               className={classes.link}
             >
@@ -74,9 +74,13 @@ function LegalLinks({ linkComponent, links, ...props }) {
 LegalLinks.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   linkComponent: PropTypes.elementType,
+  variant: PropTypes.string,
+  color: PropTypes.string,
 };
 LegalLinks.defaultProps = {
   linkComponent: undefined,
+  variant: "caption",
+  color: "textSecondary",
 };
 
 export default LegalLinks;
