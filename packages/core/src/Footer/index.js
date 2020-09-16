@@ -31,7 +31,8 @@ Footer.defaultProps = {
 export default Footer;
 
 // Expose components
-export { FooterInitiative, FooterAbout } from "./About";
+export { default as FooterAbout } from "./About";
+export { default as FooterCopyright } from "./Copyright";
 export { default as FooterLogo } from "./Logo";
 export { default as FooterInitiativeLogo } from "./Initiative";
 export { default as FooterLegalLinks } from "./LegalLinks";
