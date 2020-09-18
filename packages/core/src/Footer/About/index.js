@@ -16,7 +16,7 @@ function Index({ options, children, initiative, ...props }) {
       {initiative && (
         <Initiative
           {...options.initiative}
-          classes={{ initiative: classes.initiative }}
+          classes={{ aboutInitiative: classes.initiative }}
         >
           {initiative}
         </Initiative>
