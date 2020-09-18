@@ -11,11 +11,8 @@ const useStyles = makeStyles(
     },
     aboutAbout: {},
     aboutInitiative: {
-      display: "none",
-      [breakpoints.up("md")]: {
-        display: "block",
-        marginTop: "1.5rem",
-      },
+      display: "block",
+      marginTop: "1.5rem",
     },
     divider: {
       backgroundColor: palette.secondary.main,
