@@ -12,7 +12,7 @@ import {
   FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
-  FooterLegalLinks,
+  LegalLinks,
   FooterStayInTouch,
   FooterQuickLinks,
 } from "@commons-ui/core";
@@ -284,7 +284,7 @@ storiesOf("Components/Footer", module)
     const variant = select("variant", ["caption", "body1"], "caption");
 
     return (
-      <FooterLegalLinks
+      <LegalLinks
         variant={variant}
         color={color}
         linkComponent={Button}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, object } from "@storybook/addon-knobs";
+import { select, withKnobs, text, object } from "@storybook/addon-knobs";
 
 import {
   ArrowBack,
@@ -8,12 +8,13 @@ import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
 } from "@material-ui/icons";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import {
   DocumentsAndDatasets,
   Filter,
   ProfileList,
   StoryList,
+  LegalLinks,
 } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -26,6 +27,36 @@ import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
+
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
+
+storiesOf("Components/DataDisplay", module).add("Legal Links", () => {
+  const classes = makeStyles((theme) => ({
+    section: {
+      margin: "0 auto",
+      [theme.breakpoints.up("md")]: {
+        width: "85%",
+      },
+    },
+  }))();
+  const color = text("color", "black");
+  const variant = select("variant", ["caption", "body1"], "caption");
+
+  return (
+    <LegalLinks
+      variant={variant}
+      color={color}
+      linkComponent={Button}
+      {...LEGAL_LINKS}
+      classes={classes}
+    />
+  );
+});
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {

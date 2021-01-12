@@ -9,10 +9,10 @@ export {
   FooterInitiativeLogo,
   FooterLogo,
   FooterQuickLinks,
-  FooterLegalLinks,
   FooterStayInTouch,
 } from "./Footer";
 export { default as ListItem } from "./ListItem";
+export { default as LegalLinks } from "./LegalLinks";
 export { default as Layout } from "./Layout";
 export { default as ProfileList } from "./ProfileList";
 export { default as RichTypography } from "./RichTypography";
