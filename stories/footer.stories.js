@@ -14,8 +14,9 @@ import {
   FooterLogo,
   FooterLegalLinks,
   FooterStayInTouch,
-  FooterQuickLinks,
+  QuickLinks,
 } from "@commons-ui/core";
+
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -29,7 +30,7 @@ const QUICK_LINKS = [
   {
     title: "MORE",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -37,7 +38,7 @@ const QUICK_LINKS = [
   {
     title: "CONTACTS",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -304,7 +305,7 @@ storiesOf("Components/Footer", module)
     }))();
 
     return (
-      <FooterQuickLinks
+      <QuickLinks
         linkComponent={Button}
         {...QUICK_LINKS[0]}
         classes={{ section: classes.section }}
