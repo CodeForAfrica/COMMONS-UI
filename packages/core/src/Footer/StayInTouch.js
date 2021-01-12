@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
 function StayInTouch({ options, support, socialMedia, title, ...props }) {
   const classes = useStyles(props);
 
+  // TO DO
+  // should render with only wanted props and not all
+  // styling flexibility + control
+
   return (
     <Grid
       container
