@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       "& > li": {
-        borderRight: `1px solid ${theme.palette.text.secondary}`,
+        // borderRight: `1px solid ${theme.palette.text.secondary}`,
         display: "inline",
         padding: "0 2rem",
       },
@@ -38,11 +38,17 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  link: {},
+  borderRight: (props) => ({
+    [theme.breakpoints.up("md")]: {
+      "& > li": {
+        borderRight: `1px solid ${props.borderRight}`,
+      },
+    },
+  }),
 }));
 
 function LegalLinks({ color, variant, linkComponent, links, ...props }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ ...props });
   const LinkComponent = linkComponent || Link;
 
   return (
@@ -50,7 +56,7 @@ function LegalLinks({ color, variant, linkComponent, links, ...props }) {
       <Typography
         variant={variant}
         color={color}
-        className={clsx([classes.text, classes.list])}
+        className={clsx([classes.text, classes.list, classes.borderRight])}
         component="ul"
       >
         {links.map(({ label, ...others }) => (
