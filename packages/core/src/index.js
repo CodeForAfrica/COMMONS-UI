@@ -8,7 +8,6 @@ export {
   FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
-  FooterQuickLinks,
   FooterLegalLinks,
   FooterStayInTouch,
 } from "./Footer";
