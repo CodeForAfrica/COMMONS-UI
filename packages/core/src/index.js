@@ -5,7 +5,6 @@ export { default as Filter } from "./Filter";
 export {
   default as Footer,
   FooterAbout,
-  FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
   FooterQuickLinks,
@@ -19,4 +18,5 @@ export { default as RichTypography } from "./RichTypography";
 export { default as ScrollBar } from "./ScrollBar";
 export { default as ScrollableGridList } from "./ScrollableGridList";
 export { default as Section } from "./Section";
+export { default as Copyright } from "./Copyright";
 export { default as StoryList } from "./StoryList";
