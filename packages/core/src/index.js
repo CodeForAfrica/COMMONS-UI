@@ -20,3 +20,4 @@ export { default as ScrollBar } from "./ScrollBar";
 export { default as ScrollableGridList } from "./ScrollableGridList";
 export { default as Section } from "./Section";
 export { default as StoryList } from "./StoryList";
+export { default as StayInTouch } from "./StayInTouch";
