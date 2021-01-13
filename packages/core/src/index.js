@@ -7,12 +7,13 @@ export {
   FooterAbout,
   FooterCopyright,
   FooterInitiativeLogo,
-  FooterLogo,
   FooterQuickLinks,
   FooterLegalLinks,
   FooterStayInTouch,
 } from "./Footer";
 export { default as ListItem } from "./ListItem";
+export { default as Logo } from "./Logo";
+export { default as Divider } from "./Divider";
 export { default as Layout } from "./Layout";
 export { default as ProfileList } from "./ProfileList";
 export { default as RichTypography } from "./RichTypography";
