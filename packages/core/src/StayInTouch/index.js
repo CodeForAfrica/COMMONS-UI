@@ -42,27 +42,20 @@ const useStyles = makeStyles((theme) => ({
   text: {},
 }));
 
-function StayInTouch({ options, support, socialMedia, title, ...props }) {
+function StayInTouch({ support, socialMedia, title, ...props }) {
   const classes = useStyles(props);
 
   return (
     <Grid container className={classes.root}>
       {title && (
         <Grid item xs={12} md="auto" className={classes.title}>
-          <RichTypography
-            variant={options.title.variant}
-            color={options.title.color}
-            className={classes.text}
-          >
-            {title}
-          </RichTypography>
+          <RichTypography className={classes.text}>{title}</RichTypography>
         </Grid>
       )}
       <Grid item xs={12} md="auto" container className={classes.links}>
         {support && (
           <A
             href={`mailto:${support.email}`}
-            color={options.support.color}
             className={clsx(classes.link, classes.supportLink)}
           >
             <img
@@ -76,7 +69,6 @@ function StayInTouch({ options, support, socialMedia, title, ...props }) {
           <A
             key={media.url}
             href={media.url}
-            color={options.socialMedia.color}
             className={clsx(classes.link, classes.socialLink)}
           >
             <img
@@ -92,18 +84,6 @@ function StayInTouch({ options, support, socialMedia, title, ...props }) {
 }
 
 StayInTouch.propTypes = {
-  options: PropTypes.shape({
-    socialMedia: PropTypes.shape({
-      color: PropTypes.string,
-    }),
-    support: PropTypes.shape({
-      color: PropTypes.string,
-    }),
-    title: PropTypes.shape({
-      color: PropTypes.string,
-      variant: PropTypes.string,
-    }),
-  }),
   socialMedia: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -124,18 +104,6 @@ StayInTouch.propTypes = {
 };
 
 StayInTouch.defaultProps = {
-  options: {
-    socialMedia: {
-      color: "textSecondary",
-    },
-    support: {
-      color: "textSecondary",
-    },
-    title: {
-      color: "textSecondary",
-      variant: "caption",
-    },
-  },
   support: undefined,
   title: "Stay in touch with us @ &nbsp;",
 };
