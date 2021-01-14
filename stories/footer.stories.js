@@ -12,7 +12,6 @@ import {
   FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
-  LegalLinks,
   FooterStayInTouch,
   FooterQuickLinks,
 } from "@commons-ui/core";
@@ -24,6 +23,13 @@ import Facebook from "./assets/facebook.svg";
 import Medium from "./assets/group-3.svg";
 import LinkedIn from "./assets/group-3-copy.svg";
 import Twitter from "./assets/twitter.svg";
+
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
 const QUICK_LINKS = [
   {
@@ -52,12 +58,6 @@ const options = {
       variant: "caption",
     },
   },
-};
-const LEGAL_LINKS = {
-  links: [
-    { href: "/legal/privacy", label: "PRIVACY POLICY" },
-    { href: "/legal/terms", label: "TERMS OF SERVICES" },
-  ],
 };
 
 const ABOUT = {
@@ -269,28 +269,6 @@ storiesOf("Components/Footer", module)
       >
         {ABOUT.initative}
       </FooterInitiativeLogo>
-    );
-  })
-  .add("Legal Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const color = text("color", "black");
-    const variant = select("variant", ["caption", "body1"], "caption");
-
-    return (
-      <LegalLinks
-        variant={variant}
-        color={color}
-        linkComponent={Button}
-        {...LEGAL_LINKS}
-        classes={classes}
-      />
     );
   })
   .add("Quick Links", () => {
