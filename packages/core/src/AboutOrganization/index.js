@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import useStyles from "../useStyles";
+import useStyles from "../Footer/useStyles";
 
 import About from "./About";
 import Initiative from "./Initiative";
 
-function Index({ options, children, initiative, ...props }) {
+function AboutOrganization({ options, children, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
@@ -25,7 +25,7 @@ function Index({ options, children, initiative, ...props }) {
   );
 }
 
-Index.propTypes = {
+AboutOrganization.propTypes = {
   children: PropTypes.string.isRequired,
   initiative: PropTypes.node,
   options: PropTypes.shape({
@@ -33,9 +33,10 @@ Index.propTypes = {
     initiative: PropTypes.shape({}),
   }),
 };
-Index.defaultProps = {
+
+AboutOrganization.defaultProps = {
   initiative: null,
   options: {},
 };
 
-export default Index;
+export default AboutOrganization;
