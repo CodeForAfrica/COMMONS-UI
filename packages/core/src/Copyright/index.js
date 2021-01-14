@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   text: {},
 }));
 
-function Copyright({ copyright, icon, year, url, ...props }) {
+function Copyright({ copyright, icon, variant, year, url, ...props }) {
   const classes = useStyles(props);
 
   return (
@@ -45,7 +45,10 @@ function Copyright({ copyright, icon, year, url, ...props }) {
       {(copyright || icon || year) && (
         <div className={clsx(classes.copyright, classes.root)}>
           {copyright && (
-            <Typography className={clsx(classes.text, classes.copyrightText)}>
+            <Typography
+              variant={variant}
+              className={clsx(classes.text, classes.copyrightText)}
+            >
               {copyright}
             </Typography>
           )}
@@ -59,7 +62,10 @@ function Copyright({ copyright, icon, year, url, ...props }) {
             </A>
           )}
           {year && (
-            <Typography className={clsx(classes.text, classes.copyrightYear)}>
+            <Typography
+              variant={variant}
+              className={clsx(classes.text, classes.copyrightYear)}
+            >
               {year}
             </Typography>
           )}
@@ -72,6 +78,7 @@ function Copyright({ copyright, icon, year, url, ...props }) {
 Copyright.propTypes = {
   copyright: PropTypes.string,
   icon: PropTypes.string,
+  variant: PropTypes.string,
   url: PropTypes.string,
   year: PropTypes.string,
 };
@@ -80,6 +87,7 @@ Copyright.defaultProps = {
   copyright: "Copyright",
   icon: undefined,
   year: undefined,
+  variant: "body1",
   url: "",
 };
 export default Copyright;
