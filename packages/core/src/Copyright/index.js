@@ -77,9 +77,9 @@ Copyright.propTypes = {
 };
 
 Copyright.defaultProps = {
-  copyright: "",
+  copyright: "Copyright",
   icon: undefined,
   year: undefined,
-  url: undefined,
+  url: "",
 };
 export default Copyright;
