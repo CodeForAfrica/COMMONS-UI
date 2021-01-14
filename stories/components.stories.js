@@ -58,14 +58,8 @@ storiesOf("Components/Data Display", module)
           width: "85%",
         },
       },
-      title: {
-        color: "red",
-        fontSize: "3rem",
-      },
-      link: {
-        color: "grey",
-        fontSize: "1rem",
-      },
+      title: {},
+      link: {},
     }))();
 
     return (
