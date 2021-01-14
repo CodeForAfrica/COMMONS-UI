@@ -14,7 +14,6 @@ import {
   FooterLogo,
   FooterLegalLinks,
   FooterStayInTouch,
-  QuickLinks,
 } from "@commons-ui/core";
 
 import pulitzer from "./assets/pulitzer.png";
@@ -291,24 +290,6 @@ storiesOf("Components/Footer", module)
         linkComponent={Button}
         {...LEGAL_LINKS}
         classes={classes}
-      />
-    );
-  })
-  .add("Quick Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    return (
-      <QuickLinks
-        linkComponent={Button}
-        {...QUICK_LINKS[0]}
-        classes={{ section: classes.section }}
       />
     );
   })
