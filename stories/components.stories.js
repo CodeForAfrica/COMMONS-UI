@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, object } from "@storybook/addon-knobs";
+import { withKnobs, select, text, object } from "@storybook/addon-knobs";
 
 import {
   ArrowBack,
@@ -10,6 +10,7 @@ import {
 } from "@material-ui/icons";
 import { Grid } from "@material-ui/core";
 import {
+  AboutOrganization,
   DocumentsAndDatasets,
   Filter,
   ProfileList,
@@ -26,6 +27,61 @@ import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
+
+const options = {
+  about: {
+    about: {
+      variant: "caption",
+    },
+    initiative: {
+      variant: "caption",
+    },
+  },
+};
+
+const ABOUT = {
+  about:
+    "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n" +
+    "        sed diam nonumy eirmod tempor invidunt ut labore et dolore\n" +
+    "        magna aliquyam erat, sed diam voluptua. At vero eos et\n" +
+    "        accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
+    "        gubergren, no sea takimata sanctus est",
+  initiative:
+    "This initiative was made possible with support \nfrom Pulitzer Center.",
+};
+
+storiesOf("Components/Data Display", module)
+  .addDecorator(withKnobs)
+  .add("About Organization", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    options.about.about.variant = select(
+      "About variant",
+      ["caption", "body1"],
+      "caption"
+    );
+    options.about.initiative.variant = select(
+      "Initiative variant",
+      ["caption", "body1"],
+      "caption"
+    );
+
+    return (
+      <AboutOrganization
+        initiative={text("initiative", ABOUT.initiative)}
+        options={options.about}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.about)}
+      </AboutOrganization>
+    );
+  });
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {
