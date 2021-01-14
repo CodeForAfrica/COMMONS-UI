@@ -9,7 +9,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   Footer,
   FooterAbout,
-  FooterCopyright,
   FooterInitiativeLogo,
   FooterLogo,
   FooterLegalLinks,
@@ -156,26 +155,7 @@ storiesOf("Components/Footer", module)
       />
     );
   })
-  .add("Copyright", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const color = text("color", "black");
-    const variant = select("variant", ["caption", "body1"], "caption");
 
-    return (
-      <FooterCopyright
-        variant={variant}
-        color={color}
-        classes={{ section: classes.section }}
-      />
-    );
-  })
   .add("Custom Link", () => {
     const classes = makeStyles((theme) => ({
       section: {

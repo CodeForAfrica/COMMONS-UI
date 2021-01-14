@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, object } from "@storybook/addon-knobs";
+import { select, withKnobs, text, object } from "@storybook/addon-knobs";
 
 import {
   ArrowBack,
@@ -14,6 +14,7 @@ import {
   Filter,
   ProfileList,
   StoryList,
+  Copyright,
 } from "@commons-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -363,3 +364,24 @@ storiesOf("Components/Filter", module)
       );
     })
   );
+
+storiesOf("Components/Copyright,module").add("Copyright", () => {
+  const classes = makeStyles((theme) => ({
+    section: {
+      margin: "0 auto",
+      [theme.breakpoints.up("md")]: {
+        width: "85%",
+      },
+    },
+  }))();
+  const color = text("color", "black");
+  const variant = select("variant", ["caption", "body1"], "caption");
+
+  return (
+    <Copyright
+      variant={variant}
+      color={color}
+      classes={{ section: classes.section }}
+    />
+  );
+});
