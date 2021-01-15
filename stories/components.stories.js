@@ -8,14 +8,16 @@ import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
 } from "@material-ui/icons";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import {
   AboutOrganization,
   DocumentsAndDatasets,
   Filter,
   ProfileList,
   StoryList,
+  QuickLinks,
 } from "@commons-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationButton from "./NavigationButton";
@@ -50,6 +52,25 @@ const ABOUT = {
     "This initiative was made possible with support \nfrom Pulitzer Center.",
 };
 
+const QUICK_LINKS = [
+  {
+    title: "MORE",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+  {
+    title: "CONTACTS",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
+
 storiesOf("Components/Data Display", module)
   .addDecorator(withKnobs)
   .add("About Organization", () => {
@@ -80,6 +101,30 @@ storiesOf("Components/Data Display", module)
       >
         {text("children", ABOUT.about)}
       </AboutOrganization>
+    );
+  })
+  .add("Quick Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+      title: {},
+      link: {},
+    }))();
+
+    return (
+      <QuickLinks
+        linkComponent={Button}
+        {...QUICK_LINKS[0]}
+        classes={{
+          section: classes.section,
+          title: classes.title,
+          link: classes.link,
+        }}
+      />
     );
   });
 
