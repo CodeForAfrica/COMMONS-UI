@@ -49,7 +49,9 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
     <Grid container className={classes.root}>
       {title && (
         <Grid item xs={12} md="auto" className={classes.title}>
-          <RichTypography className={classes.text}>{title}</RichTypography>
+          <RichTypography className={clsx(classes.text)}>
+            {title}
+          </RichTypography>
         </Grid>
       )}
       <Grid item xs={12} md="auto" container className={classes.links}>
