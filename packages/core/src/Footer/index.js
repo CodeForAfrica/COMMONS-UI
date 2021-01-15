@@ -37,4 +37,3 @@ export { default as FooterLogo } from "./Logo";
 export { default as FooterInitiativeLogo } from "./Initiative";
 export { default as FooterLegalLinks } from "./LegalLinks";
 export { default as FooterQuickLinks } from "./QuickLinks";
-export { default as FooterStayInTouch } from "./StayInTouch";

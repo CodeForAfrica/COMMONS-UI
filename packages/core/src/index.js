@@ -10,7 +10,6 @@ export {
   FooterLogo,
   FooterQuickLinks,
   FooterLegalLinks,
-  FooterStayInTouch,
 } from "./Footer";
 export { default as ListItem } from "./ListItem";
 export { default as Layout } from "./Layout";
