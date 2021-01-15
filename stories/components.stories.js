@@ -15,7 +15,9 @@ import {
   ProfileList,
   StoryList,
   LegalLinks,
+  QuickLinks,
 } from "@commons-ui/core";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationButton from "./NavigationButton";
@@ -28,6 +30,25 @@ import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
 
+const QUICK_LINKS = [
+  {
+    title: "MORE",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+  {
+    title: "CONTACTS",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
+
 const LEGAL_LINKS = {
   links: [
     { href: "/legal/privacy", label: "PRIVACY POLICY" },
@@ -35,28 +56,53 @@ const LEGAL_LINKS = {
   ],
 };
 
-storiesOf("Components/DataDisplay", module).add("Legal Links", () => {
-  const classes = makeStyles((theme) => ({
-    section: {
-      margin: "0 auto",
-      [theme.breakpoints.up("md")]: {
-        width: "85%",
+storiesOf("Components/DataDisplay", module)
+  .add("Quick Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
       },
-    },
-  }))();
-  const color = text("color", "black");
-  const variant = select("variant", ["caption", "body1"], "caption");
+      title: {},
+      link: {},
+    }))();
 
-  return (
-    <LegalLinks
-      variant={variant}
-      color={color}
-      linkComponent={Button}
-      {...LEGAL_LINKS}
-      classes={classes}
-    />
-  );
-});
+    return (
+      <QuickLinks
+        linkComponent={Button}
+        {...QUICK_LINKS[0]}
+        classes={{
+          section: classes.section,
+          title: classes.title,
+          link: classes.link,
+        }}
+      />
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <LegalLinks
+        variant={variant}
+        color={color}
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={classes}
+      />
+    );
+  });
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {

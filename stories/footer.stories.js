@@ -13,8 +13,8 @@ import {
   FooterInitiativeLogo,
   FooterLogo,
   FooterStayInTouch,
-  FooterQuickLinks,
 } from "@commons-ui/core";
+
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -35,7 +35,7 @@ const QUICK_LINKS = [
   {
     title: "MORE",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -43,7 +43,7 @@ const QUICK_LINKS = [
   {
     title: "CONTACTS",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -269,24 +269,6 @@ storiesOf("Components/Footer", module)
       >
         {ABOUT.initative}
       </FooterInitiativeLogo>
-    );
-  })
-  .add("Quick Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    return (
-      <FooterQuickLinks
-        linkComponent={Button}
-        {...QUICK_LINKS[0]}
-        classes={{ section: classes.section }}
-      />
     );
   })
   .add("Stay In Touch", () => {
