@@ -51,7 +51,6 @@ storiesOf("Components/DataDisplay", module).add("Legal Links", () => {
     <LegalLinks
       variant={variant}
       color={color}
-      borderRight="red"
       linkComponent={Button}
       {...LEGAL_LINKS}
       classes={classes}
