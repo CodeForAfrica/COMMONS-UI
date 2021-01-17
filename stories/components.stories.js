@@ -329,7 +329,7 @@ storiesOf("Components/Filter", module)
         },
       }))();
 
-      const parentTopics = object("parentTopics", [
+      const mainTopics = object("mainTopics", [
         { name: "All", slug: "all" },
         { name: "Technology", slug: "technology" },
         { name: "Policy", slug: "Policy" },
@@ -348,7 +348,7 @@ storiesOf("Components/Filter", module)
         <div>
           <Filter
             activeTopic={text("activeTopic", "all")}
-            parentTopics={parentTopics}
+            mainTopics={mainTopics}
             subTopics={subTopics}
             classes={{
               activeButton: classes.filterActiveButton,
