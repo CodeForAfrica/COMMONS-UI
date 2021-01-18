@@ -15,6 +15,7 @@ import {
   ProfileList,
   StoryList,
   QuickLinks,
+  DataSourceContent,
 } from "@commons-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -73,7 +74,55 @@ storiesOf("Components/Data Display", module)
         }}
       />
     );
-  });
+  })
+  .add("DataSourceContent", () =>
+    React.createElement(() => {
+      const classes = makeStyles(({ breakpoints }) => ({
+        section: {
+          margin: "0 auto",
+          width: "90%",
+        },
+        img: {
+          width: "100%",
+          background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
+          backgroundSize: "cover",
+          height: "20rem",
+          [breakpoints.up("md")]: {
+            width: "27.7143rem",
+            height: "28rem",
+          },
+          [breakpoints.up("lg")]: {
+            width: "37.7143rem",
+            height: "38rem",
+          },
+        },
+        datasetsLink: {
+          marginTop: "2rem",
+        },
+        documentsLink: {
+          marginTop: "2rem",
+        },
+      }))();
+
+      return (
+        <div>
+          <DataSourceContent
+            datasource={{
+              contentType: "Datasets",
+              description:
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              icon: <StorageIcon fontSize="large" />,
+            }}
+            classes={{
+              section: classes.section,
+              datasetsLink: classes.datasetsLink,
+              documentsLink: classes.documentsLink,
+            }}
+          />
+        </div>
+      );
+    })
+  );
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {

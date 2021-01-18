@@ -22,7 +22,14 @@ const useStyles = makeStyles(({ breakpoints, typography }) => ({
   link: {},
 }));
 
-function Content({ children, contentType, description, icon, link, ...props }) {
+function DataSourceContent({
+  children,
+  contentType,
+  description,
+  icon,
+  link,
+  ...props
+}) {
   const classes = useStyles(props);
 
   return (
@@ -66,7 +73,7 @@ function Content({ children, contentType, description, icon, link, ...props }) {
   );
 }
 
-Content.propTypes = {
+DataSourceContent.propTypes = {
   children: PropTypes.node,
   contentType: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -77,10 +84,10 @@ Content.propTypes = {
   }),
 };
 
-Content.defaultProps = {
+DataSourceContent.defaultProps = {
   children: undefined,
   description: undefined,
   link: { href: "#", label: "View More" },
 };
 
-export default Content;
+export default DataSourceContent;
