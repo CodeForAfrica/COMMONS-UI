@@ -77,29 +77,15 @@ storiesOf("Components/Data Display", module)
   })
   .add("Datasets", () =>
     React.createElement(() => {
-      const classes = makeStyles(({ breakpoints }) => ({
+      const classes = makeStyles(() => ({
         section: {
           margin: "0 auto",
           width: "90%",
         },
-        img: {
-          width: "100%",
-          background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
-          backgroundSize: "cover",
-          height: "20rem",
-          [breakpoints.up("md")]: {
-            width: "27.7143rem",
-            height: "28rem",
-          },
-          [breakpoints.up("lg")]: {
-            width: "37.7143rem",
-            height: "38rem",
-          },
-        },
         datasetsLink: {
           marginTop: "2rem",
         },
-        documentsLink: {
+        datasetsIcon: {
           marginTop: "2rem",
         },
       }))();
@@ -125,26 +111,12 @@ storiesOf("Components/Data Display", module)
   )
   .add("Documents", () =>
     React.createElement(() => {
-      const classes = makeStyles(({ breakpoints }) => ({
+      const classes = makeStyles(() => ({
         section: {
           margin: "0 auto",
           width: "90%",
         },
-        img: {
-          width: "100%",
-          background: `transparent url(${imgHighlight}) 50% 50% no-repeat`,
-          backgroundSize: "cover",
-          height: "20rem",
-          [breakpoints.up("md")]: {
-            width: "27.7143rem",
-            height: "28rem",
-          },
-          [breakpoints.up("lg")]: {
-            width: "37.7143rem",
-            height: "38rem",
-          },
-        },
-        datasetsLink: {
+        documentsIcon: {
           marginTop: "2rem",
         },
         documentsLink: {

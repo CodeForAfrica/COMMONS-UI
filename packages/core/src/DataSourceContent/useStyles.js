@@ -8,7 +8,6 @@ const useStyles = makeStyles(({ breakpoints }) => ({
       background: "unset",
     },
   },
-  contentsDocuments: {},
   datasource: {},
   datasourceContentType: {},
   datasourceDescription: {},
