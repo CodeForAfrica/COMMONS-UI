@@ -75,7 +75,7 @@ storiesOf("Components/Data Display", module)
       />
     );
   })
-  .add("Datasets", () =>
+  .add("Datasets and Documents", () =>
     React.createElement(() => {
       const classes = makeStyles(() => ({
         section: {
@@ -88,58 +88,53 @@ storiesOf("Components/Data Display", module)
         datasetsIcon: {
           marginTop: "2rem",
         },
-      }))();
-
-      return (
-        <div>
-          <DataSourceContent
-            datasource={{
-              contentType: "Datasets",
-              description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-              icon: <StorageIcon fontSize="large" />,
-            }}
-            classes={{
-              section: classes.section,
-              icon: classes.datasetsIcon,
-              link: classes.datasetsLink,
-            }}
-          />
-        </div>
-      );
-    })
-  )
-  .add("Documents", () =>
-    React.createElement(() => {
-      const classes = makeStyles(() => ({
-        section: {
-          margin: "0 auto",
-          width: "90%",
-        },
-        documentsIcon: {
+        documentLink: {
           marginTop: "2rem",
         },
-        documentsLink: {
+        documentIcon: {
           marginTop: "2rem",
         },
       }))();
 
       return (
-        <div>
-          <DataSourceContent
-            datasource={{
-              contentType: "Documents",
-              description:
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-              icon: <DescriptionIcon fontSize="large" />,
-            }}
-            classes={{
-              section: classes.section,
-              link: classes.documentsLink,
-              icon: classes.documentsLink,
-            }}
-          />
-        </div>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+          spacing={8}
+        >
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Datasets",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <StorageIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                icon: classes.datasetsIcon,
+                link: classes.datasetsLink,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Documents",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <DescriptionIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                link: classes.documentsLink,
+                icon: classes.documentsLink,
+              }}
+            />
+          </Grid>
+        </Grid>
       );
     })
   );
