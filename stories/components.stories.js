@@ -151,7 +151,7 @@ storiesOf("Components/Navigation", module)
   .add("ScrollableGridList", () => {
     const classes = makeStyles((theme) => ({
       root: {},
-      scrollableGridList: {
+      gridList: {
         flexWrap: "nowrap",
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: "translateZ(0)",
@@ -167,13 +167,14 @@ storiesOf("Components/Navigation", module)
     }))();
     return (
       <ScrollableGridList
+        xs={2}
         classes={{
           root: classes.root,
           gridList: classes.scrollableGridList,
           scrollBar: classes.scrollBar,
         }}
       >
-        <GridList className={classes.gridList} cols={4}>
+        <GridList className={classes.gridList} cols={2.5}>
           {tileData.map((tile) => (
             <GridListTile key={tile.img}>
               <img src={tile.img} alt={tile.title} />
