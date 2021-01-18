@@ -115,8 +115,8 @@ storiesOf("Components/Data Display", module)
             }}
             classes={{
               section: classes.section,
-              datasetsLink: classes.datasetsLink,
-              documentsLink: classes.documentsLink,
+              icon: classes.datasetsIcon,
+              link: classes.datasetsLink,
             }}
           />
         </div>
@@ -163,8 +163,8 @@ storiesOf("Components/Data Display", module)
             }}
             classes={{
               section: classes.section,
-              datasetsLink: classes.datasetsLink,
-              documentsLink: classes.documentsLink,
+              link: classes.documentsLink,
+              icon: classes.documentsLink,
             }}
           />
         </div>
