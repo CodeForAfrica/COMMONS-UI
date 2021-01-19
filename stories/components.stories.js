@@ -20,6 +20,7 @@ import {
   Filter,
   ProfileList,
   StoryList,
+  Copyright,
   LegalLinks,
   StayInTouch,
   QuickLinks,
@@ -93,98 +94,67 @@ const tileData = [
   },
 ];
 
+const socialLinks = [
+  {
+    url: "https://www.instagram.com/code4africa__/",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
+      alt: "Instagram",
+    },
+  },
+  {
+    url: "https://twitter.com/Code4Africa",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
+      alt: "Twitter",
+    },
+  },
+  {
+    url: "https://github.com/codeforafrica",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
+      alt: "Github",
+    },
+  },
+  {
+    url: "https://www.facebook.com/CodeForAfrica/",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
+      alt: "Facebook",
+    },
+  },
+];
+
 storiesOf("Components/Data Display", module)
   .addDecorator(withKnobs)
-  .add("Stay In Touch", () => {
-    const classes = makeStyles(() => ({
-      section: {},
+  .add("Copyright", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
     }))();
-
-    const socialLinks = [
-      {
-        url: "https://www.instagram.com/code4africa__/",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
-          alt: "Instagram",
-        },
-      },
-      {
-        url: "https://twitter.com/Code4Africa",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
-          alt: "Twitter",
-        },
-      },
-      {
-        url: "https://github.com/codeforafrica",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
-          alt: "Github",
-        },
-      },
-      {
-        url: "https://www.facebook.com/CodeForAfrica/",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
-          alt: "Facebook",
-        },
-      },
-    ];
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
 
     return (
-      <StayInTouch
-        socialMedia={socialLinks}
+      <Copyright
+        variant={variant}
+        color={color}
         classes={{ section: classes.section }}
       />
     );
-  });
-
-storiesOf("Components/Data Display", module)
-  .addDecorator(withKnobs)
+  })
   .add("Stay In Touch", () => {
     const classes = makeStyles(() => ({
       section: {},
     }))();
-
-    const socialLinks = [
-      {
-        url: "https://www.instagram.com/code4africa__/",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
-          alt: "Instagram",
-        },
-      },
-      {
-        url: "https://twitter.com/Code4Africa",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
-          alt: "Twitter",
-        },
-      },
-      {
-        url: "https://github.com/codeforafrica",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
-          alt: "Github",
-        },
-      },
-      {
-        url: "https://www.facebook.com/CodeForAfrica/",
-        image: {
-          url:
-            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
-          alt: "Facebook",
-        },
-      },
-    ];
-
     return (
       <StayInTouch
         socialMedia={socialLinks}

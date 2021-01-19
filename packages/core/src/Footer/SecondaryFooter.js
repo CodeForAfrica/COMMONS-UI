@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Grid } from "@material-ui/core";
 
-import Copyright from "./Copyright";
+import Copyright from "../Copyright";
 import LegalLinks from "../LegalLinks";
 import Section from "../Section";
 
@@ -25,9 +25,9 @@ function SecondaryFooter({
           <Grid item xs={12} md={5} />
           <Grid item xs={12} md={2} className={classes.copyright}>
             <Copyright
-              copyrightLogo={copyrightLogo}
+              icon={copyrightLogo}
               copyright={copyright}
-              copyrightYear={copyrightYear}
+              year={copyrightYear}
             />
           </Grid>
           <Grid
