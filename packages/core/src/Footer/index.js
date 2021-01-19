@@ -33,8 +33,6 @@ export default Footer;
 // Expose components
 export { default as AboutOrganization } from "../AboutOrganization";
 export { default as FooterCopyright } from "./Copyright";
-export { default as FooterLogo } from "./Logo";
 export { default as FooterInitiativeLogo } from "./Initiative";
-export { default as FooterLegalLinks } from "./LegalLinks";
+export { default as LegalLinks } from "../LegalLinks";
 export { default as QuickLinks } from "../QuickLinks";
-export { default as FooterStayInTouch } from "./StayInTouch";
