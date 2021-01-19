@@ -28,6 +28,27 @@ import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
 
+storiesOf("Components/Data Display").add("Copyright", () => {
+  const classes = makeStyles((theme) => ({
+    section: {
+      margin: "0 auto",
+      [theme.breakpoints.up("md")]: {
+        width: "85%",
+      },
+    },
+  }))();
+  const color = text("color", "black");
+  const variant = select("variant", ["caption", "body1"], "caption");
+
+  return (
+    <Copyright
+      variant={variant}
+      color={color}
+      classes={{ section: classes.section }}
+    />
+  );
+});
+
 storiesOf("Components/Profile List", module)
   .add("Default", () => {
     const classes = makeStyles(({ palette }) => ({
@@ -364,24 +385,3 @@ storiesOf("Components/Filter", module)
       );
     })
   );
-
-storiesOf("Components/Copyright,module").add("Copyright", () => {
-  const classes = makeStyles((theme) => ({
-    section: {
-      margin: "0 auto",
-      [theme.breakpoints.up("md")]: {
-        width: "85%",
-      },
-    },
-  }))();
-  const color = text("color", "black");
-  const variant = select("variant", ["caption", "body1"], "caption");
-
-  return (
-    <Copyright
-      variant={variant}
-      color={color}
-      classes={{ section: classes.section }}
-    />
-  );
-});
