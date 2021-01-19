@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   Footer,
-  FooterAbout,
+  AboutOrganization,
   FooterInitiativeLogo,
   Logo,
   Divider,
@@ -153,13 +153,13 @@ storiesOf("Components/Footer", module)
     );
 
     return (
-      <FooterAbout
+      <AboutOrganization
         initiative={text("initiative", ABOUT.initiative)}
         options={options.about}
         classes={{ section: classes.section }}
       >
         {text("children", ABOUT.about)}
-      </FooterAbout>
+      </AboutOrganization>
     );
   })
 

@@ -2,7 +2,8 @@
 export { default as A } from "./A";
 export { default as DocumentsAndDatasets } from "./DocumentsAndDatasets";
 export { default as Filter } from "./Filter";
-export { default as Footer, FooterAbout, FooterInitiativeLogo } from "./Footer";
+export { default as Footer, FooterInitiativeLogo } from "./Footer";
+export { default as AboutOrganization } from "./AboutOrganization";
 export { default as ListItem } from "./ListItem";
 export { default as Logo } from "./Logo";
 export { default as Divider } from "./Divider";

@@ -16,6 +16,7 @@ import {
   GridListTileBar,
 } from "@material-ui/core";
 import {
+  AboutOrganization,
   DocumentsAndDatasets,
   Filter,
   ProfileList,
@@ -39,6 +40,28 @@ import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
+
+const options = {
+  about: {
+    about: {
+      variant: "caption",
+    },
+    initiative: {
+      variant: "caption",
+    },
+  },
+};
+
+const ABOUT = {
+  about:
+    "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,\n" +
+    "        sed diam nonumy eirmod tempor invidunt ut labore et dolore\n" +
+    "        magna aliquyam erat, sed diam voluptua. At vero eos et\n" +
+    "        accusam et justo duo dolores et ea rebum. Stet clita kasd\n" +
+    "        gubergren, no sea takimata sanctus est",
+  initiative:
+    "This initiative was made possible with support \nfrom Pulitzer Center.",
+};
 
 const LEGAL_LINKS = {
   links: [
@@ -131,6 +154,36 @@ const socialLinks = [
 
 storiesOf("Components/Data Display", module)
   .addDecorator(withKnobs)
+  .add("About Organization", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    options.about.about.variant = select(
+      "About variant",
+      ["caption", "body1"],
+      "caption"
+    );
+    options.about.initiative.variant = select(
+      "Initiative variant",
+      ["caption", "body1"],
+      "caption"
+    );
+
+    return (
+      <AboutOrganization
+        initiative={text("initiative", ABOUT.initiative)}
+        options={options.about}
+        classes={{ section: classes.section }}
+      >
+        {text("children", ABOUT.about)}
+      </AboutOrganization>
+    );
+  })
   .add("Copyright", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -148,6 +201,28 @@ storiesOf("Components/Data Display", module)
         variant={variant}
         color={color}
         classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <LegalLinks
+        variant={variant}
+        color={color}
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={classes}
       />
     );
   })
@@ -183,28 +258,6 @@ storiesOf("Components/Data Display", module)
           title: classes.title,
           link: classes.link,
         }}
-      />
-    );
-  })
-  .add("Legal Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const color = text("color", "black");
-    const variant = select("variant", ["caption", "body1"], "caption");
-
-    return (
-      <LegalLinks
-        variant={variant}
-        color={color}
-        linkComponent={Button}
-        {...LEGAL_LINKS}
-        classes={classes}
       />
     );
   });
