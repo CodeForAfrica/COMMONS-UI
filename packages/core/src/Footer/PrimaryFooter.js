@@ -8,7 +8,7 @@ import { Grid, Hidden } from "@material-ui/core";
 import About from "./About";
 import Initiative from "./Initiative";
 import QuickLinks from "../QuickLinks";
-import Logo from "./Logo";
+import Logo from "../Logo";
 import Section from "../Section";
 
 import useStyles from "./useStyles";
