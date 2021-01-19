@@ -32,8 +32,7 @@ export default Footer;
 
 // Expose components
 export { default as FooterAbout } from "./About";
-export { default as FooterLogo } from "./Logo";
+export { default as Copyright } from "../Copyright";
 export { default as FooterInitiativeLogo } from "./Initiative";
-export { default as FooterLegalLinks } from "./LegalLinks";
-export { default as FooterQuickLinks } from "./QuickLinks";
-export { default as FooterStayInTouch } from "./StayInTouch";
+export { default as LegalLinks } from "../LegalLinks";
+export { default as QuickLinks } from "../QuickLinks";

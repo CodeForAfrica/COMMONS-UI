@@ -8,46 +8,287 @@ import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
 } from "@material-ui/icons";
-import { Grid } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  GridList,
+  GridListTile,
+  GridListTileBar,
+} from "@material-ui/core";
 import {
   DocumentsAndDatasets,
   Filter,
   ProfileList,
   StoryList,
   Copyright,
+  LegalLinks,
+  StayInTouch,
+  QuickLinks,
+  ScrollBar,
+  NavigationButton,
+  ScrollableGridList,
 } from "@commons-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
-import NavigationButton from "./NavigationButton";
+import { makeStyles } from "@material-ui/core/styles";
 import { getProfiles, useStories } from "./utils";
 
 import imgHighlight from "./assets/illo-02.png";
+import personImage from "./assets/person_1.png";
 import linkedIn from "./assets/Icon awesome-linkedin.png";
 import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
 
-storiesOf("Components/Data Display").add("Copyright", () => {
-  const classes = makeStyles((theme) => ({
-    section: {
-      margin: "0 auto",
-      [theme.breakpoints.up("md")]: {
-        width: "85%",
-      },
-    },
-  }))();
-  const color = text("color", "black");
-  const variant = select("variant", ["caption", "body1"], "caption");
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
-  return (
-    <Copyright
-      variant={variant}
-      color={color}
-      classes={{ section: classes.section }}
-    />
-  );
-});
+const QUICK_LINKS = [
+  {
+    title: "MORE",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+  {
+    title: "CONTACTS",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/faqs", label: "FAQs" },
+      { href: "/contact", label: "Contact Us" },
+    ],
+  },
+];
+
+// Example data for the scrollbar story
+const tileData = [
+  {
+    title: "Example title one",
+    img: personImage,
+  },
+  {
+    title: "Example title two",
+    img: personImage,
+  },
+  {
+    title: "Example title three",
+    img: personImage,
+  },
+  {
+    title: "Example title four",
+    img: personImage,
+  },
+  {
+    title: "Example title five",
+    img: personImage,
+  },
+  {
+    title: "Another Example title Five",
+    img: personImage,
+  },
+];
+
+const socialLinks = [
+  {
+    url: "https://www.instagram.com/code4africa__/",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
+      alt: "Instagram",
+    },
+  },
+  {
+    url: "https://twitter.com/Code4Africa",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
+      alt: "Twitter",
+    },
+  },
+  {
+    url: "https://github.com/codeforafrica",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
+      alt: "Github",
+    },
+  },
+  {
+    url: "https://www.facebook.com/CodeForAfrica/",
+    image: {
+      url:
+        "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
+      alt: "Facebook",
+    },
+  },
+];
+
+storiesOf("Components/Data Display", module)
+  .addDecorator(withKnobs)
+  .add("Copyright", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <Copyright
+        variant={variant}
+        color={color}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Stay In Touch", () => {
+    const classes = makeStyles(() => ({
+      section: {},
+    }))();
+    return (
+      <StayInTouch
+        socialMedia={socialLinks}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
+  .add("Quick Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+      title: {},
+      link: {},
+    }))();
+
+    return (
+      <QuickLinks
+        linkComponent={Button}
+        {...QUICK_LINKS[0]}
+        classes={{
+          section: classes.section,
+          title: classes.title,
+          link: classes.link,
+        }}
+      />
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <LegalLinks
+        variant={variant}
+        color={color}
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={classes}
+      />
+    );
+  });
+
+storiesOf("Components/Navigation", module)
+  .addDecorator(withKnobs)
+  .add("ScrollBar", () => {
+    const classes = makeStyles((theme) => ({
+      root: {},
+      gridList: {
+        flexWrap: "nowrap",
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: "translateZ(0)",
+      },
+      title: {
+        color: theme.palette.primary.light,
+      },
+      titleBar: {
+        background:
+          "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+      },
+    }))();
+    return (
+      <ScrollBar>
+        <GridList className={classes.gridList} cols={5}>
+          {tileData.map((tile) => (
+            <GridListTile key={tile.img}>
+              <img src={tile.img} alt={tile.title} />
+              <GridListTileBar
+                title={tile.title}
+                classes={{
+                  root: classes.titleBar,
+                  title: classes.title,
+                }}
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </ScrollBar>
+    );
+  })
+  .add("ScrollableGridList", () => {
+    const classes = makeStyles((theme) => ({
+      root: {},
+      gridList: {
+        flexWrap: "nowrap",
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: "translateZ(0)",
+      },
+      title: {
+        color: theme.palette.primary.light,
+      },
+      titleBar: {
+        background:
+          "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+      },
+      scrollBar: {},
+    }))();
+    return (
+      <ScrollableGridList
+        xs={2}
+        classes={{
+          root: classes.root,
+          gridList: classes.scrollableGridList,
+          scrollBar: classes.scrollBar,
+        }}
+      >
+        <GridList className={classes.gridList} cols={2.5}>
+          {tileData.map((tile) => (
+            <GridListTile key={tile.img}>
+              <img src={tile.img} alt={tile.title} />
+              <GridListTileBar
+                title={tile.title}
+                classes={{
+                  root: classes.titleBar,
+                  title: classes.title,
+                }}
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </ScrollableGridList>
+    );
+  });
 
 storiesOf("Components/Profile List", module)
   .add("Default", () => {

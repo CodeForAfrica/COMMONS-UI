@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import A from "../A";
 import RichTypography from "../RichTypography";
-
+import Logo from "../Logo";
 import useStyles from "./useStyles";
 
 function Initiative({ variant, image, url, children, ...props }) {
@@ -11,13 +10,7 @@ function Initiative({ variant, image, url, children, ...props }) {
 
   return (
     <div className={classes.root}>
-      <A href={url}>
-        <img
-          src={image.url}
-          alt={image.alt}
-          className={classes.supporterLogo}
-        />
-      </A>
+      <Logo image={image} url={url} />
       <RichTypography variant={variant} className={classes.support}>
         {children}
       </RichTypography>
