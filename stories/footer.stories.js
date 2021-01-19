@@ -11,10 +11,11 @@ import {
   FooterAbout,
   FooterCopyright,
   FooterInitiativeLogo,
-  FooterLogo,
+  Logo,
   FooterLegalLinks,
-  FooterQuickLinks,
+  Divider,
 } from "@commons-ui/core";
+
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -22,7 +23,7 @@ const QUICK_LINKS = [
   {
     title: "MORE",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -30,7 +31,7 @@ const QUICK_LINKS = [
   {
     title: "CONTACTS",
     links: [
-      { href: "/about", label: "About About" },
+      { href: "/about", label: "About" },
       { href: "/faqs", label: "FAQs" },
       { href: "/contact", label: "Contact Us" },
     ],
@@ -74,7 +75,7 @@ const INITIATIVE_LOGO = {
 
 const CFA = {
   image: {
-    url: cfaLogo,
+    src: cfaLogo,
     alt: "Code for Africa",
   },
   url: "https://codeforafrica.org",
@@ -182,7 +183,7 @@ storiesOf("Components/Footer", module)
     );
   })
 
-  .add("Logo", () => {
+  .add("Footer Logo", () => {
     const classes = makeStyles((theme) => ({
       section: {
         margin: "0 auto",
@@ -190,15 +191,19 @@ storiesOf("Components/Footer", module)
           width: "85%",
         },
       },
+      divider: {
+        height: ".2rem",
+        background: "#180f49",
+        marginLeft: "19rem",
+        marginTop: "-.6rem",
+      },
     }))();
-    const hasDivider = select("hasDivider", [true, false], true);
 
     return (
-      <FooterLogo
-        {...CFA}
-        hasDivider={hasDivider}
-        classes={{ section: classes.section }}
-      />
+      <>
+        <Logo {...CFA} classes={{ section: classes.section }} />
+        <Divider classes={{ root: classes.divider }} />
+      </>
     );
   })
   .add("Initative Logo", () => {
@@ -239,24 +244,6 @@ storiesOf("Components/Footer", module)
         linkComponent={Button}
         {...LEGAL_LINKS}
         classes={classes}
-      />
-    );
-  })
-  .add("Quick Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    return (
-      <FooterQuickLinks
-        linkComponent={Button}
-        {...QUICK_LINKS[0]}
-        classes={{ section: classes.section }}
       />
     );
   });
