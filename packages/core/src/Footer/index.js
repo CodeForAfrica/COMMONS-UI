@@ -36,4 +36,4 @@ export { default as FooterCopyright } from "./Copyright";
 export { default as FooterInitiativeLogo } from "./Initiative";
 export { default as FooterLegalLinks } from "./LegalLinks";
 export { default as QuickLinks } from "../QuickLinks";
-export { default as FooterStayInTouch } from "./StayInTouch";
+

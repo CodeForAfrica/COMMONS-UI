@@ -13,18 +13,11 @@ import {
   FooterInitiativeLogo,
   Logo,
   FooterLegalLinks,
-  FooterStayInTouch,
   Divider,
 } from "@commons-ui/core";
 
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
-
-import Email from "./assets/email.svg";
-import Facebook from "./assets/facebook.svg";
-import Medium from "./assets/group-3.svg";
-import LinkedIn from "./assets/group-3-copy.svg";
-import Twitter from "./assets/twitter.svg";
 
 const QUICK_LINKS = [
   {
@@ -88,46 +81,6 @@ const CFA = {
   url: "https://codeforafrica.org",
 };
 
-const CONTACTS = {
-  support: {
-    email: "hello@contact.com",
-    image: {
-      url: Email,
-      alt: "Email",
-    },
-  },
-  socialMedia: [
-    {
-      url: "https://twitter.com",
-      image: {
-        url: Twitter,
-        alt: "Twitter",
-      },
-    },
-    {
-      url: "https://facebook.com",
-      image: {
-        url: Facebook,
-        alt: "Facebook",
-      },
-    },
-    {
-      url: "https://medium.com",
-      image: {
-        url: Medium,
-        alt: "Medium",
-      },
-    },
-    {
-      url: "https://linkedin.com",
-      image: {
-        url: LinkedIn,
-        alt: "LinkedIn",
-      },
-    },
-  ],
-};
-
 storiesOf("Components/Footer", module)
   .addDecorator(withKnobs)
   .add("Default", () => {
@@ -139,14 +92,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-    const contacts = CONTACTS;
-    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
+
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
         about={ABOUT}
-        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={LEGAL_LINKS}
         quickLinks={QUICK_LINKS}
@@ -186,14 +137,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-    const contacts = CONTACTS;
-    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
+
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
         about={ABOUT}
-        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
         quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
@@ -295,36 +244,6 @@ storiesOf("Components/Footer", module)
         linkComponent={Button}
         {...LEGAL_LINKS}
         classes={classes}
-      />
-    );
-  })
-  .add("Stay In Touch", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const title = text("contacts.title", "Stay in touch with us @ &nbsp;");
-    return (
-      <FooterStayInTouch
-        options={{
-          socialMedia: {
-            color: text("SocialMedia.color", "textSecondary"),
-          },
-          support: {
-            color: text("support.color", "textSecondary"),
-          },
-          title: {
-            color: text("title.color", "black"),
-            variant: select("variant", ["caption", "body1"], "caption"),
-          },
-        }}
-        {...CONTACTS}
-        title={title}
-        classes={{ section: classes.section }}
       />
     );
   });

@@ -14,6 +14,7 @@ import {
   Filter,
   ProfileList,
   StoryList,
+  StayInTouch,
   QuickLinks,
 } from "@commons-ui/core";
 
@@ -47,6 +48,56 @@ const QUICK_LINKS = [
     ],
   },
 ];
+
+storiesOf("Components/Data Display", module)
+  .addDecorator(withKnobs)
+  .add("Stay In Touch", () => {
+    const classes = makeStyles(() => ({
+      section: {},
+    }))();
+
+    const socialLinks = [
+      {
+        url: "https://www.instagram.com/code4africa__/",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
+          alt: "Instagram",
+        },
+      },
+      {
+        url: "https://twitter.com/Code4Africa",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
+          alt: "Twitter",
+        },
+      },
+      {
+        url: "https://github.com/codeforafrica",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
+          alt: "Github",
+        },
+      },
+      {
+        url: "https://www.facebook.com/CodeForAfrica/",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
+          alt: "Facebook",
+        },
+      },
+    ];
+
+    return (
+      <StayInTouch
+        socialMedia={socialLinks}
+        classes={{ section: classes.section }}
+      />
+    );
+  });
 
 storiesOf("Components/Data Display", module)
   .addDecorator(withKnobs)
