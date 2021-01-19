@@ -7,7 +7,6 @@ export {
   FooterAbout,
   FooterCopyright,
   FooterInitiativeLogo,
-  FooterLegalLinks,
 } from "./Footer";
 export { default as ListItem } from "./ListItem";
 export { default as Logo } from "./Logo";
@@ -21,3 +20,4 @@ export { default as Section } from "./Section";
 export { default as StoryList } from "./StoryList";
 export { default as StayInTouch } from "./StayInTouch";
 export { default as QuickLinks } from "./QuickLinks";
+export { default as LegalLinks } from "./LegalLinks";

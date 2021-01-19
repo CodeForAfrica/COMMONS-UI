@@ -12,12 +12,19 @@ import {
   FooterCopyright,
   FooterInitiativeLogo,
   Logo,
-  FooterLegalLinks,
+  LegalLinks,
   Divider,
 } from "@commons-ui/core";
 
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
+
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
 const QUICK_LINKS = [
   {
@@ -46,12 +53,6 @@ const options = {
       variant: "caption",
     },
   },
-};
-const LEGAL_LINKS = {
-  links: [
-    { href: "/legal/privacy", label: "PRIVACY POLICY" },
-    { href: "/legal/terms", label: "TERMS OF SERVICES" },
-  ],
 };
 
 const ABOUT = {
@@ -238,7 +239,7 @@ storiesOf("Components/Footer", module)
     const variant = select("variant", ["caption", "body1"], "caption");
 
     return (
-      <FooterLegalLinks
+      <LegalLinks
         variant={variant}
         color={color}
         linkComponent={Button}

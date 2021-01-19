@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { withKnobs, text, object } from "@storybook/addon-knobs";
+import { select, withKnobs, text, object } from "@storybook/addon-knobs";
 
 import {
   ArrowBack,
@@ -14,6 +14,7 @@ import {
   Filter,
   ProfileList,
   StoryList,
+  LegalLinks,
   StayInTouch,
   QuickLinks,
 } from "@commons-ui/core";
@@ -29,6 +30,13 @@ import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
 
 import "simplebar/dist/simplebar.min.css";
+
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
 const QUICK_LINKS = [
   {
@@ -101,6 +109,53 @@ storiesOf("Components/Data Display", module)
 
 storiesOf("Components/Data Display", module)
   .addDecorator(withKnobs)
+  .add("Stay In Touch", () => {
+    const classes = makeStyles(() => ({
+      section: {},
+    }))();
+
+    const socialLinks = [
+      {
+        url: "https://www.instagram.com/code4africa__/",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-ig.svg",
+          alt: "Instagram",
+        },
+      },
+      {
+        url: "https://twitter.com/Code4Africa",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-tw.svg",
+          alt: "Twitter",
+        },
+      },
+      {
+        url: "https://github.com/codeforafrica",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-gh.svg",
+          alt: "Github",
+        },
+      },
+      {
+        url: "https://www.facebook.com/CodeForAfrica/",
+        image: {
+          url:
+            "https://dashboard.hurumap.org/promisetracker/wp-content/uploads/sites/2/2020/10/footer-social-fb.svg",
+          alt: "Facebook",
+        },
+      },
+    ];
+
+    return (
+      <StayInTouch
+        socialMedia={socialLinks}
+        classes={{ section: classes.section }}
+      />
+    );
+  })
   .add("Quick Links", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -122,6 +177,28 @@ storiesOf("Components/Data Display", module)
           title: classes.title,
           link: classes.link,
         }}
+      />
+    );
+  })
+  .add("Legal Links", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+    const color = text("color", "black");
+    const variant = select("variant", ["caption", "body1"], "caption");
+
+    return (
+      <LegalLinks
+        variant={variant}
+        color={color}
+        linkComponent={Button}
+        {...LEGAL_LINKS}
+        classes={classes}
       />
     );
   });
