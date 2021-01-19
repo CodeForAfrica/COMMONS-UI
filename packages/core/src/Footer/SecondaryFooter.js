@@ -6,12 +6,10 @@ import { Grid } from "@material-ui/core";
 import Copyright from "./Copyright";
 import LegalLinks from "../LegalLinks";
 import Section from "../Section";
-import StayInTouch from "./StayInTouch";
 
 import useStyles from "./useStyles";
 
 function SecondaryFooter({
-  contacts,
   copyright,
   copyrightLogo,
   copyrightYear,
@@ -24,19 +22,7 @@ function SecondaryFooter({
     <div className={classes.secondary}>
       <Section classes={{ root: classes.section }}>
         <Grid container justify="space-between" alignItems="center">
-          <Grid item xs={12} md={5}>
-            <StayInTouch
-              {...contacts}
-              classes={{
-                root: classes.stayInTouch,
-                icon: classes.stayInTouchIcon,
-                link: classes.stayInTouchLink,
-                links: classes.stayInTouchLinks,
-                title: classes.stayInTouchTitle,
-                text: classes.stayInTouchText,
-              }}
-            />
-          </Grid>
+          <Grid item xs={12} md={5} />
           <Grid item xs={12} md={2} className={classes.copyright}>
             <Copyright
               copyrightLogo={copyrightLogo}
