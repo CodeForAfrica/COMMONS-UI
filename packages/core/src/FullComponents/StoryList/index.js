@@ -7,7 +7,7 @@ import { GridListTile } from "@material-ui/core";
 
 import { ScrollableGridList as GridList } from "@commons-ui/core";
 
-import Story from "../ListItem";
+import Story from "../../ListItem";
 
 import useStyles from "./useStyles";
 

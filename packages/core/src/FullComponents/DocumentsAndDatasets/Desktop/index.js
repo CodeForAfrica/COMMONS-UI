@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import clsx from "clsx";
-
 import { Grid } from "@material-ui/core";
 
 import Content from "../Content";
-import RichTypography from "../../RichTypography";
-import Section from "../../Section";
+import RichTypography from "../../../RichTypography";
+import Section from "../../../Section";
 import useStyles from "../useStyles";
 
-function MobileDocumentsAndDatasets({
+function DocumentsAndDatasets({
   children,
   datasets,
   documents,
@@ -21,14 +19,20 @@ function MobileDocumentsAndDatasets({
   const classes = useStyles(props);
 
   return (
-    <div className={clsx(classes.root)}>
-      <Grid container className={classes.container}>
-        <Grid item xs={12} className={classes.highlight}>
-          {children}
-        </Grid>
-        <Grid item xs={12} container className={classes.content}>
-          <Grid item xs={12} className={classes.heading}>
-            <Section classes={{ root: classes.section }}>
+    <div className={classes.root}>
+      <Section classes={{ root: classes.section }}>
+        <Grid container className={classes.container}>
+          <Grid item md={5} className={classes.highlight}>
+            {children}
+          </Grid>
+          <Grid
+            item
+            md={7}
+            container
+            direction="column"
+            className={classes.content}
+          >
+            <Grid item className={classes.heading}>
               <RichTypography
                 variant="h2"
                 color="textSecondary"
@@ -36,18 +40,23 @@ function MobileDocumentsAndDatasets({
               >
                 {title}
               </RichTypography>
-              <RichTypography
-                variant="subtitle1"
-                color="textSecondary"
-                className={classes.subtitle}
-              >
-                {subtitle}
-              </RichTypography>
-            </Section>
-          </Grid>
-          <Grid item xs={12} container className={classes.contents}>
-            <Grid item xs={12} className={classes.contentsDocuments}>
-              <Section classes={{ root: classes.section }}>
+              {subtitle && (
+                <RichTypography
+                  variant="subtitle1"
+                  color="textSecondary"
+                  className={classes.subtitle}
+                >
+                  {subtitle}
+                </RichTypography>
+              )}
+            </Grid>
+            <Grid
+              item
+              container
+              justify="space-between"
+              className={classes.contents}
+            >
+              <Grid item md={5} className={classes.contentsDocuments}>
                 <Content
                   {...documents}
                   classes={{
@@ -58,10 +67,8 @@ function MobileDocumentsAndDatasets({
                     link: classes.documentsLink,
                   }}
                 />
-              </Section>
-            </Grid>
-            <Grid item xs={12} className={classes.contentsDatasets}>
-              <Section classes={{ root: classes.section }}>
+              </Grid>
+              <Grid item md={5} className={classes.contentsDatasets}>
                 <Content
                   {...datasets}
                   classes={{
@@ -72,16 +79,16 @@ function MobileDocumentsAndDatasets({
                     link: classes.datasetsLink,
                   }}
                 />
-              </Section>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Section>
     </div>
   );
 }
 
-MobileDocumentsAndDatasets.propTypes = {
+DocumentsAndDatasets.propTypes = {
   children: PropTypes.node,
   datasets: PropTypes.shape({
     icon: PropTypes.node,
@@ -93,7 +100,7 @@ MobileDocumentsAndDatasets.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-MobileDocumentsAndDatasets.defaultProps = {
+DocumentsAndDatasets.defaultProps = {
   children: null,
   datasets: {
     contentType: "Datasets",
@@ -104,4 +111,4 @@ MobileDocumentsAndDatasets.defaultProps = {
   subtitle: undefined,
 };
 
-export default MobileDocumentsAndDatasets;
+export default DocumentsAndDatasets;

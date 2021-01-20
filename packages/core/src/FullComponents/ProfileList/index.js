@@ -8,7 +8,7 @@ import { GridListTile } from "@material-ui/core";
 import { ScrollableGridList as GridList } from "@commons-ui/core";
 
 import Contacts from "./Contacts";
-import Profile from "../ListItem";
+import Profile from "../../ListItem";
 import useStyles from "./useStyles";
 
 function ProfileList({

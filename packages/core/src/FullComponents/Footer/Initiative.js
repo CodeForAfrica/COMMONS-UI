@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import RichTypography from "../RichTypography";
-import Logo from "../Logo";
+import RichTypography from "../../RichTypography";
+import Logo from "../../Logo";
 import useStyles from "./useStyles";
 
 function Initiative({ variant, image, url, children, ...props }) {

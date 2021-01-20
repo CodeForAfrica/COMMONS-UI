@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import useStyles from "../Footer/useStyles";
+import useStyles from "../FullComponents/Footer/useStyles";
 
 import RichTypography from "../RichTypography";
 

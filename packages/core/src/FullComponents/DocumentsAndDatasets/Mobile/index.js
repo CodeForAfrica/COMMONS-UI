@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import clsx from "clsx";
+
 import { Grid } from "@material-ui/core";
 
 import Content from "../Content";
-import RichTypography from "../../RichTypography";
-import Section from "../../Section";
+import RichTypography from "../../../RichTypography";
+import Section from "../../../Section";
 import useStyles from "../useStyles";
 
-function DocumentsAndDatasets({
+function MobileDocumentsAndDatasets({
   children,
   datasets,
   documents,
@@ -19,20 +21,14 @@ function DocumentsAndDatasets({
   const classes = useStyles(props);
 
   return (
-    <div className={classes.root}>
-      <Section classes={{ root: classes.section }}>
-        <Grid container className={classes.container}>
-          <Grid item md={5} className={classes.highlight}>
-            {children}
-          </Grid>
-          <Grid
-            item
-            md={7}
-            container
-            direction="column"
-            className={classes.content}
-          >
-            <Grid item className={classes.heading}>
+    <div className={clsx(classes.root)}>
+      <Grid container className={classes.container}>
+        <Grid item xs={12} className={classes.highlight}>
+          {children}
+        </Grid>
+        <Grid item xs={12} container className={classes.content}>
+          <Grid item xs={12} className={classes.heading}>
+            <Section classes={{ root: classes.section }}>
               <RichTypography
                 variant="h2"
                 color="textSecondary"
@@ -40,23 +36,18 @@ function DocumentsAndDatasets({
               >
                 {title}
               </RichTypography>
-              {subtitle && (
-                <RichTypography
-                  variant="subtitle1"
-                  color="textSecondary"
-                  className={classes.subtitle}
-                >
-                  {subtitle}
-                </RichTypography>
-              )}
-            </Grid>
-            <Grid
-              item
-              container
-              justify="space-between"
-              className={classes.contents}
-            >
-              <Grid item md={5} className={classes.contentsDocuments}>
+              <RichTypography
+                variant="subtitle1"
+                color="textSecondary"
+                className={classes.subtitle}
+              >
+                {subtitle}
+              </RichTypography>
+            </Section>
+          </Grid>
+          <Grid item xs={12} container className={classes.contents}>
+            <Grid item xs={12} className={classes.contentsDocuments}>
+              <Section classes={{ root: classes.section }}>
                 <Content
                   {...documents}
                   classes={{
@@ -67,8 +58,10 @@ function DocumentsAndDatasets({
                     link: classes.documentsLink,
                   }}
                 />
-              </Grid>
-              <Grid item md={5} className={classes.contentsDatasets}>
+              </Section>
+            </Grid>
+            <Grid item xs={12} className={classes.contentsDatasets}>
+              <Section classes={{ root: classes.section }}>
                 <Content
                   {...datasets}
                   classes={{
@@ -79,16 +72,16 @@ function DocumentsAndDatasets({
                     link: classes.datasetsLink,
                   }}
                 />
-              </Grid>
+              </Section>
             </Grid>
           </Grid>
         </Grid>
-      </Section>
+      </Grid>
     </div>
   );
 }
 
-DocumentsAndDatasets.propTypes = {
+MobileDocumentsAndDatasets.propTypes = {
   children: PropTypes.node,
   datasets: PropTypes.shape({
     icon: PropTypes.node,
@@ -100,7 +93,7 @@ DocumentsAndDatasets.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-DocumentsAndDatasets.defaultProps = {
+MobileDocumentsAndDatasets.defaultProps = {
   children: null,
   datasets: {
     contentType: "Datasets",
@@ -111,4 +104,4 @@ DocumentsAndDatasets.defaultProps = {
   subtitle: undefined,
 };
 
-export default DocumentsAndDatasets;
+export default MobileDocumentsAndDatasets;

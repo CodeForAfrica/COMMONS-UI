@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import { Grid } from "@material-ui/core";
 
-import Copyright from "../Copyright";
-import LegalLinks from "../LegalLinks";
-import Section from "../Section";
+import Copyright from "../../Copyright";
+import LegalLinks from "../../LegalLinks";
+import Section from "../../Section";
 
 import useStyles from "./useStyles";
 
