@@ -30,6 +30,7 @@ import {
   NavigationButton,
   ScrollableGridList,
   InitiativeLogo,
+  ListItem,
 } from "@commons-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -265,6 +266,29 @@ storiesOf("Components/Data Display", module)
       >
         {ABOUT.initative}
       </InitiativeLogo>
+    );
+  })
+  .add("Card List Item", () => {
+    const profiles = getProfiles();
+
+    const classes = makeStyles(() => ({
+      section: {},
+      profilePicture: {
+        position: "relative",
+        height: "auto",
+      },
+    }))();
+    return (
+      <div style={{ height: "320px" }}>
+        <ListItem
+          image={profiles[0].image}
+          name={profiles[0].name}
+          classes={{
+            section: classes.section,
+            picture: classes.profilePicture,
+          }}
+        />
+      </div>
     );
   })
   .add("Quick Links", () => {
