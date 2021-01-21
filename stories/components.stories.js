@@ -279,12 +279,11 @@ storiesOf("Components/Data Display", module)
       },
     }))();
     return (
-      <div style={{ height: "320px" }}>
+      <div>
         <ListItem
           image={profiles[0].image}
           name={profiles[0].name}
           classes={{
-            section: classes.section,
             picture: classes.profilePicture,
           }}
         />
