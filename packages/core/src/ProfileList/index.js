@@ -53,8 +53,6 @@ function ProfileList({
   if (!profiles.length) {
     return null;
   }
-
-  console.log("PROFILE", profiles, "HEIGHT", height, "CELL", cellHeight);
   return (
     <div className={classes.root} ref={rootRef}>
       <GridList
