@@ -64,13 +64,13 @@ const ABOUT = {
     "This initiative was made possible with support \nfrom Pulitzer Center.",
 };
 
-const INITIATIVE_LOGO = {
-  image: {
-    url: pulitzer,
-    alt: "Plutizer Center",
-  },
-  url: "https://pulitzercenter.org/",
-};
+/* const INITIATIVE_LOGO = {
+	image: {
+		url: pulitzer,
+		alt: "Plutizer Center",
+	},
+	url: "https://pulitzercenter.org/",
+}; */
 
 const CFA = {
   image: {
@@ -78,6 +78,14 @@ const CFA = {
     alt: "Code for Africa",
   },
   url: "https://codeforafrica.org",
+};
+
+const INITIATIVE_LOGO = {
+  image: {
+    src: pulitzer,
+    alt: "Plutizer Center",
+  },
+  url: "https://pulitzercenter.org/",
 };
 
 storiesOf("Components/Footer", module)
