@@ -38,11 +38,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  link: {},
 }));
 
 function LegalLinks({ color, variant, linkComponent, links, ...props }) {
-  const classes = useStyles(props);
+  const classes = useStyles({ ...props });
   const LinkComponent = linkComponent || Link;
 
   return (

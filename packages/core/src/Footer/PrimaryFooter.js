@@ -5,10 +5,10 @@ import clsx from "clsx";
 
 import { Grid, Hidden } from "@material-ui/core";
 
-import About from "./About";
+import AboutOrganization from "../AboutOrganization";
 import Initiative from "./Initiative";
 import QuickLinks from "../QuickLinks";
-import Logo from "./Logo";
+import Logo from "../Logo";
 import Section from "../Section";
 
 import useStyles from "./useStyles";
@@ -29,7 +29,7 @@ function PrimaryFooter({
         <Logo {...options.logo} {...organizationLogo} {...options.logo} />
         <Grid container>
           <Grid item xs={12} md={4}>
-            <About
+            <AboutOrganization
               initiative={about.initiative}
               options={options.about}
               classes={{
@@ -39,7 +39,7 @@ function PrimaryFooter({
               }}
             >
               {about.about}
-            </About>
+            </AboutOrganization>
           </Grid>
           <Grid item md={2} implementation="css" smDown component={Hidden} />
           <Grid item xs={6} md={2} className={classes.quickLinksMore}>

@@ -8,22 +8,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   Footer,
-  FooterAbout,
-  FooterCopyright,
+  AboutOrganization,
   FooterInitiativeLogo,
-  FooterLogo,
-  FooterLegalLinks,
-  FooterStayInTouch,
+  Logo,
+  Divider,
 } from "@commons-ui/core";
 
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
-import Email from "./assets/email.svg";
-import Facebook from "./assets/facebook.svg";
-import Medium from "./assets/group-3.svg";
-import LinkedIn from "./assets/group-3-copy.svg";
-import Twitter from "./assets/twitter.svg";
+const LEGAL_LINKS = {
+  links: [
+    { href: "/legal/privacy", label: "PRIVACY POLICY" },
+    { href: "/legal/terms", label: "TERMS OF SERVICES" },
+  ],
+};
 
 const QUICK_LINKS = [
   {
@@ -53,12 +52,6 @@ const options = {
     },
   },
 };
-const LEGAL_LINKS = {
-  links: [
-    { href: "/legal/privacy", label: "PRIVACY POLICY" },
-    { href: "/legal/terms", label: "TERMS OF SERVICES" },
-  ],
-};
 
 const ABOUT = {
   about:
@@ -76,55 +69,15 @@ const INITIATIVE_LOGO = {
     url: pulitzer,
     alt: "Plutizer Center",
   },
-  url: "https://link.url",
+  url: "https://pulitzercenter.org/",
 };
 
 const CFA = {
   image: {
-    url: cfaLogo,
+    src: cfaLogo,
     alt: "Code for Africa",
   },
   url: "https://codeforafrica.org",
-};
-
-const CONTACTS = {
-  support: {
-    email: "hello@contact.com",
-    image: {
-      url: Email,
-      alt: "Email",
-    },
-  },
-  socialMedia: [
-    {
-      url: "https://twitter.com",
-      image: {
-        url: Twitter,
-        alt: "Twitter",
-      },
-    },
-    {
-      url: "https://facebook.com",
-      image: {
-        url: Facebook,
-        alt: "Facebook",
-      },
-    },
-    {
-      url: "https://medium.com",
-      image: {
-        url: Medium,
-        alt: "Medium",
-      },
-    },
-    {
-      url: "https://linkedin.com",
-      image: {
-        url: LinkedIn,
-        alt: "LinkedIn",
-      },
-    },
-  ],
 };
 
 storiesOf("Components/Footer", module)
@@ -138,14 +91,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-    const contacts = CONTACTS;
-    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
+
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
         about={ABOUT}
-        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={LEGAL_LINKS}
         quickLinks={QUICK_LINKS}
@@ -156,26 +107,7 @@ storiesOf("Components/Footer", module)
       />
     );
   })
-  .add("Copyright", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const color = text("color", "black");
-    const variant = select("variant", ["caption", "body1"], "caption");
 
-    return (
-      <FooterCopyright
-        variant={variant}
-        color={color}
-        classes={{ section: classes.section }}
-      />
-    );
-  })
   .add("Custom Link", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -185,14 +117,12 @@ storiesOf("Components/Footer", module)
         },
       },
     }))();
-    const contacts = CONTACTS;
-    contacts.title = text("contacts.title", "Stay in touch with us @ &nbsp;");
+
     const variant = select("variant", ["full", "compact"], "full");
 
     return (
       <Footer
         about={ABOUT}
-        contacts={contacts}
         initiativeLogo={INITIATIVE_LOGO}
         legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
         quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
@@ -223,17 +153,17 @@ storiesOf("Components/Footer", module)
     );
 
     return (
-      <FooterAbout
+      <AboutOrganization
         initiative={text("initiative", ABOUT.initiative)}
         options={options.about}
         classes={{ section: classes.section }}
       >
         {text("children", ABOUT.about)}
-      </FooterAbout>
+      </AboutOrganization>
     );
   })
 
-  .add("Logo", () => {
+  .add("Footer Logo", () => {
     const classes = makeStyles((theme) => ({
       section: {
         margin: "0 auto",
@@ -241,15 +171,19 @@ storiesOf("Components/Footer", module)
           width: "85%",
         },
       },
+      divider: {
+        height: ".2rem",
+        background: "#180f49",
+        marginLeft: "19rem",
+        marginTop: "-.6rem",
+      },
     }))();
-    const hasDivider = select("hasDivider", [true, false], true);
 
     return (
-      <FooterLogo
-        {...CFA}
-        hasDivider={hasDivider}
-        classes={{ section: classes.section }}
-      />
+      <>
+        <Logo {...CFA} classes={{ section: classes.section }} />
+        <Divider classes={{ root: classes.divider }} />
+      </>
     );
   })
   .add("Initative Logo", () => {
@@ -269,57 +203,5 @@ storiesOf("Components/Footer", module)
       >
         {ABOUT.initative}
       </FooterInitiativeLogo>
-    );
-  })
-  .add("Legal Links", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const color = text("color", "black");
-    const variant = select("variant", ["caption", "body1"], "caption");
-
-    return (
-      <FooterLegalLinks
-        variant={variant}
-        color={color}
-        linkComponent={Button}
-        {...LEGAL_LINKS}
-        classes={classes}
-      />
-    );
-  })
-  .add("Stay In Touch", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    const title = text("contacts.title", "Stay in touch with us @ &nbsp;");
-    return (
-      <FooterStayInTouch
-        options={{
-          socialMedia: {
-            color: text("SocialMedia.color", "textSecondary"),
-          },
-          support: {
-            color: text("support.color", "textSecondary"),
-          },
-          title: {
-            color: text("title.color", "black"),
-            variant: select("variant", ["caption", "body1"], "caption"),
-          },
-        }}
-        {...CONTACTS}
-        title={title}
-        classes={{ section: classes.section }}
-      />
     );
   });
