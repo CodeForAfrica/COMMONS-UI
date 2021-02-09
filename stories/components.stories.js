@@ -160,20 +160,20 @@ const socialLinks = [
   },
 ];
 
-const INITIATIVE_LOGO = {
-  image: {
-    url: pulitzer,
-    alt: "Pulitzer Center",
-  },
-  url: "https://pulitzercenter.org/",
-};
-
 const CFA = {
   image: {
     src: cfaLogo,
     alt: "Code for Africa",
   },
   url: "https://codeforafrica.org",
+};
+
+const INITIATIVE_LOGO = {
+  image: {
+    src: pulitzer,
+    alt: "Pulitzer Center",
+  },
+  url: "https://pulitzercenter.org/",
 };
 
 storiesOf("Components/Data Display", module)
