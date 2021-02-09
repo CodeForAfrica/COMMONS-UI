@@ -25,6 +25,7 @@ import {
   LegalLinks,
   StayInTouch,
   QuickLinks,
+  DataSourceContent,
   ScrollBar,
   NavigationButton,
   ScrollableGridList,
@@ -260,7 +261,70 @@ storiesOf("Components/Data Display", module)
         }}
       />
     );
-  });
+  })
+  .add("Datasets and Documents", () =>
+    React.createElement(() => {
+      const classes = makeStyles(() => ({
+        section: {
+          margin: "0 auto",
+          width: "90%",
+        },
+        datasetsLink: {
+          marginTop: "2rem",
+        },
+        datasetsIcon: {
+          marginTop: "2rem",
+        },
+        documentLink: {
+          marginTop: "2rem",
+        },
+        documentIcon: {
+          marginTop: "2rem",
+        },
+      }))();
+
+      return (
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+          spacing={8}
+        >
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Datasets",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <StorageIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                icon: classes.datasetsIcon,
+                link: classes.datasetsLink,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Documents",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <DescriptionIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                link: classes.documentsLink,
+                icon: classes.documentsLink,
+              }}
+            />
+          </Grid>
+        </Grid>
+      );
+    })
+  );
 
 storiesOf("Components/Navigation", module)
   .addDecorator(withKnobs)

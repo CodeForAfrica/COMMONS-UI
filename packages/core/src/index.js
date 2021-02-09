@@ -5,6 +5,7 @@ export { default as Filter } from "./Filter";
 export { default as Footer, FooterInitiativeLogo } from "./Footer";
 export { default as AboutOrganization } from "./AboutOrganization";
 export { default as ListItem } from "./ListItem";
+export { default as DataSourceContent } from "./DataSourceContent";
 export { default as Logo } from "./Logo";
 export { default as Divider } from "./Divider";
 export { default as Layout } from "./Layout";
