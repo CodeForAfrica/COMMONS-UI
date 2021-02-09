@@ -6,13 +6,7 @@ import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  Footer,
-  AboutOrganization,
-  FooterInitiativeLogo,
-  Logo,
-  Divider,
-} from "@commons-ui/core";
+import { Footer, AboutOrganization, Logo, Divider } from "@commons-ui/core";
 
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
@@ -63,14 +57,6 @@ const ABOUT = {
   initiative:
     "This initiative was made possible with support \nfrom Pulitzer Center.",
 };
-
-/* const INITIATIVE_LOGO = {
-	image: {
-		url: pulitzer,
-		alt: "Plutizer Center",
-	},
-	url: "https://pulitzercenter.org/",
-}; */
 
 const CFA = {
   image: {
@@ -192,24 +178,5 @@ storiesOf("Components/Footer", module)
         <Logo {...CFA} classes={{ section: classes.section }} />
         <Divider classes={{ root: classes.divider }} />
       </>
-    );
-  })
-  .add("Initative Logo", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    return (
-      <FooterInitiativeLogo
-        {...INITIATIVE_LOGO}
-        classes={{ section: classes.section }}
-      >
-        {ABOUT.initative}
-      </FooterInitiativeLogo>
     );
   });
