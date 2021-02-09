@@ -29,6 +29,7 @@ import {
   ScrollBar,
   NavigationButton,
   ScrollableGridList,
+  InitiativeLogo,
 } from "@commons-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,6 +40,7 @@ import personImage from "./assets/person_1.png";
 import linkedIn from "./assets/Icon awesome-linkedin.png";
 import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
+import pulitzer from "./assets/pulitzer.png";
 
 import "simplebar/dist/simplebar.min.css";
 
@@ -69,6 +71,14 @@ const LEGAL_LINKS = {
     { href: "/legal/privacy", label: "PRIVACY POLICY" },
     { href: "/legal/terms", label: "TERMS OF SERVICES" },
   ],
+};
+
+const INITIATIVE_LOGO = {
+  image: {
+    src: pulitzer,
+    alt: "Plutizer Center",
+  },
+  url: "https://pulitzercenter.org/",
 };
 
 const QUICK_LINKS = [
@@ -236,6 +246,25 @@ storiesOf("Components/Data Display", module)
         socialMedia={socialLinks}
         classes={{ section: classes.section }}
       />
+    );
+  })
+  .add("Initative Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <InitiativeLogo
+        {...INITIATIVE_LOGO}
+        classes={{ section: classes.section }}
+      >
+        {ABOUT.initative}
+      </InitiativeLogo>
     );
   })
   .add("Quick Links", () => {

@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import RichTypography from "../RichTypography";
 import Logo from "../Logo";
-import useStyles from "./useStyles";
+import useStyles from "../Footer/useStyles";
 
-function Initiative({ variant, image, url, children, ...props }) {
+function InitiativeLogo({ variant, image, url, children, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <Logo image={image} url={url} />
+      <Logo image={image} src={url} />
       <RichTypography variant={variant} className={classes.support}>
         {children}
       </RichTypography>
@@ -18,18 +18,18 @@ function Initiative({ variant, image, url, children, ...props }) {
   );
 }
 
-Initiative.propTypes = {
+InitiativeLogo.propTypes = {
   children: PropTypes.node.isRequired,
   image: PropTypes.shape({
     alt: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
   }).isRequired,
   url: PropTypes.string.isRequired,
   variant: PropTypes.string,
 };
 
-Initiative.defaultProps = {
+InitiativeLogo.defaultProps = {
   variant: "caption",
 };
 
-export default Initiative;
+export default InitiativeLogo;
