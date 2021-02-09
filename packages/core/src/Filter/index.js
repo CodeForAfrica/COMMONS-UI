@@ -73,6 +73,10 @@ function Filter({
   onSubTopicButtonClick,
   mainTopics,
   subTopics,
+  mainVariant,
+  subVariant,
+  mainProps,
+  subProps,
   ...props
 }) {
   const classes = useStyles(props);
@@ -84,6 +88,8 @@ function Filter({
           mainTopics.map((item) => (
             <Grid item key={item.slug}>
               <Button
+                {...mainProps}
+                variant={mainVariant}
                 className={clsx(classes.mainButton, {
                   [classes.activeButton]: item.slug === activeTopic,
                 })}
@@ -98,8 +104,9 @@ function Filter({
         <Grid item xs={12} className={classes.subtopic}>
           {subTopics.map((item) => (
             <ButtonBase
+              {...subProps}
               key={item.slug}
-              variant="caption"
+              variant={subVariant}
               onClick={() => onSubTopicButtonClick(item.slug)}
               className={clsx(classes.subButton, {
                 [classes.activeSubButton]: item.slug === activeSubTopic,
@@ -121,6 +128,10 @@ Filter.propTypes = {
   subTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   activeTopic: PropTypes.string,
   activeSubTopic: PropTypes.string,
+  mainVariant: PropTypes.string,
+  subVariant: PropTypes.string,
+  mainProps: PropTypes.shape({}),
+  subProps: PropTypes.shape({}),
   classes: PropTypes.shape({
     root: PropTypes.string,
     activeButton: PropTypes.string,
@@ -139,5 +150,9 @@ Filter.defaultProps = {
   onButtonClick: undefined,
   onSubTopicButtonClick: undefined,
   classes: undefined,
+  mainVariant: "contained",
+  subVariant: "text",
+  mainProps: {},
+  subProps: {},
 };
 export default Filter;
