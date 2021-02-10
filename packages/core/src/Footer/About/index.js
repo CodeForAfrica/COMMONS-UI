@@ -10,6 +10,7 @@ function Index({ options, children, initiative, ...props }) {
   const classes = useStyles(props);
   return (
     <div className={classes.root}>
+      <div>ABOOUT FOOTER TEST COMMONS</div>
       <About {...options.about} classes={{ about: classes.about }}>
         {children}
       </About>
