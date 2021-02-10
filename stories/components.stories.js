@@ -86,31 +86,6 @@ const QUICK_LINKS = [
     ],
   },
 ];
-
-/* const LogoImages = [
-	{
-		url: "https://codeforafrica.org",
-		image: {
-			src: cfaLogo,
-			alt: "Code for Africa",
-		},
-	},
-	{
-		url: "https://codeforafrica.org",
-		image: {
-			src: cfaLogo,
-			alt: "Code for Africa",
-		},
-	},
-	{
-		url: "https://codeforafrica.org",
-		image: {
-			src: pulitzer,
-			alt: "Pulitzer Center",
-		},
-	},
-];
- */
 // Example data for the scrollbar story
 const tileData = [
   {
@@ -276,11 +251,19 @@ storiesOf("Components/Data Display", module)
     );
   })
   .add("Initative Logo", () => {
-    const classes = makeStyles((theme) => ({
+    const classes = makeStyles(({ breakpoints }) => ({
       section: {
         margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
+        [breakpoints.up("md")]: {
           width: "85%",
+        },
+      },
+      support: {
+        display: "block",
+        marginBottom: "1.618125rem",
+        marginTop: "1.708rem",
+        [breakpoints.up("md")]: {
+          display: "none",
         },
       },
     }))();
@@ -288,9 +271,12 @@ storiesOf("Components/Data Display", module)
     return (
       <InitiativeLogo
         {...INITIATIVE_LOGO}
-        classes={{ section: classes.section }}
+        classes={{
+          section: classes.section,
+          support: classes.support,
+        }}
       >
-        {ABOUT.initative}
+        {text("children", ABOUT.about)}
       </InitiativeLogo>
     );
   })
