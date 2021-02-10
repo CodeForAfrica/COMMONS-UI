@@ -10,7 +10,8 @@ function InitiativeLogo({ variant, image, url, children, ...props }) {
 
   return (
     <div className={classes.root}>
-      <Logo image={image} src={url} />
+      {/* 	{options.map(option => <Logo key={option.url} image={option.image} src={option.url} />)} */}
+      <Logo image={image} src={url} className={classes.img} />
       <RichTypography variant={variant} className={classes.support}>
         {children}
       </RichTypography>
@@ -26,10 +27,17 @@ InitiativeLogo.propTypes = {
   }).isRequired,
   url: PropTypes.string.isRequired,
   variant: PropTypes.string,
+  /* options: PropTypes.shape({
+		images: PropTypes.shape({
+			alt: PropTypes.string,
+			src: PropTypes.string,
+		}),
+		url: PropTypes.string.isRequired,
+	}), */
 };
 
 InitiativeLogo.defaultProps = {
-  variant: "caption",
+  variant: "body2",
 };
 
 export default InitiativeLogo;

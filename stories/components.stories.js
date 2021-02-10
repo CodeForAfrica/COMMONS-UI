@@ -87,6 +87,30 @@ const QUICK_LINKS = [
   },
 ];
 
+/* const LogoImages = [
+	{
+		url: "https://codeforafrica.org",
+		image: {
+			src: cfaLogo,
+			alt: "Code for Africa",
+		},
+	},
+	{
+		url: "https://codeforafrica.org",
+		image: {
+			src: cfaLogo,
+			alt: "Code for Africa",
+		},
+	},
+	{
+		url: "https://codeforafrica.org",
+		image: {
+			src: pulitzer,
+			alt: "Pulitzer Center",
+		},
+	},
+];
+ */
 // Example data for the scrollbar story
 const tileData = [
   {

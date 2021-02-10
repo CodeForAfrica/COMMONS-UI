@@ -4,6 +4,9 @@ const useStyles = makeStyles(({ breakpoints }) => ({
   root: {
     width: "100%",
   },
+  img: {
+    height: "2rem",
+  },
   support: {
     display: "block",
     marginBottom: "1.618125rem",
