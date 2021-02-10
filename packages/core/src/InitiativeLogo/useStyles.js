@@ -4,9 +4,6 @@ const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
   },
-  img: {
-    height: "2rem",
-  },
   support: {},
 }));
 
