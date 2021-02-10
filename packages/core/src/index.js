@@ -16,8 +16,3 @@ export { default as StayInTouch } from "./StayInTouch";
 export { default as QuickLinks } from "./QuickLinks";
 export { default as NavigationButton } from "./NavigationButton";
 export { default as LegalLinks } from "./LegalLinks";
-export { default as DocumentsAndDatasets } from "./FullComponents/DocumentsAndDatasets";
-export { default as Filter } from "./FullComponents/Filter";
-export { default as Footer } from "./FullComponents/Footer";
-export { default as ProfileList } from "./FullComponents/ProfileList";
-export { default as StoryList } from "./FullComponents/StoryList";
