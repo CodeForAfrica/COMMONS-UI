@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Button, Grid, makeStyles } from "@material-ui/core";
 
-import RichTypography from "../../RichTypography";
+import RichTypography from "../RichTypography";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {

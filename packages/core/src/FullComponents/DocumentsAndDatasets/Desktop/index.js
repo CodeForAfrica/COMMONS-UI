@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import { Grid } from "@material-ui/core";
 
-import Content from "../Content";
 import RichTypography from "../../../RichTypography";
 import Section from "../../../Section";
+import Content from "../../../DataSourceContent/Content";
 import useStyles from "../useStyles";
 
 function DocumentsAndDatasets({

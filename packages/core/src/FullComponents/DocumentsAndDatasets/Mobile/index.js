@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import { Grid } from "@material-ui/core";
 
-import Content from "../Content";
+import Content from "../../../DataSourceContent/Content";
 import RichTypography from "../../../RichTypography";
 import Section from "../../../Section";
 import useStyles from "../useStyles";

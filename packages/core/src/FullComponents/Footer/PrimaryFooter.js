@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Grid, Hidden } from "@material-ui/core";
 
 import AboutOrganization from "../../AboutOrganization";
-import Initiative from "./Initiative";
+import InitiativeLogo from "../../InitiativeLogo";
 import QuickLinks from "../../QuickLinks";
 import Logo from "../../Logo";
 import Section from "../../Section";
@@ -54,9 +54,9 @@ function PrimaryFooter({
           </Grid>
           <Grid item xs={12} md={2} className={classes.initiative}>
             <div className={classes.project}>
-              <Initiative {...options.initiativeLogo} {...initiativeLogo}>
+              <InitiativeLogo {...options.initiativeLogo} {...initiativeLogo}>
                 {about.initiative}
-              </Initiative>
+              </InitiativeLogo>
             </div>
           </Grid>
           <Grid

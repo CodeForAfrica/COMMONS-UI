@@ -26,13 +26,15 @@ import {
   LegalLinks,
   StayInTouch,
   QuickLinks,
+  DataSourceContent,
   ScrollBar,
   NavigationButton,
   ScrollableGridList,
   AboutOrganization,
-  FooterInitiativeLogo,
   Logo,
   Divider,
+  InitiativeLogo,
+  ListItem,
 } from "@commons-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,7 +45,6 @@ import personImage from "./assets/person_1.png";
 import linkedIn from "./assets/Icon awesome-linkedin.png";
 import twitter from "./assets/Icon awesome-twitter.png";
 import website from "./assets/icon web.png";
-
 import pulitzer from "./assets/pulitzer.png";
 import cfaLogo from "./assets/cfa.png";
 
@@ -261,6 +262,25 @@ storiesOf("Components/Data Display", module)
       />
     );
   })
+  .add("Initative Logo", () => {
+    const classes = makeStyles((theme) => ({
+      section: {
+        margin: "0 auto",
+        [theme.breakpoints.up("md")]: {
+          width: "85%",
+        },
+      },
+    }))();
+
+    return (
+      <InitiativeLogo
+        {...INITIATIVE_LOGO}
+        classes={{ section: classes.section }}
+      >
+        {ABOUT.initative}
+      </InitiativeLogo>
+    );
+  })
   .add("Quick Links", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -283,6 +303,93 @@ storiesOf("Components/Data Display", module)
           link: classes.link,
         }}
       />
+    );
+  })
+  .add("Data Source Content ", () =>
+    React.createElement(() => {
+      const classes = makeStyles(() => ({
+        section: {
+          margin: "0 auto",
+          width: "90%",
+        },
+        datasetsLink: {
+          marginTop: "2rem",
+        },
+        datasetsIcon: {
+          marginTop: "2rem",
+        },
+        documentLink: {
+          marginTop: "2rem",
+        },
+        documentIcon: {
+          marginTop: "2rem",
+        },
+      }))();
+
+      return (
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+          spacing={8}
+        >
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Datasets",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <StorageIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                icon: classes.datasetsIcon,
+                link: classes.datasetsLink,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <DataSourceContent
+              datasource={{
+                contentType: "Documents",
+                description:
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                icon: <DescriptionIcon fontSize="large" />,
+              }}
+              classes={{
+                section: classes.section,
+                link: classes.documentsLink,
+                icon: classes.documentsLink,
+              }}
+            />
+          </Grid>
+        </Grid>
+      );
+    })
+  );
+
+storiesOf("Components/Cards", module)
+  .addDecorator(withKnobs)
+  .add("Default", () => {
+    const profiles = getProfiles();
+    const classes = makeStyles(() => ({
+      section: {},
+      profilePicture: {
+        position: "relative",
+        height: "auto",
+      },
+    }))();
+    return (
+      <div>
+        <ListItem
+          image={profiles[0].image}
+          name={profiles[0].name}
+          classes={{
+            picture: classes.profilePicture,
+          }}
+        />
+      </div>
     );
   });
 
@@ -672,7 +779,7 @@ storiesOf("Full Components/Filter", module)
         },
       }))();
 
-      const parentTopics = object("parentTopics", [
+      const mainTopics = object("mainTopics", [
         { name: "All", slug: "all" },
         { name: "Technology", slug: "technology" },
         { name: "Policy", slug: "Policy" },
@@ -691,7 +798,7 @@ storiesOf("Full Components/Filter", module)
         <div>
           <Filter
             activeTopic={text("activeTopic", "all")}
-            parentTopics={parentTopics}
+            mainTopics={mainTopics}
             subTopics={subTopics}
             classes={{
               activeButton: classes.filterActiveButton,
@@ -734,30 +841,6 @@ storiesOf("Full Components/Footer", module)
       />
     );
   })
-  .add("Custom Link", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    const variant = select("variant", ["full", "compact"], "full");
-
-    return (
-      <Footer
-        about={ABOUT}
-        initiativeLogo={INITIATIVE_LOGO}
-        legalLinks={{ ...LEGAL_LINKS, linkComponent: Button }}
-        quickLinks={QUICK_LINKS.map((q) => ({ ...q, linkComponent: Button }))}
-        organizationLogo={CFA}
-        variant={variant}
-        classes={{ section: classes.section }}
-      />
-    );
-  })
   .add("Footer Logo", () => {
     const classes = makeStyles((theme) => ({
       section: {
@@ -779,54 +862,5 @@ storiesOf("Full Components/Footer", module)
         <Logo {...CFA} classes={{ section: classes.section }} />
         <Divider classes={{ root: classes.divider }} />
       </>
-    );
-  })
-  .add("Organization", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-    options.about.about.variant = select(
-      "About variant",
-      ["caption", "body1"],
-      "caption"
-    );
-    options.about.initiative.variant = select(
-      "Initiative variant",
-      ["caption", "body1"],
-      "caption"
-    );
-
-    return (
-      <AboutOrganization
-        initiative={text("initiative", ABOUT.initiative)}
-        options={options.about}
-        classes={{ section: classes.section }}
-      >
-        {text("children", ABOUT.about)}
-      </AboutOrganization>
-    );
-  })
-  .add("Initative Logo", () => {
-    const classes = makeStyles((theme) => ({
-      section: {
-        margin: "0 auto",
-        [theme.breakpoints.up("md")]: {
-          width: "85%",
-        },
-      },
-    }))();
-
-    return (
-      <FooterInitiativeLogo
-        {...INITIATIVE_LOGO}
-        classes={{ section: classes.section }}
-      >
-        {ABOUT.initative}
-      </FooterInitiativeLogo>
     );
   });
