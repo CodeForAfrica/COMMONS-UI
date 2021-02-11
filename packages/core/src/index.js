@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export { default as A } from "./A";
 export { default as InitiativeLogo } from "./InitiativeLogo";
 export { default as AboutOrganization } from "./AboutOrganization";
