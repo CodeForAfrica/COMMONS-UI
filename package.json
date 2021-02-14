@@ -63,6 +63,9 @@
     "typescript": "^4.0.2",
     "webpack": "^4.42.1"
   },
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  },
   "scripts": {
     "storybook": "start-storybook",
     "start": "yarn storybook",
@@ -73,13 +76,15 @@
     "copy-svg-to-lib": "cpx \"./src/**/*.svg\" ./dist",
     "copy-png-to-lib": "cpx \"./src/**/*.png\" ./dist",
     "prebuild": "yarn lint && yarn format",
-    "build": "lerna exec --parallel -- babel --root-mode upward src -d build --copy-files --ignore **/*.story.js,**/*.spec.js",
+    "build": "lerna exec --parallel -- babel --root-mode upward src -d ../../build --copy-files ./package.json ../../build --ignore **/*.story.js,**/*.spec.js",
     "postbuild": "yarn copy-svg-to-lib && yarn copy-png-to-lib",
     "deploy": "storybook-to-ghpages",
     "preversion": "NODE_ENV=production yarn build",
     "postversion": "lerna exec --parallel -- cp ./package.json ./README.md ../../LICENSE.md ./build",
     "publish:packages": "yarn lerna publish --contents build",
-    "release": "yarn publish:packages"
+    "release": "yarn build",
+    "preprojects-dev": "NODE_ENV=production yarn build ",
+    "projects-dev": "node pre-package-install"
   },
   "husky": {
     "hooks": {
