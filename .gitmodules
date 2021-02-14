@@ -1,0 +1,6 @@
+[submodule "projects/PromiseTracker"]
+	path = projects/PromiseTracker
+	url = https://github.com/CodeForAfrica/PromiseTracker.git
+[submodule "projects/outbreak.AFRICA"]
+	path = projects/outbreak.AFRICA
+	url = https://github.com/CodeForAfrica/outbreak.AFRICA.git
