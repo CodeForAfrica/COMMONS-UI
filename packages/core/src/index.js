@@ -15,3 +15,4 @@ export { default as StayInTouch } from "./StayInTouch";
 export { default as QuickLinks } from "./QuickLinks";
 export { default as NavigationButton } from "./NavigationButton";
 export { default as LegalLinks } from "./LegalLinks";
+export { default as Filter } from "./Filter";
