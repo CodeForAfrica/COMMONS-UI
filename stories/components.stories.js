@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { select, withKnobs, text } from "@storybook/addon-knobs";
+import { select, withKnobs, text, object } from "@storybook/addon-knobs";
 
 import {
   DescriptionOutlined as DescriptionIcon,
@@ -27,6 +27,7 @@ import {
   Divider,
   InitiativeLogo,
   ListItem,
+  Filter,
 } from "@commons-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -414,6 +415,80 @@ storiesOf("Components/Cards", module)
       </div>
     );
   });
+
+storiesOf("Components/Filter", module)
+  .addDecorator(withKnobs)
+  .add("Default", () =>
+    React.createElement(() => {
+      const classes = makeStyles(() => ({
+        filterButton: {
+          color: "#818080",
+          background: "#F0EFEF",
+          border: 0,
+          borderRadius: 0,
+          boxShadow: "0.125rem 0.125rem 0.25rem #00000026",
+          letterSpacing: 0,
+          "&:hover": {
+            background: "#DD4C1A",
+          },
+        },
+        filterActiveButton: {
+          border: "1px solid #DD4C1A",
+          background: "#DD4C1A",
+          color: "white",
+        },
+        filterActiveSubButton: {
+          color: "#DD4C1A",
+          borderBottom: "2px solid #DD4C1A",
+        },
+        filterCaption: {
+          color: "#6A6A6A",
+        },
+        filterContainer: {
+          justifyContent: "center",
+        },
+        filterSubCategory: {
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: 0,
+          marginTop: "1rem",
+        },
+      }))();
+
+      const mainTopics = object("mainTopics", [
+        { name: "All", slug: "all" },
+        { name: "Technology", slug: "technology" },
+        { name: "Policy", slug: "Policy" },
+        { name: "Culture", slug: "Culture" },
+        { name: "Research", slug: "Research" },
+        { name: "Other", slug: "other" },
+      ]);
+      const subTopics = object("subTopics", [
+        { name: "Complete", slug: "complete" },
+        { name: "Active", slug: "active" },
+        { name: "Stalled", slug: "stalled" },
+        { name: "Unknown", slug: "unknown" },
+      ]);
+
+      return (
+        <div>
+          <Filter
+            activeTopic={text("activeTopic", "all")}
+            mainTopics={mainTopics}
+            subTopics={subTopics}
+            classes={{
+              activeButton: classes.filterActiveButton,
+              activeSubButton: classes.filterActiveSubButton,
+              button: classes.filterButton,
+              caption: classes.filterCaption,
+              filter: classes.filterContainer,
+              subtopic: classes.filterSubCategory,
+            }}
+          />
+        </div>
+      );
+    })
+  );
 
 storiesOf("Components/Navigation", module)
   .addDecorator(withKnobs)
