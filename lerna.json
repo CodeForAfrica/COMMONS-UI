@@ -16,7 +16,7 @@
       "ignoreChanges": ["**/*.md", "**/{storybook,stories}/**"]
     },
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "main"
     }
   },
   "npmClient": "yarn",
