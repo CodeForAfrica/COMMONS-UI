@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     height: "1.375rem",
     objectFit: "contain",
   },
+
   link: {
     display: "inline-block",
     padding: "0 0.625rem",
@@ -40,45 +42,28 @@ const useStyles = makeStyles((theme) => ({
   text: {},
 }));
 
-function StayInTouch({ options, support, socialMedia, title, ...props }) {
+function StayInTouch({ support, socialMedia, title, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <Grid
-      container
-      justify="flex-start"
-      alignItems="center"
-      className={classes.root}
-    >
+    <Grid container className={classes.root}>
       {title && (
         <Grid item xs={12} md="auto" className={classes.title}>
-          <RichTypography
-            variant={options.title.variant}
-            color={options.title.color}
-            className={classes.text}
-          >
+          <RichTypography className={clsx(classes.text)}>
             {title}
           </RichTypography>
         </Grid>
       )}
-      <Grid
-        item
-        xs={12}
-        md="auto"
-        container
-        justify="center"
-        className={classes.links}
-      >
+      <Grid item xs={12} md="auto" container className={classes.links}>
         {support && (
           <A
             href={`mailto:${support.email}`}
-            color={options.support.color}
-            className={classes.link}
+            className={clsx(classes.link, classes.supportLink)}
           >
             <img
               src={support.image.url}
               alt={support.image.alt}
-              className={classes.icon}
+              className={clsx(classes.icon, classes.supportIcon)}
             />
           </A>
         )}
@@ -86,13 +71,12 @@ function StayInTouch({ options, support, socialMedia, title, ...props }) {
           <A
             key={media.url}
             href={media.url}
-            color={options.socialMedia.color}
-            className={classes.link}
+            className={clsx(classes.link, classes.socialLink)}
           >
             <img
               src={media.image.url}
               alt={media.image.alt}
-              className={classes.icon}
+              className={clsx(classes.icon, classes.socialIcon)}
             />
           </A>
         ))}
@@ -102,18 +86,6 @@ function StayInTouch({ options, support, socialMedia, title, ...props }) {
 }
 
 StayInTouch.propTypes = {
-  options: PropTypes.shape({
-    socialMedia: PropTypes.shape({
-      color: PropTypes.string,
-    }),
-    support: PropTypes.shape({
-      color: PropTypes.string,
-    }),
-    title: PropTypes.shape({
-      color: PropTypes.string,
-      variant: PropTypes.string,
-    }),
-  }),
   socialMedia: PropTypes.arrayOf(
     PropTypes.shape({
       url: PropTypes.string.isRequired,
@@ -134,18 +106,6 @@ StayInTouch.propTypes = {
 };
 
 StayInTouch.defaultProps = {
-  options: {
-    socialMedia: {
-      color: "textSecondary",
-    },
-    support: {
-      color: "textSecondary",
-    },
-    title: {
-      color: "textSecondary",
-      variant: "caption",
-    },
-  },
   support: undefined,
   title: "Stay in touch with us @ &nbsp;",
 };
