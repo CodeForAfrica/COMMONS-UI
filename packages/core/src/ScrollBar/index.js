@@ -34,8 +34,15 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
 }));
 
-function ScrollBar({ autoHide, className, children, height, ...props }) {
-  const classes = useStyles({ ...props, height });
+function ScrollBar({
+  autoHide,
+  className,
+  classes: classesProp,
+  children,
+  height,
+  ...props
+}) {
+  const classes = useStyles({ classes: classesProp, height, ...props });
 
   if (!children) {
     return null;
@@ -56,12 +63,16 @@ ScrollBar.propTypes = {
   autoHide: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+  }),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, // in px
 };
 
 ScrollBar.defaultProps = {
   autoHide: false,
   children: undefined,
+  classes: undefined,
   className: undefined,
 };
 
