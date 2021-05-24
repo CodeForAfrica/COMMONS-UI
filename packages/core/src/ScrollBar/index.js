@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import clsx from "clsx";
+
 import { makeStyles } from "@material-ui/core";
 
 import SimpleBarReact from "simplebar-react";
@@ -32,7 +34,7 @@ const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   },
 }));
 
-function ScrollBar({ autoHide, children, height, ...props }) {
+function ScrollBar({ autoHide, className, children, height, ...props }) {
   const classes = useStyles({ ...props, height });
 
   if (!children) {
@@ -40,9 +42,10 @@ function ScrollBar({ autoHide, children, height, ...props }) {
   }
   return (
     <SimpleBarReact
+      {...props}
       autoHide={autoHide}
-      className={classes.root}
       height={height}
+      className={clsx(classes.root, className)}
     >
       {children}
     </SimpleBarReact>
@@ -52,12 +55,14 @@ function ScrollBar({ autoHide, children, height, ...props }) {
 ScrollBar.propTypes = {
   autoHide: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired, // in px
 };
 
 ScrollBar.defaultProps = {
   autoHide: false,
   children: undefined,
+  className: undefined,
 };
 
 export default ScrollBar;
