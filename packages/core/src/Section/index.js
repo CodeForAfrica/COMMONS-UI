@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import Layout from "./Layout";
-import RichTypography from "./RichTypography";
+import Layout from "../Layout";
+import RichTypography from "../RichTypography";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import useStyles from "../useStyles";
+import useStyles from "./useStyles";
 
-import RichTypography from "../../RichTypography";
+import RichTypography from "../RichTypography";
 
 function About({ children, variant, ...props }) {
   const classes = useStyles(props);

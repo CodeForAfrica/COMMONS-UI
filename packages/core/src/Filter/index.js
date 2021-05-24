@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   activeSubButton: {},
-  button: {
+  mainButton: {
     fontFamily: theme.typography.fontFamily,
     textTransform: "capitalize",
     fontSize: "0.75rem",
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
       minWidth: "100px",
     },
   },
-  caption: {
+  subButton: {
     fontWeight: 700,
     letterSpacing: 0,
     textDecoration: "none",
@@ -71,8 +71,12 @@ function Filter({
   activeSubTopic,
   onButtonClick,
   onSubTopicButtonClick,
-  parentTopics,
+  mainTopics,
   subTopics,
+  mainVariant,
+  subVariant,
+  mainProps,
+  subProps,
   ...props
 }) {
   const classes = useStyles(props);
@@ -80,11 +84,13 @@ function Filter({
   return (
     <Grid container className={classes.root}>
       <Grid item container spacing={2} className={classes.filter}>
-        {parentTopics &&
-          parentTopics.map((item) => (
+        {mainTopics &&
+          mainTopics.map((item) => (
             <Grid item key={item.slug}>
               <Button
-                className={clsx(classes.button, {
+                {...mainProps}
+                variant={mainVariant}
+                className={clsx(classes.mainButton, {
                   [classes.activeButton]: item.slug === activeTopic,
                 })}
                 onClick={() => onButtonClick(item.slug)}
@@ -98,10 +104,11 @@ function Filter({
         <Grid item xs={12} className={classes.subtopic}>
           {subTopics.map((item) => (
             <ButtonBase
+              {...subProps}
               key={item.slug}
-              variant="caption"
+              variant={subVariant}
               onClick={() => onSubTopicButtonClick(item.slug)}
-              className={clsx(classes.caption, {
+              className={clsx(classes.subButton, {
                 [classes.activeSubButton]: item.slug === activeSubTopic,
               })}
             >
@@ -117,10 +124,24 @@ function Filter({
 Filter.propTypes = {
   onButtonClick: PropTypes.func,
   onSubTopicButtonClick: PropTypes.func,
-  parentTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  mainTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   subTopics: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   activeTopic: PropTypes.string,
   activeSubTopic: PropTypes.string,
+  mainVariant: PropTypes.string,
+  subVariant: PropTypes.string,
+  mainProps: PropTypes.shape({}),
+  subProps: PropTypes.shape({}),
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    activeButton: PropTypes.string,
+    activeSubButton: PropTypes.string,
+    mainButton: PropTypes.string,
+    subButton: PropTypes.string,
+    itemContainer: PropTypes.string,
+    filter: PropTypes.string,
+    subtopic: PropTypes.string,
+  }),
 };
 
 Filter.defaultProps = {
@@ -128,5 +149,10 @@ Filter.defaultProps = {
   activeSubTopic: undefined,
   onButtonClick: undefined,
   onSubTopicButtonClick: undefined,
+  classes: undefined,
+  mainVariant: "contained",
+  subVariant: "text",
+  mainProps: {},
+  subProps: {},
 };
 export default Filter;
