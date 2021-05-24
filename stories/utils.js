@@ -105,10 +105,9 @@ export function useStories(url) {
   useEffect(() => {
     async function fetchStories() {
       const response = await fetch(urlJson);
-      const jsonClean = await (await response.text()).replace(
-        "])}while(1);</x>",
-        ""
-      );
+      const jsonClean = await (
+        await response.text()
+      ).replace("])}while(1);</x>", "");
       const json = await JSON.parse(jsonClean);
       const streamItems = await json.payload.streamItems;
       const foundStories = await streamItems.map(
