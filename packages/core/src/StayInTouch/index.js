@@ -1,12 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
-
+import A from "@/commons-ui/core/A";
+import RichTypography from "@/commons-ui/core/RichTypography";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
-import A from "../A";
-import RichTypography from "../RichTypography";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -45,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
 function StayInTouch({ support, socialMedia, title, ...props }) {
   const classes = useStyles(props);
 
+  if (!(socialMedia && socialMedia.length)) {
+    return null;
+  }
   return (
     <Grid container className={classes.root}>
       {title && (

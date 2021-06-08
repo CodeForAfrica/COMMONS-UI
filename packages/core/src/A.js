@@ -1,7 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 import { Link } from "@material-ui/core";
+import PropTypes from "prop-types";
+import React from "react";
 
 /**
  * anchor element that has `target="_blank" rel: "noopener noreferrer"`

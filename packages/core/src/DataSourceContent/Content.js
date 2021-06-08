@@ -1,9 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-
+import RichTypography from "@/commons-ui/core/RichTypography";
 import { Button, Grid, makeStyles } from "@material-ui/core";
-
-import RichTypography from "../RichTypography";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {

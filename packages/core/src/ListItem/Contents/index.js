@@ -1,9 +1,5 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import React from "react";
-import { PropTypes } from "prop-types";
-
-import clsx from "clsx";
-
+import useStyles from "@/commons-ui/core/ListItem/useStyles";
 import {
   Button,
   Grid,
@@ -11,8 +7,9 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-
-import useStyles from "../useStyles";
+import clsx from "clsx";
+import { PropTypes } from "prop-types";
+import React from "react";
 
 function Contents({
   children,

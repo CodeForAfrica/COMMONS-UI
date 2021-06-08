@@ -1,10 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-import clsx from "clsx";
-
 import { makeStyles } from "@material-ui/core";
-
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React from "react";
 import SimpleBarReact from "simplebar-react";
 
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({

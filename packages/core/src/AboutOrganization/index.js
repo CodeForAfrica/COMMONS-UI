@@ -1,10 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
-
-import useStyles from "./useStyles";
+import React from "react";
 
 import About from "./About";
 import Initiative from "./Initiative";
+import useStyles from "./useStyles";
 
 function AboutOrganization({ options, children, initiative, ...props }) {
   const classes = useStyles(props);

@@ -1,8 +1,8 @@
-import React from "react";
+import Logo from "@/commons-ui/core/Logo";
+import RichTypography from "@/commons-ui/core/RichTypography";
 import PropTypes from "prop-types";
+import React from "react";
 
-import RichTypography from "../RichTypography";
-import Logo from "../Logo";
 import useStyles from "./useStyles";
 
 function InitiativeLogo({ variant, image, url, children, ...props }) {
