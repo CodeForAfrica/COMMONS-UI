@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
-import { PropTypes } from "prop-types";
 
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { PropTypes } from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {

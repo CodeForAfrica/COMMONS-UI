@@ -1,9 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 import useStyles from "./useStyles";
 
-import RichTypography from "../RichTypography";
+import RichTypography from "@/commons-ui/core/RichTypography";
 
 function Initiative({ children, variant, ...props }) {
   const classes = useStyles(props);

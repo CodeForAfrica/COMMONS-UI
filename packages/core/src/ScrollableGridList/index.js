@@ -1,6 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 import {
   Box,
   GridList,
@@ -8,8 +5,10 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
+import PropTypes from "prop-types";
+import React from "react";
 
-import ScrollBar from "../ScrollBar";
+import ScrollBar from "@/commons-ui/core/ScrollBar";
 
 const useStyles = makeStyles(() => ({
   root: {

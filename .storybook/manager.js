@@ -1,8 +1,3 @@
-import "@storybook/addon-knobs/register";
-import "@storybook/addon-parameter/register";
-import "@storybook/addon-preview-wrapper/register";
-import "@storybook/addon-roundtrip/register";
-
 import { addons } from "@storybook/addons";
 import { themes } from "@storybook/theming";
 
@@ -12,6 +7,7 @@ addons.setConfig({
   theme: {
     brandImage: logo,
     brandTitle: "COMMONS UI",
+    brandUrl: "https://codeforafrica.org",
     ...themes.light,
   },
   panelPosition: "bottom",

@@ -1,8 +1,7 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import React from "react";
-import { PropTypes } from "prop-types";
-
 import { IconButton } from "@material-ui/core";
+import { PropTypes } from "prop-types";
+import React from "react";
 
 import useStyles from "./useStyles";
 
