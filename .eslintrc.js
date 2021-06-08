@@ -1,50 +1,50 @@
 const path = require("path");
 
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es6: true,
   },
   extends: [
+    "plugin:markdown/recommended",
+    "plugin:json/recommended",
+    "plugin:import/recommended",
     "airbnb",
+    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended", // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
-  plugins: ["react-hooks", "json", "markdown"],
-  rules: {
-    "import/no-extraneous-dependencies": [
-      "error",
-      { devDependencies: [".storybook/**", "stories/**"] },
-    ],
-    "react/jsx-curly-newline": "off", // Clashes with prettier => prettier wins
-    "react/jsx-filename-extension": [1, { extensions: [".js"] }],
-    "react/jsx-props-no-spreading": "off", // We use HOC, etc. & this will wreck havoc
-    "react/jsx-one-expression-per-line": "off", // Clashes with prettier => prettier wins
-    "react/jsx-wrap-multilines": [
-      1,
-      {
-        declaration: "parens",
-        assignment: "parens",
-        return: "parens",
-        arrow: "parens",
-        condition: "ignore",
-        logical: "ignore",
-        prop: "ignore",
-      },
-    ],
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-    "no-unused-vars": "error",
-  },
+  plugins: ["module-resolver"],
   settings: {
     "import/resolver": {
-      "babel-module": {
-        alias: {
-          "@commons-ui/core": "./packages/core/src",
-        },
-      },
+      "babel-module": {},
       "eslint-import-resolver-lerna": {
         packages: path.resolve(__dirname, "packages"),
       },
     },
   },
+  rules: {
+    "import/order": [
+      "error",
+      {
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+        "newlines-between": "always",
+      },
+    ],
+    "module-resolver/use-alias": "error",
+    "react/jsx-filename-extension": [1, { extensions: [".js"] }],
+    "react/jsx-props-no-spreading": "off", // We use HOC, etc. & this will wreck havoc
+  },
+  overrides: [
+    {
+      files: ["stories/**/*.js"],
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+        "react/prop-types": "off",
+      },
+    },
+  ],
 };
