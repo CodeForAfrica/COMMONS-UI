@@ -1,4 +1,3 @@
-import ScrollBar from "@/commons-ui/core/ScrollBar";
 import {
   Box,
   GridList,
@@ -8,6 +7,8 @@ import {
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
+
+import ScrollBar from "@/commons-ui/core/ScrollBar";
 
 const useStyles = makeStyles(() => ({
   root: {

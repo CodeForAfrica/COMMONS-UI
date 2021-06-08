@@ -1,5 +1,4 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import useStyles from "@/commons-ui/core/ListItem/useStyles";
 import {
   Button,
   Grid,
@@ -10,6 +9,8 @@ import {
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
+
+import useStyles from "@/commons-ui/core/ListItem/useStyles";
 
 function Contents({
   children,
