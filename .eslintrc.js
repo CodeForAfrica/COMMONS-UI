@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = {
   root: true,
+  parser: "@babel/eslint-parser",
   env: {
     browser: true,
     es6: true,
