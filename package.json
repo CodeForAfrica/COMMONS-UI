@@ -63,7 +63,7 @@
     "copy-svg-to-lib": "cpx \"./src/**/*.svg\" ./dist",
     "copy-png-to-lib": "cpx \"./src/**/*.png\" ./dist",
     "prebuild": "yarn lint && yarn format",
-    "build": "lerna exec --parallel -- babel --root-mode upward src -d build --copy-files --ignore **/*.story.js,**/*.spec.js",
+    "build": "lerna exec --parallel -- babel --root-mode upward src --out-dir build --copy-files --ignore '**/*.story.js','**/*.spec.js','**/*.test.js'",
     "postbuild": "yarn copy-svg-to-lib && yarn copy-png-to-lib",
     "deploy": "storybook-to-ghpages",
     "preversion": "NODE_ENV=production yarn build",
