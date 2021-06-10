@@ -5,7 +5,6 @@
     [
       "module-resolver",
       {
-        "root": ["./"],
         "alias": {
           "@/commons-ui/core": "./src"
         }

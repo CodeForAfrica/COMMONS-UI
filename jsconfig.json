@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/commons-ui/*": ["./*", "./packages/*/src"]
+      "@/commons-ui/core/*": ["./packages/core/src/*"]
     }
   },
   "exclude": ["build", "node_modules"]
