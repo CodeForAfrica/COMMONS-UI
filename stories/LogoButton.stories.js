@@ -6,22 +6,25 @@ import cfaLogo from "./assets/cfa.png";
 import { A, Divider, LogoButton } from "@/commons-ui/core";
 
 const CFA = {
-  image: {
-    src: cfaLogo,
-    alt: "Code for Africa",
-  },
+  alt: "Code for Africa",
   href: "https://codeforafrica.org",
+  src: cfaLogo,
 };
 
 export default {
-  title: "Core/Components/Logo",
+  title: "Core/Components/LogoButton",
   argTypes: {
-    image: {
+    alt: {
       control: {
-        type: "object",
+        type: "text",
       },
     },
-    url: {
+    href: {
+      control: {
+        type: "text",
+      },
+    },
+    src: {
       control: {
         type: "text",
       },
