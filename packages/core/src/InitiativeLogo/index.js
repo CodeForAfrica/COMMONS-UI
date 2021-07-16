@@ -3,15 +3,15 @@ import React from "react";
 
 import useStyles from "./useStyles";
 
-import Logo from "@/commons-ui/core/Logo";
+import LogoButton from "@/commons-ui/core/LogoButton";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-function InitiativeLogo({ variant, image, url, children, ...props }) {
+function InitiativeLogo({ variant, img, href, children, ...props }) {
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <Logo image={image} src={url} className={classes.img} />
+      <LogoButton {...img} href={href} className={classes.img} />
       <RichTypography
         variant={variant}
         className={{ support: classes.support }}
@@ -24,15 +24,13 @@ function InitiativeLogo({ variant, image, url, children, ...props }) {
 
 InitiativeLogo.propTypes = {
   children: PropTypes.node.isRequired,
-  image: PropTypes.shape({
-    alt: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-  }).isRequired,
-  url: PropTypes.string.isRequired,
+  img: PropTypes.shape({}).isRequired,
+  href: PropTypes.string,
   variant: PropTypes.string,
 };
 
 InitiativeLogo.defaultProps = {
+  href: "",
   variant: "body2",
 };
 
