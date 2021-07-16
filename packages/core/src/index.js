@@ -3,7 +3,7 @@ export { default as InitiativeLogo } from "./InitiativeLogo";
 export { default as AboutOrganization } from "./AboutOrganization";
 export { default as ListItem } from "./ListItem";
 export { default as DataSourceContent } from "./DataSourceContent";
-export { default as Logo } from "./Logo";
+export { default as LogoButton } from "./LogoButton";
 export { default as Divider } from "./Divider";
 export { default as Layout } from "./Layout";
 export { default as RichTypography } from "./RichTypography";
