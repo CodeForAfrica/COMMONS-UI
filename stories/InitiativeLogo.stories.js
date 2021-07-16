@@ -15,27 +15,30 @@ const ABOUT = {
 };
 
 const INITIATIVE_LOGO = {
-  image: {
-    src: pulitzer,
-    alt: "Pulitzer Center",
-  },
-  url: "https://pulitzercenter.org/",
+  src: pulitzer,
+  alt: "Pulitzer Center",
+  href: "https://pulitzercenter.org",
 };
 
 export default {
   title: "Core/Components/InitiativeLogo",
   argTypes: {
+    alt: {
+      control: {
+        type: "text",
+      },
+    },
+    src: {
+      control: {
+        type: "text",
+      },
+    },
     description: {
       control: {
         type: "text",
       },
     },
-    image: {
-      control: {
-        type: "object",
-      },
-    },
-    url: {
+    href: {
       control: {
         type: "text",
       },
@@ -69,6 +72,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   description: ABOUT.about,
-  image: INITIATIVE_LOGO.image,
-  ur: INITIATIVE_LOGO.url,
+  img: INITIATIVE_LOGO,
 };
