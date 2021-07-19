@@ -3,25 +3,28 @@ import React from "react";
 
 import cfaLogo from "./assets/cfa.png";
 
-import { Divider, Logo } from "@/commons-ui/core";
+import { A, Divider, LogoButton } from "@/commons-ui/core";
 
 const CFA = {
-  image: {
-    src: cfaLogo,
-    alt: "Code for Africa",
-  },
-  url: "https://codeforafrica.org",
+  alt: "Code for Africa",
+  href: "https://codeforafrica.org",
+  src: cfaLogo,
 };
 
 export default {
-  title: "Core/Components/Logo",
+  title: "Core/Components/LogoButton",
   argTypes: {
-    image: {
+    alt: {
       control: {
-        type: "object",
+        type: "text",
       },
     },
-    url: {
+    href: {
+      control: {
+        type: "text",
+      },
+    },
+    src: {
       control: {
         type: "text",
       },
@@ -47,7 +50,11 @@ const Template = (args) => {
 
   return (
     <>
-      <Logo {...args} classes={{ section: classes.section }} />
+      <LogoButton
+        {...args}
+        component={A}
+        classes={{ section: classes.section }}
+      />
       <Divider classes={{ root: classes.divider }} />
     </>
   );
@@ -56,6 +63,5 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  image: CFA.image,
-  ur: CFA.url,
+  ...CFA,
 };
