@@ -1,47 +1,57 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { makeStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ typography }) => ({
+  /* Styles applied to the root element. */
   root: {
-    margin: "0 auto",
+    boxSizing: "border-box",
+    display: "block", // Fix IE 11 layout when used with main.
+    marginLeft: "auto",
+    marginRight: "auto",
+    minWidth: typography.pxToRem(360),
+    padding: `0 ${typography.pxToRem(15)}`,
+    width: "100%",
   },
-  title: {
-    margin: "1.375rem 0",
-    [theme.breakpoints.up("md")]: {
-      width: "51.125rem",
-    },
-  },
+  title: {},
 }));
 
 const Section = React.forwardRef(function Section(
-  { children, classes: classesProp, title, titleProps, ...props },
+  { children, className, title, titleProps, ...props },
   ref
 ) {
-  const classes = useStyles({ classes: classesProp });
+  const classes = useStyles(props);
 
+  if (!children) {
+    return null;
+  }
   return (
-    <Layout {...props} classes={{ root: classes.root }} ref={ref}>
-      <RichTypography variant="h2" {...titleProps} className={classes.title}>
-        {title}
-      </RichTypography>
+    <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
+      {title?.length ? (
+        <RichTypography variant="h2" className={classes.title} {...titleProps}>
+          {title}
+        </RichTypography>
+      ) : null}
+
       {children}
     </Layout>
   );
 });
 
 Section.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
   classes: PropTypes.shape({
     root: PropTypes.string,
-    title: PropTypes.string,
+    fixed: PropTypes.string,
   }),
   title: PropTypes.string,
   titleProps: PropTypes.shape({}),
@@ -49,6 +59,7 @@ Section.propTypes = {
 
 Section.defaultProps = {
   classes: undefined,
+  className: undefined,
   title: undefined,
   titleProps: undefined,
 };
