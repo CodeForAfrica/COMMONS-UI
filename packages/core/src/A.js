@@ -6,13 +6,20 @@ import React from "react";
  * anchor element that has `target="_blank" rel: "noopener noreferrer"`
  * see: https://material-ui.com/components/links/#security
  */
-function A({ children, href, ...props }) {
+const A = React.forwardRef(function A({ children, href, ...props }, ref) {
   return (
-    <Link href={href} {...props} target="_blank" rel="noopener noreferrer">
+    <Link
+      {...props}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      ref={ref}
+    >
       {children}
     </Link>
   );
-}
+});
+
 A.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
