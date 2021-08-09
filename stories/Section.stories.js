@@ -7,15 +7,25 @@ import { RichTypography, Section } from "@/commons-ui/core";
 export default {
   title: "Core/Components/Section",
   argTypes: {
+    bgcolor: {
+      control: {
+        type: "text",
+      },
+    },
     fixed: {
       control: {
         type: "boolean",
       },
     },
+    sx: {
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 
-const Template = ({ fixed }) => {
+const Template = ({ fixed, ...args }) => {
   const widths = {
     values: {
       md: 656,
@@ -39,7 +49,10 @@ const Template = ({ fixed }) => {
 
   return (
     <>
-      <Section className={clsx(classes.section, { [classes.fixed]: fixed })}>
+      <Section
+        {...args}
+        className={clsx(classes.section, { [classes.fixed]: fixed })}
+      >
         <RichTypography>
           {`
           <h1>Lorem Ipsum</h1>
@@ -74,5 +87,7 @@ const Template = ({ fixed }) => {
 export const Default = Template.bind({});
 
 Default.args = {
+  bgcolor: "background.default",
   fixed: true,
+  sx: { textTransform: "none" },
 };
