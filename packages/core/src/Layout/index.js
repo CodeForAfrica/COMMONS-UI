@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
@@ -17,9 +18,9 @@ const Layout = React.forwardRef(function Layout(
   const classes = useStyles({ classes: classesProp });
 
   return (
-    <div {...props} className={clsx(classes.root, className)} ref={ref}>
+    <Box {...props} className={clsx(classes.root, className)} ref={ref}>
       {children}
-    </div>
+    </Box>
   );
 });
 

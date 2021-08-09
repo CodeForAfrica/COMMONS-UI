@@ -72,14 +72,14 @@
     "release": "yarn publish:packages"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.js": [
       "yarn lint-staged"
     ],
     "*.{json,md}": [
       "yarn lint-staged",
       "yarn format-staged"
     ],
-    "*.{yml}": [
+    "*.yml": [
       "yarn format-staged"
     ]
   },
