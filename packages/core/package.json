@@ -1,6 +1,6 @@
 {
   "name": "@commons-ui/core",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "dependencies": {
     "clsx": "^1.1.0",
     "prop-types": "^15.7.2",
