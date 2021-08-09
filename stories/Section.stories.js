@@ -12,6 +12,11 @@ export default {
         type: "text",
       },
     },
+    color: {
+      control: {
+        type: "text",
+      },
+    },
     fixed: {
       control: {
         type: "boolean",
@@ -88,6 +93,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   bgcolor: "background.default",
+  color: "text.primary",
   fixed: true,
   sx: { textTransform: "none" },
 };
