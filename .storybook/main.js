@@ -2,7 +2,7 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "storybook-addon-material-ui",
+    "storybook-addon-material-ui5",
   ],
   stories: ["../stories/**/*.stories.js"],
   webpackFinal: async (config) => {
@@ -11,8 +11,7 @@ module.exports = {
     config.module.rules = config.module.rules.map((data) => {
       const regex = data.test && data.test.toString();
       if (/svg\|/.test(regex)) {
-        data.test =
-          /\.(ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
+        data.test = /\.(ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
       }
 
       return data;
