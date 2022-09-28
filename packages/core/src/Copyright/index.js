@@ -1,10 +1,16 @@
 import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  ThemeProvider,
+  createMuiTheme,
+} from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import A from "@/commons-ui/core/A";
+
+const theme = createMuiTheme();
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   root: {},
@@ -41,7 +47,7 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       {(copyright || icon || year) && (
         <div className={clsx(classes.copyright, classes.root)}>
           {copyright && (
@@ -71,7 +77,7 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
           )}
         </div>
       )}
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -1,9 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
+
+const theme = createMuiTheme();
 
 const useStyles = makeStyles({
   root: {
@@ -18,9 +24,11 @@ const Layout = React.forwardRef(function Layout(
   const classes = useStyles({ classes: classesProp });
 
   return (
-    <Box {...props} className={clsx(classes.root, className)} ref={ref}>
-      {children}
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box {...props} className={clsx(classes.root, className)} ref={ref}>
+        {children}
+      </Box>
+    </ThemeProvider>
   );
 });
 

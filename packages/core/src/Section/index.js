@@ -1,5 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -7,6 +11,7 @@ import React from "react";
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
+const theme = createMuiTheme();
 const useStyles = makeStyles(({ typography }) => ({
   /* Styles applied to the root element. */
   root: {
@@ -31,15 +36,21 @@ const Section = React.forwardRef(function Section(
     return null;
   }
   return (
-    <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
-      {title?.length ? (
-        <RichTypography variant="h2" className={classes.title} {...titleProps}>
-          {title}
-        </RichTypography>
-      ) : null}
+    <ThemeProvider theme={theme}>
+      <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
+        {title?.length ? (
+          <RichTypography
+            variant="h2"
+            className={classes.title}
+            {...titleProps}
+          >
+            {title}
+          </RichTypography>
+        ) : null}
 
-      {children}
-    </Layout>
+        {children}
+      </Layout>
+    </ThemeProvider>
   );
 });
 

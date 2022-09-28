@@ -1,9 +1,14 @@
 import { IconButton } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+const theme = createMuiTheme();
 const useStyles = makeStyles(() => ({
   root: {},
   image: {
@@ -29,9 +34,11 @@ function LogoButton({
     <img {...imgProps} alt={alt || ""} src={src} className={classes.image} />
   );
   return (
-    <IconButton {...props} className={clsx(classes.root, className)}>
-      {children}
-    </IconButton>
+    <ThemeProvider theme={theme}>
+      <IconButton {...props} className={clsx(classes.root, className)}>
+        {children}
+      </IconButton>
+    </ThemeProvider>
   );
 }
 

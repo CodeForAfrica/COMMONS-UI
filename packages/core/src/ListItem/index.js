@@ -3,7 +3,9 @@ import { Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
+const theme = createMuiTheme();
 import Contents from "./Contents";
 import useStyles from "./useStyles";
 
@@ -30,46 +32,48 @@ function ListItem({
     : {};
 
   return (
-    <Grid container {...buttonProps} className={classes.root}>
-      {isMobile && isProfile && (
-        <Grid item xs={6} container>
-          <Contents
-            name={name}
-            selected={selected}
-            title={title}
-            variant={variant}
-            {...props}
-          >
-            {children}
-          </Contents>
-        </Grid>
-      )}
-      <Grid
-        item
-        xs={isMobile && isProfile ? 6 : 12}
-        container
-        className={classes.contentsRoot}
-      >
-        <img
-          alt={image.description || name || title}
-          src={image.url}
-          className={clsx(classes.picture, {
-            [classes.pictureSelected]: selected,
-          })}
-        />
-        {(!isProfile || isDesktop) && (
-          <Contents
-            name={name}
-            selected={selected}
-            title={title}
-            variant={variant}
-            {...props}
-          >
-            {children}
-          </Contents>
+    <ThemeProvider theme={theme}>
+      <Grid container {...buttonProps} className={classes.root}>
+        {isMobile && isProfile && (
+          <Grid item xs={6} container>
+            <Contents
+              name={name}
+              selected={selected}
+              title={title}
+              variant={variant}
+              {...props}
+            >
+              {children}
+            </Contents>
+          </Grid>
         )}
+        <Grid
+          item
+          xs={isMobile && isProfile ? 6 : 12}
+          container
+          className={classes.contentsRoot}
+        >
+          <img
+            alt={image.description || name || title}
+            src={image.url}
+            className={clsx(classes.picture, {
+              [classes.pictureSelected]: selected,
+            })}
+          />
+          {(!isProfile || isDesktop) && (
+            <Contents
+              name={name}
+              selected={selected}
+              title={title}
+              variant={variant}
+              {...props}
+            >
+              {children}
+            </Contents>
+          )}
+        </Grid>
       </Grid>
-    </Grid>
+    </ThemeProvider>
   );
 }
 

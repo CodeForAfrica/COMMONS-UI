@@ -1,9 +1,14 @@
 import { Link, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
+const theme = createMuiTheme();
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -38,30 +43,32 @@ function QuickLinks({ options, linkComponent, links, title, ...props }) {
   const LinkComponent = linkComponent || Link;
 
   return (
-    <div className={classes.root}>
-      <Typography variant={options.title.variant} className={classes.title}>
-        {title}
-      </Typography>
-      <Typography
-        variant={options.link.variant}
-        className={clsx([classes.text, classes.list])}
-        component="ul"
-      >
-        {links.map(({ label, ...others }) => (
-          <li key={label}>
-            <LinkComponent
-              {...others}
-              color={options.link.color}
-              variant={options.link.variant}
-              underline="none"
-              className={classes.link}
-            >
-              {label}
-            </LinkComponent>
-          </li>
-        ))}
-      </Typography>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <Typography variant={options.title.variant} className={classes.title}>
+          {title}
+        </Typography>
+        <Typography
+          variant={options.link.variant}
+          className={clsx([classes.text, classes.list])}
+          component="ul"
+        >
+          {links.map(({ label, ...others }) => (
+            <li key={label}>
+              <LinkComponent
+                {...others}
+                color={options.link.color}
+                variant={options.link.variant}
+                underline="none"
+                className={classes.link}
+              >
+                {label}
+              </LinkComponent>
+            </li>
+          ))}
+        </Typography>
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -1,10 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  createMuiTheme,
+  makeStyles,
+} from "@material-ui/core/styles";
 import { PropTypes } from "prop-types";
 import React from "react";
 
+const theme = createMuiTheme();
 const useStyles = makeStyles((theme) => ({
   root: {
     "& a": {
@@ -24,23 +29,27 @@ const RichTypography = React.forwardRef(function RichTypography(
   }
   if (typeof children === "string") {
     return (
-      <Typography
-        // We default to `div` to allow other block elements like <p> to be used inside
-        // `children`
-        component={component || "div"}
-        dangerouslySetInnerHTML={{
-          __html: children,
-        }}
-        {...props}
-        ref={ref}
-        classes={classes}
-      />
+      <ThemeProvider theme={theme}>
+        <Typography
+          // We default to `div` to allow other block elements like <p> to be used inside
+          // `children`
+          component={component || "div"}
+          dangerouslySetInnerHTML={{
+            __html: children,
+          }}
+          {...props}
+          ref={ref}
+          classes={classes}
+        />
+      </ThemeProvider>
     );
   }
   return (
-    <Typography component={component} {...props} ref={ref}>
-      {children}
-    </Typography>
+    <ThemeProvider theme={theme}>
+      <Typography component={component} {...props} ref={ref}>
+        {children}
+      </Typography>
+    </ThemeProvider>
   );
 });
 

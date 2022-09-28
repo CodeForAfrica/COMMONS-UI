@@ -2,16 +2,20 @@
 import { IconButton } from "@material-ui/core";
 import { PropTypes } from "prop-types";
 import React from "react";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
+const theme = createMuiTheme();
 import useStyles from "./useStyles";
 
 function NavigationButton({ children, onClick, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <IconButton className={classes.root} onClick={onClick} {...props}>
-      {children}
-    </IconButton>
+    <ThemeProvider theme={theme}>
+      <IconButton className={classes.root} onClick={onClick} {...props}>
+        {children}
+      </IconButton>
+    </ThemeProvider>
   );
 }
 
