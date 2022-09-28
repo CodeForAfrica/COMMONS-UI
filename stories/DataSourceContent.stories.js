@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
@@ -25,7 +25,7 @@ export default {
 };
 
 const Template = ({ datasets, documents, ...args }) => {
-  const classes = makeStyles(() => ({
+  const classes = makeStyles()(() => ({
     section: {
       margin: "0 auto",
       width: "90%",

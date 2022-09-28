@@ -2,12 +2,12 @@
 
 import { Typography } from "@mui/material";
 import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { PropTypes } from "prop-types";
 import React from "react";
 
 const theme = createTheme();
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   root: {
     "& a": {
       color: theme.palette.primary.main,
@@ -19,7 +19,9 @@ const RichTypography = React.forwardRef(function RichTypography(
   { children, component, ...props },
   ref
 ) {
-  const classes = useStyles(props);
+  const { classes } = useStyles(props, {
+    props: props
+  });
 
   if (!children) {
     return null;

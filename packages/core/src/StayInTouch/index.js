@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from "clsx";
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,7 +8,7 @@ import A from "@/commons-ui/core/A";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
 const theme = createTheme();
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   root: {},
   title: {
     textAlign: "center",
@@ -44,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function StayInTouch({ support, socialMedia, title, ...props }) {
-  const classes = useStyles(props);
+  const { classes, cx } = useStyles(props, {
+    props: props
+  });
 
   if (!(socialMedia && socialMedia.length)) {
     return null;
@@ -55,7 +56,7 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
         <Grid container className={classes.root}>
           {title && (
             <Grid item xs={12} md="auto" className={classes.title}>
-              <RichTypography className={clsx(classes.text)}>
+              <RichTypography className={cx(classes.text)}>
                 {title}
               </RichTypography>
             </Grid>
@@ -64,12 +65,12 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
             {support && (
               <A
                 href={`mailto:${support.email}`}
-                className={clsx(classes.link, classes.supportLink)}
+                className={cx(classes.link, classes.supportLink)}
               >
                 <img
                   src={support.image.url}
                   alt={support.image.alt}
-                  className={clsx(classes.icon, classes.supportIcon)}
+                  className={cx(classes.icon, classes.supportIcon)}
                 />
               </A>
             )}
@@ -77,12 +78,12 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
               <A
                 key={media.url}
                 href={media.url}
-                className={clsx(classes.link, classes.socialLink)}
+                className={cx(classes.link, classes.socialLink)}
               >
                 <img
                   src={media.image.url}
                   alt={media.image.alt}
-                  className={clsx(classes.icon, classes.socialIcon)}
+                  className={cx(classes.icon, classes.socialIcon)}
                 />
               </A>
             ))}

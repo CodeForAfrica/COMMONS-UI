@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from "clsx";
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -9,7 +8,7 @@ import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
 const theme = createTheme();
-const useStyles = makeStyles(({ typography }) => ({
+const useStyles = makeStyles()(({ typography }) => ({
   /* Styles applied to the root element. */
   root: {
     boxSizing: "border-box",
@@ -27,7 +26,9 @@ const Section = React.forwardRef(function Section(
   { children, className, title, titleProps, ...props },
   ref
 ) {
-  const classes = useStyles(props);
+  const { classes, cx } = useStyles(props, {
+    props: props
+  });
 
   if (!children) {
     return null;
@@ -35,7 +36,7 @@ const Section = React.forwardRef(function Section(
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
+        <Layout {...props} className={cx(classes.root, className)} ref={ref}>
           {title?.length ? (
             <RichTypography
               variant="h2"

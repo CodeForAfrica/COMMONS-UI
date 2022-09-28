@@ -1,6 +1,8 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(({ breakpoints, palette }) => ({
+// TODO jss-to-tss-react codemod: Unable to handle style definition reliably. ArrowFunctionExpression in CSS prop.
+// TODO jss-to-tss-react codemod: Unable to handle style definition reliably. ArrowFunctionExpression in CSS prop.
+const useStyles = makeStyles()(({ breakpoints, palette }) => ({
   root: {
     cursor: (props) => (props.onClick ? "pointer" : "inherit"),
     height: (props) => props.height,
@@ -54,4 +56,5 @@ const useStyles = makeStyles(({ breakpoints, palette }) => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

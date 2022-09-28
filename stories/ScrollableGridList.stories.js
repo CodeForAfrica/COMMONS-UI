@@ -1,5 +1,5 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import React from "react";
 
 import personImage from "./assets/person_1.png";
@@ -47,7 +47,7 @@ export default {
 };
 
 const Template = ({ tiles }) => {
-  const classes = makeStyles((theme) => ({
+  const classes = makeStyles()((theme) => ({
     root: {},
     gridList: {
       flexWrap: "nowrap",

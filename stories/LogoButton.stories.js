@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import React from "react";
 
 import cfaLogo from "./assets/cfa.png";
@@ -33,7 +33,7 @@ export default {
 };
 
 const Template = (args) => {
-  const classes = makeStyles(({ breakpoints }) => ({
+  const classes = makeStyles()(({ breakpoints }) => ({
     section: {
       margin: "0 auto",
       [breakpoints.up("md")]: {

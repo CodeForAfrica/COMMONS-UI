@@ -1,12 +1,11 @@
 import { Link, Typography } from "@mui/material";
 import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from "clsx";
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
 const theme = createTheme();
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   root: {
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -36,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function QuickLinks({ options, linkComponent, links, title, ...props }) {
-  const classes = useStyles(props);
+  const { classes, cx } = useStyles(props, {
+    props: props
+  });
   const LinkComponent = linkComponent || Link;
 
   return (
@@ -48,7 +49,7 @@ function QuickLinks({ options, linkComponent, links, title, ...props }) {
           </Typography>
           <Typography
             variant={options.link.variant}
-            className={clsx([classes.text, classes.list])}
+            className={cx([classes.text, classes.list])}
             component="ul"
           >
             {links.map(({ label, ...others }) => (

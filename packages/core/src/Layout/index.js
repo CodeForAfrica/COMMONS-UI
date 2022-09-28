@@ -1,14 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Box } from "@mui/material";
 import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from "clsx";
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
 const theme = createTheme();
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   root: {
     width: "100%",
   },
@@ -18,12 +17,16 @@ const Layout = React.forwardRef(function Layout(
   { children, classes: classesProp, className, ...props },
   ref
 ) {
-  const classes = useStyles({ classes: classesProp });
+  const { classes, cx } = useStyles(undefined, {
+    props: {
+      classes: classesProp
+    }
+  });
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <Box {...props} className={clsx(classes.root, className)} ref={ref}>
+        <Box {...props} className={cx(classes.root, className)} ref={ref}>
           {children}
         </Box>
       </ThemeProvider>

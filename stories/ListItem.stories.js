@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import React from "react";
 
 import { getProfiles } from "./utils";
@@ -24,7 +24,7 @@ export default {
 const profiles = getProfiles();
 
 const Template = (args) => {
-  const classes = makeStyles(() => ({
+  const classes = makeStyles()(() => ({
     section: {},
     profilePicture: {
       position: "relative",

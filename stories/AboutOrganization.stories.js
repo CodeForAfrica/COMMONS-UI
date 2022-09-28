@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import React from "react";
 
 import { AboutOrganization } from "@/commons-ui/core";
@@ -38,7 +38,7 @@ export default {
 };
 
 const Template = ({ about, aboutVariant, initiativeVariant, ...args }) => {
-  const classes = makeStyles((theme) => ({
+  const classes = makeStyles()((theme) => ({
     section: {
       margin: "0 auto",
       [theme.breakpoints.up("md")]: {
