@@ -1,16 +1,13 @@
-import { Typography } from "@material-ui/core";
-import {
-  makeStyles,
-  ThemeProvider,
-  createMuiTheme,
-} from "@material-ui/core/styles";
+import { Typography } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
 import A from "@/commons-ui/core/A";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 
 const useStyles = makeStyles(({ breakpoints }) => ({
   root: {},
@@ -47,37 +44,39 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <ThemeProvider theme={theme}>
-      {(copyright || icon || year) && (
-        <div className={clsx(classes.copyright, classes.root)}>
-          {copyright && (
-            <Typography
-              variant={variant}
-              className={clsx(classes.text, classes.copyrightText)}
-            >
-              {copyright}
-            </Typography>
-          )}
-          {icon && (
-            <A href={url} className="copyrightLogo">
-              <img
-                src={icon}
-                alt={copyright}
-                className={classes.copyrightIcon}
-              />
-            </A>
-          )}
-          {year && (
-            <Typography
-              variant={variant}
-              className={clsx(classes.text, classes.copyrightYear)}
-            >
-              {year}
-            </Typography>
-          )}
-        </div>
-      )}
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        {(copyright || icon || year) && (
+          <div className={clsx(classes.copyright, classes.root)}>
+            {copyright && (
+              <Typography
+                variant={variant}
+                className={clsx(classes.text, classes.copyrightText)}
+              >
+                {copyright}
+              </Typography>
+            )}
+            {icon && (
+              <A href={url} className="copyrightLogo">
+                <img
+                  src={icon}
+                  alt={copyright}
+                  className={classes.copyrightIcon}
+                />
+              </A>
+            )}
+            {year && (
+              <Typography
+                variant={variant}
+                className={clsx(classes.text, classes.copyrightYear)}
+              >
+                {year}
+              </Typography>
+            )}
+          </div>
+        )}
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

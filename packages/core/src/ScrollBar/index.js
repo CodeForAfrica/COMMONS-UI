@@ -1,10 +1,11 @@
-import { ThemeProvider, createMuiTheme, makeStyles } from "@material-ui/core";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 import SimpleBarReact from "simplebar-react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles(({ breakpoints, palette, typography }) => ({
   root: {
     width: "100%",
@@ -46,16 +47,18 @@ function ScrollBar({
     return null;
   }
   return (
-    <ThemeProvider theme={theme}>
-      <SimpleBarReact
-        {...props}
-        autoHide={autoHide}
-        height={height}
-        className={clsx(classes.root, className)}
-      >
-        {children}
-      </SimpleBarReact>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <SimpleBarReact
+          {...props}
+          autoHide={autoHide}
+          height={height}
+          className={clsx(classes.root, className)}
+        >
+          {children}
+        </SimpleBarReact>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,21 +1,23 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import { PropTypes } from "prop-types";
 import React from "react";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 import useStyles from "./useStyles";
 
 function NavigationButton({ children, onClick, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <ThemeProvider theme={theme}>
-      <IconButton className={classes.root} onClick={onClick} {...props}>
-        {children}
-      </IconButton>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <IconButton className={classes.root} onClick={onClick} {...props} size="large">
+          {children}
+        </IconButton>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

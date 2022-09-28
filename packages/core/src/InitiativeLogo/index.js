@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 import useStyles from "./useStyles";
 
 import LogoButton from "@/commons-ui/core/LogoButton";
@@ -12,17 +12,19 @@ function InitiativeLogo({ variant, img, href, children, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <LogoButton {...img} href={href} className={classes.img} />
-        <RichTypography
-          variant={variant}
-          className={{ support: classes.support }}
-        >
-          {children}
-        </RichTypography>
-      </div>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <LogoButton {...img} href={href} className={classes.img} />
+          <RichTypography
+            variant={variant}
+            className={{ support: classes.support }}
+          >
+            {children}
+          </RichTypography>
+        </div>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

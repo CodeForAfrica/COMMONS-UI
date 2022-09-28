@@ -1,14 +1,11 @@
-import { IconButton } from "@material-ui/core";
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { IconButton } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles(() => ({
   root: {},
   image: {
@@ -34,11 +31,13 @@ function LogoButton({
     <img {...imgProps} alt={alt || ""} src={src} className={classes.image} />
   );
   return (
-    <ThemeProvider theme={theme}>
-      <IconButton {...props} className={clsx(classes.root, className)}>
-        {children}
-      </IconButton>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <IconButton {...props} className={clsx(classes.root, className)} size="large">
+          {children}
+        </IconButton>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

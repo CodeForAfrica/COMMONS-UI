@@ -1,15 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { Typography } from "@material-ui/core";
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { Typography } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { PropTypes } from "prop-types";
 import React from "react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles((theme) => ({
   root: {
     "& a": {
@@ -29,27 +26,31 @@ const RichTypography = React.forwardRef(function RichTypography(
   }
   if (typeof children === "string") {
     return (
-      <ThemeProvider theme={theme}>
-        <Typography
-          // We default to `div` to allow other block elements like <p> to be used inside
-          // `children`
-          component={component || "div"}
-          dangerouslySetInnerHTML={{
-            __html: children,
-          }}
-          {...props}
-          ref={ref}
-          classes={classes}
-        />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <Typography
+            // We default to `div` to allow other block elements like <p> to be used inside
+            // `children`
+            component={component || "div"}
+            dangerouslySetInnerHTML={{
+              __html: children,
+            }}
+            {...props}
+            ref={ref}
+            classes={classes}
+          />
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
   }
   return (
-    <ThemeProvider theme={theme}>
-      <Typography component={component} {...props} ref={ref}>
-        {children}
-      </Typography>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Typography component={component} {...props} ref={ref}>
+          {children}
+        </Typography>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 });
 

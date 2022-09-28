@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import { Grid, useMediaQuery, useTheme } from "@material-ui/core";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 import Contents from "./Contents";
 import useStyles from "./useStyles";
 
@@ -32,48 +32,50 @@ function ListItem({
     : {};
 
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container {...buttonProps} className={classes.root}>
-        {isMobile && isProfile && (
-          <Grid item xs={6} container>
-            <Contents
-              name={name}
-              selected={selected}
-              title={title}
-              variant={variant}
-              {...props}
-            >
-              {children}
-            </Contents>
-          </Grid>
-        )}
-        <Grid
-          item
-          xs={isMobile && isProfile ? 6 : 12}
-          container
-          className={classes.contentsRoot}
-        >
-          <img
-            alt={image.description || name || title}
-            src={image.url}
-            className={clsx(classes.picture, {
-              [classes.pictureSelected]: selected,
-            })}
-          />
-          {(!isProfile || isDesktop) && (
-            <Contents
-              name={name}
-              selected={selected}
-              title={title}
-              variant={variant}
-              {...props}
-            >
-              {children}
-            </Contents>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Grid container {...buttonProps} className={classes.root}>
+          {isMobile && isProfile && (
+            <Grid item xs={6} container>
+              <Contents
+                name={name}
+                selected={selected}
+                title={title}
+                variant={variant}
+                {...props}
+              >
+                {children}
+              </Contents>
+            </Grid>
           )}
+          <Grid
+            item
+            xs={isMobile && isProfile ? 6 : 12}
+            container
+            className={classes.contentsRoot}
+          >
+            <img
+              alt={image.description || name || title}
+              src={image.url}
+              className={clsx(classes.picture, {
+                [classes.pictureSelected]: selected,
+              })}
+            />
+            {(!isProfile || isDesktop) && (
+              <Contents
+                name={name}
+                selected={selected}
+                title={title}
+                variant={variant}
+                {...props}
+              >
+                {children}
+              </Contents>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,9 +1,9 @@
-import { muiTheme } from "storybook-addon-material-ui";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { muiTheme } from "storybook-addon-material-ui5";
+import { createTheme } from "@mui/material/styles";
 
 import "./styles.css";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 
 export const decorators = [muiTheme([theme])];
 

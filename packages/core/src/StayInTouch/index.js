@@ -1,9 +1,6 @@
-import { Grid } from "@material-ui/core";
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { Grid } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -11,7 +8,7 @@ import React from "react";
 import A from "@/commons-ui/core/A";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles((theme) => ({
   root: {},
   title: {
@@ -53,44 +50,46 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
     return null;
   }
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container className={classes.root}>
-        {title && (
-          <Grid item xs={12} md="auto" className={classes.title}>
-            <RichTypography className={clsx(classes.text)}>
-              {title}
-            </RichTypography>
-          </Grid>
-        )}
-        <Grid item xs={12} md="auto" container className={classes.links}>
-          {support && (
-            <A
-              href={`mailto:${support.email}`}
-              className={clsx(classes.link, classes.supportLink)}
-            >
-              <img
-                src={support.image.url}
-                alt={support.image.alt}
-                className={clsx(classes.icon, classes.supportIcon)}
-              />
-            </A>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Grid container className={classes.root}>
+          {title && (
+            <Grid item xs={12} md="auto" className={classes.title}>
+              <RichTypography className={clsx(classes.text)}>
+                {title}
+              </RichTypography>
+            </Grid>
           )}
-          {socialMedia.map((media) => (
-            <A
-              key={media.url}
-              href={media.url}
-              className={clsx(classes.link, classes.socialLink)}
-            >
-              <img
-                src={media.image.url}
-                alt={media.image.alt}
-                className={clsx(classes.icon, classes.socialIcon)}
-              />
-            </A>
-          ))}
+          <Grid item xs={12} md="auto" container className={classes.links}>
+            {support && (
+              <A
+                href={`mailto:${support.email}`}
+                className={clsx(classes.link, classes.supportLink)}
+              >
+                <img
+                  src={support.image.url}
+                  alt={support.image.alt}
+                  className={clsx(classes.icon, classes.supportIcon)}
+                />
+              </A>
+            )}
+            {socialMedia.map((media) => (
+              <A
+                key={media.url}
+                href={media.url}
+                className={clsx(classes.link, classes.socialLink)}
+              >
+                <img
+                  src={media.image.url}
+                  alt={media.image.alt}
+                  className={clsx(classes.icon, classes.socialIcon)}
+                />
+              </A>
+            ))}
+          </Grid>
         </Grid>
-      </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

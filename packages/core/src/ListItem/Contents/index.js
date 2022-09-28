@@ -5,7 +5,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";

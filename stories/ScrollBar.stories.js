@@ -1,5 +1,5 @@
-import { GridList, GridListTile, GridListTileBar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import React from "react";
 
 import personImage from "./assets/person_1.png";
@@ -66,20 +66,20 @@ const Template = ({ tiles }) => {
 
   return (
     <ScrollBar>
-      <GridList className={classes.gridList} cols={5}>
+      <ImageList className={classes.gridList} cols={5}>
         {tiles.map((tile) => (
-          <GridListTile key={tile.img}>
+          <ImageListItem key={tile.img}>
             <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
+            <ImageListItemBar
               title={tile.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
             />
-          </GridListTile>
+          </ImageListItem>
         ))}
-      </GridList>
+      </ImageList>
     </ScrollBar>
   );
 };

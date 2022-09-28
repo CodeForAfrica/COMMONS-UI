@@ -1,9 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -11,7 +8,7 @@ import React from "react";
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles(({ typography }) => ({
   /* Styles applied to the root element. */
   root: {
@@ -36,21 +33,23 @@ const Section = React.forwardRef(function Section(
     return null;
   }
   return (
-    <ThemeProvider theme={theme}>
-      <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
-        {title?.length ? (
-          <RichTypography
-            variant="h2"
-            className={classes.title}
-            {...titleProps}
-          >
-            {title}
-          </RichTypography>
-        ) : null}
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
+          {title?.length ? (
+            <RichTypography
+              variant="h2"
+              className={classes.title}
+              {...titleProps}
+            >
+              {title}
+            </RichTypography>
+          ) : null}
 
-        {children}
-      </Layout>
-    </ThemeProvider>
+          {children}
+        </Layout>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 });
 

@@ -1,9 +1,9 @@
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React from "react";
 
 import { DataSourceContent } from "@/commons-ui/core";
@@ -49,7 +49,7 @@ const Template = ({ datasets, documents, ...args }) => {
       {...args}
       container
       direction="row"
-      justify="center"
+      justifyContent="center"
       alignItems="flex-start"
       spacing={8}
     >

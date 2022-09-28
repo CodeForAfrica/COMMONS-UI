@@ -1,14 +1,11 @@
-import { Link, Typography } from "@material-ui/core";
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { Link, Typography } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -43,32 +40,34 @@ function QuickLinks({ options, linkComponent, links, title, ...props }) {
   const LinkComponent = linkComponent || Link;
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.root}>
-        <Typography variant={options.title.variant} className={classes.title}>
-          {title}
-        </Typography>
-        <Typography
-          variant={options.link.variant}
-          className={clsx([classes.text, classes.list])}
-          component="ul"
-        >
-          {links.map(({ label, ...others }) => (
-            <li key={label}>
-              <LinkComponent
-                {...others}
-                color={options.link.color}
-                variant={options.link.variant}
-                underline="none"
-                className={classes.link}
-              >
-                {label}
-              </LinkComponent>
-            </li>
-          ))}
-        </Typography>
-      </div>
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <Typography variant={options.title.variant} className={classes.title}>
+            {title}
+          </Typography>
+          <Typography
+            variant={options.link.variant}
+            className={clsx([classes.text, classes.list])}
+            component="ul"
+          >
+            {links.map(({ label, ...others }) => (
+              <li key={label}>
+                <LinkComponent
+                  {...others}
+                  color={options.link.color}
+                  variant={options.link.variant}
+                  underline="none"
+                  className={classes.link}
+                >
+                  {label}
+                </LinkComponent>
+              </li>
+            ))}
+          </Typography>
+        </div>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

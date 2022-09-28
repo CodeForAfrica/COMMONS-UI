@@ -1,13 +1,11 @@
-import MaterialDivider from "@material-ui/core/Divider";
-import {
-  ThemeProvider,
-  createMuiTheme,
-  makeStyles,
-} from "@material-ui/core/styles";
+import MaterialDivider from "@mui/material/Divider";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import React from "react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
@@ -19,8 +17,10 @@ const useStyles = makeStyles(() => ({
 export default function Divider(props) {
   const classes = useStyles(props);
   return (
-    <ThemeProvider theme={theme}>
-      <MaterialDivider classes={classes} {...props} />
-    </ThemeProvider>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <MaterialDivider classes={classes} {...props} />
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }

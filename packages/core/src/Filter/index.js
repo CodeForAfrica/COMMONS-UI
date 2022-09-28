@@ -1,15 +1,13 @@
-import { Grid, Button, ButtonBase } from "@material-ui/core";
-import {
-  makeStyles,
-  ThemeProvider,
-  createMuiTheme,
-} from "@material-ui/core/styles";
+import { Grid, Button, ButtonBase } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
+
+import makeStyles from '@mui/styles/makeStyles';
 
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,44 +85,46 @@ function Filter({
   const classes = useStyles(props);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container className={classes.root}>
-        <Grid item container spacing={2} className={classes.filter}>
-          {mainTopics &&
-            mainTopics.map((item) => (
-              <Grid item key={item.slug}>
-                <Button
-                  {...mainProps}
-                  variant={mainVariant}
-                  className={clsx(classes.mainButton, {
-                    [classes.activeButton]: item.slug === activeTopic,
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Grid container className={classes.root}>
+          <Grid item container spacing={2} className={classes.filter}>
+            {mainTopics &&
+              mainTopics.map((item) => (
+                <Grid item key={item.slug}>
+                  <Button
+                    {...mainProps}
+                    variant={mainVariant}
+                    className={clsx(classes.mainButton, {
+                      [classes.activeButton]: item.slug === activeTopic,
+                    })}
+                    onClick={() => onButtonClick(item.slug)}
+                  >
+                    {item.name}
+                  </Button>
+                </Grid>
+              ))}
+          </Grid>
+          {subTopics && subTopics.length > 0 && (
+            <Grid item xs={12} className={classes.subtopic}>
+              {subTopics.map((item) => (
+                <ButtonBase
+                  {...subProps}
+                  key={item.slug}
+                  variant={subVariant}
+                  onClick={() => onSubTopicButtonClick(item.slug)}
+                  className={clsx(classes.subButton, {
+                    [classes.activeSubButton]: item.slug === activeSubTopic,
                   })}
-                  onClick={() => onButtonClick(item.slug)}
                 >
                   {item.name}
-                </Button>
-              </Grid>
-            ))}
+                </ButtonBase>
+              ))}
+            </Grid>
+          )}
         </Grid>
-        {subTopics && subTopics.length > 0 && (
-          <Grid item xs={12} className={classes.subtopic}>
-            {subTopics.map((item) => (
-              <ButtonBase
-                {...subProps}
-                key={item.slug}
-                variant={subVariant}
-                onClick={() => onSubTopicButtonClick(item.slug)}
-                className={clsx(classes.subButton, {
-                  [classes.activeSubButton]: item.slug === activeSubTopic,
-                })}
-              >
-                {item.name}
-              </ButtonBase>
-            ))}
-          </Grid>
-        )}
-      </Grid>
-    </ThemeProvider>
+      </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 
