@@ -1,18 +1,13 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
 import Content from "./Content";
 import useStyles from "./useStyles";
-
-const theme = createTheme();
 
 function DataSourceContent({ children, datasource, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Content
           {...datasource}
           classes={{
@@ -23,8 +18,6 @@ function DataSourceContent({ children, datasource, ...props }) {
             link: classes.documentsLink,
           }}
         />
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

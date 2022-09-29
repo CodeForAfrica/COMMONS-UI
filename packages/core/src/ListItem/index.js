@@ -3,9 +3,7 @@ import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
-const theme = createTheme();
 import Contents from "./Contents";
 import useStyles from "./useStyles";
 
@@ -32,8 +30,6 @@ function ListItem({
     : {};
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Grid container {...buttonProps} className={classes.root}>
           {isMobile && isProfile && (
             <Grid item xs={6} container>
@@ -74,8 +70,6 @@ function ListItem({
             )}
           </Grid>
         </Grid>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

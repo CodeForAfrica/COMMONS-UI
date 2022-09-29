@@ -1,11 +1,21 @@
 import { muiTheme } from "storybook-addon-material-ui5";
-import { createTheme } from "@mui/material/styles";
+import { ThemeProvider, StyledEngineProvider,createTheme } from "@mui/material/styles";
+import React from "react";
+// import { ThemeProvider as Emotion10ThemeProvider } from 'emotion-theming';
 
 import "./styles.css";
 
 const theme = createTheme();
 
-export const decorators = [muiTheme([theme])];
+export const decorators = [
+  (Story) => (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+          <Story />
+      </ThemeProvider>
+    </StyledEngineProvider>
+  ),
+];
 
 const size = (px) => `${Number.parseFloat(theme.typography.pxToRem(px))}rem`;
 

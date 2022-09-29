@@ -1,10 +1,9 @@
 import { Link, Typography } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
-const theme = createTheme();
+
 const useStyles = makeStyles()((theme) => ({
   root: {
     width: "100%",
@@ -41,8 +40,6 @@ function QuickLinks({ options, linkComponent, links, title, ...props }) {
   const LinkComponent = linkComponent || Link;
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <Typography variant={options.title.variant} className={classes.title}>
             {title}
@@ -67,8 +64,6 @@ function QuickLinks({ options, linkComponent, links, title, ...props }) {
             ))}
           </Typography>
         </div>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

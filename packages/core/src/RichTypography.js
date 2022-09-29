@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Typography } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import { PropTypes } from "prop-types";
 import React from "react";
 
-const theme = createTheme();
+
 const useStyles = makeStyles()((theme) => ({
   root: {
     "& a": {
@@ -28,8 +27,6 @@ const RichTypography = React.forwardRef(function RichTypography(
   }
   if (typeof children === "string") {
     return (
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
           <Typography
             // We default to `div` to allow other block elements like <p> to be used inside
             // `children`
@@ -41,18 +38,13 @@ const RichTypography = React.forwardRef(function RichTypography(
             ref={ref}
             classes={classes}
           />
-        </ThemeProvider>
-      </StyledEngineProvider>
     );
   }
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
+
         <Typography component={component} {...props} ref={ref}>
           {children}
         </Typography>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 });
 

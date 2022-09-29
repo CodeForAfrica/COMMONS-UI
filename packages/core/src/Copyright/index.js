@@ -1,12 +1,9 @@
 import { Typography } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
 import A from "@/commons-ui/core/A";
-
-const theme = createTheme();
 
 const useStyles = makeStyles()(({ breakpoints }) => ({
   root: {},
@@ -45,8 +42,7 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
   });
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
+    <>
         {(copyright || icon || year) && (
           <div className={cx(classes.copyright, classes.root)}>
             {copyright && (
@@ -76,8 +72,7 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
             )}
           </div>
         )}
-      </ThemeProvider>
-    </StyledEngineProvider>
+    </>
   );
 }
 

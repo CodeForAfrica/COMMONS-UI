@@ -1,11 +1,8 @@
 import { Grid, Button, ButtonBase } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 
 import { makeStyles } from 'tss-react/mui';
 import { PropTypes } from "prop-types";
 import React from "react";
-
-const theme = createTheme();
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -85,8 +82,6 @@ function Filter({
   });
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Grid container className={classes.root}>
           <Grid item container spacing={2} className={classes.filter}>
             {mainTopics &&
@@ -123,8 +118,6 @@ function Filter({
             </Grid>
           )}
         </Grid>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
@@ -7,7 +6,6 @@ import React from "react";
 import A from "@/commons-ui/core/A";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const theme = createTheme();
 const useStyles = makeStyles()((theme) => ({
   root: {},
   title: {
@@ -51,8 +49,6 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
     return null;
   }
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Grid container className={classes.root}>
           {title && (
             <Grid item xs={12} md="auto" className={classes.title}>
@@ -89,8 +85,6 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
             ))}
           </Grid>
         </Grid>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

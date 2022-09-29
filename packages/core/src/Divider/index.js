@@ -19,10 +19,6 @@ export default function Divider(props) {
     props: props
   });
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <MaterialDivider classes={classes} {...props} />
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }

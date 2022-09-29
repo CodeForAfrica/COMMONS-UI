@@ -1,11 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Box } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
-
-const theme = createTheme();
 
 const useStyles = makeStyles()({
   root: {
@@ -24,13 +21,9 @@ const Layout = React.forwardRef(function Layout(
   });
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Box {...props} className={cx(classes.root, className)} ref={ref}>
           {children}
         </Box>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 });
 

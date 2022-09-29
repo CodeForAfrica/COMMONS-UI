@@ -1,10 +1,8 @@
 import { IconButton } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
 
-const theme = createTheme();
 const useStyles = makeStyles()(() => ({
   root: {},
   image: {
@@ -32,13 +30,9 @@ function LogoButton({
     <img {...imgProps} alt={alt || ""} src={src} className={classes.image} />
   );
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <IconButton {...props} className={cx(classes.root, className)} size="large">
           {children}
         </IconButton>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 

@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
@@ -7,7 +6,6 @@ import React from "react";
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const theme = createTheme();
 const useStyles = makeStyles()(({ typography }) => ({
   /* Styles applied to the root element. */
   root: {
@@ -34,8 +32,6 @@ const Section = React.forwardRef(function Section(
     return null;
   }
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <Layout {...props} className={cx(classes.root, className)} ref={ref}>
           {title?.length ? (
             <RichTypography
@@ -49,8 +45,6 @@ const Section = React.forwardRef(function Section(
 
           {children}
         </Layout>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 });
 

@@ -1,5 +1,4 @@
 import { Link, Typography } from "@mui/material";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
 import makeStyles from '@mui/styles/makeStyles';
 import clsx from "clsx";
 import PropTypes from "prop-types";
@@ -44,8 +43,6 @@ function LegalLinks({ color, variant, linkComponent, links, ...props }) {
   const LinkComponent = linkComponent || Link;
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <Typography
             variant={variant}
@@ -68,8 +65,6 @@ function LegalLinks({ color, variant, linkComponent, links, ...props }) {
             ))}
           </Typography>
         </div>
-      </ThemeProvider>
-    </StyledEngineProvider>
   );
 }
 
