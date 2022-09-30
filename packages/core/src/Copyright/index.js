@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
-import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 import A from "@/commons-ui/core/A";
 
@@ -38,40 +38,40 @@ const useStyles = makeStyles()(({ breakpoints }) => ({
 
 function Copyright({ copyright, icon, variant, year, url, ...props }) {
   const { classes, cx } = useStyles(props, {
-    props: props
+    props,
   });
 
   return (
     <>
-        {(copyright || icon || year) && (
-          <div className={cx(classes.copyright, classes.root)}>
-            {copyright && (
-              <Typography
-                variant={variant}
-                className={cx(classes.text, classes.copyrightText)}
-              >
-                {copyright}
-              </Typography>
-            )}
-            {icon && (
-              <A href={url} className="copyrightLogo">
-                <img
-                  src={icon}
-                  alt={copyright}
-                  className={classes.copyrightIcon}
-                />
-              </A>
-            )}
-            {year && (
-              <Typography
-                variant={variant}
-                className={cx(classes.text, classes.copyrightYear)}
-              >
-                {year}
-              </Typography>
-            )}
-          </div>
-        )}
+      {(copyright || icon || year) && (
+        <div className={cx(classes.copyright, classes.root)}>
+          {copyright && (
+            <Typography
+              variant={variant}
+              className={cx(classes.text, classes.copyrightText)}
+            >
+              {copyright}
+            </Typography>
+          )}
+          {icon && (
+            <A href={url} className="copyrightLogo">
+              <img
+                src={icon}
+                alt={copyright}
+                className={classes.copyrightIcon}
+              />
+            </A>
+          )}
+          {year && (
+            <Typography
+              variant={variant}
+              className={cx(classes.text, classes.copyrightYear)}
+            >
+              {year}
+            </Typography>
+          )}
+        </div>
+      )}
     </>
   );
 }

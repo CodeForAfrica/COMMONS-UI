@@ -1,9 +1,9 @@
 import { Link, Typography } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-const theme = createTheme();
+
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: "3.666666667rem",
@@ -43,28 +43,28 @@ function LegalLinks({ color, variant, linkComponent, links, ...props }) {
   const LinkComponent = linkComponent || Link;
 
   return (
-        <div className={classes.root}>
-          <Typography
-            variant={variant}
-            color={color}
-            className={clsx([classes.text, classes.list])}
-            component="ul"
-          >
-            {links.map(({ label, ...others }) => (
-              <li key={label}>
-                <LinkComponent
-                  {...others}
-                  variant={variant}
-                  color={color}
-                  underline="none"
-                  className={classes.link}
-                >
-                  {label}
-                </LinkComponent>
-              </li>
-            ))}
-          </Typography>
-        </div>
+    <div className={classes.root}>
+      <Typography
+        variant={variant}
+        color={color}
+        className={clsx([classes.text, classes.list])}
+        component="ul"
+      >
+        {links.map(({ label, ...others }) => (
+          <li key={label}>
+            <LinkComponent
+              {...others}
+              variant={variant}
+              color={color}
+              underline="none"
+              className={classes.link}
+            >
+              {label}
+            </LinkComponent>
+          </li>
+        ))}
+      </Typography>
+    </div>
   );
 }
 

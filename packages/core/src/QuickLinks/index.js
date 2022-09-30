@@ -1,8 +1,7 @@
 import { Link, Typography } from "@mui/material";
-import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
-
+import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -35,35 +34,35 @@ const useStyles = makeStyles()((theme) => ({
 
 function QuickLinks({ options, linkComponent, links, title, ...props }) {
   const { classes, cx } = useStyles(props, {
-    props: props
+    props,
   });
   const LinkComponent = linkComponent || Link;
 
   return (
-        <div className={classes.root}>
-          <Typography variant={options.title.variant} className={classes.title}>
-            {title}
-          </Typography>
-          <Typography
-            variant={options.link.variant}
-            className={cx([classes.text, classes.list])}
-            component="ul"
-          >
-            {links.map(({ label, ...others }) => (
-              <li key={label}>
-                <LinkComponent
-                  {...others}
-                  color={options.link.color}
-                  variant={options.link.variant}
-                  underline="none"
-                  className={classes.link}
-                >
-                  {label}
-                </LinkComponent>
-              </li>
-            ))}
-          </Typography>
-        </div>
+    <div className={classes.root}>
+      <Typography variant={options.title.variant} className={classes.title}>
+        {title}
+      </Typography>
+      <Typography
+        variant={options.link.variant}
+        className={cx([classes.text, classes.list])}
+        component="ul"
+      >
+        {links.map(({ label, ...others }) => (
+          <li key={label}>
+            <LinkComponent
+              {...others}
+              color={options.link.color}
+              variant={options.link.variant}
+              underline="none"
+              className={classes.link}
+            >
+              {label}
+            </LinkComponent>
+          </li>
+        ))}
+      </Typography>
+    </div>
   );
 }
 

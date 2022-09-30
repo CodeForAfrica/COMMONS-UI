@@ -9,15 +9,15 @@ import React from "react";
 
 const A = React.forwardRef(function A({ children, href, ...props }, ref) {
   return (
-        <Link
-          {...props}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          ref={ref}
-        >
-          {children}
-        </Link>
+    <Link
+      {...props}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      ref={ref}
+    >
+      {children}
+    </Link>
   );
 });
 

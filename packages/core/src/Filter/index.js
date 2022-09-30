@@ -1,8 +1,7 @@
 import { Grid, Button, ButtonBase } from "@mui/material";
-
-import { makeStyles } from 'tss-react/mui';
 import { PropTypes } from "prop-types";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -78,46 +77,46 @@ function Filter({
   ...props
 }) {
   const { classes, cx } = useStyles(props, {
-    props: props
+    props,
   });
 
   return (
-        <Grid container className={classes.root}>
-          <Grid item container spacing={2} className={classes.filter}>
-            {mainTopics &&
-              mainTopics.map((item) => (
-                <Grid item key={item.slug}>
-                  <Button
-                    {...mainProps}
-                    variant={mainVariant}
-                    className={cx(classes.mainButton, {
-                      [classes.activeButton]: item.slug === activeTopic,
-                    })}
-                    onClick={() => onButtonClick(item.slug)}
-                  >
-                    {item.name}
-                  </Button>
-                </Grid>
-              ))}
-          </Grid>
-          {subTopics && subTopics.length > 0 && (
-            <Grid item xs={12} className={classes.subtopic}>
-              {subTopics.map((item) => (
-                <ButtonBase
-                  {...subProps}
-                  key={item.slug}
-                  variant={subVariant}
-                  onClick={() => onSubTopicButtonClick(item.slug)}
-                  className={cx(classes.subButton, {
-                    [classes.activeSubButton]: item.slug === activeSubTopic,
-                  })}
-                >
-                  {item.name}
-                </ButtonBase>
-              ))}
+    <Grid container className={classes.root}>
+      <Grid item container spacing={2} className={classes.filter}>
+        {mainTopics &&
+          mainTopics.map((item) => (
+            <Grid item key={item.slug}>
+              <Button
+                {...mainProps}
+                variant={mainVariant}
+                className={cx(classes.mainButton, {
+                  [classes.activeButton]: item.slug === activeTopic,
+                })}
+                onClick={() => onButtonClick(item.slug)}
+              >
+                {item.name}
+              </Button>
             </Grid>
-          )}
+          ))}
+      </Grid>
+      {subTopics && subTopics.length > 0 && (
+        <Grid item xs={12} className={classes.subtopic}>
+          {subTopics.map((item) => (
+            <ButtonBase
+              {...subProps}
+              key={item.slug}
+              variant={subVariant}
+              onClick={() => onSubTopicButtonClick(item.slug)}
+              className={cx(classes.subButton, {
+                [classes.activeSubButton]: item.slug === activeSubTopic,
+              })}
+            >
+              {item.name}
+            </ButtonBase>
+          ))}
         </Grid>
+      )}
+    </Grid>
   );
 }
 

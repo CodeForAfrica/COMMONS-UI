@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Box } from "@mui/material";
-import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()({
   root: {
@@ -16,14 +16,14 @@ const Layout = React.forwardRef(function Layout(
 ) {
   const { classes, cx } = useStyles(undefined, {
     props: {
-      classes: classesProp
-    }
+      classes: classesProp,
+    },
   });
 
   return (
-        <Box {...props} className={cx(classes.root, className)} ref={ref}>
-          {children}
-        </Box>
+    <Box {...props} className={cx(classes.root, className)} ref={ref}>
+      {children}
+    </Box>
   );
 });
 

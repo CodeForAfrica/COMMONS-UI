@@ -8,16 +8,16 @@ function DataSourceContent({ children, datasource, ...props }) {
   const classes = useStyles(props);
 
   return (
-        <Content
-          {...datasource}
-          classes={{
-            root: classes.documents,
-            contentType: classes.documentsContentType,
-            description: classes.documentsDescription,
-            icon: classes.documentsIcon,
-            link: classes.documentsLink,
-          }}
-        />
+    <Content
+      {...datasource}
+      classes={{
+        root: classes.documents,
+        contentType: classes.documentsContentType,
+        description: classes.documentsDescription,
+        icon: classes.documentsIcon,
+        link: classes.documentsLink,
+      }}
+    />
   );
 }
 

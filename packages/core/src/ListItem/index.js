@@ -30,46 +30,46 @@ function ListItem({
     : {};
 
   return (
-        <Grid container {...buttonProps} className={classes.root}>
-          {isMobile && isProfile && (
-            <Grid item xs={6} container>
-              <Contents
-                name={name}
-                selected={selected}
-                title={title}
-                variant={variant}
-                {...props}
-              >
-                {children}
-              </Contents>
-            </Grid>
-          )}
-          <Grid
-            item
-            xs={isMobile && isProfile ? 6 : 12}
-            container
-            className={classes.contentsRoot}
+    <Grid container {...buttonProps} className={classes.root}>
+      {isMobile && isProfile && (
+        <Grid item xs={6} container>
+          <Contents
+            name={name}
+            selected={selected}
+            title={title}
+            variant={variant}
+            {...props}
           >
-            <img
-              alt={image.description || name || title}
-              src={image.url}
-              className={clsx(classes.picture, {
-                [classes.pictureSelected]: selected,
-              })}
-            />
-            {(!isProfile || isDesktop) && (
-              <Contents
-                name={name}
-                selected={selected}
-                title={title}
-                variant={variant}
-                {...props}
-              >
-                {children}
-              </Contents>
-            )}
-          </Grid>
+            {children}
+          </Contents>
         </Grid>
+      )}
+      <Grid
+        item
+        xs={isMobile && isProfile ? 6 : 12}
+        container
+        className={classes.contentsRoot}
+      >
+        <img
+          alt={image.description || name || title}
+          src={image.url}
+          className={clsx(classes.picture, {
+            [classes.pictureSelected]: selected,
+          })}
+        />
+        {(!isProfile || isDesktop) && (
+          <Contents
+            name={name}
+            selected={selected}
+            title={title}
+            variant={variant}
+            {...props}
+          >
+            {children}
+          </Contents>
+        )}
+      </Grid>
+    </Grid>
   );
 }
 

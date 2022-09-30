@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
-import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 import RichTypography from "@/commons-ui/core/RichTypography";
 
@@ -31,7 +31,7 @@ function DataSourceContent({
   ...props
 }) {
   const { classes } = useStyles(props, {
-    props: props
+    props,
   });
 
   return (

@@ -1,7 +1,9 @@
-import { muiTheme } from "storybook-addon-material-ui5";
-import { ThemeProvider, StyledEngineProvider,createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
 import React from "react";
-// import { ThemeProvider as Emotion10ThemeProvider } from 'emotion-theming';
 
 import "./styles.css";
 
@@ -11,7 +13,7 @@ export const decorators = [
   (Story) => (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-          <Story />
+        <Story />
       </ThemeProvider>
     </StyledEngineProvider>
   ),

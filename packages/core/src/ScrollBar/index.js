@@ -1,4 +1,4 @@
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -45,14 +45,14 @@ function ScrollBar({
     return null;
   }
   return (
-        <SimpleBarReact
-          {...props}
-          autoHide={autoHide}
-          height={height}
-          className={clsx(classes.root, className)}
-        >
-          {children}
-        </SimpleBarReact>
+    <SimpleBarReact
+      {...props}
+      autoHide={autoHide}
+      height={height}
+      className={clsx(classes.root, className)}
+    >
+      {children}
+    </SimpleBarReact>
   );
 }
 

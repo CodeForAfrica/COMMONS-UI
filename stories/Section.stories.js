@@ -1,6 +1,6 @@
-import { makeStyles } from "tss-react/mui";
-import React from "react";
 import clsx from "clsx";
+import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 import { RichTypography, Section } from "@/commons-ui/core";
 
@@ -39,7 +39,7 @@ const Template = ({ fixed, ...args }) => {
   };
 
   // TODO jss-to-tss-react codemod: Unable to handle style definition reliably. Unsupported arrow function syntax.
-  //Unexpected value type of CallExpression.
+  // Unexpected value type of CallExpression.
   const classes = makeStyles()(({ breakpoints }) => ({
     section: {},
     fixed: Object.keys(widths.values).reduce((acc, breakpoint) => {

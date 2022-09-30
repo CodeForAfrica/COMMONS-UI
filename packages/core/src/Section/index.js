@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { makeStyles } from 'tss-react/mui';
 import PropTypes from "prop-types";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
@@ -25,26 +25,22 @@ const Section = React.forwardRef(function Section(
   ref
 ) {
   const { classes, cx } = useStyles(props, {
-    props: props
+    props,
   });
 
   if (!children) {
     return null;
   }
   return (
-        <Layout {...props} className={cx(classes.root, className)} ref={ref}>
-          {title?.length ? (
-            <RichTypography
-              variant="h2"
-              className={classes.title}
-              {...titleProps}
-            >
-              {title}
-            </RichTypography>
-          ) : null}
+    <Layout {...props} className={cx(classes.root, className)} ref={ref}>
+      {title?.length ? (
+        <RichTypography variant="h2" className={classes.title} {...titleProps}>
+          {title}
+        </RichTypography>
+      ) : null}
 
-          {children}
-        </Layout>
+      {children}
+    </Layout>
   );
 });
 

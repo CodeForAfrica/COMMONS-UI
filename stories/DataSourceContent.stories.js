@@ -1,10 +1,10 @@
-import { Grid } from "@mui/material";
-import { makeStyles } from 'tss-react/mui';
 import {
   DescriptionOutlined as DescriptionIcon,
   StorageOutlined as StorageIcon,
 } from "@mui/icons-material";
+import { Grid } from "@mui/material";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 import { DataSourceContent } from "@/commons-ui/core";
 

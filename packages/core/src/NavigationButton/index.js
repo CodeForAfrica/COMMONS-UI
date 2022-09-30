@@ -9,9 +9,14 @@ function NavigationButton({ children, onClick, ...props }) {
   const classes = useStyles(props);
 
   return (
-        <IconButton className={classes.root} onClick={onClick} {...props} size="large">
-          {children}
-        </IconButton>
+    <IconButton
+      className={classes.root}
+      onClick={onClick}
+      {...props}
+      size="large"
+    >
+      {children}
+    </IconButton>
   );
 }
 

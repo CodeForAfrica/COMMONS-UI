@@ -1,9 +1,11 @@
 import MaterialDivider from "@mui/material/Divider";
-import { ThemeProvider, StyledEngineProvider, createTheme } from "@mui/material/styles";
-
-import { makeStyles } from 'tss-react/mui';
-
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
 import React from "react";
+import { makeStyles } from "tss-react/mui";
 
 const theme = createTheme();
 const useStyles = makeStyles()(() => ({
@@ -16,9 +18,7 @@ const useStyles = makeStyles()(() => ({
 
 export default function Divider(props) {
   const { classes } = useStyles(props, {
-    props: props
+    props,
   });
-  return (
-        <MaterialDivider classes={classes} {...props} />
-  );
+  return <MaterialDivider classes={classes} {...props} />;
 }

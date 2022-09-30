@@ -1,9 +1,5 @@
 module.exports = {
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "storybook-addon-material-ui5",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   stories: ["../stories/**/*.stories.js"],
   webpackFinal: async (config) => {
     // Need to remove default svg-url-loader first
@@ -11,7 +7,8 @@ module.exports = {
     config.module.rules = config.module.rules.map((data) => {
       const regex = data.test && data.test.toString();
       if (/svg\|/.test(regex)) {
-        data.test = /\.(ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
+        data.test =
+          /\.(ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/;
       }
 
       return data;
