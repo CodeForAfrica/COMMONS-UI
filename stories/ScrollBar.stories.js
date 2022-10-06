@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import personImage from "./assets/person_1.png";
 

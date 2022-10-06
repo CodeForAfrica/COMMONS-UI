@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import { LegalLinks } from "@/commons-ui/core";
 

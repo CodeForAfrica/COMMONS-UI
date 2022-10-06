@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import { PropTypes } from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     "& a": {
       color: theme.palette.primary.main,
@@ -17,7 +17,7 @@ const RichTypography = React.forwardRef(function RichTypography(
   { children, component, ...props },
   ref
 ) {
-  const { classes } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 

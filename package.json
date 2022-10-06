@@ -52,7 +52,6 @@
     "react-is": "^17.0.2",
     "regenerator-runtime": "^0.13.5",
     "simplebar-react": "^2.1.0",
-    "tss-react": "^4.1.4",
     "typescript": "^4.0.2",
     "webpack": "^4.42.1"
   },

@@ -1,6 +1,6 @@
-import { makeStyles } from "tss-react/mui";
+import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles(() => ({
   root: {
     width: "6%", // 53px / 934px,
     display: "flex",
@@ -31,7 +31,6 @@ const useStyles = makeStyles()({
       boxShadow: "0 2px 6px 4px rgba(0, 0, 0, 0.2)",
     },
   },
-});
+}));
 
-// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

@@ -1,12 +1,13 @@
 import { Grid } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import A from "@/commons-ui/core/A";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   title: {
     textAlign: "center",
@@ -41,7 +42,7 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 function StayInTouch({ support, socialMedia, title, ...props }) {
-  const { classes, cx } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 
@@ -52,19 +53,21 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
     <Grid container className={classes.root}>
       {title && (
         <Grid item xs={12} md="auto" className={classes.title}>
-          <RichTypography className={cx(classes.text)}>{title}</RichTypography>
+          <RichTypography className={clsx(classes.text)}>
+            {title}
+          </RichTypography>
         </Grid>
       )}
       <Grid item xs={12} md="auto" container className={classes.links}>
         {support && (
           <A
             href={`mailto:${support.email}`}
-            className={cx(classes.link, classes.supportLink)}
+            className={clsx(classes.link, classes.supportLink)}
           >
             <img
               src={support.image.url}
               alt={support.image.alt}
-              className={cx(classes.icon, classes.supportIcon)}
+              className={clsx(classes.icon, classes.supportIcon)}
             />
           </A>
         )}
@@ -72,12 +75,12 @@ function StayInTouch({ support, socialMedia, title, ...props }) {
           <A
             key={media.url}
             href={media.url}
-            className={cx(classes.link, classes.socialLink)}
+            className={clsx(classes.link, classes.socialLink)}
           >
             <img
               src={media.image.url}
               alt={media.image.alt}
-              className={cx(classes.icon, classes.socialIcon)}
+              className={clsx(classes.icon, classes.socialIcon)}
             />
           </A>
         ))}

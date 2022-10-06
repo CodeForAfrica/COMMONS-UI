@@ -1,9 +1,10 @@
 import { Grid, Button, ButtonBase } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingBottom: "1rem",
   },
@@ -76,7 +77,7 @@ function Filter({
   subProps,
   ...props
 }) {
-  const { classes, cx } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 
@@ -89,7 +90,7 @@ function Filter({
               <Button
                 {...mainProps}
                 variant={mainVariant}
-                className={cx(classes.mainButton, {
+                className={clsx(classes.mainButton, {
                   [classes.activeButton]: item.slug === activeTopic,
                 })}
                 onClick={() => onButtonClick(item.slug)}
@@ -107,7 +108,7 @@ function Filter({
               key={item.slug}
               variant={subVariant}
               onClick={() => onSubTopicButtonClick(item.slug)}
-              className={cx(classes.subButton, {
+              className={clsx(classes.subButton, {
                 [classes.activeSubButton]: item.slug === activeSubTopic,
               })}
             >

@@ -1,6 +1,6 @@
-import { makeStyles } from "tss-react/mui";
+import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles()(
+const useStyles = makeStyles(
   ({ breakpoints, palette, spacing, typography }) => ({
     root: {
       width: "100%",
@@ -130,5 +130,4 @@ const useStyles = makeStyles()(
   })
 );
 
-// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

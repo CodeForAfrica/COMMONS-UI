@@ -1,5 +1,5 @@
+import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import { getProfiles } from "./utils";
 

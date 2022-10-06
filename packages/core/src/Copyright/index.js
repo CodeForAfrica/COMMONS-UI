@@ -1,11 +1,12 @@
 import { Typography } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import A from "@/commons-ui/core/A";
 
-const useStyles = makeStyles()(({ breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   root: {},
   organization: {
     marginBottom: "2.243125rem",
@@ -37,18 +38,16 @@ const useStyles = makeStyles()(({ breakpoints }) => ({
 }));
 
 function Copyright({ copyright, icon, variant, year, url, ...props }) {
-  const { classes, cx } = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   return (
     <>
       {(copyright || icon || year) && (
-        <div className={cx(classes.copyright, classes.root)}>
+        <div className={clsx(classes.copyright, classes.root)}>
           {copyright && (
             <Typography
               variant={variant}
-              className={cx(classes.text, classes.copyrightText)}
+              className={clsx(classes.text, classes.copyrightText)}
             >
               {copyright}
             </Typography>
@@ -65,7 +64,7 @@ function Copyright({ copyright, icon, variant, year, url, ...props }) {
           {year && (
             <Typography
               variant={variant}
-              className={cx(classes.text, classes.copyrightYear)}
+              className={clsx(classes.text, classes.copyrightYear)}
             >
               {year}
             </Typography>

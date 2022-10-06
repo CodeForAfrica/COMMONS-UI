@@ -1,6 +1,6 @@
-import { makeStyles } from "tss-react/mui";
+import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles()(({ breakpoints }) => ({
+const useStyles = makeStyles(({ breakpoints }) => ({
   contents: {},
   contentsDatasource: {
     backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -20,5 +20,4 @@ const useStyles = makeStyles()(({ breakpoints }) => ({
   title: {},
 }));
 
-// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

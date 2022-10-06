@@ -1,14 +1,8 @@
 import MaterialDivider from "@mui/material/Divider";
-import {
-  ThemeProvider,
-  StyledEngineProvider,
-  createTheme,
-} from "@mui/material/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
-const theme = createTheme();
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
     height: ".2rem",
@@ -17,7 +11,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 export default function Divider(props) {
-  const { classes } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
   return <MaterialDivider classes={classes} {...props} />;

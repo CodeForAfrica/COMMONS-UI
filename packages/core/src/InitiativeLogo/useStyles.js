@@ -1,11 +1,10 @@
-import { makeStyles } from "tss-react/mui";
+import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
   },
   support: {},
 }));
 
-// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

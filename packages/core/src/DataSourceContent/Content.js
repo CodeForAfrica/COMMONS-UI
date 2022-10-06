@@ -1,11 +1,11 @@
 import { Button, Grid } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const useStyles = makeStyles()(({ breakpoints, typography }) => ({
+const useStyles = makeStyles(({ breakpoints, typography }) => ({
   root: {
     flexWrap: "nowrap",
     [breakpoints.up("md")]: {
@@ -30,7 +30,7 @@ function DataSourceContent({
   link,
   ...props
 }) {
-  const { classes } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 

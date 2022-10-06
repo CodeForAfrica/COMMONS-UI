@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
 import Layout from "@/commons-ui/core/Layout";
 import RichTypography from "@/commons-ui/core/RichTypography";
 
-const useStyles = makeStyles()(({ typography }) => ({
+const useStyles = makeStyles(({ typography }) => ({
   /* Styles applied to the root element. */
   root: {
     boxSizing: "border-box",
@@ -24,7 +25,7 @@ const Section = React.forwardRef(function Section(
   { children, className, title, titleProps, ...props },
   ref
 ) {
-  const { classes, cx } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 
@@ -32,7 +33,7 @@ const Section = React.forwardRef(function Section(
     return null;
   }
   return (
-    <Layout {...props} className={cx(classes.root, className)} ref={ref}>
+    <Layout {...props} className={clsx(classes.root, className)} ref={ref}>
       {title?.length ? (
         <RichTypography variant="h2" className={classes.title} {...titleProps}>
           {title}

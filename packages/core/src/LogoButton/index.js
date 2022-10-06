@@ -1,9 +1,10 @@
 import { IconButton } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
-import { makeStyles } from "tss-react/mui";
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles(() => ({
   root: {},
   image: {
     width: "100%",
@@ -19,7 +20,7 @@ function LogoButton({
   src,
   ...props
 }) {
-  const { classes, cx } = useStyles(props, {
+  const classes = useStyles(props, {
     props,
   });
 
@@ -30,7 +31,11 @@ function LogoButton({
     <img {...imgProps} alt={alt || ""} src={src} className={classes.image} />
   );
   return (
-    <IconButton {...props} className={cx(classes.root, className)} size="large">
+    <IconButton
+      {...props}
+      className={clsx(classes.root, className)}
+      size="large"
+    >
       {children}
     </IconButton>
   );
