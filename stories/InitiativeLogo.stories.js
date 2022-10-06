@@ -47,7 +47,7 @@ export default {
 };
 
 const Template = ({ description, ...args }) => {
-  const classes = makeStyles()(({ breakpoints }) => ({
+  const classes = makeStyles(({ breakpoints }) => ({
     section: {
       margin: "0 auto",
       [breakpoints.up("md")]: {

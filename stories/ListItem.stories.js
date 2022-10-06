@@ -24,7 +24,7 @@ export default {
 const profiles = getProfiles();
 
 const Template = (args) => {
-  const classes = makeStyles()(() => ({
+  const classes = makeStyles(() => ({
     section: {},
     profilePicture: {
       position: "relative",

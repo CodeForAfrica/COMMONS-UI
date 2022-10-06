@@ -25,7 +25,7 @@ export default {
 };
 
 const Template = ({ datasets, documents, ...args }) => {
-  const classes = makeStyles()(() => ({
+  const classes = makeStyles(() => ({
     section: {
       margin: "0 auto",
       width: "90%",

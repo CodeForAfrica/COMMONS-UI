@@ -35,7 +35,7 @@ export default {
 };
 
 const Template = (args) => {
-  const classes = makeStyles()(({ palette }) => ({
+  const classes = makeStyles(({ palette }) => ({
     filterButton: {
       border: 0,
       borderRadius: 0,

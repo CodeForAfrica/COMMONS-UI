@@ -38,7 +38,7 @@ const Template = ({ fixed, ...args }) => {
     },
   };
 
-  const classes = makeStyles()(({ breakpoints }) => ({
+  const classes = makeStyles(({ breakpoints }) => ({
     section: {},
     fixed: Object.keys(widths.values).reduce((acc, breakpoint) => {
       const value = widths.values[breakpoint];

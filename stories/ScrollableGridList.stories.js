@@ -47,7 +47,7 @@ export default {
 };
 
 const Template = ({ tiles }) => {
-  const classes = makeStyles()((theme) => ({
+  const classes = makeStyles((theme) => ({
     root: {},
     gridList: {
       flexWrap: "nowrap",

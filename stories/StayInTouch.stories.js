@@ -46,7 +46,7 @@ export default {
 };
 
 const Template = (args) => {
-  const classes = makeStyles()(() => ({
+  const classes = makeStyles(() => ({
     section: {},
   }))();
 

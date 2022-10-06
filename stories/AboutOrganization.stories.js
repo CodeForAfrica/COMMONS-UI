@@ -38,7 +38,7 @@ export default {
 };
 
 const Template = ({ about, aboutVariant, initiativeVariant, ...args }) => {
-  const classes = makeStyles()((theme) => ({
+  const classes = makeStyles((theme) => ({
     section: {
       margin: "0 auto",
       [theme.breakpoints.up("md")]: {
