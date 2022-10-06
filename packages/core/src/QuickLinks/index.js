@@ -34,9 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function QuickLinks({ options, linkComponent, links, title, ...props }) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
   const LinkComponent = linkComponent || Link;
 
   return (

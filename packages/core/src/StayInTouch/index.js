@@ -42,9 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function StayInTouch({ support, socialMedia, title, ...props }) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   if (!(socialMedia && socialMedia.length)) {
     return null;

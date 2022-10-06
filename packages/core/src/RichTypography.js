@@ -17,9 +17,7 @@ const RichTypography = React.forwardRef(function RichTypography(
   { children, component, ...props },
   ref
 ) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   if (!children) {
     return null;

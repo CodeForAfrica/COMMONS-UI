@@ -77,9 +77,7 @@ function Filter({
   subProps,
   ...props
 }) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   return (
     <Grid container className={classes.root}>

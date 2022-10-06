@@ -25,9 +25,7 @@ const Section = React.forwardRef(function Section(
   { children, className, title, titleProps, ...props },
   ref
 ) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   if (!children) {
     return null;

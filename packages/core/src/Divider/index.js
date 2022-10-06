@@ -11,8 +11,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Divider(props) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
   return <MaterialDivider classes={classes} {...props} />;
 }

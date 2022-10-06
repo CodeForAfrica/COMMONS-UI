@@ -20,9 +20,7 @@ function LogoButton({
   src,
   ...props
 }) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   if (!(childrenProp || src)) {
     return null;

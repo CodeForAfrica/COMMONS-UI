@@ -30,9 +30,7 @@ function DataSourceContent({
   link,
   ...props
 }) {
-  const classes = useStyles(props, {
-    props,
-  });
+  const classes = useStyles(props);
 
   return (
     <Grid container className={classes.root}>
