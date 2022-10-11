@@ -15,11 +15,7 @@ const Layout = React.forwardRef(function Layout(
   { children, classes: classesProp, className, ...props },
   ref
 ) {
-  const classes = useStyles(undefined, {
-    props: {
-      classes: classesProp,
-    },
-  });
+  const classes = useStyles({ classes: classesProp });
 
   return (
     <Box {...props} className={clsx(classes.root, className)} ref={ref}>
