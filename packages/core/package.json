@@ -1,6 +1,6 @@
 {
   "name": "@commons-ui/core",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "dependencies": {
     "clsx": "^1.1.0",
     "prop-types": "^15.7.2",
@@ -33,5 +33,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "ef7867108f615ea08f86c4eb981e05fb7ae8a413"
+  "gitHead": "ef7867108f615ea08f86c4eb981e05fb7ae8a413",
+  "volta": {
+    "node": "16.18.1",
+    "yarn": "1.22.19"
+  }
 }
