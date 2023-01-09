@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import { Grid, useMediaQuery, useTheme } from "@material-ui/core";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import clsx from "clsx";
 import { PropTypes } from "prop-types";
 import React from "react";

@@ -1,10 +1,5 @@
-import {
-  Box,
-  GridList,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { Box, ImageList, useMediaQuery, useTheme } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -14,7 +9,7 @@ const useStyles = makeStyles(() => ({
   root: {
     overflow: "hidden",
     /**
-     * The mixture of rem and px set by GridList is
+     * The mixture of rem and px set by ImageList is
      * causing height issues resulting in overflow.
      * Stick to px for this component to function correctly.
      */
@@ -76,14 +71,14 @@ function ScrollableGridList({
         classes={{ root: classes.scrollBar }}
         height={height}
       >
-        <GridList
+        <ImageList
           cellHeight={cellHeight}
           className={classes.gridList}
           cols={cols}
           spacing={spacing}
         >
           {children}
-        </GridList>
+        </ImageList>
       </ScrollBar>
     </Box>
   );

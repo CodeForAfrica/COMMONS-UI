@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";

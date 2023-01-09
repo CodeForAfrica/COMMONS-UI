@@ -1,5 +1,5 @@
-import { IconButton } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { IconButton } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import React from "react";
@@ -29,7 +29,11 @@ function LogoButton({
     <img {...imgProps} alt={alt || ""} src={src} className={classes.image} />
   );
   return (
-    <IconButton {...props} className={clsx(classes.root, className)}>
+    <IconButton
+      {...props}
+      className={clsx(classes.root, className)}
+      size="large"
+    >
       {children}
     </IconButton>
   );

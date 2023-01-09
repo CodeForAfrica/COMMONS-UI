@@ -1,9 +1,5 @@
 module.exports = {
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "storybook-addon-material-ui",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   stories: ["../stories/**/*.stories.js"],
   webpackFinal: async (config) => {
     // Need to remove default svg-url-loader first

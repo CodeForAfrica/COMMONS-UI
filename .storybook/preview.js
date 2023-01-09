@@ -1,11 +1,23 @@
-import { muiTheme } from "storybook-addon-material-ui";
-import { createMuiTheme } from "@material-ui/core/styles";
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme,
+} from "@mui/material/styles";
+import React from "react";
 
 import "./styles.css";
 
-const theme = createMuiTheme();
+const theme = createTheme();
 
-export const decorators = [muiTheme([theme])];
+export const decorators = [
+  (Story) => (
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    </StyledEngineProvider>
+  ),
+];
 
 const size = (px) => `${Number.parseFloat(theme.typography.pxToRem(px))}rem`;
 

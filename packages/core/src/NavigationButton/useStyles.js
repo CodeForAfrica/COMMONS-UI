@@ -1,6 +1,6 @@
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from "@mui/styles/makeStyles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
   root: {
     width: "6%", // 53px / 934px,
     display: "flex",
@@ -31,6 +31,6 @@ const useStyles = makeStyles({
       boxShadow: "0 2px 6px 4px rgba(0, 0, 0, 0.2)",
     },
   },
-});
+}));
 
 export default useStyles;

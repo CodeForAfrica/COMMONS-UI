@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger, jsx-a11y/control-has-associated-label */
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import { PropTypes } from "prop-types";
 import React from "react";
 
@@ -9,7 +9,12 @@ function NavigationButton({ children, onClick, ...props }) {
   const classes = useStyles(props);
 
   return (
-    <IconButton className={classes.root} onClick={onClick} {...props}>
+    <IconButton
+      className={classes.root}
+      onClick={onClick}
+      {...props}
+      size="large"
+    >
       {children}
     </IconButton>
   );
